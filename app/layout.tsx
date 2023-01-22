@@ -1,7 +1,12 @@
 /* eslint-disable @next/next/no-head-element */
 "use client";
 
-import { useChainInitial } from "hooks/useChainInitial";
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import { useChainInitial } from "@/hooks/useChainInitial";
+import { globalStyles } from "@/styles/globalStyles";
+
+const cache = createCache({ key: "next" });
 
 export default function RootLayout({
   children,
@@ -13,7 +18,12 @@ export default function RootLayout({
   return (
     <html>
       <head></head>
-      <body>{children}</body>
+      <body>
+        <CacheProvider value={cache}>
+          {globalStyles}
+          {children}
+        </CacheProvider>
+      </body>
     </html>
   );
 }

@@ -1,15 +1,17 @@
 {
   "name": "devmosis",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@chain-registry/types": "^0.14.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@keplr-wallet/types": "^0.11.34",
     "@next/font": "^13.1.4",
     "chain-registry": "^1.6.1",
