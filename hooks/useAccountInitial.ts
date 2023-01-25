@@ -1,9 +1,9 @@
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useAtomValue, useSetAtom } from "jotai";
 
-import { accountAtom } from '@/atoms/accountAtom';
-import { registeredChainAtom } from '@/atoms/chainAtom';
-import { assertFulfilled } from '@/utils/assertFulfilled';
-import { getKeplrFromWindow } from '@/utils/keplr';
+import { accountAtom } from "@/atoms/accountAtom";
+import { registeredChainAtom } from "@/atoms/chainAtom";
+import { assertFulfilled } from "@/utils/assertFulfilled";
+import { getKeplrFromWindow } from "@/utils/keplr";
 
 import type { Chain } from "@chain-registry/types";
 

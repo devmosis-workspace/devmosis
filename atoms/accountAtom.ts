@@ -1,4 +1,4 @@
-import { atom } from 'jotai';
+import { atom } from "jotai";
 
 import type { Key } from "@keplr-wallet/types";
 

@@ -4,13 +4,14 @@ import { assets } from "chain-registry";
 import { useAtomValue } from "jotai";
 
 import { registeredChainAtom, unregisteredChainAtom } from "@/atoms/chainAtom";
+import { useChainInitial } from "@/hooks/useChainInitial";
 import { generateBech32Config } from "@/utils/bech32Config";
 import { suggestChainFromWindow } from "@/utils/keplr";
 import styled from "@emotion/styled";
 
 import type { AssetDenomUnit, Chain } from "@chain-registry/types";
 import type { ChainInfo, FeeCurrency, Currency } from "@keplr-wallet/types";
-import { useChainInitial } from "@/hooks/useChainInitial";
+
 export default function Home() {
   const { chainInfoInit } = useChainInitial();
 

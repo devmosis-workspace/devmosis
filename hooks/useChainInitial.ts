@@ -1,6 +1,5 @@
 import { chains } from "chain-registry";
 import { useSetAtom } from "jotai";
-import { useCallback } from "react";
 
 import { registeredChainAtom, unregisteredChainAtom } from "@/atoms/chainAtom";
 import { getKeplrFromWindow } from "@/utils/keplr";
@@ -26,35 +25,35 @@ const getWalletChainInfos = async () => {
   }
 };
 
+const separateChains = async (walletChainInfos: ChainInfoWithoutEndpoints[]) =>
+  chains.reduce(
+    (acc, chain) => {
+      const [registered, unregistered] = acc;
+      if (walletChainInfos.find((info) => info.chainId === chain.chain_id)) {
+        registered.push(chain);
+      } else {
+        unregistered.push(chain);
+      }
+      return acc;
+    },
+    [[], []] as [Chain[], Chain[]]
+  );
+
 export const useChainInitial = () => {
   const setRegisteredChains = useSetAtom(registeredChainAtom);
   const setUnregisteredChains = useSetAtom(unregisteredChainAtom);
 
-  const separateChains = async (
-    walletChainInfos: ChainInfoWithoutEndpoints[]
-  ) => {
-    const [registeredChains, unregisteredChains] = chains.reduce(
-      (acc, chain) => {
-        const [registered, unregistered] = acc;
-        if (walletChainInfos.find((info) => info.chainId === chain.chain_id)) {
-          registered.push(chain);
-        } else {
-          unregistered.push(chain);
-        }
-        return acc;
-      },
-      [[], []] as [Chain[], Chain[]]
-    );
-    setRegisteredChains(registeredChains);
-    setUnregisteredChains(unregisteredChains);
-  };
-
-  const chainInfoInit = useCallback(async () => {
+  const chainInfoInit = async () => {
     const walletChainInfos = await getWalletChainInfos();
     if (walletChainInfos !== undefined) {
-      await separateChains(walletChainInfos);
+      const [registeredChains, unregisteredChains] = await separateChains(
+        walletChainInfos
+      );
+
+      setRegisteredChains(registeredChains);
+      setUnregisteredChains(unregisteredChains);
     }
-  }, [getWalletChainInfos, separateChains]);
+  };
 
   return { chainInfoInit };
 };

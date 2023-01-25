@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import { useAccountInitial } from './useAccountInitial';
+import { useAccountInitial } from "./useAccountInitial";
 
 export const useKeplrListener = () => {
   const { accountInit } = useAccountInitial();
