@@ -5,7 +5,7 @@ import { generateBech32Config } from "@/utils/bech32Config";
 import { suggestChainFromWindow } from "@/utils/keplr";
 import type { Chain } from "@chain-registry/types";
 import styled from "@emotion/styled";
-import type { ChainInfo } from "@keplr-wallet/types";
+import type { ChainInfo, FeeCurrency, Currency } from "@keplr-wallet/types";
 import { chains, assets } from "chain-registry";
 import { useAtomValue } from "jotai";
 
@@ -25,7 +25,7 @@ export default function Home() {
         return text;
       };
 
-      const currencies = chainAssets.map((asset) => ({
+      const currencies: Currency[] = chainAssets.map((asset) => ({
         coinDenom: asset.name,
         coinMinimalDenom: asset.base,
         coinDecimals: asset.denom_units[1]?.exponent,
@@ -35,7 +35,21 @@ export default function Home() {
         // ),
       }));
 
-      const feeCurrency = currencies[0];
+      const feeToken = chain.fees?.fee_tokens?.[0];
+      const lowGasPrice = feeToken?.low_gas_price;
+      const averageGasPrice = feeToken?.average_gas_price;
+      const highGasPrice = feeToken?.high_gas_price;
+      const fixedMinGasPrice = feeToken?.fixed_min_gas_price ?? 0;
+
+      const gasPriceStep = {
+        low: lowGasPrice ?? averageGasPrice ?? highGasPrice ?? fixedMinGasPrice,
+        average:
+          averageGasPrice ?? lowGasPrice ?? highGasPrice ?? fixedMinGasPrice,
+        high:
+          highGasPrice ?? lowGasPrice ?? averageGasPrice ?? fixedMinGasPrice,
+      };
+
+      const feeCurrency: FeeCurrency = { ...currencies[0], ...gasPriceStep };
 
       const chainInfo: ChainInfo = {
         rpc: chain.apis?.rpc?.[0].address ?? "",
@@ -47,11 +61,6 @@ export default function Home() {
         bech32Config: generateBech32Config(chain.bech32_prefix),
         currencies,
         feeCurrencies: [feeCurrency],
-
-        // TODO
-        // gasPriceStep: {
-        // },
-        // features: [],
       };
 
       suggestChainFromWindow(chainInfo);
