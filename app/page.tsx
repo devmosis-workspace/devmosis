@@ -8,7 +8,7 @@ import { generateBech32Config } from '@/utils/bech32Config';
 import { suggestChainFromWindow } from '@/utils/keplr';
 import styled from '@emotion/styled';
 
-import type { Chain } from "@chain-registry/types";
+import type { AssetDenomUnit, Chain } from "@chain-registry/types";
 import type { ChainInfo, FeeCurrency, Currency } from "@keplr-wallet/types";
 export default function Home() {
   const registeredChains = useAtomValue(registeredChainAtom);
@@ -21,15 +21,26 @@ export default function Home() {
       )?.assets;
 
       if (chainAssets === undefined) return;
+
       const checkEmptyText = (text: string | undefined) => {
         if (text === "") return undefined;
         return text;
       };
 
+      const checkCoinDecimals = (denomUnits: AssetDenomUnit[]) => {
+        const doesntHaveMinimalDenom = denomUnits[1] === undefined;
+
+        if (doesntHaveMinimalDenom) {
+          return denomUnits[0].exponent;
+        }
+
+        return denomUnits[1].exponent;
+      };
+
       const currencies: Currency[] = chainAssets.map((asset) => ({
         coinDenom: asset.display,
         coinMinimalDenom: asset.base,
-        coinDecimals: asset.denom_units[1]?.exponent,
+        coinDecimals: checkCoinDecimals(asset.denom_units),
         coinGeckoId: checkEmptyText(asset.coingecko_id),
         // coinImageUrl: checkEmptyText(
         //   asset.logo_URIs?.png ?? asset.logo_URIs?.jpeg
