@@ -1,24 +1,24 @@
 "use client";
 
-import { registeredChainAtom, unregisteredChainAtom } from "@/atoms/chainAtom";
-import { generateBech32Config } from "@/utils/bech32Config";
-import { suggestChainFromWindow } from "@/utils/keplr";
-import type { Chain } from "@chain-registry/types";
-import styled from "@emotion/styled";
-import type { ChainInfo, FeeCurrency, Currency } from "@keplr-wallet/types";
-import { chains, assets } from "chain-registry";
-import { useAtomValue } from "jotai";
+import { assets } from 'chain-registry';
+import { useAtomValue } from 'jotai';
 
+import { registeredChainAtom, unregisteredChainAtom } from '@/atoms/chainAtom';
+import { generateBech32Config } from '@/utils/bech32Config';
+import { suggestChainFromWindow } from '@/utils/keplr';
+import styled from '@emotion/styled';
+
+import type { Chain } from "@chain-registry/types";
+import type { ChainInfo, FeeCurrency, Currency } from "@keplr-wallet/types";
 export default function Home() {
   const registeredChains = useAtomValue(registeredChainAtom);
   const unregisteredChains = useAtomValue(unregisteredChainAtom);
-  
+
   const handleClick = (chain: Chain) => {
     try {
       const chainAssets = assets.find(
         (asset) => asset.chain_name === chain.chain_name
       )?.assets;
-      console.log(chainAssets)
 
       if (chainAssets === undefined) return;
       const checkEmptyText = (text: string | undefined) => {
@@ -66,7 +66,7 @@ export default function Home() {
 
       suggestChainFromWindow(chainInfo);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

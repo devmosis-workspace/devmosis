@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-head-element */
 "use client";
 
-import createCache from "@emotion/cache";
-import { CacheProvider } from "@emotion/react";
-import { useChainInitial } from "@/hooks/useChainInitial";
-import { globalStyles } from "@/styles/globalStyles";
+import { useChainInitial } from '@/hooks/useChainInitial';
+import { globalStyles } from '@/styles/globalStyles';
+import createCache from '@emotion/cache';
+import { CacheProvider } from '@emotion/react';
 
 const cache = createCache({ key: "next" });
 

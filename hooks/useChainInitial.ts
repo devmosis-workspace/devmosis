@@ -1,9 +1,11 @@
-import { chains } from "chain-registry";
-import { useSetAtom } from "jotai";
-import { useCallback, useEffect } from "react";
-import { registeredChainAtom, unregisteredChainAtom } from "@/atoms/chainAtom";
+import { chains } from 'chain-registry';
+import { useSetAtom } from 'jotai';
+import { useCallback, useEffect } from 'react';
+
+import { registeredChainAtom, unregisteredChainAtom } from '@/atoms/chainAtom';
+import { getKeplrFromWindow } from '@/utils/keplr';
+
 import type { Chain } from "@chain-registry/types";
-import { getKeplrFromWindow } from "@/utils/keplr";
 import type { ChainInfoWithoutEndpoints } from "@keplr-wallet/types";
 
 export const useChainInitial = () => {
