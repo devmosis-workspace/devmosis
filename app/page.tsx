@@ -12,12 +12,13 @@ import { useAtomValue } from "jotai";
 export default function Home() {
   const registeredChains = useAtomValue(registeredChainAtom);
   const unregisteredChains = useAtomValue(unregisteredChainAtom);
-
+  
   const handleClick = (chain: Chain) => {
     try {
       const chainAssets = assets.find(
         (asset) => asset.chain_name === chain.chain_name
       )?.assets;
+      console.log(chainAssets)
 
       if (chainAssets === undefined) return;
       const checkEmptyText = (text: string | undefined) => {
@@ -26,7 +27,7 @@ export default function Home() {
       };
 
       const currencies: Currency[] = chainAssets.map((asset) => ({
-        coinDenom: asset.name,
+        coinDenom: asset.display,
         coinMinimalDenom: asset.base,
         coinDecimals: asset.denom_units[1]?.exponent,
         coinGeckoId: checkEmptyText(asset.coingecko_id),
@@ -55,7 +56,7 @@ export default function Home() {
         rpc: chain.apis?.rpc?.[0].address ?? "",
         rest: chain.apis?.rest?.[0].address ?? "",
         chainId: chain.chain_id,
-        chainName: chain.chain_name,
+        chainName: chain.pretty_name,
         stakeCurrency: currencies[0],
         bip44: { coinType: chain.slip44 },
         bech32Config: generateBech32Config(chain.bech32_prefix),
@@ -74,14 +75,14 @@ export default function Home() {
       Registered chains:
       <Grid>
         {registeredChains.map((chain) => (
-          <div key={chain.chain_id}>{chain.chain_name}</div>
+          <div key={chain.chain_id}>{chain.pretty_name}</div>
         ))}
       </Grid>
       Unregistered chains:
       <Grid>
         {unregisteredChains.map((chain) => (
           <Button key={chain.chain_id} onClick={() => handleClick(chain)}>
-            {chain.chain_name}
+            {chain.pretty_name}
           </Button>
         ))}
       </Grid>
