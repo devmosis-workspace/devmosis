@@ -1,20 +1,23 @@
 "use client";
 
-import { assets } from 'chain-registry';
-import { useAtomValue } from 'jotai';
+import { assets } from "chain-registry";
+import { useAtomValue } from "jotai";
 
-import { registeredChainAtom, unregisteredChainAtom } from '@/atoms/chainAtom';
-import { generateBech32Config } from '@/utils/bech32Config';
-import { suggestChainFromWindow } from '@/utils/keplr';
-import styled from '@emotion/styled';
+import { registeredChainAtom, unregisteredChainAtom } from "@/atoms/chainAtom";
+import { generateBech32Config } from "@/utils/bech32Config";
+import { suggestChainFromWindow } from "@/utils/keplr";
+import styled from "@emotion/styled";
 
 import type { AssetDenomUnit, Chain } from "@chain-registry/types";
 import type { ChainInfo, FeeCurrency, Currency } from "@keplr-wallet/types";
+import { useChainInitial } from "@/hooks/useChainInitial";
 export default function Home() {
+  const { chainInfoInit } = useChainInitial();
+
   const registeredChains = useAtomValue(registeredChainAtom);
   const unregisteredChains = useAtomValue(unregisteredChainAtom);
 
-  const handleClick = (chain: Chain) => {
+  const handleClick = async (chain: Chain) => {
     try {
       const chainAssets = assets.find(
         (asset) => asset.chain_name === chain.chain_name
@@ -75,9 +78,14 @@ export default function Home() {
         feeCurrencies: [feeCurrency],
       };
 
-      suggestChainFromWindow(chainInfo);
+      await suggestChainFromWindow(chainInfo);
+
+      chainInfoInit();
     } catch (e) {
-      console.error(e);
+      const error = e as Error;
+      if (!error.message.includes("Request rejected")) {
+        console.error(e);
+      }
     }
   };
 
