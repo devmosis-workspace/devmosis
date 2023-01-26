@@ -1,87 +1,33 @@
 "use client";
 
-import { assets } from "chain-registry";
 import { useAtomValue } from "jotai";
 
-import { registeredChainAtom, unregisteredChainAtom } from "@/atoms/chainAtom";
+import {
+  registeredChainAtom,
+  unregisteredChainAtom,
+  unsupportedChainAtom,
+} from "@/atoms/chainAtom";
 import { useChainInitial } from "@/hooks/useChainInitial";
-import { generateBech32Config } from "@/utils/bech32Config";
-import { suggestChainFromWindow } from "@/utils/keplr";
+import { generateKeplrChainInfo, suggestChainFromWindow } from "@/utils/keplr";
 import styled from "@emotion/styled";
 
-import type { AssetDenomUnit, Chain } from "@chain-registry/types";
-import type { ChainInfo, FeeCurrency, Currency } from "@keplr-wallet/types";
+import type { Chain } from "@chain-registry/types";
 
 export default function Home() {
   const { chainInfoInit } = useChainInitial();
 
   const registeredChains = useAtomValue(registeredChainAtom);
   const unregisteredChains = useAtomValue(unregisteredChainAtom);
+  const unsupportedChains = useAtomValue(unsupportedChainAtom);
 
-  const handleClick = async (chain: Chain) => {
+  const registerChainWithKeplr = async (chain: Chain) => {
     try {
-      const chainAssets = assets.find(
-        (asset) => asset.chain_name === chain.chain_name
-      )?.assets;
+      const chainInfo = await generateKeplrChainInfo(chain);
 
-      if (chainAssets === undefined) return;
-
-      const checkEmptyText = (text: string | undefined) => {
-        if (text === "") return undefined;
-        return text;
-      };
-
-      const checkCoinDecimals = (denomUnits: AssetDenomUnit[]) => {
-        const doesntHaveMinimalDenom = denomUnits[1] === undefined;
-
-        if (doesntHaveMinimalDenom) {
-          return denomUnits[0].exponent;
-        }
-
-        return denomUnits[1].exponent;
-      };
-
-      const currencies: Currency[] = chainAssets.map((asset) => ({
-        coinDenom: asset.display,
-        coinMinimalDenom: asset.base,
-        coinDecimals: checkCoinDecimals(asset.denom_units),
-        coinGeckoId: checkEmptyText(asset.coingecko_id),
-        // coinImageUrl: checkEmptyText(
-        //   asset.logo_URIs?.png ?? asset.logo_URIs?.jpeg
-        // ),
-      }));
-
-      const feeToken = chain.fees?.fee_tokens?.[0];
-      const lowGasPrice = feeToken?.low_gas_price;
-      const averageGasPrice = feeToken?.average_gas_price;
-      const highGasPrice = feeToken?.high_gas_price;
-      const fixedMinGasPrice = feeToken?.fixed_min_gas_price ?? 0;
-
-      const gasPriceStep = {
-        low: lowGasPrice ?? averageGasPrice ?? highGasPrice ?? fixedMinGasPrice,
-        average:
-          averageGasPrice ?? lowGasPrice ?? highGasPrice ?? fixedMinGasPrice,
-        high:
-          highGasPrice ?? lowGasPrice ?? averageGasPrice ?? fixedMinGasPrice,
-      };
-
-      const feeCurrency: FeeCurrency = { ...currencies[0], ...gasPriceStep };
-
-      const chainInfo: ChainInfo = {
-        rpc: chain.apis?.rpc?.[0].address ?? "",
-        rest: chain.apis?.rest?.[0].address ?? "",
-        chainId: chain.chain_id,
-        chainName: chain.pretty_name,
-        stakeCurrency: currencies[0],
-        bip44: { coinType: chain.slip44 },
-        bech32Config: generateBech32Config(chain.bech32_prefix),
-        currencies,
-        feeCurrencies: [feeCurrency],
-      };
-
-      await suggestChainFromWindow(chainInfo);
-
-      chainInfoInit();
+      if (chainInfo !== undefined) {
+        await suggestChainFromWindow(chainInfo);
+        chainInfoInit();
+      }
     } catch (e) {
       const error = e as Error;
       if (!error.message.includes("Request rejected")) {
@@ -98,12 +44,21 @@ export default function Home() {
           <div key={chain.chain_id}>{chain.pretty_name}</div>
         ))}
       </Grid>
-      Unregistered chains:
+      Support chains:
       <Grid>
         {unregisteredChains.map((chain) => (
-          <Button key={chain.chain_id} onClick={() => handleClick(chain)}>
+          <Button
+            key={chain.chain_id}
+            onClick={() => registerChainWithKeplr(chain)}
+          >
             {chain.pretty_name}
           </Button>
+        ))}
+      </Grid>
+      Unsupport chains:
+      <Grid>
+        {unsupportedChains.map((chain) => (
+          <div key={chain.chain_id}>{chain.pretty_name}</div>
         ))}
       </Grid>
     </Container>
