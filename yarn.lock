@@ -1034,9 +1034,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"devmosis@workspace:.":
+"devmosis@workspace:packages/dashboard":
   version: 0.0.0-use.local
-  resolution: "devmosis@workspace:."
+  resolution: "devmosis@workspace:packages/dashboard"
   dependencies:
     "@chain-registry/types": ^0.14.0
     "@emotion/cache": ^11.10.5
@@ -1055,9 +1055,6 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     typescript: 4.9.4
-  dependenciesMeta:
-    next@13.1.4:
-      unplugged: true
   languageName: unknown
   linkType: soft
 
@@ -2883,6 +2880,15 @@ __metadata:
   checksum: 87f4164e396f0171b0a3386cc1877a817f572148ee13a7e113b238e48e8a9f2f31d009a92ec38a591ff1567d9662c6b67fd8818a2dbbaed74bc26a87a2a4a9a0
   languageName: node
   linkType: hard
+
+"root-workspace-0b6124@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root-workspace-0b6124@workspace:."
+  dependenciesMeta:
+    next@13.1.4:
+      unplugged: true
+  languageName: unknown
+  linkType: soft
 
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
