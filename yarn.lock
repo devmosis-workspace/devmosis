@@ -1842,6 +1842,7 @@ __metadata:
     "@cosmjs/tendermint-rpc": ^0.29.4
     "@osmonauts/telescope": ^0.78.0
     "@types/jest": ^29.1.2
+    "@types/node": ^18.11.18
     babel-core: 7.0.0-bridge.0
     babel-jest: 29.1.2
     babel-watch: ^7.0.0
@@ -3260,7 +3261,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:18.11.18, @types/node@npm:>=13.7.0":
+"@types/node@npm:*, @types/node@npm:18.11.18, @types/node@npm:>=13.7.0, @types/node@npm:^18.11.18":
   version: 18.11.18
   resolution: "@types/node@npm:18.11.18"
   checksum: 03f17f9480f8d775c8a72da5ea7e9383db5f6d85aa5fefde90dd953a1449bd5e4ffde376f139da4f3744b4c83942166d2a7603969a6f8ea826edfb16e6e3b49d
@@ -8727,6 +8728,8 @@ __metadata:
 "root-workspace-0b6124@workspace:.":
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
+  dependencies:
+    "@types/node": ^18.11.18
   dependenciesMeta:
     next@13.1.4:
       unplugged: true

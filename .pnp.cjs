@@ -38,6 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@types/node", "npm:18.11.18"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -4644,6 +4645,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cosmjs/tendermint-rpc", "npm:0.29.5"],\
             ["@osmonauts/telescope", "npm:0.78.0"],\
             ["@types/jest", "npm:29.4.0"],\
+            ["@types/node", "npm:18.11.18"],\
             ["babel-core", "virtual:9bb149e266d5c82516e3e3d03541418a19ddedb60d6a961c3fcf7bbac392e5f2ea21681c484a1e7085b01399338e4562c76c1a38bfc1cd49df26443aff1c1d18#npm:7.0.0-bridge.0"],\
             ["babel-jest", "virtual:9bb149e266d5c82516e3e3d03541418a19ddedb60d6a961c3fcf7bbac392e5f2ea21681c484a1e7085b01399338e4562c76c1a38bfc1cd49df26443aff1c1d18#npm:29.1.2"],\
             ["babel-watch", "virtual:9bb149e266d5c82516e3e3d03541418a19ddedb60d6a961c3fcf7bbac392e5f2ea21681c484a1e7085b01399338e4562c76c1a38bfc1cd49df26443aff1c1d18#npm:7.7.2"],\
@@ -12806,7 +12808,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["root-workspace-0b6124", "workspace:."]\
+            ["root-workspace-0b6124", "workspace:."],\
+            ["@types/node", "npm:18.11.18"]\
           ],\
           "linkType": "SOFT"\
         }]\

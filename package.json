@@ -10,5 +10,8 @@
     "next@13.1.4": {
       "unplugged": true
     }
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18"
   }
 }
