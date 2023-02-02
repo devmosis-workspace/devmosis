@@ -8081,6 +8081,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["devmosis", "workspace:packages/dashboard"],\
             ["@chain-registry/types", "npm:0.14.0"],\
+            ["@chain-types/osmosis", "workspace:chain-types/osmosis"],\
             ["@emotion/cache", "npm:11.10.5"],\
             ["@emotion/react", "virtual:fb164ce3119c004a53be9c4405e23a4cd9242991983fbe8099a273fe59eeea929223da6818fe7f287dd5113053cd430b1192f8986eaaf7bc2cf552e668980def#npm:11.10.5"],\
             ["@emotion/styled", "virtual:fb164ce3119c004a53be9c4405e23a4cd9242991983fbe8099a273fe59eeea929223da6818fe7f287dd5113053cd430b1192f8986eaaf7bc2cf552e668980def#npm:11.10.5"],\

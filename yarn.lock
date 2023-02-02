@@ -1818,7 +1818,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chain-types/osmosis@workspace:chain-types/osmosis":
+"@chain-types/osmosis@workspace:^, @chain-types/osmosis@workspace:chain-types/osmosis":
   version: 0.0.0-use.local
   resolution: "@chain-types/osmosis@workspace:chain-types/osmosis"
   dependencies:
@@ -4643,6 +4643,7 @@ __metadata:
   resolution: "devmosis@workspace:packages/dashboard"
   dependencies:
     "@chain-registry/types": ^0.14.0
+    "@chain-types/osmosis": "workspace:^"
     "@emotion/cache": ^11.10.5
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5

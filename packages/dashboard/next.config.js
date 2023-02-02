@@ -19,6 +19,7 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ["@chain-types/osmosis"],
   reactStrictMode: true,
   poweredByHeader: false,
   compiler: {
