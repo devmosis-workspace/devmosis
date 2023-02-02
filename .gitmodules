@@ -1,0 +1,4 @@
+[submodule "chain-types/osmosis/osmosis-v14.0.0"]
+	path = chain-types/osmosis/osmosis-v14.0.0
+	url = https://github.com/osmosis-labs/osmosis.git
+	branch = main
