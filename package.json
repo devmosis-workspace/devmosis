@@ -10,5 +10,8 @@
     "next@13.1.4": {
       "unplugged": true
     }
+  },
+  "devDependencies": {
+    "typescript": "4.9.4"
   }
 }
