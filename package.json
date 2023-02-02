@@ -5,13 +5,10 @@
     "packages/*",
     "chain-types/*"
   ],
-  "packageManager": "yarn@3.4.0",
+  "packageManager": "yarn@3.4.1",
   "dependenciesMeta": {
     "next@13.1.4": {
       "unplugged": true
     }
-  },
-  "devDependencies": {
-    "@types/node": "^18.11.18"
   }
 }
