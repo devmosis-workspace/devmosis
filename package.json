@@ -2,7 +2,8 @@
   "private": true,
   "license": "MIT",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "chain-types/*"
   ],
   "packageManager": "yarn@3.4.0",
   "dependenciesMeta": {
