@@ -11,11 +11,9 @@ telescope({
   protoDirs,
   outPath,
   options: {
+    removeUnusedImports: true,
     tsDisable: {
-      files: [
-        'cosmos/authz/v1beta1/tx.amino.ts',
-        'cosmos/staking/v1beta1/tx.amino.ts'
-      ]
+      patterns: ['**/*amino.ts', '**/*registry.ts']
     },
     prototypes: {
       includePackageVar: false,
@@ -26,20 +24,18 @@ telescope({
         duration: 'duration'
       },
       methods: {
-        toJSON: true,
-        fromJSON: true
+        toJSON: false,
+        fromJSON: false
       }
     },
     aminoEncoding: {
-      enabled: true,
-      exceptions: AMINO_MAP
+      enabled: true
     },
     lcdClients: {
       enabled: false
     },
     rpcClients: {
-      enabled: true,
-      camelCase: true
+      enabled: false
     }
   }
 })
