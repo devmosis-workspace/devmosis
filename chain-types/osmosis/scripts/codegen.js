@@ -1,8 +1,9 @@
 import { join } from 'path';
 import telescope from '@osmonauts/telescope';
 import { sync as rimraf } from 'rimraf';
+import { AMINO_MAP } from './aminos';
 
-const protoDirs = [join(__dirname, '/../osmosis/proto')];
+const protoDirs = [join(__dirname, '/../proto'), join(__dirname, '/../osmosis-v14.0.0/proto')];
 const outPath = join(__dirname, '../src/codegen');
 rimraf(outPath);
 
@@ -11,7 +12,10 @@ telescope({
   outPath,
   options: {
     tsDisable: {
-      patterns: ['**/*amino.ts', '**/*registry.ts']
+      files: [
+        'cosmos/authz/v1beta1/tx.amino.ts',
+        'cosmos/staking/v1beta1/tx.amino.ts'
+      ]
     },
     prototypes: {
       includePackageVar: false,
@@ -22,18 +26,20 @@ telescope({
         duration: 'duration'
       },
       methods: {
-        toJSON: false,
-        fromJSON: false
+        toJSON: true,
+        fromJSON: true
       }
     },
     aminoEncoding: {
-      enabled: true
+      enabled: true,
+      exceptions: AMINO_MAP
     },
     lcdClients: {
-      enabled: true
+      enabled: false
     },
     rpcClients: {
-      enabled: false
+      enabled: true,
+      camelCase: true
     }
   }
 })
