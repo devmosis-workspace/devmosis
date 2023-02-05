@@ -17,9 +17,11 @@ const securityHeaders = [
   },
 ];
 
+const chainTypesPackages = ["@chain-types/osmosis"];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@chain-types/osmosis"],
+  transpilePackages: [...chainTypesPackages],
   reactStrictMode: true,
   poweredByHeader: false,
   compiler: {
@@ -27,6 +29,9 @@ const nextConfig = {
   },
   experimental: {
     appDir: true,
+  },
+  images: {
+    domains: ["raw.githubusercontent.com"],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",

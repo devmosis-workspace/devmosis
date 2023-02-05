@@ -7273,6 +7273,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:fb164ce3119c004a53be9c4405e23a4cd9242991983fbe8099a273fe59eeea929223da6818fe7f287dd5113053cd430b1192f8986eaaf7bc2cf552e668980def#npm:13.1.6"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:fb164ce3119c004a53be9c4405e23a4cd9242991983fbe8099a273fe59eeea929223da6818fe7f287dd5113053cd430b1192f8986eaaf7bc2cf552e668980def#npm:18.2.0"],\
+            ["react-hook-form", "virtual:fb164ce3119c004a53be9c4405e23a4cd9242991983fbe8099a273fe59eeea929223da6818fe7f287dd5113053cd430b1192f8986eaaf7bc2cf552e668980def#npm:7.43.0"],\
             ["typescript", "patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=a66ed4"]\
           ],\
           "linkType": "SOFT"\
@@ -10960,6 +10961,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["loose-envify", "npm:1.4.0"],\
             ["react", "npm:18.2.0"],\
             ["scheduler", "npm:0.23.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-hook-form", [\
+        ["npm:7.43.0", {\
+          "packageLocation": "./.yarn/cache/react-hook-form-npm-7.43.0-dba9519b33-f86ef57b4e.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "npm:7.43.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fb164ce3119c004a53be9c4405e23a4cd9242991983fbe8099a273fe59eeea929223da6818fe7f287dd5113053cd430b1192f8986eaaf7bc2cf552e668980def#npm:7.43.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-edd386a284/0/cache/react-hook-form-npm-7.43.0-dba9519b33-f86ef57b4e.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "virtual:fb164ce3119c004a53be9c4405e23a4cd9242991983fbe8099a273fe59eeea929223da6818fe7f287dd5113053cd430b1192f8986eaaf7bc2cf552e668980def#npm:7.43.0"],\
+            ["@types/react", "npm:18.0.27"],\
+            ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
             "@types/react",\
