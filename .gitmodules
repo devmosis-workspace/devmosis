@@ -4,6 +4,6 @@
 [submodule "chain-types/stride/stride-v5.1.1"]
 	path = chain-types/stride/stride-v5.1.1
 	url = https://github.com/Stride-Labs/stride.git
-[submodule "chain-types/cosmoshub/cosmoshub-v7.1.1"]
-	path = chain-types/cosmoshub/cosmoshub-v7.1.1
-	url = https://github.com/cosmos/gaia.git
+[submodule "chain-types/cosmoshub/cosmoshub-v0.45.9"]
+	path = chain-types/cosmoshub/cosmoshub-v0.45.9
+	url = https://github.com/cosmos/cosmos-sdk.git
