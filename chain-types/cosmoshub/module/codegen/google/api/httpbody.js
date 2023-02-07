@@ -1,6 +1,5 @@
 import { Any } from "../protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, bytesFromBase64, base64FromBytes } from "../../helpers";
 /**
  * Message that represents an arbitrary HTTP body. It should only be used for
  * payload formats that can't be represented as JSON, such as raw binary or
@@ -85,24 +84,6 @@ export const HttpBody = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      contentType: isSet(object.contentType) ? String(object.contentType) : "",
-      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
-      extensions: Array.isArray(object === null || object === void 0 ? void 0 : object.extensions) ? object.extensions.map(e => Any.fromJSON(e)) : []
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.contentType !== undefined && (obj.contentType = message.contentType);
-    message.data !== undefined && (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
-    if (message.extensions) {
-      obj.extensions = message.extensions.map(e => e ? Any.toJSON(e) : undefined);
-    } else {
-      obj.extensions = [];
-    }
-    return obj;
   },
   fromPartial(object) {
     var _object$contentType, _object$data, _object$extensions;

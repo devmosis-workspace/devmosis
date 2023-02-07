@@ -1,5 +1,4 @@
 import * as _m0 from "protobufjs/minimal";
-import { bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** GenesisState defines the raw genesis transaction in JSON. */
 
 function createBaseGenesisState() {
@@ -30,20 +29,6 @@ export const GenesisState = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      genTxs: Array.isArray(object === null || object === void 0 ? void 0 : object.genTxs) ? object.genTxs.map(e => bytesFromBase64(e)) : []
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    if (message.genTxs) {
-      obj.genTxs = message.genTxs.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
-    } else {
-      obj.genTxs = [];
-    }
-    return obj;
   },
   fromPartial(object) {
     var _object$genTxs;

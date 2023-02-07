@@ -70,65 +70,19 @@ import * as _65 from "./upgrade/v1beta1/query";
 import * as _66 from "./upgrade/v1beta1/upgrade";
 import * as _67 from "./vesting/v1beta1/tx";
 import * as _68 from "./vesting/v1beta1/vesting";
-import * as _90 from "./authz/v1beta1/tx.amino";
-import * as _91 from "./bank/v1beta1/tx.amino";
-import * as _92 from "./crisis/v1beta1/tx.amino";
-import * as _93 from "./distribution/v1beta1/tx.amino";
-import * as _94 from "./evidence/v1beta1/tx.amino";
-import * as _95 from "./feegrant/v1beta1/tx.amino";
-import * as _96 from "./gov/v1beta1/tx.amino";
-import * as _97 from "./slashing/v1beta1/tx.amino";
-import * as _98 from "./staking/v1beta1/tx.amino";
-import * as _99 from "./vesting/v1beta1/tx.amino";
-import * as _100 from "./authz/v1beta1/tx.registry";
-import * as _101 from "./bank/v1beta1/tx.registry";
-import * as _102 from "./crisis/v1beta1/tx.registry";
-import * as _103 from "./distribution/v1beta1/tx.registry";
-import * as _104 from "./evidence/v1beta1/tx.registry";
-import * as _105 from "./feegrant/v1beta1/tx.registry";
-import * as _106 from "./gov/v1beta1/tx.registry";
-import * as _107 from "./slashing/v1beta1/tx.registry";
-import * as _108 from "./staking/v1beta1/tx.registry";
-import * as _109 from "./vesting/v1beta1/tx.registry";
-import * as _110 from "./auth/v1beta1/query.rpc.Query";
-import * as _111 from "./authz/v1beta1/query.rpc.Query";
-import * as _112 from "./bank/v1beta1/query.rpc.Query";
-import * as _113 from "./base/tendermint/v1beta1/query.rpc.Service";
-import * as _114 from "./distribution/v1beta1/query.rpc.Query";
-import * as _115 from "./evidence/v1beta1/query.rpc.Query";
-import * as _116 from "./feegrant/v1beta1/query.rpc.Query";
-import * as _117 from "./gov/v1beta1/query.rpc.Query";
-import * as _118 from "./mint/v1beta1/query.rpc.Query";
-import * as _119 from "./params/v1beta1/query.rpc.Query";
-import * as _120 from "./slashing/v1beta1/query.rpc.Query";
-import * as _121 from "./staking/v1beta1/query.rpc.Query";
-import * as _122 from "./tx/v1beta1/service.rpc.Service";
-import * as _123 from "./upgrade/v1beta1/query.rpc.Query";
-import * as _124 from "./authz/v1beta1/tx.rpc.msg";
-import * as _125 from "./bank/v1beta1/tx.rpc.msg";
-import * as _126 from "./crisis/v1beta1/tx.rpc.msg";
-import * as _127 from "./distribution/v1beta1/tx.rpc.msg";
-import * as _128 from "./evidence/v1beta1/tx.rpc.msg";
-import * as _129 from "./feegrant/v1beta1/tx.rpc.msg";
-import * as _130 from "./gov/v1beta1/tx.rpc.msg";
-import * as _131 from "./slashing/v1beta1/tx.rpc.msg";
-import * as _132 from "./staking/v1beta1/tx.rpc.msg";
-import * as _133 from "./vesting/v1beta1/tx.rpc.msg";
-import * as _134 from "./rpc.query";
-import * as _135 from "./rpc.tx";
 export let cosmos;
 (function (_cosmos) {
   let auth;
   (function (_auth) {
-    const v1beta1 = _auth.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _0), _1), _2), _110);
+    const v1beta1 = _auth.v1beta1 = _objectSpread(_objectSpread(_objectSpread({}, _0), _1), _2);
   })(auth || (auth = _cosmos.auth || (_cosmos.auth = {})));
   let authz;
   (function (_authz) {
-    const v1beta1 = _authz.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _3), _4), _5), _6), _7), _90), _100), _111), _124);
+    const v1beta1 = _authz.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _3), _4), _5), _6), _7);
   })(authz || (authz = _cosmos.authz || (_cosmos.authz = {})));
   let bank;
   (function (_bank) {
-    const v1beta1 = _bank.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _8), _9), _10), _11), _12), _91), _101), _112), _125);
+    const v1beta1 = _bank.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _8), _9), _10), _11), _12);
   })(bank || (bank = _cosmos.bank || (_cosmos.bank = {})));
   let base;
   (function (_base) {
@@ -159,7 +113,7 @@ export let cosmos;
     })(store || (store = _base.store || (_base.store = {})));
     let tendermint;
     (function (_tendermint) {
-      const v1beta1 = _tendermint.v1beta1 = _objectSpread(_objectSpread({}, _21), _113);
+      const v1beta1 = _tendermint.v1beta1 = _objectSpread({}, _21);
     })(tendermint || (tendermint = _base.tendermint || (_base.tendermint = {})));
     const v1beta1 = _base.v1beta1 = _objectSpread({}, _22);
   })(base || (base = _cosmos.base || (_cosmos.base = {})));
@@ -169,7 +123,7 @@ export let cosmos;
   })(capability || (capability = _cosmos.capability || (_cosmos.capability = {})));
   let crisis;
   (function (_crisis) {
-    const v1beta1 = _crisis.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _25), _26), _92), _102), _126);
+    const v1beta1 = _crisis.v1beta1 = _objectSpread(_objectSpread({}, _25), _26);
   })(crisis || (crisis = _cosmos.crisis || (_cosmos.crisis = {})));
   let crypto;
   (function (_crypto) {
@@ -180,15 +134,15 @@ export let cosmos;
   })(crypto || (crypto = _cosmos.crypto || (_cosmos.crypto = {})));
   let distribution;
   (function (_distribution) {
-    const v1beta1 = _distribution.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _31), _32), _33), _34), _93), _103), _114), _127);
+    const v1beta1 = _distribution.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _31), _32), _33), _34);
   })(distribution || (distribution = _cosmos.distribution || (_cosmos.distribution = {})));
   let evidence;
   (function (_evidence) {
-    const v1beta1 = _evidence.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _35), _36), _37), _38), _94), _104), _115), _128);
+    const v1beta1 = _evidence.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _35), _36), _37), _38);
   })(evidence || (evidence = _cosmos.evidence || (_cosmos.evidence = {})));
   let feegrant;
   (function (_feegrant) {
-    const v1beta1 = _feegrant.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _39), _40), _41), _42), _95), _105), _116), _129);
+    const v1beta1 = _feegrant.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _39), _40), _41), _42);
   })(feegrant || (feegrant = _cosmos.feegrant || (_cosmos.feegrant = {})));
   let genutil;
   (function (_genutil) {
@@ -196,23 +150,23 @@ export let cosmos;
   })(genutil || (genutil = _cosmos.genutil || (_cosmos.genutil = {})));
   let gov;
   (function (_gov) {
-    const v1beta1 = _gov.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _44), _45), _46), _47), _96), _106), _117), _130);
+    const v1beta1 = _gov.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _44), _45), _46), _47);
   })(gov || (gov = _cosmos.gov || (_cosmos.gov = {})));
   let mint;
   (function (_mint) {
-    const v1beta1 = _mint.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _48), _49), _50), _118);
+    const v1beta1 = _mint.v1beta1 = _objectSpread(_objectSpread(_objectSpread({}, _48), _49), _50);
   })(mint || (mint = _cosmos.mint || (_cosmos.mint = {})));
   let params;
   (function (_params) {
-    const v1beta1 = _params.v1beta1 = _objectSpread(_objectSpread(_objectSpread({}, _51), _52), _119);
+    const v1beta1 = _params.v1beta1 = _objectSpread(_objectSpread({}, _51), _52);
   })(params || (params = _cosmos.params || (_cosmos.params = {})));
   let slashing;
   (function (_slashing) {
-    const v1beta1 = _slashing.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _53), _54), _55), _56), _97), _107), _120), _131);
+    const v1beta1 = _slashing.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _53), _54), _55), _56);
   })(slashing || (slashing = _cosmos.slashing || (_cosmos.slashing = {})));
   let staking;
   (function (_staking) {
-    const v1beta1 = _staking.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _57), _58), _59), _60), _61), _98), _108), _121), _132);
+    const v1beta1 = _staking.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _57), _58), _59), _60), _61);
   })(staking || (staking = _cosmos.staking || (_cosmos.staking = {})));
   let tx;
   (function (_tx) {
@@ -220,15 +174,14 @@ export let cosmos;
     (function (_signing) {
       const v1beta1 = _signing.v1beta1 = _objectSpread({}, _62);
     })(signing || (signing = _tx.signing || (_tx.signing = {})));
-    const v1beta1 = _tx.v1beta1 = _objectSpread(_objectSpread(_objectSpread({}, _63), _64), _122);
+    const v1beta1 = _tx.v1beta1 = _objectSpread(_objectSpread({}, _63), _64);
   })(tx || (tx = _cosmos.tx || (_cosmos.tx = {})));
   let upgrade;
   (function (_upgrade) {
-    const v1beta1 = _upgrade.v1beta1 = _objectSpread(_objectSpread(_objectSpread({}, _65), _66), _123);
+    const v1beta1 = _upgrade.v1beta1 = _objectSpread(_objectSpread({}, _65), _66);
   })(upgrade || (upgrade = _cosmos.upgrade || (_cosmos.upgrade = {})));
   let vesting;
   (function (_vesting) {
-    const v1beta1 = _vesting.v1beta1 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, _67), _68), _99), _109), _133);
+    const v1beta1 = _vesting.v1beta1 = _objectSpread(_objectSpread({}, _67), _68);
   })(vesting || (vesting = _cosmos.vesting || (_cosmos.vesting = {})));
-  const ClientFactory = _cosmos.ClientFactory = _objectSpread(_objectSpread({}, _134), _135);
 })(cosmos || (cosmos = {}));

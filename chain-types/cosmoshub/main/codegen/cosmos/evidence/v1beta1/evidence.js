@@ -61,22 +61,6 @@ var Equivocation = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
-      time: (0, _helpers.isSet)(object.time) ? (0, _helpers.fromJsonTimestamp)(object.time) : undefined,
-      power: (0, _helpers.isSet)(object.power) ? _helpers.Long.fromValue(object.power) : _helpers.Long.ZERO,
-      consensusAddress: (0, _helpers.isSet)(object.consensusAddress) ? String(object.consensusAddress) : ""
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.height !== undefined && (obj.height = (message.height || _helpers.Long.ZERO).toString());
-    message.time !== undefined && (obj.time = (0, _helpers.fromTimestamp)(message.time).toISOString());
-    message.power !== undefined && (obj.power = (message.power || _helpers.Long.ZERO).toString());
-    message.consensusAddress !== undefined && (obj.consensusAddress = message.consensusAddress);
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$consensusAddr;
     var message = createBaseEquivocation();

@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond
@@ -96,18 +96,6 @@ export const Duration = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      seconds: isSet(object.seconds) ? Long.fromValue(object.seconds) : Long.ZERO,
-      nanos: isSet(object.nanos) ? Number(object.nanos) : 0
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.seconds !== undefined && (obj.seconds = (message.seconds || Long.ZERO).toString());
-    message.nanos !== undefined && (obj.nanos = Math.round(message.nanos));
-    return obj;
   },
   fromPartial(object) {
     var _object$nanos;

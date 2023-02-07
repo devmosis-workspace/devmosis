@@ -5,7 +5,6 @@
   */
 
 export * from "./cosmos/bundle";
-export * from "./cosmos/client";
 export * from "./ics23/bundle";
 export * from "./cosmos_proto/bundle";
 export * from "./gogoproto/bundle";

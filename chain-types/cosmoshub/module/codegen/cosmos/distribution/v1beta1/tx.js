@@ -1,6 +1,5 @@
 import { Coin } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { isSet } from "../../../helpers";
 /**
  * MsgSetWithdrawAddress sets the withdraw address for
  * a delegator (or validator self-delegation).
@@ -42,18 +41,6 @@ export const MsgSetWithdrawAddress = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      withdrawAddress: isSet(object.withdrawAddress) ? String(object.withdrawAddress) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.withdrawAddress !== undefined && (obj.withdrawAddress = message.withdrawAddress);
-    return obj;
-  },
   fromPartial(object) {
     var _object$delegatorAddr, _object$withdrawAddre;
     const message = createBaseMsgSetWithdrawAddress();
@@ -82,13 +69,6 @@ export const MsgSetWithdrawAddressResponse = {
       }
     }
     return message;
-  },
-  fromJSON(_) {
-    return {};
-  },
-  toJSON(_) {
-    const obj = {};
-    return obj;
   },
   fromPartial(_) {
     const message = createBaseMsgSetWithdrawAddressResponse();
@@ -131,18 +111,6 @@ export const MsgWithdrawDelegatorReward = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    return obj;
-  },
   fromPartial(object) {
     var _object$delegatorAddr2, _object$validatorAddr;
     const message = createBaseMsgWithdrawDelegatorReward();
@@ -171,13 +139,6 @@ export const MsgWithdrawDelegatorRewardResponse = {
       }
     }
     return message;
-  },
-  fromJSON(_) {
-    return {};
-  },
-  toJSON(_) {
-    const obj = {};
-    return obj;
   },
   fromPartial(_) {
     const message = createBaseMsgWithdrawDelegatorRewardResponse();
@@ -213,16 +174,6 @@ export const MsgWithdrawValidatorCommission = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    return obj;
-  },
   fromPartial(object) {
     var _object$validatorAddr2;
     const message = createBaseMsgWithdrawValidatorCommission();
@@ -250,13 +201,6 @@ export const MsgWithdrawValidatorCommissionResponse = {
       }
     }
     return message;
-  },
-  fromJSON(_) {
-    return {};
-  },
-  toJSON(_) {
-    const obj = {};
-    return obj;
   },
   fromPartial(_) {
     const message = createBaseMsgWithdrawValidatorCommissionResponse();
@@ -299,22 +243,6 @@ export const MsgFundCommunityPool = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(e => Coin.fromJSON(e)) : [],
-      depositor: isSet(object.depositor) ? String(object.depositor) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    if (message.amount) {
-      obj.amount = message.amount.map(e => e ? Coin.toJSON(e) : undefined);
-    } else {
-      obj.amount = [];
-    }
-    message.depositor !== undefined && (obj.depositor = message.depositor);
-    return obj;
-  },
   fromPartial(object) {
     var _object$amount, _object$depositor;
     const message = createBaseMsgFundCommunityPool();
@@ -343,13 +271,6 @@ export const MsgFundCommunityPoolResponse = {
       }
     }
     return message;
-  },
-  fromJSON(_) {
-    return {};
-  },
-  toJSON(_) {
-    const obj = {};
-    return obj;
   },
   fromPartial(_) {
     const message = createBaseMsgFundCommunityPoolResponse();

@@ -1,6 +1,6 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, fromJsonTimestamp, fromTimestamp } from "../../../helpers";
+import { Long } from "../../../helpers";
 /**
  * Equivocation implements the Evidence interface and defines evidence of double
  * signing misbehavior.
@@ -55,22 +55,6 @@ export const Equivocation = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
-      time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
-      power: isSet(object.power) ? Long.fromValue(object.power) : Long.ZERO,
-      consensusAddress: isSet(object.consensusAddress) ? String(object.consensusAddress) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.time !== undefined && (obj.time = fromTimestamp(message.time).toISOString());
-    message.power !== undefined && (obj.power = (message.power || Long.ZERO).toString());
-    message.consensusAddress !== undefined && (obj.consensusAddress = message.consensusAddress);
-    return obj;
   },
   fromPartial(object) {
     var _object$consensusAddr;

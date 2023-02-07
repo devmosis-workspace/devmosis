@@ -7,7 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.QueryParamsResponse = exports.QueryParamsRequest = void 0;
 var _params = require("./params");
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
-var _helpers = require("../../../helpers");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function createBaseQueryParamsRequest() {
@@ -47,18 +46,6 @@ var QueryParamsRequest = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      subspace: (0, _helpers.isSet)(object.subspace) ? String(object.subspace) : "",
-      key: (0, _helpers.isSet)(object.key) ? String(object.key) : ""
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.subspace !== undefined && (obj.subspace = message.subspace);
-    message.key !== undefined && (obj.key = message.key);
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$subspace, _object$key;
     var message = createBaseQueryParamsRequest();
@@ -97,16 +84,6 @@ var QueryParamsResponse = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      param: (0, _helpers.isSet)(object.param) ? _params.ParamChange.fromJSON(object.param) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.param !== undefined && (obj.param = message.param ? _params.ParamChange.toJSON(message.param) : undefined);
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryParamsResponse();

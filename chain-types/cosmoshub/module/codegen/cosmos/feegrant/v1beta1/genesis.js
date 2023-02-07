@@ -31,20 +31,6 @@ export const GenesisState = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      allowances: Array.isArray(object === null || object === void 0 ? void 0 : object.allowances) ? object.allowances.map(e => Grant.fromJSON(e)) : []
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    if (message.allowances) {
-      obj.allowances = message.allowances.map(e => e ? Grant.toJSON(e) : undefined);
-    } else {
-      obj.allowances = [];
-    }
-    return obj;
-  },
   fromPartial(object) {
     var _object$allowances;
     const message = createBaseGenesisState();

@@ -3,7 +3,6 @@ import { Any } from "../../../google/protobuf/any";
 import { Coin } from "../../base/v1beta1/coin";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, fromJsonTimestamp, fromTimestamp } from "../../../helpers";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 
 function createBaseMsgCreateValidator() {
@@ -77,28 +76,6 @@ export const MsgCreateValidator = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      description: isSet(object.description) ? Description.fromJSON(object.description) : undefined,
-      commission: isSet(object.commission) ? CommissionRates.fromJSON(object.commission) : undefined,
-      minSelfDelegation: isSet(object.minSelfDelegation) ? String(object.minSelfDelegation) : "",
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      pubkey: isSet(object.pubkey) ? Any.fromJSON(object.pubkey) : undefined,
-      value: isSet(object.value) ? Coin.fromJSON(object.value) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.description !== undefined && (obj.description = message.description ? Description.toJSON(message.description) : undefined);
-    message.commission !== undefined && (obj.commission = message.commission ? CommissionRates.toJSON(message.commission) : undefined);
-    message.minSelfDelegation !== undefined && (obj.minSelfDelegation = message.minSelfDelegation);
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    message.pubkey !== undefined && (obj.pubkey = message.pubkey ? Any.toJSON(message.pubkey) : undefined);
-    message.value !== undefined && (obj.value = message.value ? Coin.toJSON(message.value) : undefined);
-    return obj;
-  },
   fromPartial(object) {
     var _object$minSelfDelega, _object$delegatorAddr, _object$validatorAddr;
     const message = createBaseMsgCreateValidator();
@@ -132,13 +109,6 @@ export const MsgCreateValidatorResponse = {
       }
     }
     return message;
-  },
-  fromJSON(_) {
-    return {};
-  },
-  toJSON(_) {
-    const obj = {};
-    return obj;
   },
   fromPartial(_) {
     const message = createBaseMsgCreateValidatorResponse();
@@ -195,22 +165,6 @@ export const MsgEditValidator = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      description: isSet(object.description) ? Description.fromJSON(object.description) : undefined,
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      commissionRate: isSet(object.commissionRate) ? String(object.commissionRate) : "",
-      minSelfDelegation: isSet(object.minSelfDelegation) ? String(object.minSelfDelegation) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.description !== undefined && (obj.description = message.description ? Description.toJSON(message.description) : undefined);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    message.commissionRate !== undefined && (obj.commissionRate = message.commissionRate);
-    message.minSelfDelegation !== undefined && (obj.minSelfDelegation = message.minSelfDelegation);
-    return obj;
-  },
   fromPartial(object) {
     var _object$validatorAddr2, _object$commissionRat, _object$minSelfDelega2;
     const message = createBaseMsgEditValidator();
@@ -241,13 +195,6 @@ export const MsgEditValidatorResponse = {
       }
     }
     return message;
-  },
-  fromJSON(_) {
-    return {};
-  },
-  toJSON(_) {
-    const obj = {};
-    return obj;
   },
   fromPartial(_) {
     const message = createBaseMsgEditValidatorResponse();
@@ -297,20 +244,6 @@ export const MsgDelegate = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
-    return obj;
-  },
   fromPartial(object) {
     var _object$delegatorAddr2, _object$validatorAddr3;
     const message = createBaseMsgDelegate();
@@ -340,13 +273,6 @@ export const MsgDelegateResponse = {
       }
     }
     return message;
-  },
-  fromJSON(_) {
-    return {};
-  },
-  toJSON(_) {
-    const obj = {};
-    return obj;
   },
   fromPartial(_) {
     const message = createBaseMsgDelegateResponse();
@@ -403,22 +329,6 @@ export const MsgBeginRedelegate = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorSrcAddress: isSet(object.validatorSrcAddress) ? String(object.validatorSrcAddress) : "",
-      validatorDstAddress: isSet(object.validatorDstAddress) ? String(object.validatorDstAddress) : "",
-      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorSrcAddress !== undefined && (obj.validatorSrcAddress = message.validatorSrcAddress);
-    message.validatorDstAddress !== undefined && (obj.validatorDstAddress = message.validatorDstAddress);
-    message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
-    return obj;
-  },
   fromPartial(object) {
     var _object$delegatorAddr3, _object$validatorSrcA, _object$validatorDstA;
     const message = createBaseMsgBeginRedelegate();
@@ -457,16 +367,6 @@ export const MsgBeginRedelegateResponse = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.completionTime !== undefined && (obj.completionTime = fromTimestamp(message.completionTime).toISOString());
-    return obj;
   },
   fromPartial(object) {
     const message = createBaseMsgBeginRedelegateResponse();
@@ -517,20 +417,6 @@ export const MsgUndelegate = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
-      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
-      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.delegatorAddress !== undefined && (obj.delegatorAddress = message.delegatorAddress);
-    message.validatorAddress !== undefined && (obj.validatorAddress = message.validatorAddress);
-    message.amount !== undefined && (obj.amount = message.amount ? Coin.toJSON(message.amount) : undefined);
-    return obj;
-  },
   fromPartial(object) {
     var _object$delegatorAddr4, _object$validatorAddr4;
     const message = createBaseMsgUndelegate();
@@ -568,16 +454,6 @@ export const MsgUndelegateResponse = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.completionTime !== undefined && (obj.completionTime = fromTimestamp(message.completionTime).toISOString());
-    return obj;
   },
   fromPartial(object) {
     const message = createBaseMsgUndelegateResponse();

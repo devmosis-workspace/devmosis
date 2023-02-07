@@ -1,7 +1,6 @@
 import { Any } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { isSet, fromJsonTimestamp, fromTimestamp } from "../../../helpers";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
  * the provided method on behalf of the granter's account.
@@ -35,16 +34,6 @@ export const GenericAuthorization = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      msg: isSet(object.msg) ? String(object.msg) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.msg !== undefined && (obj.msg = message.msg);
-    return obj;
   },
   fromPartial(object) {
     var _object$msg;
@@ -88,18 +77,6 @@ export const Grant = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      authorization: isSet(object.authorization) ? Any.fromJSON(object.authorization) : undefined,
-      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.authorization !== undefined && (obj.authorization = message.authorization ? Any.toJSON(message.authorization) : undefined);
-    message.expiration !== undefined && (obj.expiration = fromTimestamp(message.expiration).toISOString());
-    return obj;
   },
   fromPartial(object) {
     const message = createBaseGrant();
@@ -157,22 +134,6 @@ export const GrantAuthorization = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      granter: isSet(object.granter) ? String(object.granter) : "",
-      grantee: isSet(object.grantee) ? String(object.grantee) : "",
-      authorization: isSet(object.authorization) ? Any.fromJSON(object.authorization) : undefined,
-      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    message.authorization !== undefined && (obj.authorization = message.authorization ? Any.toJSON(message.authorization) : undefined);
-    message.expiration !== undefined && (obj.expiration = fromTimestamp(message.expiration).toISOString());
-    return obj;
   },
   fromPartial(object) {
     var _object$granter, _object$grantee;

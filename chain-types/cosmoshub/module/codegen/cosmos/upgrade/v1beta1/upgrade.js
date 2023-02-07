@@ -1,7 +1,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet, fromJsonTimestamp, fromTimestamp } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 
 function createBasePlan() {
@@ -61,24 +61,6 @@ export const Plan = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
-      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
-      info: isSet(object.info) ? String(object.info) : "",
-      upgradedClientState: isSet(object.upgradedClientState) ? Any.fromJSON(object.upgradedClientState) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.time !== undefined && (obj.time = fromTimestamp(message.time).toISOString());
-    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.info !== undefined && (obj.info = message.info);
-    message.upgradedClientState !== undefined && (obj.upgradedClientState = message.upgradedClientState ? Any.toJSON(message.upgradedClientState) : undefined);
-    return obj;
-  },
   fromPartial(object) {
     var _object$name, _object$info;
     const message = createBasePlan();
@@ -133,20 +115,6 @@ export const SoftwareUpgradeProposal = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      plan: isSet(object.plan) ? Plan.fromJSON(object.plan) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.plan !== undefined && (obj.plan = message.plan ? Plan.toJSON(message.plan) : undefined);
-    return obj;
-  },
   fromPartial(object) {
     var _object$title, _object$description;
     const message = createBaseSoftwareUpgradeProposal();
@@ -192,18 +160,6 @@ export const CancelSoftwareUpgradeProposal = {
     }
     return message;
   },
-  fromJSON(object) {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    return obj;
-  },
   fromPartial(object) {
     var _object$title2, _object$description2;
     const message = createBaseCancelSoftwareUpgradeProposal();
@@ -247,18 +203,6 @@ export const ModuleVersion = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      version: isSet(object.version) ? Long.fromValue(object.version) : Long.UZERO
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.version !== undefined && (obj.version = (message.version || Long.UZERO).toString());
-    return obj;
   },
   fromPartial(object) {
     var _object$name2;

@@ -14,17 +14,6 @@ Object.keys(_bundle).forEach(function (key) {
     }
   });
 });
-var _client = require("./cosmos/client");
-Object.keys(_client).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _client[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _client[key];
-    }
-  });
-});
 var _bundle2 = require("./ics23/bundle");
 Object.keys(_bundle2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

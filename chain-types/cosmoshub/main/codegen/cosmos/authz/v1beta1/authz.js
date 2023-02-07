@@ -8,7 +8,6 @@ exports.GrantAuthorization = exports.Grant = exports.GenericAuthorization = void
 var _any = require("../../../google/protobuf/any");
 var _timestamp = require("../../../google/protobuf/timestamp");
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
-var _helpers = require("../../../helpers");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function createBaseGenericAuthorization() {
@@ -40,16 +39,6 @@ var GenericAuthorization = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      msg: (0, _helpers.isSet)(object.msg) ? String(object.msg) : ""
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.msg !== undefined && (obj.msg = message.msg);
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$msg;
@@ -95,18 +84,6 @@ var Grant = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      authorization: (0, _helpers.isSet)(object.authorization) ? _any.Any.fromJSON(object.authorization) : undefined,
-      expiration: (0, _helpers.isSet)(object.expiration) ? (0, _helpers.fromJsonTimestamp)(object.expiration) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.authorization !== undefined && (obj.authorization = message.authorization ? _any.Any.toJSON(message.authorization) : undefined);
-    message.expiration !== undefined && (obj.expiration = (0, _helpers.fromTimestamp)(message.expiration).toISOString());
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseGrant();
@@ -166,22 +143,6 @@ var GrantAuthorization = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      granter: (0, _helpers.isSet)(object.granter) ? String(object.granter) : "",
-      grantee: (0, _helpers.isSet)(object.grantee) ? String(object.grantee) : "",
-      authorization: (0, _helpers.isSet)(object.authorization) ? _any.Any.fromJSON(object.authorization) : undefined,
-      expiration: (0, _helpers.isSet)(object.expiration) ? (0, _helpers.fromJsonTimestamp)(object.expiration) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.granter !== undefined && (obj.granter = message.granter);
-    message.grantee !== undefined && (obj.grantee = message.grantee);
-    message.authorization !== undefined && (obj.authorization = message.authorization ? _any.Any.toJSON(message.authorization) : undefined);
-    message.expiration !== undefined && (obj.expiration = (0, _helpers.fromTimestamp)(message.expiration).toISOString());
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$granter, _object$grantee;

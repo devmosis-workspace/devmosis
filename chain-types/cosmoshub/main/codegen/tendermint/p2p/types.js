@@ -53,20 +53,6 @@ var NetAddress = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      id: (0, _helpers.isSet)(object.id) ? String(object.id) : "",
-      ip: (0, _helpers.isSet)(object.ip) ? String(object.ip) : "",
-      port: (0, _helpers.isSet)(object.port) ? Number(object.port) : 0
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.ip !== undefined && (obj.ip = message.ip);
-    message.port !== undefined && (obj.port = Math.round(message.port));
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$id, _object$ip, _object$port;
     var message = createBaseNetAddress();
@@ -120,20 +106,6 @@ var ProtocolVersion = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      p2p: (0, _helpers.isSet)(object.p2p) ? _helpers.Long.fromValue(object.p2p) : _helpers.Long.UZERO,
-      block: (0, _helpers.isSet)(object.block) ? _helpers.Long.fromValue(object.block) : _helpers.Long.UZERO,
-      app: (0, _helpers.isSet)(object.app) ? _helpers.Long.fromValue(object.app) : _helpers.Long.UZERO
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.p2p !== undefined && (obj.p2p = (message.p2p || _helpers.Long.UZERO).toString());
-    message.block !== undefined && (obj.block = (message.block || _helpers.Long.UZERO).toString());
-    message.app !== undefined && (obj.app = (message.app || _helpers.Long.UZERO).toString());
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseProtocolVersion();
@@ -223,30 +195,6 @@ var DefaultNodeInfo = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      protocolVersion: (0, _helpers.isSet)(object.protocolVersion) ? ProtocolVersion.fromJSON(object.protocolVersion) : undefined,
-      defaultNodeId: (0, _helpers.isSet)(object.defaultNodeId) ? String(object.defaultNodeId) : "",
-      listenAddr: (0, _helpers.isSet)(object.listenAddr) ? String(object.listenAddr) : "",
-      network: (0, _helpers.isSet)(object.network) ? String(object.network) : "",
-      version: (0, _helpers.isSet)(object.version) ? String(object.version) : "",
-      channels: (0, _helpers.isSet)(object.channels) ? (0, _helpers.bytesFromBase64)(object.channels) : new Uint8Array(),
-      moniker: (0, _helpers.isSet)(object.moniker) ? String(object.moniker) : "",
-      other: (0, _helpers.isSet)(object.other) ? DefaultNodeInfoOther.fromJSON(object.other) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.protocolVersion !== undefined && (obj.protocolVersion = message.protocolVersion ? ProtocolVersion.toJSON(message.protocolVersion) : undefined);
-    message.defaultNodeId !== undefined && (obj.defaultNodeId = message.defaultNodeId);
-    message.listenAddr !== undefined && (obj.listenAddr = message.listenAddr);
-    message.network !== undefined && (obj.network = message.network);
-    message.version !== undefined && (obj.version = message.version);
-    message.channels !== undefined && (obj.channels = (0, _helpers.base64FromBytes)(message.channels !== undefined ? message.channels : new Uint8Array()));
-    message.moniker !== undefined && (obj.moniker = message.moniker);
-    message.other !== undefined && (obj.other = message.other ? DefaultNodeInfoOther.toJSON(message.other) : undefined);
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$defaultNodeId, _object$listenAddr, _object$network, _object$version, _object$channels, _object$moniker;
     var message = createBaseDefaultNodeInfo();
@@ -298,18 +246,6 @@ var DefaultNodeInfoOther = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      txIndex: (0, _helpers.isSet)(object.txIndex) ? String(object.txIndex) : "",
-      rpcAddress: (0, _helpers.isSet)(object.rpcAddress) ? String(object.rpcAddress) : ""
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.txIndex !== undefined && (obj.txIndex = message.txIndex);
-    message.rpcAddress !== undefined && (obj.rpcAddress = message.rpcAddress);
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$txIndex, _object$rpcAddress;

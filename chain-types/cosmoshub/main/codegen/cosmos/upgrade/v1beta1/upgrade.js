@@ -69,24 +69,6 @@ var Plan = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      name: (0, _helpers.isSet)(object.name) ? String(object.name) : "",
-      time: (0, _helpers.isSet)(object.time) ? (0, _helpers.fromJsonTimestamp)(object.time) : undefined,
-      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
-      info: (0, _helpers.isSet)(object.info) ? String(object.info) : "",
-      upgradedClientState: (0, _helpers.isSet)(object.upgradedClientState) ? _any.Any.fromJSON(object.upgradedClientState) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.time !== undefined && (obj.time = (0, _helpers.fromTimestamp)(message.time).toISOString());
-    message.height !== undefined && (obj.height = (message.height || _helpers.Long.ZERO).toString());
-    message.info !== undefined && (obj.info = message.info);
-    message.upgradedClientState !== undefined && (obj.upgradedClientState = message.upgradedClientState ? _any.Any.toJSON(message.upgradedClientState) : undefined);
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$name, _object$info;
     var message = createBasePlan();
@@ -143,20 +125,6 @@ var SoftwareUpgradeProposal = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      title: (0, _helpers.isSet)(object.title) ? String(object.title) : "",
-      description: (0, _helpers.isSet)(object.description) ? String(object.description) : "",
-      plan: (0, _helpers.isSet)(object.plan) ? Plan.fromJSON(object.plan) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.plan !== undefined && (obj.plan = message.plan ? Plan.toJSON(message.plan) : undefined);
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$title, _object$description;
     var message = createBaseSoftwareUpgradeProposal();
@@ -204,18 +172,6 @@ var CancelSoftwareUpgradeProposal = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      title: (0, _helpers.isSet)(object.title) ? String(object.title) : "",
-      description: (0, _helpers.isSet)(object.description) ? String(object.description) : ""
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$title2, _object$description2;
     var message = createBaseCancelSoftwareUpgradeProposal();
@@ -261,18 +217,6 @@ var ModuleVersion = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      name: (0, _helpers.isSet)(object.name) ? String(object.name) : "",
-      version: (0, _helpers.isSet)(object.version) ? _helpers.Long.fromValue(object.version) : _helpers.Long.UZERO
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.version !== undefined && (obj.version = (message.version || _helpers.Long.UZERO).toString());
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$name2;

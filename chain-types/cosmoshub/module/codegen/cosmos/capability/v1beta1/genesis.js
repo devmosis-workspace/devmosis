@@ -1,6 +1,6 @@
 import { CapabilityOwners } from "./capability";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** GenesisOwners defines the capability owners with their corresponding index. */
 
 function createBaseGenesisOwners() {
@@ -38,18 +38,6 @@ export const GenesisOwners = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      index: isSet(object.index) ? Long.fromValue(object.index) : Long.UZERO,
-      indexOwners: isSet(object.indexOwners) ? CapabilityOwners.fromJSON(object.indexOwners) : undefined
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.index !== undefined && (obj.index = (message.index || Long.UZERO).toString());
-    message.indexOwners !== undefined && (obj.indexOwners = message.indexOwners ? CapabilityOwners.toJSON(message.indexOwners) : undefined);
-    return obj;
   },
   fromPartial(object) {
     const message = createBaseGenesisOwners();
@@ -93,22 +81,6 @@ export const GenesisState = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      index: isSet(object.index) ? Long.fromValue(object.index) : Long.UZERO,
-      owners: Array.isArray(object === null || object === void 0 ? void 0 : object.owners) ? object.owners.map(e => GenesisOwners.fromJSON(e)) : []
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.index !== undefined && (obj.index = (message.index || Long.UZERO).toString());
-    if (message.owners) {
-      obj.owners = message.owners.map(e => e ? GenesisOwners.toJSON(e) : undefined);
-    } else {
-      obj.owners = [];
-    }
-    return obj;
   },
   fromPartial(object) {
     var _object$owners;

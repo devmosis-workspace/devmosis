@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../helpers";
+import { Long } from "../../helpers";
 /**
  * App includes the protocol and software version for the application.
  * This information is included in ResponseInfo. The App.Protocol can be
@@ -41,18 +41,6 @@ export const App = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      protocol: isSet(object.protocol) ? Long.fromValue(object.protocol) : Long.UZERO,
-      software: isSet(object.software) ? String(object.software) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.protocol !== undefined && (obj.protocol = (message.protocol || Long.UZERO).toString());
-    message.software !== undefined && (obj.software = message.software);
-    return obj;
   },
   fromPartial(object) {
     var _object$software;
@@ -97,18 +85,6 @@ export const Consensus = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      block: isSet(object.block) ? Long.fromValue(object.block) : Long.UZERO,
-      app: isSet(object.app) ? Long.fromValue(object.app) : Long.UZERO
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.block !== undefined && (obj.block = (message.block || Long.UZERO).toString());
-    message.app !== undefined && (obj.app = (message.app || Long.UZERO).toString());
-    return obj;
   },
   fromPartial(object) {
     const message = createBaseConsensus();

@@ -70,24 +70,6 @@ var Snapshot = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.UZERO,
-      format: (0, _helpers.isSet)(object.format) ? Number(object.format) : 0,
-      chunks: (0, _helpers.isSet)(object.chunks) ? Number(object.chunks) : 0,
-      hash: (0, _helpers.isSet)(object.hash) ? (0, _helpers.bytesFromBase64)(object.hash) : new Uint8Array(),
-      metadata: (0, _helpers.isSet)(object.metadata) ? Metadata.fromJSON(object.metadata) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.height !== undefined && (obj.height = (message.height || _helpers.Long.UZERO).toString());
-    message.format !== undefined && (obj.format = Math.round(message.format));
-    message.chunks !== undefined && (obj.chunks = Math.round(message.chunks));
-    message.hash !== undefined && (obj.hash = (0, _helpers.base64FromBytes)(message.hash !== undefined ? message.hash : new Uint8Array()));
-    message.metadata !== undefined && (obj.metadata = message.metadata ? Metadata.toJSON(message.metadata) : undefined);
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$format, _object$chunks, _object$hash;
     var message = createBaseSnapshot();
@@ -138,24 +120,6 @@ var Metadata = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      chunkHashes: Array.isArray(object === null || object === void 0 ? void 0 : object.chunkHashes) ? object.chunkHashes.map(function (e) {
-        return (0, _helpers.bytesFromBase64)(e);
-      }) : []
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    if (message.chunkHashes) {
-      obj.chunkHashes = message.chunkHashes.map(function (e) {
-        return (0, _helpers.base64FromBytes)(e !== undefined ? e : new Uint8Array());
-      });
-    } else {
-      obj.chunkHashes = [];
-    }
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$chunkHashes;
@@ -218,22 +182,6 @@ var SnapshotItem = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      store: (0, _helpers.isSet)(object.store) ? SnapshotStoreItem.fromJSON(object.store) : undefined,
-      iavl: (0, _helpers.isSet)(object.iavl) ? SnapshotIAVLItem.fromJSON(object.iavl) : undefined,
-      extension: (0, _helpers.isSet)(object.extension) ? SnapshotExtensionMeta.fromJSON(object.extension) : undefined,
-      extensionPayload: (0, _helpers.isSet)(object.extensionPayload) ? SnapshotExtensionPayload.fromJSON(object.extensionPayload) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.store !== undefined && (obj.store = message.store ? SnapshotStoreItem.toJSON(message.store) : undefined);
-    message.iavl !== undefined && (obj.iavl = message.iavl ? SnapshotIAVLItem.toJSON(message.iavl) : undefined);
-    message.extension !== undefined && (obj.extension = message.extension ? SnapshotExtensionMeta.toJSON(message.extension) : undefined);
-    message.extensionPayload !== undefined && (obj.extensionPayload = message.extensionPayload ? SnapshotExtensionPayload.toJSON(message.extensionPayload) : undefined);
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var message = createBaseSnapshotItem();
     message.store = object.store !== undefined && object.store !== null ? SnapshotStoreItem.fromPartial(object.store) : undefined;
@@ -273,16 +221,6 @@ var SnapshotStoreItem = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      name: (0, _helpers.isSet)(object.name) ? String(object.name) : ""
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.name !== undefined && (obj.name = message.name);
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$name;
@@ -343,22 +281,6 @@ var SnapshotIAVLItem = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
-      value: (0, _helpers.isSet)(object.value) ? (0, _helpers.bytesFromBase64)(object.value) : new Uint8Array(),
-      version: (0, _helpers.isSet)(object.version) ? _helpers.Long.fromValue(object.version) : _helpers.Long.ZERO,
-      height: (0, _helpers.isSet)(object.height) ? Number(object.height) : 0
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.key !== undefined && (obj.key = (0, _helpers.base64FromBytes)(message.key !== undefined ? message.key : new Uint8Array()));
-    message.value !== undefined && (obj.value = (0, _helpers.base64FromBytes)(message.value !== undefined ? message.value : new Uint8Array()));
-    message.version !== undefined && (obj.version = (message.version || _helpers.Long.ZERO).toString());
-    message.height !== undefined && (obj.height = Math.round(message.height));
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$key, _object$value, _object$height;
     var message = createBaseSnapshotIAVLItem();
@@ -407,18 +329,6 @@ var SnapshotExtensionMeta = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      name: (0, _helpers.isSet)(object.name) ? String(object.name) : "",
-      format: (0, _helpers.isSet)(object.format) ? Number(object.format) : 0
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.format !== undefined && (obj.format = Math.round(message.format));
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$name2, _object$format2;
     var message = createBaseSnapshotExtensionMeta();
@@ -457,16 +367,6 @@ var SnapshotExtensionPayload = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      payload: (0, _helpers.isSet)(object.payload) ? (0, _helpers.bytesFromBase64)(object.payload) : new Uint8Array()
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.payload !== undefined && (obj.payload = (0, _helpers.base64FromBytes)(message.payload !== undefined ? message.payload : new Uint8Array()));
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$payload;

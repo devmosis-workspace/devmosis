@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, Long } from "../../../helpers";
+import { Long } from "../../../helpers";
 /** Minter represents the minting state. */
 
 function createBaseMinter() {
@@ -37,18 +37,6 @@ export const Minter = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      inflation: isSet(object.inflation) ? String(object.inflation) : "",
-      annualProvisions: isSet(object.annualProvisions) ? String(object.annualProvisions) : ""
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.inflation !== undefined && (obj.inflation = message.inflation);
-    message.annualProvisions !== undefined && (obj.annualProvisions = message.annualProvisions);
-    return obj;
   },
   fromPartial(object) {
     var _object$inflation, _object$annualProvisi;
@@ -121,26 +109,6 @@ export const Params = {
       }
     }
     return message;
-  },
-  fromJSON(object) {
-    return {
-      mintDenom: isSet(object.mintDenom) ? String(object.mintDenom) : "",
-      inflationRateChange: isSet(object.inflationRateChange) ? String(object.inflationRateChange) : "",
-      inflationMax: isSet(object.inflationMax) ? String(object.inflationMax) : "",
-      inflationMin: isSet(object.inflationMin) ? String(object.inflationMin) : "",
-      goalBonded: isSet(object.goalBonded) ? String(object.goalBonded) : "",
-      blocksPerYear: isSet(object.blocksPerYear) ? Long.fromValue(object.blocksPerYear) : Long.UZERO
-    };
-  },
-  toJSON(message) {
-    const obj = {};
-    message.mintDenom !== undefined && (obj.mintDenom = message.mintDenom);
-    message.inflationRateChange !== undefined && (obj.inflationRateChange = message.inflationRateChange);
-    message.inflationMax !== undefined && (obj.inflationMax = message.inflationMax);
-    message.inflationMin !== undefined && (obj.inflationMin = message.inflationMin);
-    message.goalBonded !== undefined && (obj.goalBonded = message.goalBonded);
-    message.blocksPerYear !== undefined && (obj.blocksPerYear = (message.blocksPerYear || Long.UZERO).toString());
-    return obj;
   },
   fromPartial(object) {
     var _object$mintDenom, _object$inflationRate, _object$inflationMax, _object$inflationMin, _object$goalBonded;

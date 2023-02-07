@@ -10,7 +10,6 @@ exports.hashOpToJSON = hashOpToJSON;
 exports.lengthOpFromJSON = lengthOpFromJSON;
 exports.lengthOpToJSON = lengthOpToJSON;
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
-var _helpers = require("../helpers");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
@@ -265,30 +264,6 @@ var ExistenceProof = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
-      value: (0, _helpers.isSet)(object.value) ? (0, _helpers.bytesFromBase64)(object.value) : new Uint8Array(),
-      leaf: (0, _helpers.isSet)(object.leaf) ? LeafOp.fromJSON(object.leaf) : undefined,
-      path: Array.isArray(object === null || object === void 0 ? void 0 : object.path) ? object.path.map(function (e) {
-        return InnerOp.fromJSON(e);
-      }) : []
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.key !== undefined && (obj.key = (0, _helpers.base64FromBytes)(message.key !== undefined ? message.key : new Uint8Array()));
-    message.value !== undefined && (obj.value = (0, _helpers.base64FromBytes)(message.value !== undefined ? message.value : new Uint8Array()));
-    message.leaf !== undefined && (obj.leaf = message.leaf ? LeafOp.toJSON(message.leaf) : undefined);
-    if (message.path) {
-      obj.path = message.path.map(function (e) {
-        return e ? InnerOp.toJSON(e) : undefined;
-      });
-    } else {
-      obj.path = [];
-    }
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$key, _object$value, _object$path;
     var message = createBaseExistenceProof();
@@ -345,20 +320,6 @@ var NonExistenceProof = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
-      left: (0, _helpers.isSet)(object.left) ? ExistenceProof.fromJSON(object.left) : undefined,
-      right: (0, _helpers.isSet)(object.right) ? ExistenceProof.fromJSON(object.right) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.key !== undefined && (obj.key = (0, _helpers.base64FromBytes)(message.key !== undefined ? message.key : new Uint8Array()));
-    message.left !== undefined && (obj.left = message.left ? ExistenceProof.toJSON(message.left) : undefined);
-    message.right !== undefined && (obj.right = message.right ? ExistenceProof.toJSON(message.right) : undefined);
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$key2;
@@ -420,22 +381,6 @@ var CommitmentProof = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      exist: (0, _helpers.isSet)(object.exist) ? ExistenceProof.fromJSON(object.exist) : undefined,
-      nonexist: (0, _helpers.isSet)(object.nonexist) ? NonExistenceProof.fromJSON(object.nonexist) : undefined,
-      batch: (0, _helpers.isSet)(object.batch) ? BatchProof.fromJSON(object.batch) : undefined,
-      compressed: (0, _helpers.isSet)(object.compressed) ? CompressedBatchProof.fromJSON(object.compressed) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.exist !== undefined && (obj.exist = message.exist ? ExistenceProof.toJSON(message.exist) : undefined);
-    message.nonexist !== undefined && (obj.nonexist = message.nonexist ? NonExistenceProof.toJSON(message.nonexist) : undefined);
-    message.batch !== undefined && (obj.batch = message.batch ? BatchProof.toJSON(message.batch) : undefined);
-    message.compressed !== undefined && (obj.compressed = message.compressed ? CompressedBatchProof.toJSON(message.compressed) : undefined);
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseCommitmentProof();
@@ -505,24 +450,6 @@ var LeafOp = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      hash: (0, _helpers.isSet)(object.hash) ? hashOpFromJSON(object.hash) : 0,
-      prehashKey: (0, _helpers.isSet)(object.prehashKey) ? hashOpFromJSON(object.prehashKey) : 0,
-      prehashValue: (0, _helpers.isSet)(object.prehashValue) ? hashOpFromJSON(object.prehashValue) : 0,
-      length: (0, _helpers.isSet)(object.length) ? lengthOpFromJSON(object.length) : 0,
-      prefix: (0, _helpers.isSet)(object.prefix) ? (0, _helpers.bytesFromBase64)(object.prefix) : new Uint8Array()
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    message.prehashKey !== undefined && (obj.prehashKey = hashOpToJSON(message.prehashKey));
-    message.prehashValue !== undefined && (obj.prehashValue = hashOpToJSON(message.prehashValue));
-    message.length !== undefined && (obj.length = lengthOpToJSON(message.length));
-    message.prefix !== undefined && (obj.prefix = (0, _helpers.base64FromBytes)(message.prefix !== undefined ? message.prefix : new Uint8Array()));
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$hash, _object$prehashKey, _object$prehashValue, _object$length, _object$prefix;
     var message = createBaseLeafOp();
@@ -578,20 +505,6 @@ var InnerOp = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      hash: (0, _helpers.isSet)(object.hash) ? hashOpFromJSON(object.hash) : 0,
-      prefix: (0, _helpers.isSet)(object.prefix) ? (0, _helpers.bytesFromBase64)(object.prefix) : new Uint8Array(),
-      suffix: (0, _helpers.isSet)(object.suffix) ? (0, _helpers.bytesFromBase64)(object.suffix) : new Uint8Array()
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    message.prefix !== undefined && (obj.prefix = (0, _helpers.base64FromBytes)(message.prefix !== undefined ? message.prefix : new Uint8Array()));
-    message.suffix !== undefined && (obj.suffix = (0, _helpers.base64FromBytes)(message.suffix !== undefined ? message.suffix : new Uint8Array()));
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$hash2, _object$prefix2, _object$suffix;
@@ -653,22 +566,6 @@ var ProofSpec = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      leafSpec: (0, _helpers.isSet)(object.leafSpec) ? LeafOp.fromJSON(object.leafSpec) : undefined,
-      innerSpec: (0, _helpers.isSet)(object.innerSpec) ? InnerSpec.fromJSON(object.innerSpec) : undefined,
-      maxDepth: (0, _helpers.isSet)(object.maxDepth) ? Number(object.maxDepth) : 0,
-      minDepth: (0, _helpers.isSet)(object.minDepth) ? Number(object.minDepth) : 0
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.leafSpec !== undefined && (obj.leafSpec = message.leafSpec ? LeafOp.toJSON(message.leafSpec) : undefined);
-    message.innerSpec !== undefined && (obj.innerSpec = message.innerSpec ? InnerSpec.toJSON(message.innerSpec) : undefined);
-    message.maxDepth !== undefined && (obj.maxDepth = Math.round(message.maxDepth));
-    message.minDepth !== undefined && (obj.minDepth = Math.round(message.minDepth));
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$maxDepth, _object$minDepth;
@@ -764,34 +661,6 @@ var InnerSpec = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      childOrder: Array.isArray(object === null || object === void 0 ? void 0 : object.childOrder) ? object.childOrder.map(function (e) {
-        return Number(e);
-      }) : [],
-      childSize: (0, _helpers.isSet)(object.childSize) ? Number(object.childSize) : 0,
-      minPrefixLength: (0, _helpers.isSet)(object.minPrefixLength) ? Number(object.minPrefixLength) : 0,
-      maxPrefixLength: (0, _helpers.isSet)(object.maxPrefixLength) ? Number(object.maxPrefixLength) : 0,
-      emptyChild: (0, _helpers.isSet)(object.emptyChild) ? (0, _helpers.bytesFromBase64)(object.emptyChild) : new Uint8Array(),
-      hash: (0, _helpers.isSet)(object.hash) ? hashOpFromJSON(object.hash) : 0
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    if (message.childOrder) {
-      obj.childOrder = message.childOrder.map(function (e) {
-        return Math.round(e);
-      });
-    } else {
-      obj.childOrder = [];
-    }
-    message.childSize !== undefined && (obj.childSize = Math.round(message.childSize));
-    message.minPrefixLength !== undefined && (obj.minPrefixLength = Math.round(message.minPrefixLength));
-    message.maxPrefixLength !== undefined && (obj.maxPrefixLength = Math.round(message.maxPrefixLength));
-    message.emptyChild !== undefined && (obj.emptyChild = (0, _helpers.base64FromBytes)(message.emptyChild !== undefined ? message.emptyChild : new Uint8Array()));
-    message.hash !== undefined && (obj.hash = hashOpToJSON(message.hash));
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$childOrder, _object$childSize, _object$minPrefixLeng, _object$maxPrefixLeng, _object$emptyChild, _object$hash3;
     var message = createBaseInnerSpec();
@@ -846,24 +715,6 @@ var BatchProof = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      entries: Array.isArray(object === null || object === void 0 ? void 0 : object.entries) ? object.entries.map(function (e) {
-        return BatchEntry.fromJSON(e);
-      }) : []
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    if (message.entries) {
-      obj.entries = message.entries.map(function (e) {
-        return e ? BatchEntry.toJSON(e) : undefined;
-      });
-    } else {
-      obj.entries = [];
-    }
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$entries;
     var message = createBaseBatchProof();
@@ -910,18 +761,6 @@ var BatchEntry = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      exist: (0, _helpers.isSet)(object.exist) ? ExistenceProof.fromJSON(object.exist) : undefined,
-      nonexist: (0, _helpers.isSet)(object.nonexist) ? NonExistenceProof.fromJSON(object.nonexist) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.exist !== undefined && (obj.exist = message.exist ? ExistenceProof.toJSON(message.exist) : undefined);
-    message.nonexist !== undefined && (obj.nonexist = message.nonexist ? NonExistenceProof.toJSON(message.nonexist) : undefined);
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseBatchEntry();
@@ -986,34 +825,6 @@ var CompressedBatchProof = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      entries: Array.isArray(object === null || object === void 0 ? void 0 : object.entries) ? object.entries.map(function (e) {
-        return CompressedBatchEntry.fromJSON(e);
-      }) : [],
-      lookupInners: Array.isArray(object === null || object === void 0 ? void 0 : object.lookupInners) ? object.lookupInners.map(function (e) {
-        return InnerOp.fromJSON(e);
-      }) : []
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    if (message.entries) {
-      obj.entries = message.entries.map(function (e) {
-        return e ? CompressedBatchEntry.toJSON(e) : undefined;
-      });
-    } else {
-      obj.entries = [];
-    }
-    if (message.lookupInners) {
-      obj.lookupInners = message.lookupInners.map(function (e) {
-        return e ? InnerOp.toJSON(e) : undefined;
-      });
-    } else {
-      obj.lookupInners = [];
-    }
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$entries2, _object$lookupInners;
     var message = createBaseCompressedBatchProof();
@@ -1063,18 +874,6 @@ var CompressedBatchEntry = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      exist: (0, _helpers.isSet)(object.exist) ? CompressedExistenceProof.fromJSON(object.exist) : undefined,
-      nonexist: (0, _helpers.isSet)(object.nonexist) ? CompressedNonExistenceProof.fromJSON(object.nonexist) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.exist !== undefined && (obj.exist = message.exist ? CompressedExistenceProof.toJSON(message.exist) : undefined);
-    message.nonexist !== undefined && (obj.nonexist = message.nonexist ? CompressedNonExistenceProof.toJSON(message.nonexist) : undefined);
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseCompressedBatchEntry();
@@ -1153,30 +952,6 @@ var CompressedExistenceProof = {
     }
     return message;
   },
-  fromJSON: function fromJSON(object) {
-    return {
-      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
-      value: (0, _helpers.isSet)(object.value) ? (0, _helpers.bytesFromBase64)(object.value) : new Uint8Array(),
-      leaf: (0, _helpers.isSet)(object.leaf) ? LeafOp.fromJSON(object.leaf) : undefined,
-      path: Array.isArray(object === null || object === void 0 ? void 0 : object.path) ? object.path.map(function (e) {
-        return Number(e);
-      }) : []
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.key !== undefined && (obj.key = (0, _helpers.base64FromBytes)(message.key !== undefined ? message.key : new Uint8Array()));
-    message.value !== undefined && (obj.value = (0, _helpers.base64FromBytes)(message.value !== undefined ? message.value : new Uint8Array()));
-    message.leaf !== undefined && (obj.leaf = message.leaf ? LeafOp.toJSON(message.leaf) : undefined);
-    if (message.path) {
-      obj.path = message.path.map(function (e) {
-        return Math.round(e);
-      });
-    } else {
-      obj.path = [];
-    }
-    return obj;
-  },
   fromPartial: function fromPartial(object) {
     var _object$key3, _object$value2, _object$path2;
     var message = createBaseCompressedExistenceProof();
@@ -1233,20 +1008,6 @@ var CompressedNonExistenceProof = {
       }
     }
     return message;
-  },
-  fromJSON: function fromJSON(object) {
-    return {
-      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
-      left: (0, _helpers.isSet)(object.left) ? CompressedExistenceProof.fromJSON(object.left) : undefined,
-      right: (0, _helpers.isSet)(object.right) ? CompressedExistenceProof.fromJSON(object.right) : undefined
-    };
-  },
-  toJSON: function toJSON(message) {
-    var obj = {};
-    message.key !== undefined && (obj.key = (0, _helpers.base64FromBytes)(message.key !== undefined ? message.key : new Uint8Array()));
-    message.left !== undefined && (obj.left = message.left ? CompressedExistenceProof.toJSON(message.left) : undefined);
-    message.right !== undefined && (obj.right = message.right ? CompressedExistenceProof.toJSON(message.right) : undefined);
-    return obj;
   },
   fromPartial: function fromPartial(object) {
     var _object$key4;
