@@ -1,9 +1,6 @@
 {
   "name": "@chain-types/osmosis",
   "version": "14.0.0",
-  "description": "osmosis",
-  "author": "devmosis <ryzond6728@gmail.com>",
-  "homepage": "https://github.com/Ryz0nd/osmosis#readme",
   "license": "SEE LICENSE IN LICENSE",
   "main": "main/index.js",
   "module": "module/index.js",

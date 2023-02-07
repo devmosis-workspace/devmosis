@@ -25,17 +25,6 @@
     "watch": "cross-env NODE_ENV=development babel-watch src/index --extensions \".tsx,.ts,.js\"",
     "lint": "eslint src --fix"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Ryz0nd/cosmoshub"
-  },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/Ryz0nd/cosmoshub/issues"
-  },
   "devDependencies": {
     "@babel/cli": "7.19.3",
     "@babel/core": "7.19.3",

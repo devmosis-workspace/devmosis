@@ -24,6 +24,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:chain-types/osmosis"\
       },\
       {\
+        "name": "@chain-types/stride",\
+        "reference": "workspace:chain-types/stride"\
+      },\
+      {\
         "name": "devmosis",\
         "reference": "workspace:packages/dashboard"\
       }\
@@ -33,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "fallbackExclusionList": [\
       ["@chain-types/cosmoshub", ["workspace:chain-types/cosmoshub"]],\
       ["@chain-types/osmosis", ["workspace:chain-types/osmosis"]],\
+      ["@chain-types/stride", ["workspace:chain-types/stride"]],\
       ["devmosis", ["workspace:packages/dashboard"]],\
       ["root-workspace-0b6124", ["workspace:."]]\
     ],\
@@ -4318,6 +4323,46 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@osmonauts/telescope", "npm:0.78.0"],\
             ["babel-core", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.0.0-bridge.0"],\
             ["babel-jest", "virtual:9bb149e266d5c82516e3e3d03541418a19ddedb60d6a961c3fcf7bbac392e5f2ea21681c484a1e7085b01399338e4562c76c1a38bfc1cd49df26443aff1c1d18#npm:29.1.2"],\
+            ["babel-watch", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.7.2"],\
+            ["cross-env", "npm:7.0.3"],\
+            ["eslint", "npm:8.25.0"],\
+            ["eslint-config-prettier", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:8.6.0"],\
+            ["eslint-plugin-prettier", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:4.2.1"],\
+            ["long", "npm:5.2.1"],\
+            ["prettier", "npm:2.8.3"],\
+            ["protobufjs", "npm:6.11.3"],\
+            ["regenerator-runtime", "npm:0.13.11"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=a66ed4"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@chain-types/stride", [\
+        ["workspace:chain-types/stride", {\
+          "packageLocation": "./chain-types/stride/",\
+          "packageDependencies": [\
+            ["@chain-types/stride", "workspace:chain-types/stride"],\
+            ["@babel/cli", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.19.3"],\
+            ["@babel/core", "npm:7.19.3"],\
+            ["@babel/eslint-parser", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.19.1"],\
+            ["@babel/node", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.20.7"],\
+            ["@babel/plugin-proposal-class-properties", "virtual:cae633a822344539c2af3ff18f96b89c465fc85d22f776722bd7a36ab7b36bfc6c1b21793c24613ec9cd9f4fb622c1652b8bb84338beb6ff6570a79001982725#npm:7.18.6"],\
+            ["@babel/plugin-proposal-export-default-from", "virtual:cae633a822344539c2af3ff18f96b89c465fc85d22f776722bd7a36ab7b36bfc6c1b21793c24613ec9cd9f4fb622c1652b8bb84338beb6ff6570a79001982725#npm:7.18.10"],\
+            ["@babel/plugin-proposal-nullish-coalescing-operator", "virtual:043b4470b0c84fc01ef8b8fb8b5a6ce375fdacf42cdc67cfcf84f9aeca18a1287b07bbcd42b70a6d68539ca31840409177f1ed1b8ee1c844b9b46e0231275ad9#npm:7.18.6"],\
+            ["@babel/plugin-proposal-numeric-separator", "virtual:043b4470b0c84fc01ef8b8fb8b5a6ce375fdacf42cdc67cfcf84f9aeca18a1287b07bbcd42b70a6d68539ca31840409177f1ed1b8ee1c844b9b46e0231275ad9#npm:7.18.6"],\
+            ["@babel/plugin-proposal-object-rest-spread", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.19.4"],\
+            ["@babel/plugin-proposal-optional-chaining", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.18.9"],\
+            ["@babel/plugin-transform-runtime", "virtual:cae633a822344539c2af3ff18f96b89c465fc85d22f776722bd7a36ab7b36bfc6c1b21793c24613ec9cd9f4fb622c1652b8bb84338beb6ff6570a79001982725#npm:7.19.1"],\
+            ["@babel/preset-env", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.19.4"],\
+            ["@babel/preset-typescript", "virtual:cae633a822344539c2af3ff18f96b89c465fc85d22f776722bd7a36ab7b36bfc6c1b21793c24613ec9cd9f4fb622c1652b8bb84338beb6ff6570a79001982725#npm:7.18.6"],\
+            ["@babel/runtime", "npm:7.20.13"],\
+            ["@cosmjs/amino", "npm:0.29.4"],\
+            ["@cosmjs/proto-signing", "npm:0.29.4"],\
+            ["@cosmjs/stargate", "npm:0.29.4"],\
+            ["@cosmjs/tendermint-rpc", "npm:0.29.5"],\
+            ["@osmonauts/telescope", "npm:0.78.0"],\
+            ["babel-core", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.0.0-bridge.0"],\
             ["babel-watch", "virtual:ed643d35767ae0eb8e45f6e883917b03c51df386cd2082c2541b35e045a978becc80966862254d8f0dcf6bd1c081d9053c425c3e93fac13d5817611a449b4ba3#npm:7.7.2"],\
             ["cross-env", "npm:7.0.3"],\
             ["eslint", "npm:8.25.0"],\
