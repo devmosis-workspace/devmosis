@@ -22,10 +22,15 @@ import * as _128 from "./lightclients/localhost/v1/localhost";
 import * as _129 from "./lightclients/solomachine/v1/solomachine";
 import * as _130 from "./lightclients/solomachine/v2/solomachine";
 import * as _131 from "./lightclients/tendermint/v1/tendermint";
+import * as _211 from "./applications/transfer/v1/query.lcd";
+import * as _212 from "./core/channel/v1/query.lcd";
+import * as _213 from "./core/client/v1/query.lcd";
+import * as _214 from "./core/connection/v1/query.lcd";
 export declare namespace ibc {
     namespace applications {
         namespace transfer {
             const v1: {
+                LCDQueryClient: typeof _211.LCDQueryClient;
                 MsgTransfer: {
                     encode(message: _111.MsgTransfer, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _111.MsgTransfer;
@@ -94,6 +99,7 @@ export declare namespace ibc {
     namespace core {
         namespace channel {
             const v1: {
+                LCDQueryClient: typeof _212.LCDQueryClient;
                 MsgChannelOpenInit: {
                     encode(message: _116.MsgChannelOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _116.MsgChannelOpenInit;
@@ -376,6 +382,7 @@ export declare namespace ibc {
         }
         namespace client {
             const v1: {
+                LCDQueryClient: typeof _213.LCDQueryClient;
                 MsgCreateClient: {
                     encode(message: _120.MsgCreateClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _120.MsgCreateClient;
@@ -574,6 +581,7 @@ export declare namespace ibc {
         }
         namespace connection {
             const v1: {
+                LCDQueryClient: typeof _214.LCDQueryClient;
                 MsgConnectionOpenInit: {
                     encode(message: _125.MsgConnectionOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _125.MsgConnectionOpenInit;
@@ -948,4 +956,81 @@ export declare namespace ibc {
             };
         }
     }
+    const ClientFactory: {
+        createLCDClient: ({ restEndpoint }: {
+            restEndpoint: string;
+        }) => Promise<{
+            cosmos: {
+                auth: {
+                    v1beta1: import("../cosmos/auth/v1beta1/query.lcd").LCDQueryClient;
+                };
+                authz: {
+                    v1beta1: import("../cosmos/authz/v1beta1/query.lcd").LCDQueryClient;
+                };
+                bank: {
+                    v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
+                };
+                base: {
+                    tendermint: {
+                        v1beta1: import("../cosmos/base/tendermint/v1beta1/query.lcd").LCDQueryClient;
+                    };
+                };
+                distribution: {
+                    v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
+                };
+                evidence: {
+                    v1beta1: import("../cosmos/evidence/v1beta1/query.lcd").LCDQueryClient;
+                };
+                feegrant: {
+                    v1beta1: import("../cosmos/feegrant/v1beta1/query.lcd").LCDQueryClient;
+                };
+                gov: {
+                    v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
+                    v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
+                };
+                group: {
+                    v1: import("../cosmos/group/v1/query.lcd").LCDQueryClient;
+                };
+                mint: {
+                    v1beta1: import("../cosmos/mint/v1beta1/query.lcd").LCDQueryClient;
+                };
+                nft: {
+                    v1beta1: import("../cosmos/nft/v1beta1/query.lcd").LCDQueryClient;
+                };
+                params: {
+                    v1beta1: import("../cosmos/params/v1beta1/query.lcd").LCDQueryClient;
+                };
+                slashing: {
+                    v1beta1: import("../cosmos/slashing/v1beta1/query.lcd").LCDQueryClient;
+                };
+                staking: {
+                    v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
+                };
+                tx: {
+                    v1beta1: import("../cosmos/tx/v1beta1/service.lcd").LCDQueryClient;
+                };
+                upgrade: {
+                    v1beta1: import("../cosmos/upgrade/v1beta1/query.lcd").LCDQueryClient;
+                };
+            };
+            ibc: {
+                applications: {
+                    transfer: {
+                        v1: _211.LCDQueryClient;
+                    };
+                };
+                core: {
+                    channel: {
+                        v1: _212.LCDQueryClient;
+                    };
+                    client: {
+                        v1: _213.LCDQueryClient;
+                    };
+                    connection: {
+                        v1: _214.LCDQueryClient;
+                    };
+                };
+            };
+        }>;
+    };
 }

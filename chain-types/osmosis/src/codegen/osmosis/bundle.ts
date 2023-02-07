@@ -48,23 +48,40 @@ import * as _189 from "./txfees/v1beta1/feetoken";
 import * as _190 from "./txfees/v1beta1/genesis";
 import * as _191 from "./txfees/v1beta1/gov";
 import * as _192 from "./txfees/v1beta1/query";
+import * as _215 from "./downtime-detector/v1beta1/query.lcd";
+import * as _216 from "./epochs/query.lcd";
+import * as _217 from "./gamm/v1beta1/query.lcd";
+import * as _218 from "./gamm/v2/query.lcd";
+import * as _219 from "./ibc-rate-limit/v1beta1/query.lcd";
+import * as _220 from "./incentives/query.lcd";
+import * as _221 from "./lockup/query.lcd";
+import * as _222 from "./mint/v1beta1/query.lcd";
+import * as _223 from "./pool-incentives/v1beta1/query.lcd";
+import * as _224 from "./superfluid/query.lcd";
+import * as _225 from "./tokenfactory/v1beta1/query.lcd";
+import * as _226 from "./twap/v1beta1/query.lcd";
+import * as _227 from "./txfees/v1beta1/query.lcd";
+import * as _231 from "./lcd";
 export namespace osmosis {
   export namespace downtimedetector {
     export const v1beta1 = { ..._143,
       ..._144,
-      ..._145
+      ..._145,
+      ..._215
     };
   }
   export namespace epochs {
     export const v1beta1 = { ..._146,
-      ..._147
+      ..._147,
+      ..._216
     };
   }
   export namespace gamm {
     export const v1beta1 = { ..._148,
       ..._149,
       ..._150,
-      ..._151
+      ..._151,
+      ..._217
     };
     export namespace poolmodels {
       export namespace balancer {
@@ -77,37 +94,43 @@ export namespace osmosis {
         };
       }
     }
-    export const v2 = { ..._155
+    export const v2 = { ..._155,
+      ..._218
     };
   }
   export namespace ibcratelimit {
     export const v1beta1 = { ..._156,
-      ..._157
+      ..._157,
+      ..._219
     };
   }
   export const incentives = { ..._158,
     ..._159,
     ..._160,
     ..._161,
-    ..._162
+    ..._162,
+    ..._220
   };
   export const lockup = { ..._163,
     ..._164,
     ..._165,
     ..._166,
-    ..._167
+    ..._167,
+    ..._221
   };
   export namespace mint {
     export const v1beta1 = { ..._168,
       ..._169,
-      ..._170
+      ..._170,
+      ..._222
     };
   }
   export namespace poolincentives {
     export const v1beta1 = { ..._171,
       ..._172,
       ..._173,
-      ..._174
+      ..._174,
+      ..._223
     };
   }
   export namespace store {
@@ -118,27 +141,33 @@ export namespace osmosis {
     ..._177,
     ..._178,
     ..._179,
-    ..._180
+    ..._180,
+    ..._224
   };
   export namespace tokenfactory {
     export const v1beta1 = { ..._181,
       ..._182,
       ..._183,
       ..._184,
-      ..._185
+      ..._185,
+      ..._225
     };
   }
   export namespace twap {
     export const v1beta1 = { ..._186,
       ..._187,
-      ..._188
+      ..._188,
+      ..._226
     };
   }
   export namespace txfees {
     export const v1beta1 = { ..._189,
       ..._190,
       ..._191,
-      ..._192
+      ..._192,
+      ..._227
     };
   }
+  export const ClientFactory = { ..._231
+  };
 }

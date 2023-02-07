@@ -22,13 +22,19 @@ import * as _128 from "./lightclients/localhost/v1/localhost";
 import * as _129 from "./lightclients/solomachine/v1/solomachine";
 import * as _130 from "./lightclients/solomachine/v2/solomachine";
 import * as _131 from "./lightclients/tendermint/v1/tendermint";
+import * as _211 from "./applications/transfer/v1/query.lcd";
+import * as _212 from "./core/channel/v1/query.lcd";
+import * as _213 from "./core/client/v1/query.lcd";
+import * as _214 from "./core/connection/v1/query.lcd";
+import * as _230 from "./lcd";
 export namespace ibc {
   export namespace applications {
     export namespace transfer {
       export const v1 = { ..._108,
         ..._109,
         ..._110,
-        ..._111
+        ..._111,
+        ..._211
       };
       export const v2 = { ..._112
       };
@@ -39,14 +45,16 @@ export namespace ibc {
       export const v1 = { ..._113,
         ..._114,
         ..._115,
-        ..._116
+        ..._116,
+        ..._212
       };
     }
     export namespace client {
       export const v1 = { ..._117,
         ..._118,
         ..._119,
-        ..._120
+        ..._120,
+        ..._213
       };
     }
     export namespace commitment {
@@ -57,7 +65,8 @@ export namespace ibc {
       export const v1 = { ..._122,
         ..._123,
         ..._124,
-        ..._125
+        ..._125,
+        ..._214
       };
     }
     export namespace port {
@@ -85,4 +94,6 @@ export namespace ibc {
       };
     }
   }
+  export const ClientFactory = { ..._230
+  };
 }

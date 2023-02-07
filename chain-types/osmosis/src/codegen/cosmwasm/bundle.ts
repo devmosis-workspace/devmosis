@@ -4,6 +4,8 @@ import * as _96 from "./wasm/v1/proposal";
 import * as _97 from "./wasm/v1/query";
 import * as _98 from "./wasm/v1/tx";
 import * as _99 from "./wasm/v1/types";
+import * as _210 from "./wasm/v1/query.lcd";
+import * as _229 from "./lcd";
 export namespace cosmwasm {
   export namespace wasm {
     export const v1 = { ..._94,
@@ -11,7 +13,10 @@ export namespace cosmwasm {
       ..._96,
       ..._97,
       ..._98,
-      ..._99
+      ..._99,
+      ..._210
     };
   }
+  export const ClientFactory = { ..._229
+  };
 }

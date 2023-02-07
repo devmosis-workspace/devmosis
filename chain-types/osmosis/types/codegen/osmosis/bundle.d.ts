@@ -48,9 +48,23 @@ import * as _189 from "./txfees/v1beta1/feetoken";
 import * as _190 from "./txfees/v1beta1/genesis";
 import * as _191 from "./txfees/v1beta1/gov";
 import * as _192 from "./txfees/v1beta1/query";
+import * as _215 from "./downtime-detector/v1beta1/query.lcd";
+import * as _216 from "./epochs/query.lcd";
+import * as _217 from "./gamm/v1beta1/query.lcd";
+import * as _218 from "./gamm/v2/query.lcd";
+import * as _219 from "./ibc-rate-limit/v1beta1/query.lcd";
+import * as _220 from "./incentives/query.lcd";
+import * as _221 from "./lockup/query.lcd";
+import * as _222 from "./mint/v1beta1/query.lcd";
+import * as _223 from "./pool-incentives/v1beta1/query.lcd";
+import * as _224 from "./superfluid/query.lcd";
+import * as _225 from "./tokenfactory/v1beta1/query.lcd";
+import * as _226 from "./twap/v1beta1/query.lcd";
+import * as _227 from "./txfees/v1beta1/query.lcd";
 export declare namespace osmosis {
     namespace downtimedetector {
         const v1beta1: {
+            LCDQueryClient: typeof _215.LCDQueryClient;
             RecoveredSinceDowntimeOfLengthRequest: {
                 encode(message: _145.RecoveredSinceDowntimeOfLengthRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _145.RecoveredSinceDowntimeOfLengthRequest;
@@ -79,6 +93,7 @@ export declare namespace osmosis {
     }
     namespace epochs {
         const v1beta1: {
+            LCDQueryClient: typeof _216.LCDQueryClient;
             QueryEpochsInfoRequest: {
                 encode(_: _147.QueryEpochsInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.QueryEpochsInfoRequest;
@@ -113,6 +128,7 @@ export declare namespace osmosis {
     }
     namespace gamm {
         const v1beta1: {
+            LCDQueryClient: typeof _217.LCDQueryClient;
             MsgJoinPool: {
                 encode(message: _151.MsgJoinPool, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.MsgJoinPool;
@@ -435,6 +451,7 @@ export declare namespace osmosis {
             }
         }
         const v2: {
+            LCDQueryClient: typeof _218.LCDQueryClient;
             QuerySpotPriceRequest: {
                 encode(message: _155.QuerySpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.QuerySpotPriceRequest;
@@ -449,6 +466,7 @@ export declare namespace osmosis {
     }
     namespace ibcratelimit {
         const v1beta1: {
+            LCDQueryClient: typeof _219.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _157.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryParamsRequest;
@@ -467,6 +485,7 @@ export declare namespace osmosis {
         };
     }
     const incentives: {
+        LCDQueryClient: typeof _220.LCDQueryClient;
         MsgCreateGauge: {
             encode(message: _162.MsgCreateGauge, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.MsgCreateGauge;
@@ -599,6 +618,7 @@ export declare namespace osmosis {
         };
     };
     const lockup: {
+        LCDQueryClient: typeof _221.LCDQueryClient;
         MsgLockTokens: {
             encode(message: _167.MsgLockTokens, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.MsgLockTokens;
@@ -851,6 +871,7 @@ export declare namespace osmosis {
     };
     namespace mint {
         const v1beta1: {
+            LCDQueryClient: typeof _222.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _170.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.QueryParamsRequest;
@@ -900,6 +921,7 @@ export declare namespace osmosis {
     }
     namespace poolincentives {
         const v1beta1: {
+            LCDQueryClient: typeof _223.LCDQueryClient;
             QueryGaugeIdsRequest: {
                 encode(message: _174.QueryGaugeIdsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _174.QueryGaugeIdsRequest;
@@ -1037,6 +1059,7 @@ export declare namespace osmosis {
         };
     }
     const superfluid: {
+        LCDQueryClient: typeof _224.LCDQueryClient;
         MsgSuperfluidDelegate: {
             encode(message: _180.MsgSuperfluidDelegate, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
             decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _180.MsgSuperfluidDelegate;
@@ -1294,6 +1317,7 @@ export declare namespace osmosis {
     };
     namespace tokenfactory {
         const v1beta1: {
+            LCDQueryClient: typeof _225.LCDQueryClient;
             MsgCreateDenom: {
                 encode(message: _185.MsgCreateDenom, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _185.MsgCreateDenom;
@@ -1398,6 +1422,7 @@ export declare namespace osmosis {
     }
     namespace twap {
         const v1beta1: {
+            LCDQueryClient: typeof _226.LCDQueryClient;
             TwapRecord: {
                 encode(message: _188.TwapRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _188.TwapRecord;
@@ -1467,6 +1492,7 @@ export declare namespace osmosis {
     }
     namespace txfees {
         const v1beta1: {
+            LCDQueryClient: typeof _227.LCDQueryClient;
             QueryFeeTokensRequest: {
                 encode(_: _192.QueryFeeTokensRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _192.QueryFeeTokensRequest;
@@ -1524,4 +1550,96 @@ export declare namespace osmosis {
             };
         };
     }
+    const ClientFactory: {
+        createLCDClient: ({ restEndpoint }: {
+            restEndpoint: string;
+        }) => Promise<{
+            cosmos: {
+                auth: {
+                    v1beta1: import("../cosmos/auth/v1beta1/query.lcd").LCDQueryClient;
+                };
+                authz: {
+                    v1beta1: import("../cosmos/authz/v1beta1/query.lcd").LCDQueryClient;
+                };
+                bank: {
+                    v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
+                };
+                base: {
+                    tendermint: {
+                        v1beta1: import("../cosmos/base/tendermint/v1beta1/query.lcd").LCDQueryClient;
+                    };
+                };
+                distribution: {
+                    v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
+                };
+                evidence: {
+                    v1beta1: import("../cosmos/evidence/v1beta1/query.lcd").LCDQueryClient;
+                };
+                feegrant: {
+                    v1beta1: import("../cosmos/feegrant/v1beta1/query.lcd").LCDQueryClient;
+                };
+                gov: {
+                    v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
+                    v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
+                };
+                group: {
+                    v1: import("../cosmos/group/v1/query.lcd").LCDQueryClient;
+                };
+                mint: {
+                    v1beta1: import("../cosmos/mint/v1beta1/query.lcd").LCDQueryClient;
+                };
+                nft: {
+                    v1beta1: import("../cosmos/nft/v1beta1/query.lcd").LCDQueryClient;
+                };
+                params: {
+                    v1beta1: import("../cosmos/params/v1beta1/query.lcd").LCDQueryClient;
+                };
+                slashing: {
+                    v1beta1: import("../cosmos/slashing/v1beta1/query.lcd").LCDQueryClient;
+                };
+                staking: {
+                    v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
+                };
+                tx: {
+                    v1beta1: import("../cosmos/tx/v1beta1/service.lcd").LCDQueryClient;
+                };
+                upgrade: {
+                    v1beta1: import("../cosmos/upgrade/v1beta1/query.lcd").LCDQueryClient;
+                };
+            };
+            osmosis: {
+                downtimedetector: {
+                    v1beta1: _215.LCDQueryClient;
+                };
+                epochs: {
+                    v1beta1: _216.LCDQueryClient;
+                };
+                gamm: {
+                    v1beta1: _217.LCDQueryClient;
+                    v2: _218.LCDQueryClient;
+                };
+                ibcratelimit: {
+                    v1beta1: _219.LCDQueryClient;
+                };
+                incentives: _220.LCDQueryClient;
+                lockup: _221.LCDQueryClient;
+                mint: {
+                    v1beta1: _222.LCDQueryClient;
+                };
+                poolincentives: {
+                    v1beta1: _223.LCDQueryClient;
+                };
+                superfluid: _224.LCDQueryClient;
+                tokenfactory: {
+                    v1beta1: _225.LCDQueryClient;
+                };
+                twap: {
+                    v1beta1: _226.LCDQueryClient;
+                };
+                txfees: {
+                    v1beta1: _227.LCDQueryClient;
+                };
+            };
+        }>;
+    };
 }
