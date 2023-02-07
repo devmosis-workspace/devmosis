@@ -48,20 +48,6 @@ import * as _189 from "./txfees/v1beta1/feetoken";
 import * as _190 from "./txfees/v1beta1/genesis";
 import * as _191 from "./txfees/v1beta1/gov";
 import * as _192 from "./txfees/v1beta1/query";
-import * as _231 from "./gamm/pool-models/balancer/tx/tx.amino";
-import * as _232 from "./gamm/pool-models/stableswap/tx.amino";
-import * as _233 from "./gamm/v1beta1/tx.amino";
-import * as _234 from "./incentives/tx.amino";
-import * as _235 from "./lockup/tx.amino";
-import * as _236 from "./superfluid/tx.amino";
-import * as _237 from "./tokenfactory/v1beta1/tx.amino";
-import * as _238 from "./gamm/pool-models/balancer/tx/tx.registry";
-import * as _239 from "./gamm/pool-models/stableswap/tx.registry";
-import * as _240 from "./gamm/v1beta1/tx.registry";
-import * as _241 from "./incentives/tx.registry";
-import * as _242 from "./lockup/tx.registry";
-import * as _243 from "./superfluid/tx.registry";
-import * as _244 from "./tokenfactory/v1beta1/tx.registry";
 export namespace osmosis {
   export namespace downtimedetector {
     export const v1beta1 = { ..._143,
@@ -78,22 +64,16 @@ export namespace osmosis {
     export const v1beta1 = { ..._148,
       ..._149,
       ..._150,
-      ..._151,
-      ..._233,
-      ..._240
+      ..._151
     };
     export namespace poolmodels {
       export namespace balancer {
-        export const v1beta1 = { ..._152,
-          ..._231,
-          ..._238
+        export const v1beta1 = { ..._152
         };
       }
       export namespace stableswap {
         export const v1beta1 = { ..._153,
-          ..._154,
-          ..._232,
-          ..._239
+          ..._154
         };
       }
     }
@@ -109,17 +89,13 @@ export namespace osmosis {
     ..._159,
     ..._160,
     ..._161,
-    ..._162,
-    ..._234,
-    ..._241
+    ..._162
   };
   export const lockup = { ..._163,
     ..._164,
     ..._165,
     ..._166,
-    ..._167,
-    ..._235,
-    ..._242
+    ..._167
   };
   export namespace mint {
     export const v1beta1 = { ..._168,
@@ -142,18 +118,14 @@ export namespace osmosis {
     ..._177,
     ..._178,
     ..._179,
-    ..._180,
-    ..._236,
-    ..._243
+    ..._180
   };
   export namespace tokenfactory {
     export const v1beta1 = { ..._181,
       ..._182,
       ..._183,
       ..._184,
-      ..._185,
-      ..._237,
-      ..._244
+      ..._185
     };
   }
   export namespace twap {
