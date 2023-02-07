@@ -1,3 +1,6 @@
 [submodule "chain-types/osmosis/osmosis-v14.0.0"]
 	path = chain-types/osmosis/osmosis-v14.0.0
 	url = https://github.com/osmosis-labs/osmosis.git
+[submodule "chain-types/cosmoshub/cosmoshub-v0.45.9"]
+	path = chain-types/cosmoshub/cosmoshub-v0.45.9
+	url = https://github.com/cosmos/cosmos-sdk.git

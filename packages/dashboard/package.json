@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@chain-registry/types": "^0.14.0",
+    "@chain-types/cosmoshub": "workspace:^",
     "@chain-types/osmosis": "workspace:^",
     "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.5",

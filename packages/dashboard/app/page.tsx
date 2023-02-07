@@ -1,6 +1,7 @@
 "use client";
 import { registeredChainAtom } from "@/atoms/chainAtom";
 import { osmosis } from "@chain-types/osmosis";
+import { cosmos } from "@chain-types/cosmoshub";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useAtomValue } from "jotai";

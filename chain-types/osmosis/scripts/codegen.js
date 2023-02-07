@@ -29,7 +29,7 @@ telescope({
       }
     },
     aminoEncoding: {
-      enabled: true
+      enabled: false
     },
     lcdClients: {
       enabled: false
