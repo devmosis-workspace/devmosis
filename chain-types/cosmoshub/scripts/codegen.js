@@ -3,7 +3,7 @@ import telescope from '@osmonauts/telescope';
 import { sync as rimraf } from 'rimraf';
 import { AMINO_MAP } from './aminos';
 
-const protoDirs = [join(__dirname, '/../cosmoshub-v0.45.9/proto'), join(__dirname, '/../cosmoshub-v0.45.9/third_party/proto')];
+const protoDirs = [join(__dirname, '/../cosmoshub-v7.1.1/proto'), join(__dirname, '/../cosmoshub-v7.1.1/third_party/proto')];
 const outPath = join(__dirname, '../src/codegen');
 rimraf(outPath);
 
