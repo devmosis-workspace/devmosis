@@ -67,11 +67,27 @@ import * as _65 from "./upgrade/v1beta1/query";
 import * as _66 from "./upgrade/v1beta1/upgrade";
 import * as _67 from "./vesting/v1beta1/tx";
 import * as _68 from "./vesting/v1beta1/vesting";
+import * as _90 from "./auth/v1beta1/query.lcd";
+import * as _91 from "./authz/v1beta1/query.lcd";
+import * as _92 from "./bank/v1beta1/query.lcd";
+import * as _93 from "./base/tendermint/v1beta1/query.lcd";
+import * as _94 from "./distribution/v1beta1/query.lcd";
+import * as _95 from "./evidence/v1beta1/query.lcd";
+import * as _96 from "./feegrant/v1beta1/query.lcd";
+import * as _97 from "./gov/v1beta1/query.lcd";
+import * as _98 from "./mint/v1beta1/query.lcd";
+import * as _99 from "./params/v1beta1/query.lcd";
+import * as _100 from "./slashing/v1beta1/query.lcd";
+import * as _101 from "./staking/v1beta1/query.lcd";
+import * as _102 from "./tx/v1beta1/service.lcd";
+import * as _103 from "./upgrade/v1beta1/query.lcd";
+import * as _104 from "./lcd";
 export namespace cosmos {
   export namespace auth {
     export const v1beta1 = { ..._0,
       ..._1,
-      ..._2
+      ..._2,
+      ..._90
     };
   }
   export namespace authz {
@@ -79,7 +95,8 @@ export namespace cosmos {
       ..._4,
       ..._5,
       ..._6,
-      ..._7
+      ..._7,
+      ..._91
     };
   }
   export namespace bank {
@@ -87,7 +104,8 @@ export namespace cosmos {
       ..._9,
       ..._10,
       ..._11,
-      ..._12
+      ..._12,
+      ..._92
     };
   }
   export namespace base {
@@ -119,7 +137,8 @@ export namespace cosmos {
       };
     }
     export namespace tendermint {
-      export const v1beta1 = { ..._21
+      export const v1beta1 = { ..._21,
+        ..._93
       };
     }
     export const v1beta1 = { ..._22
@@ -149,21 +168,24 @@ export namespace cosmos {
     export const v1beta1 = { ..._31,
       ..._32,
       ..._33,
-      ..._34
+      ..._34,
+      ..._94
     };
   }
   export namespace evidence {
     export const v1beta1 = { ..._35,
       ..._36,
       ..._37,
-      ..._38
+      ..._38,
+      ..._95
     };
   }
   export namespace feegrant {
     export const v1beta1 = { ..._39,
       ..._40,
       ..._41,
-      ..._42
+      ..._42,
+      ..._96
     };
   }
   export namespace genutil {
@@ -174,25 +196,29 @@ export namespace cosmos {
     export const v1beta1 = { ..._44,
       ..._45,
       ..._46,
-      ..._47
+      ..._47,
+      ..._97
     };
   }
   export namespace mint {
     export const v1beta1 = { ..._48,
       ..._49,
-      ..._50
+      ..._50,
+      ..._98
     };
   }
   export namespace params {
     export const v1beta1 = { ..._51,
-      ..._52
+      ..._52,
+      ..._99
     };
   }
   export namespace slashing {
     export const v1beta1 = { ..._53,
       ..._54,
       ..._55,
-      ..._56
+      ..._56,
+      ..._100
     };
   }
   export namespace staking {
@@ -200,7 +226,8 @@ export namespace cosmos {
       ..._58,
       ..._59,
       ..._60,
-      ..._61
+      ..._61,
+      ..._101
     };
   }
   export namespace tx {
@@ -209,12 +236,14 @@ export namespace cosmos {
       };
     }
     export const v1beta1 = { ..._63,
-      ..._64
+      ..._64,
+      ..._102
     };
   }
   export namespace upgrade {
     export const v1beta1 = { ..._65,
-      ..._66
+      ..._66,
+      ..._103
     };
   }
   export namespace vesting {
@@ -222,4 +251,6 @@ export namespace cosmos {
       ..._68
     };
   }
+  export const ClientFactory = { ..._104
+  };
 }

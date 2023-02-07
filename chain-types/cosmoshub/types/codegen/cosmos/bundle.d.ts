@@ -67,9 +67,24 @@ import * as _65 from "./upgrade/v1beta1/query";
 import * as _66 from "./upgrade/v1beta1/upgrade";
 import * as _67 from "./vesting/v1beta1/tx";
 import * as _68 from "./vesting/v1beta1/vesting";
+import * as _90 from "./auth/v1beta1/query.lcd";
+import * as _91 from "./authz/v1beta1/query.lcd";
+import * as _92 from "./bank/v1beta1/query.lcd";
+import * as _93 from "./base/tendermint/v1beta1/query.lcd";
+import * as _94 from "./distribution/v1beta1/query.lcd";
+import * as _95 from "./evidence/v1beta1/query.lcd";
+import * as _96 from "./feegrant/v1beta1/query.lcd";
+import * as _97 from "./gov/v1beta1/query.lcd";
+import * as _98 from "./mint/v1beta1/query.lcd";
+import * as _99 from "./params/v1beta1/query.lcd";
+import * as _100 from "./slashing/v1beta1/query.lcd";
+import * as _101 from "./staking/v1beta1/query.lcd";
+import * as _102 from "./tx/v1beta1/service.lcd";
+import * as _103 from "./upgrade/v1beta1/query.lcd";
 export declare namespace cosmos {
     namespace auth {
         const v1beta1: {
+            LCDQueryClient: typeof _90.LCDQueryClient;
             QueryAccountsRequest: {
                 encode(message: _2.QueryAccountsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _2.QueryAccountsRequest;
@@ -124,6 +139,7 @@ export declare namespace cosmos {
     }
     namespace authz {
         const v1beta1: {
+            LCDQueryClient: typeof _91.LCDQueryClient;
             MsgGrant: {
                 encode(message: _7.MsgGrant, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _7.MsgGrant;
@@ -218,6 +234,7 @@ export declare namespace cosmos {
     }
     namespace bank {
         const v1beta1: {
+            LCDQueryClient: typeof _92.LCDQueryClient;
             MsgSend: {
                 encode(message: _12.MsgSend, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _12.MsgSend;
@@ -674,6 +691,7 @@ export declare namespace cosmos {
         }
         namespace tendermint {
             const v1beta1: {
+                LCDQueryClient: typeof _93.LCDQueryClient;
                 GetValidatorSetByHeightRequest: {
                     encode(message: _21.GetValidatorSetByHeightRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _21.GetValidatorSetByHeightRequest;
@@ -869,6 +887,7 @@ export declare namespace cosmos {
     }
     namespace distribution {
         const v1beta1: {
+            LCDQueryClient: typeof _94.LCDQueryClient;
             MsgSetWithdrawAddress: {
                 encode(message: _34.MsgSetWithdrawAddress, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _34.MsgSetWithdrawAddress;
@@ -1103,6 +1122,7 @@ export declare namespace cosmos {
     }
     namespace evidence {
         const v1beta1: {
+            LCDQueryClient: typeof _95.LCDQueryClient;
             MsgSubmitEvidence: {
                 encode(message: _38.MsgSubmitEvidence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _38.MsgSubmitEvidence;
@@ -1147,6 +1167,7 @@ export declare namespace cosmos {
     }
     namespace feegrant {
         const v1beta1: {
+            LCDQueryClient: typeof _96.LCDQueryClient;
             MsgGrantAllowance: {
                 encode(message: _42.MsgGrantAllowance, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _42.MsgGrantAllowance;
@@ -1235,6 +1256,7 @@ export declare namespace cosmos {
     }
     namespace gov {
         const v1beta1: {
+            LCDQueryClient: typeof _97.LCDQueryClient;
             MsgSubmitProposal: {
                 encode(message: _47.MsgSubmitProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _47.MsgSubmitProposal;
@@ -1417,6 +1439,7 @@ export declare namespace cosmos {
     }
     namespace mint {
         const v1beta1: {
+            LCDQueryClient: typeof _98.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _50.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _50.QueryParamsRequest;
@@ -1466,6 +1489,7 @@ export declare namespace cosmos {
     }
     namespace params {
         const v1beta1: {
+            LCDQueryClient: typeof _99.LCDQueryClient;
             QueryParamsRequest: {
                 encode(message: _52.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _52.QueryParamsRequest;
@@ -1490,6 +1514,7 @@ export declare namespace cosmos {
     }
     namespace slashing {
         const v1beta1: {
+            LCDQueryClient: typeof _100.LCDQueryClient;
             MsgUnjail: {
                 encode(message: _56.MsgUnjail, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _56.MsgUnjail;
@@ -1564,6 +1589,7 @@ export declare namespace cosmos {
     }
     namespace staking {
         const v1beta1: {
+            LCDQueryClient: typeof _101.LCDQueryClient;
             MsgCreateValidator: {
                 encode(message: _61.MsgCreateValidator, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _61.MsgCreateValidator;
@@ -1919,6 +1945,7 @@ export declare namespace cosmos {
             };
         }
         const v1beta1: {
+            LCDQueryClient: typeof _102.LCDQueryClient;
             Tx: {
                 encode(message: _64.Tx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _64.Tx;
@@ -2031,6 +2058,7 @@ export declare namespace cosmos {
     }
     namespace upgrade {
         const v1beta1: {
+            LCDQueryClient: typeof _103.LCDQueryClient;
             Plan: {
                 encode(message: _66.Plan, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _66.Plan;
@@ -2137,4 +2165,56 @@ export declare namespace cosmos {
             };
         };
     }
+    const ClientFactory: {
+        createLCDClient: ({ restEndpoint }: {
+            restEndpoint: string;
+        }) => Promise<{
+            cosmos: {
+                auth: {
+                    v1beta1: _90.LCDQueryClient;
+                };
+                authz: {
+                    v1beta1: _91.LCDQueryClient;
+                };
+                bank: {
+                    v1beta1: _92.LCDQueryClient;
+                };
+                base: {
+                    tendermint: {
+                        v1beta1: _93.LCDQueryClient;
+                    };
+                };
+                distribution: {
+                    v1beta1: _94.LCDQueryClient;
+                };
+                evidence: {
+                    v1beta1: _95.LCDQueryClient;
+                };
+                feegrant: {
+                    v1beta1: _96.LCDQueryClient;
+                };
+                gov: {
+                    v1beta1: _97.LCDQueryClient;
+                };
+                mint: {
+                    v1beta1: _98.LCDQueryClient;
+                };
+                params: {
+                    v1beta1: _99.LCDQueryClient;
+                };
+                slashing: {
+                    v1beta1: _100.LCDQueryClient;
+                };
+                staking: {
+                    v1beta1: _101.LCDQueryClient;
+                };
+                tx: {
+                    v1beta1: _102.LCDQueryClient;
+                };
+                upgrade: {
+                    v1beta1: _103.LCDQueryClient;
+                };
+            };
+        }>;
+    };
 }
