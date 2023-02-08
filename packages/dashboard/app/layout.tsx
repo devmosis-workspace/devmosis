@@ -11,6 +11,7 @@ import { globalStyles } from "@/styles/globalStyles";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { Layout } from "@/components/layout/Layout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,9 +53,7 @@ export default function RootLayout({
         <CacheProvider value={cache}>
           {globalStyles}
           <Sidebar />
-          <div style={{ width: "100vw", paddingLeft: "220px" }}>
-            {children}
-          </div>
+          <Layout>{children}</Layout>
         </CacheProvider>
       </body>
     </html>
