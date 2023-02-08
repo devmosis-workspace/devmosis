@@ -10,6 +10,7 @@ import { useChainInitial } from "@/hooks/useChainInitial";
 import { globalStyles } from "@/styles/globalStyles";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
+import { Sidebar } from "@/components/layout/Sidebar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ const inter = Inter({
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["500", "600", "700"],
   variable: "--font-poppins",
 });
 
@@ -50,7 +51,10 @@ export default function RootLayout({
       <body>
         <CacheProvider value={cache}>
           {globalStyles}
-          {children}
+          <Sidebar />
+          <div style={{ width: "100vw", paddingLeft: "220px" }}>
+            {children}
+          </div>
         </CacheProvider>
       </body>
     </html>

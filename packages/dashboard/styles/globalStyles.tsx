@@ -6,14 +6,33 @@ export const globalStyles = (
     styles={css`
       ${normalize}
 
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         font-family: var(--font-inter), sans-serif;
         background-color: #242731;
         color: #fff;
       }
 
-      .h1, .h2, .h3, .h4, .h5, .h6 {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         font-family: var(--font-poppins), sans-serif;
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
       }
     `}
   />
