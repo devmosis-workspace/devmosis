@@ -31,7 +31,10 @@
       ],
       "@/styles/*": [
         "styles/*"
-      ]
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
     },
     "jsxImportSource": "@emotion/react",
     "plugins": [
