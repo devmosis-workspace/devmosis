@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { Inter, Poppins } from "@next/font/google";
 
 import { useKeplrListener } from "@/hooks/useKeplrListener";
 import { useAccountInitial } from "@/hooks/useAccountInitial";
@@ -9,6 +10,18 @@ import { useChainInitial } from "@/hooks/useChainInitial";
 import { globalStyles } from "@/styles/globalStyles";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-inter",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-poppins",
+});
 
 const cache = createCache({ key: "next" });
 
@@ -32,7 +45,7 @@ export default function RootLayout({
   useKeplrListener();
 
   return (
-    <html>
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <head></head>
       <body>
         <CacheProvider value={cache}>
