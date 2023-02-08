@@ -1,0 +1,35 @@
+{
+  "name": "devmosis",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chain-registry/types": "^0.14.0",
+    "@chain-types/cosmoshub": "workspace:^",
+    "@chain-types/osmosis": "workspace:^",
+    "@emotion/cache": "^11.10.5",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@keplr-wallet/types": "^0.11.38",
+    "@next/font": "^13.1.6",
+    "chain-registry": "^1.6.1",
+    "jotai": "^1.13.1",
+    "next": "^13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.0",
+    "typescript": "4.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "eslint": "8.32.0",
+    "eslint-config-next": "^13.1.4"
+  }
+}
