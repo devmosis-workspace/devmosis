@@ -10,7 +10,6 @@ import { useChainInitial } from "@/hooks/useChainInitial";
 import { globalStyles } from "@/styles/globalStyles";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { Sidebar } from "@/components/layout/Sidebar";
 import { Layout } from "@/components/layout/Layout";
 
 const inter = Inter({
@@ -52,8 +51,9 @@ export default function RootLayout({
       <body>
         <CacheProvider value={cache}>
           {globalStyles}
-          <Sidebar />
-          <Layout>{children}</Layout>
+          <Layout>
+            {children}
+          </Layout>
         </CacheProvider>
       </body>
     </html>
