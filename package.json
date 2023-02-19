@@ -3,7 +3,8 @@
   "license": "MIT",
   "workspaces": [
     "packages/*",
-    "chain-types/*"
+    "chain-types/*",
+    "chain-msgs/*"
   ],
   "dependenciesMeta": {
     "next@13.1.6": {

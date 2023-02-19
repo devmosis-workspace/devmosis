@@ -8,7 +8,7 @@ interface MetaTagsProps {
 
 export const MetaTags: FC<MetaTagsProps> = ({ title, description, image }) => {
   const currentTitle = title ?? "devmosis";
-  const currentDescription = description ?? "devmosis";
+  const currentDescription = description ?? "Create your own Interchain transactions";
   const currentURL = "https://devmos.is";
   const currentImage = image ?? "https://devmos.is/og-image.png";
 

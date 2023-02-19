@@ -7,6 +7,7 @@ import styled from "@emotion/styled";
 import { useAtomValue } from "jotai";
 import { useCallback, useState } from "react";
 import { PlayIcon } from "@/styles/icons";
+import { MessageGroup } from "@/components/MessageGroup";
 
 type Message = {
   [bech32Prefix: string]: any[];
@@ -53,30 +54,21 @@ export default function Home() {
         <Divider />
         <Wrapper>
           <BasketArea>
-            {messages.map((message, index) => {
-              const bech32Prefix = Object.keys(message)[0];
-              const key = `${bech32Prefix}-${index}`;
-              const chainInfo = findChainInfoByBech32Prefix(bech32Prefix);
-              if (chainInfo === undefined) return null;
+              {messages.map((message, index) => {
+                const bech32Prefix = Object.keys(message)[0];
+                const key = `${bech32Prefix}-${index}`;
+                const chainInfo = findChainInfoByBech32Prefix(bech32Prefix);
+                if (chainInfo === undefined) return null;
 
-              return (
-                <MessageGroup key={key}>
-                  <div
-                    css={css`
-                      display: flex;
-                      justify-content: space-between;
-                      align-items: center;
-                    `}
-                  >
-                    <span>{chainInfo.pretty_name}</span>
-                    <RemoveButton onClick={() => removeMessageGroup(index)}>
-                      Remove
-                    </RemoveButton>
-                  </div>
-                </MessageGroup>
-              );
-            })}
-            <button onClick={() => createMessageGroup("osmo")}>Add</button>
+                return (
+                  <MessageGroup
+                    key={key}
+                    chainInfo={chainInfo}
+                    removeMessageGroup={() => removeMessageGroup(index)}
+                  />
+                );
+              })}
+              <AddButton onClick={() => createMessageGroup("osmo")}>Add</AddButton>
           </BasketArea>
           <MessageList></MessageList>
         </Wrapper>
@@ -147,19 +139,6 @@ const BasketArea = styled.div`
   box-shadow: 0 10px 36px rgb(0 0 0 / 35%);
 `;
 
-const MessageGroup = styled.div`
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  background-color: gray;
-  padding: 10px;
-`;
-
-const RemoveButton = styled.button`
-  display: flex;
-  width: fit-content;
-`;
-
 const MessageList = styled.div`
   display: flex;
   flex-direction: column;
@@ -190,6 +169,25 @@ const ExecuteButton = styled.button`
   font-size: 14px;
   font-weight: 500;
 
+  &:hover {
+    background-color: #2e5bff;
+  }
+`;
+
+const AddButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #4476ff;
+  padding: 0 16px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  
   &:hover {
     background-color: #2e5bff;
   }
