@@ -1963,6 +1963,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@chain-msgs/osmosis@workspace:chain-msgs/osmosis":
+  version: 0.0.0-use.local
+  resolution: "@chain-msgs/osmosis@workspace:chain-msgs/osmosis"
+  languageName: unknown
+  linkType: soft
+
 "@chain-registry/types@npm:^0.14.0":
   version: 0.14.0
   resolution: "@chain-registry/types@npm:0.14.0"

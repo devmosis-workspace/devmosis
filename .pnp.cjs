@@ -16,6 +16,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."\
       },\
       {\
+        "name": "@chain-msgs/osmosis",\
+        "reference": "workspace:chain-msgs/osmosis"\
+      },\
+      {\
         "name": "@chain-types/cosmoshub",\
         "reference": "workspace:chain-types/cosmoshub"\
       },\
@@ -35,6 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
+      ["@chain-msgs/osmosis", ["workspace:chain-msgs/osmosis"]],\
       ["@chain-types/cosmoshub", ["workspace:chain-types/cosmoshub"]],\
       ["@chain-types/osmosis", ["workspace:chain-types/osmosis"]],\
       ["@chain-types/stride", ["workspace:chain-types/stride"]],\
@@ -497,6 +502,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [\
         "@babel/types",\
         "npm:7.20.7"\
+      ],\
+      [\
+        "@chain-msgs/osmosis",\
+        "workspace:chain-msgs/osmosis"\
       ],\
       [\
         "@chain-registry/types",\
@@ -8539,6 +8548,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["to-fast-properties", "npm:2.0.0"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@chain-msgs/osmosis", [\
+        ["workspace:chain-msgs/osmosis", {\
+          "packageLocation": "./chain-msgs/osmosis/",\
+          "packageDependencies": [\
+            ["@chain-msgs/osmosis", "workspace:chain-msgs/osmosis"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["@chain-registry/types", [\
