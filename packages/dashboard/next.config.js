@@ -17,11 +17,11 @@ const securityHeaders = [
   },
 ];
 
-const chainTypesPackages = ["@chain-types/osmosis"];
+// const chainClientsPackages = ["@chain-clients/osmosis"];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: [...chainTypesPackages],
+  // transpilePackages: [...chainClientsPackages],
   reactStrictMode: true,
   poweredByHeader: false,
   compiler: {

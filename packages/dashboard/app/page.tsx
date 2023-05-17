@@ -1,7 +1,5 @@
 "use client";
 import { registeredChainAtom } from "@/atoms/chainAtom";
-import { osmosis } from "@chain-types/osmosis";
-import { cosmos } from "@chain-types/cosmoshub";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useAtomValue } from "jotai";
@@ -54,21 +52,23 @@ export default function Home() {
         <Divider />
         <Wrapper>
           <BasketArea>
-              {messages.map((message, index) => {
-                const bech32Prefix = Object.keys(message)[0];
-                const key = `${bech32Prefix}-${index}`;
-                const chainInfo = findChainInfoByBech32Prefix(bech32Prefix);
-                if (chainInfo === undefined) return null;
+            {messages.map((message, index) => {
+              const bech32Prefix = Object.keys(message)[0];
+              const key = `${bech32Prefix}-${index}`;
+              const chainInfo = findChainInfoByBech32Prefix(bech32Prefix);
+              if (chainInfo === undefined) return null;
 
-                return (
-                  <MessageGroup
-                    key={key}
-                    chainInfo={chainInfo}
-                    removeMessageGroup={() => removeMessageGroup(index)}
-                  />
-                );
-              })}
-              <AddButton onClick={() => createMessageGroup("osmo")}>Add</AddButton>
+              return (
+                <MessageGroup
+                  key={key}
+                  chainInfo={chainInfo}
+                  removeMessageGroup={() => removeMessageGroup(index)}
+                />
+              );
+            })}
+            <AddButton onClick={() => createMessageGroup("osmo")}>
+              Add
+            </AddButton>
           </BasketArea>
           <MessageList></MessageList>
         </Wrapper>
@@ -187,7 +187,7 @@ const AddButton = styled.button`
   color: #fff;
   font-size: 14px;
   font-weight: 500;
-  
+
   &:hover {
     background-color: #2e5bff;
   }

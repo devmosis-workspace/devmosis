@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chain-types/cosmoshub": "workspace:^",
-    "@chain-types/osmosis": "workspace:^",
+    "@chain-clients/cosmoshub": "workspace:^",
+    "@chain-clients/osmosis": "workspace:^",
     "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

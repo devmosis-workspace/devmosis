@@ -1967,18 +1967,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chain-msgs/osmosis@workspace:chain-msgs/osmosis":
+"@chain-clients/cosmoshub@workspace:^, @chain-clients/cosmoshub@workspace:chain-clients/cosmoshub":
   version: 0.0.0-use.local
-  resolution: "@chain-msgs/osmosis@workspace:chain-msgs/osmosis"
-  dependencies:
-    "@chain-types/osmosis": "workspace:^"
-    typescript: 5.0.4
-  languageName: unknown
-  linkType: soft
-
-"@chain-types/cosmoshub@workspace:^, @chain-types/cosmoshub@workspace:chain-types/cosmoshub":
-  version: 0.0.0-use.local
-  resolution: "@chain-types/cosmoshub@workspace:chain-types/cosmoshub"
+  resolution: "@chain-clients/cosmoshub@workspace:chain-clients/cosmoshub"
   dependencies:
     "@babel/cli": 7.19.3
     "@babel/core": 7.19.3
@@ -2014,9 +2005,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chain-types/osmosis@workspace:^, @chain-types/osmosis@workspace:chain-types/osmosis":
+"@chain-clients/osmosis@workspace:^, @chain-clients/osmosis@workspace:chain-clients/osmosis":
   version: 0.0.0-use.local
-  resolution: "@chain-types/osmosis@workspace:chain-types/osmosis"
+  resolution: "@chain-clients/osmosis@workspace:chain-clients/osmosis"
   dependencies:
     "@babel/cli": 7.19.3
     "@babel/core": 7.19.3
@@ -2053,9 +2044,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chain-types/stride@workspace:chain-types/stride":
+"@chain-clients/stride@workspace:chain-clients/stride":
   version: 0.0.0-use.local
-  resolution: "@chain-types/stride@workspace:chain-types/stride"
+  resolution: "@chain-clients/stride@workspace:chain-clients/stride"
   dependencies:
     "@babel/cli": 7.19.3
     "@babel/core": 7.19.3
@@ -2088,6 +2079,12 @@ __metadata:
     regenerator-runtime: ^0.13.7
     rimraf: ^3.0.2
     typescript: 5.0.4
+  languageName: unknown
+  linkType: soft
+
+"@chain-msgs/osmosis@workspace:chain-msgs/osmosis":
+  version: 0.0.0-use.local
+  resolution: "@chain-msgs/osmosis@workspace:chain-msgs/osmosis"
   languageName: unknown
   linkType: soft
 
@@ -5236,8 +5233,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "devmosis@workspace:packages/dashboard"
   dependencies:
-    "@chain-types/cosmoshub": "workspace:^"
-    "@chain-types/osmosis": "workspace:^"
+    "@chain-clients/cosmoshub": "workspace:^"
+    "@chain-clients/osmosis": "workspace:^"
     "@emotion/cache": ^11.10.5
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
