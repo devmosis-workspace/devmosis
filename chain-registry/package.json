@@ -1,0 +1,16 @@
+{
+  "name": "chain-registry",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "ts-node ./scripts/build.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.7",
+    "deepmerge": "^4.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "5.0.4"
+  },
+  "dependencies": {
+    "glob": "^10.2.4"
+  }
+}
