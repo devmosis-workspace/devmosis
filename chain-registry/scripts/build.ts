@@ -1,11 +1,12 @@
 import fs from "node:fs";
 import deepmerge from "deepmerge";
 import { globSync } from "glob";
+import type { AssetList, Chain, IBCInfo } from "../types";
 
 const paths = globSync(`${__dirname}/../chain-registry/**/*.json`);
-const assets = [];
-const chains = [];
-const ibcs = [];
+const assets: AssetList[] = [];
+const chains: Chain[] = [];
+const ibcs: IBCInfo[] = [];
 paths.forEach((file) => {
   const data = JSON.parse(fs.readFileSync(file, "utf-8"));
   if (!data.$schema) {
@@ -18,8 +19,8 @@ paths.forEach((file) => {
   if (data.$schema.endsWith("ibc_data.schema.json")) ibcs.push(data);
 });
 
-const addAssets = [];
-const addChains = [];
+const addAssets: AssetList[] = [];
+const addChains: Chain[] = [];
 
 addChains.forEach((chain) => {
   const existingChainIndex = chains.findIndex(
@@ -53,7 +54,7 @@ const write = (file, json, TypeName, isArray = false) => {
   const exportType = isArray ? TypeName + "[]" : TypeName;
   fs.writeFileSync(
     `${__dirname}/../src/${file}.ts`,
-    `import { ${TypeName} } from '../types';
+    `import type { ${TypeName} } from '../types';
 const ${file}: ${exportType} = ${strfy};
 export default ${file};
     `

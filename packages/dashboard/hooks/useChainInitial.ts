@@ -1,10 +1,13 @@
-import { assets, chains } from "chain-registry";
+import { assets, chains, type Chain } from "chain-registry";
 import { useSetAtom } from "jotai";
 
-import { registeredChainAtom, unregisteredChainAtom, unsupportedChainAtom } from "@/atoms/chainAtom";
+import {
+  registeredChainAtom,
+  unregisteredChainAtom,
+  unsupportedChainAtom,
+} from "@/atoms/chainAtom";
 import { getKeplrFromWindow } from "@/utils/keplr";
 
-import type { Chain } from "@chain-registry/types";
 import type { ChainInfoWithoutEndpoints } from "@keplr-wallet/types";
 
 const getWalletChainInfos = async () => {

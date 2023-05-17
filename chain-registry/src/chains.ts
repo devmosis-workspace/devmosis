@@ -1,4 +1,4 @@
-import { Chain } from '../types';
+import type { Chain } from '../types';
 const chains: Chain[] = [
   {
     "$schema": "../chain.schema.json",

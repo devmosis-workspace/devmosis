@@ -1,4 +1,4 @@
-import { IBCInfo } from '../types';
+import type { IBCInfo } from '../types';
 const ibc: IBCInfo[] = [
   {
     "$schema": "../../ibc_data.schema.json",

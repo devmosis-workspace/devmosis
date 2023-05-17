@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chain-registry/types": "^0.14.0",
     "@chain-types/cosmoshub": "workspace:^",
     "@chain-types/osmosis": "workspace:^",
     "@emotion/cache": "^11.10.5",
@@ -17,7 +16,7 @@
     "@emotion/styled": "^11.10.5",
     "@keplr-wallet/types": "^0.11.38",
     "@next/font": "^13.1.6",
-    "chain-registry": "^1.6.1",
+    "chain-registry": "workspace:^",
     "jotai": "^1.13.1",
     "next": "^13.1.6",
     "react": "18.2.0",

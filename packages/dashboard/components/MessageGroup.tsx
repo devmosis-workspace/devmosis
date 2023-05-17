@@ -1,4 +1,4 @@
-import type { Chain } from "@chain-registry/types";
+import type { Chain } from "chain-registry";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import type { FC } from "react";
@@ -12,8 +12,6 @@ export const MessageGroup: FC<MessageGroupProps> = ({
   chainInfo,
   removeMessageGroup,
 }) => {
-    
-
   return (
     <Container>
       <div

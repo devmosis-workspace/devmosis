@@ -1,4 +1,4 @@
-import { AssetList } from '../types';
+import type { AssetList } from '../types';
 const assets: AssetList[] = [
   {
     "$schema": "../assetlist.schema.json",

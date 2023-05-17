@@ -1,6 +1,4 @@
-import { assets } from "chain-registry";
-
-import { AssetDenomUnit, Chain } from "@chain-registry/types";
+import { assets, type AssetDenomUnit, type Chain } from "chain-registry";
 
 import { generateBech32Config } from "./bech32Config";
 

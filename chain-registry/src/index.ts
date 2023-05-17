@@ -8,4 +8,5 @@ export default {
   ibc,
 };
 
+export * from "../types";
 export { assets, chains, ibc };

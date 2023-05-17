@@ -11,7 +11,7 @@ import { useChainInitial } from "@/hooks/useChainInitial";
 import { generateKeplrChainInfo, suggestChainFromWindow } from "@/utils/keplr";
 import styled from "@emotion/styled";
 
-import type { Chain } from "@chain-registry/types";
+import type { Chain } from "chain-registry";
 
 export default function Chains() {
   const { chainInfoInit } = useChainInitial();
