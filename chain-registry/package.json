@@ -1,13 +1,13 @@
 {
   "name": "chain-registry",
   "version": "0.0.1",
-  "main": "./dist/chain-registry.umd.cjs",
-  "module": "./dist/chain-registry.js",
+  "main": "./dist/chain-registry.umd.js",
+  "module": "./dist/chain-registry.mjs",
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/chain-registry.js",
-      "require": "./dist/chain-registry.umd.cjs"
+      "import": "./dist/chain-registry.mjs",
+      "require": "./dist/chain-registry.umd.js"
     }
   },
   "files": [

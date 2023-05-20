@@ -5,9 +5,7 @@ import { registeredChainAtom } from "@/atoms/chainAtom";
 import { assertFulfilled } from "@/utils/assertFulfilled";
 import { getKeplrFromWindow } from "@/utils/keplr";
 
-import type { Chain } from "chain-registry";
-
-const getAccountsFromKeplr = async (registeredChains: Chain[]) => {
+const getAccountsFromKeplr = async (registeredChains: any[]) => {
   try {
     const keplr = await getKeplrFromWindow();
 

@@ -4,16 +4,10 @@
   "workspaces": [
     "packages/*",
     "chain-clients/*",
-    "chain-msgs/*",
     "chain-registry"
   ],
-  "dependenciesMeta": {
-    "next@13.1.6": {
-      "unplugged": true
-    }
-  },
-  "packageManager": "yarn@3.5.1",
   "dependencies": {
     "typescript": "5.0.4"
-  }
+  },
+  "packageManager": "yarn@3.5.1"
 }

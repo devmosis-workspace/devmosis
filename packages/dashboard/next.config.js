@@ -17,11 +17,13 @@ const securityHeaders = [
   },
 ];
 
-// const chainClientsPackages = ["@chain-clients/osmosis"];
+const clientPackages = ["@chain-clients/osmosis"];
+
+const transpilePackages = ["chain-registry", ...clientPackages];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // transpilePackages: [...chainClientsPackages],
+  transpilePackages,
   reactStrictMode: true,
   poweredByHeader: false,
   compiler: {
@@ -40,10 +42,10 @@ const nextConfig = {
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
-      use: ['@svgr/webpack'],
-    })
+      use: ["@svgr/webpack"],
+    });
 
-    return config
+    return config;
   },
   async headers() {
     return [

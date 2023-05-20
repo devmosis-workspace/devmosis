@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Inter, Poppins } from "@next/font/google";
+import { Inter, Poppins } from "next/font/google";
 
 import { useKeplrListener } from "@/hooks/useKeplrListener";
 import { useAccountInitial } from "@/hooks/useAccountInitial";
@@ -51,9 +51,7 @@ export default function RootLayout({
       <body>
         <CacheProvider value={cache}>
           {globalStyles}
-          <Layout>
-            {children}
-          </Layout>
+          <Layout>{children}</Layout>
         </CacheProvider>
       </body>
     </html>

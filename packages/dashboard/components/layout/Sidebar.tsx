@@ -14,7 +14,6 @@ export const Sidebar = () => {
   return (
     <Container>
       <LogoBox>
-        <Image src="/badkids-2646.png" alt="logo" width={30} height={30} />
         <Logo>DEVMOS.IS</Logo>
       </LogoBox>
 

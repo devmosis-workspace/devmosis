@@ -37,8 +37,8 @@ const separateChains = (walletChainInfos: ChainInfoWithoutEndpoints[]) =>
         (asset) => asset.chain_name === chain.chain_name
       )?.assets;
 
-      const noRPC = chain.apis?.rpc?.[0].address === undefined;
-      const noREST = chain.apis?.rest?.[0].address === undefined;
+      const noRPC = chain.apis?.rpc?.[0]?.address === undefined;
+      const noREST = chain.apis?.rest?.[0]?.address === undefined;
       const noAssets = chainAssets === undefined;
 
       if (walletChainInfos.find((info) => info.chainId === chain.chain_id)) {
