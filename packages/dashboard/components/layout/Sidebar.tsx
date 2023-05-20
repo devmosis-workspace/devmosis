@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
 const pageList = [
-  { path: "/", title: "Tx Playground" },
+  { path: "/", title: "Transactions" },
   { path: "/chains", title: "Add chains to Keplr" },
 ];
 
@@ -67,21 +66,21 @@ const Menu = styled.div`
   flex-direction: column;
 `;
 
-const LinkButton = styled(Link)<{isActive: boolean}>`
+const LinkButton = styled(Link)<{ isActive: boolean }>`
   display: flex;
   align-items: center;
   width: 100%;
   height: 48px;
   padding: 0 20px;
   border-radius: 12px;
-  margin-bottom: 4px; 
+  margin-bottom: 4px;
 
-  background-color: ${({ isActive }) => isActive ? "#6C5DD3" : "transparent"};
-  color: ${({ isActive }) => isActive ? "#fff" : "#babac2"};
+  background-color: ${({ isActive }) => (isActive ? "#6C5DD3" : "transparent")};
+  color: ${({ isActive }) => (isActive ? "#fff" : "#babac2")};
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
   &:hover {
-    color: #fff
+    color: #fff;
   }
 `;
 

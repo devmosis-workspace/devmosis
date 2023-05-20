@@ -10,7 +10,8 @@ import { useChainInitial } from "@/hooks/useChainInitial";
 import { globalStyles } from "@/styles/globalStyles";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { Layout } from "@/components/layout/Layout";
+import styled from "@emotion/styled";
+import { Sidebar } from "@/components/layout/Sidebar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -51,9 +52,29 @@ export default function RootLayout({
       <body>
         <CacheProvider value={cache}>
           {globalStyles}
-          <Layout>{children}</Layout>
+          <Sidebar />
+          <Container>
+            <Wrapper>{children}</Wrapper>
+          </Container>
         </CacheProvider>
       </body>
     </html>
   );
 }
+
+const Container = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  padding-left: 220px;
+
+  display: flex;
+  justify-content: center;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  padding: 60px 40px 40px;
+`;
