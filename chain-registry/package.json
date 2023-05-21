@@ -21,7 +21,7 @@
     "deepmerge": "^4.3.1",
     "glob": "^10.2.4",
     "ts-node": "^10.9.1",
-    "typescript": "5.0.4",
+    "typescript": "^5.0.4",
     "vite": "^4.3.7",
     "vite-plugin-dts": "^2.3.0"
   }

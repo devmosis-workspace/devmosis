@@ -17,9 +17,9 @@ const securityHeaders = [
   },
 ];
 
-const clientPackages = ["@chain-clients/osmosis"];
+const componentPackages = ["@chain-components/osmosis"];
 
-const transpilePackages = ["chain-registry", ...clientPackages];
+const transpilePackages = [...componentPackages];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

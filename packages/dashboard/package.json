@@ -1,5 +1,5 @@
 {
-  "name": "devmosis",
+  "name": "dashboard",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@chain-clients/osmosis": "workspace:^",
+    "@chain-components/osmosis": "workspace:^",
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -17,16 +18,16 @@
     "chain-registry": "workspace:^",
     "jotai": "^2.1.0",
     "next": "^13.4.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
-    "typescript": "5.0.4"
+    "typescript": "^5.0.4"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
     "@types/node": "18.11.18",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
     "eslint": "8.32.0",
     "eslint-config-next": "^13.1.4"
   }

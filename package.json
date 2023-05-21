@@ -2,12 +2,13 @@
   "private": true,
   "license": "MIT",
   "workspaces": [
-    "packages/*",
     "chain-clients/*",
-    "chain-registry"
+    "chain-components/*",
+    "chain-registry",
+    "packages/*"
   ],
   "dependencies": {
-    "typescript": "5.0.4"
+    "typescript": "^5.0.4"
   },
   "packageManager": "yarn@3.5.1"
 }
