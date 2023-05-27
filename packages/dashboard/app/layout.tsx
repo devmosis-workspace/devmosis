@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-head-element */
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Inter, Poppins } from "next/font/google";
 
 import { useKeplrListener } from "@/hooks/useKeplrListener";
@@ -11,7 +11,9 @@ import { globalStyles } from "@/styles/globalStyles";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Sidebar } from "@/components/layout/Sidebar";
+import { Sidebar } from "@/components/layouts/Sidebar";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +34,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [client] = useState(
+    new QueryClient({ defaultOptions: { queries: { staleTime: 5000 } } })
+  );
   const { chainInfoInit } = useChainInitial();
   const { accountInit } = useAccountInitial();
 
@@ -52,10 +57,15 @@ export default function RootLayout({
       <body>
         <CacheProvider value={cache}>
           {globalStyles}
-          <Sidebar />
-          <Container>
-            <Wrapper>{children}</Wrapper>
-          </Container>
+          <>
+            <QueryClientProvider client={client}>
+              <Sidebar />
+              <Container>
+                <Wrapper>{children}</Wrapper>
+              </Container>
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+          </>
         </CacheProvider>
       </body>
     </html>

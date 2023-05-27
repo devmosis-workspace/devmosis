@@ -93,6 +93,24 @@ import * as _158 from "./upgrade/v1beta1/tx";
 import * as _159 from "./upgrade/v1beta1/upgrade";
 import * as _160 from "./vesting/v1beta1/tx";
 import * as _161 from "./vesting/v1beta1/vesting";
+import * as _244 from "./auth/v1beta1/query.lcd";
+import * as _245 from "./authz/v1beta1/query.lcd";
+import * as _246 from "./bank/v1beta1/query.lcd";
+import * as _247 from "./base/node/v1beta1/query.lcd";
+import * as _248 from "./base/tendermint/v1beta1/query.lcd";
+import * as _249 from "./distribution/v1beta1/query.lcd";
+import * as _250 from "./evidence/v1beta1/query.lcd";
+import * as _251 from "./feegrant/v1beta1/query.lcd";
+import * as _252 from "./gov/v1/query.lcd";
+import * as _253 from "./gov/v1beta1/query.lcd";
+import * as _254 from "./group/v1/query.lcd";
+import * as _255 from "./mint/v1beta1/query.lcd";
+import * as _256 from "./nft/v1beta1/query.lcd";
+import * as _257 from "./params/v1beta1/query.lcd";
+import * as _258 from "./slashing/v1beta1/query.lcd";
+import * as _259 from "./staking/v1beta1/query.lcd";
+import * as _260 from "./tx/v1beta1/service.lcd";
+import * as _261 from "./upgrade/v1beta1/query.lcd";
 export declare namespace cosmos {
     namespace app {
         namespace module {
@@ -144,6 +162,7 @@ export declare namespace cosmos {
     }
     namespace auth {
         const v1beta1: {
+            LCDQueryClient: typeof _244.LCDQueryClient;
             QueryAccountsRequest: {
                 encode(message: _72.QueryAccountsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _72.QueryAccountsRequest;
@@ -258,6 +277,7 @@ export declare namespace cosmos {
     }
     namespace authz {
         const v1beta1: {
+            LCDQueryClient: typeof _245.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -466,6 +486,7 @@ export declare namespace cosmos {
     }
     namespace bank {
         const v1beta1: {
+            LCDQueryClient: typeof _246.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -794,6 +815,7 @@ export declare namespace cosmos {
         }
         namespace node {
             const v1beta1: {
+                LCDQueryClient: typeof _247.LCDQueryClient;
                 ConfigRequest: {
                     encode(_: _85.ConfigRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _85.ConfigRequest;
@@ -1061,6 +1083,7 @@ export declare namespace cosmos {
         }
         namespace tendermint {
             const v1beta1: {
+                LCDQueryClient: typeof _248.LCDQueryClient;
                 Block: {
                     encode(message: _93.Block, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                     decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _93.Block;
@@ -1361,6 +1384,7 @@ export declare namespace cosmos {
     }
     namespace distribution {
         const v1beta1: {
+            LCDQueryClient: typeof _249.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -1703,6 +1727,7 @@ export declare namespace cosmos {
     }
     namespace evidence {
         const v1beta1: {
+            LCDQueryClient: typeof _250.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -1788,6 +1813,7 @@ export declare namespace cosmos {
     }
     namespace feegrant {
         const v1beta1: {
+            LCDQueryClient: typeof _251.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -1942,6 +1968,7 @@ export declare namespace cosmos {
     }
     namespace gov {
         const v1: {
+            LCDQueryClient: typeof _252.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -2298,6 +2325,7 @@ export declare namespace cosmos {
             };
         };
         const v1beta1: {
+            LCDQueryClient: typeof _253.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -2616,6 +2644,7 @@ export declare namespace cosmos {
     }
     namespace group {
         const v1: {
+            LCDQueryClient: typeof _254.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -3431,6 +3460,7 @@ export declare namespace cosmos {
     }
     namespace mint {
         const v1beta1: {
+            LCDQueryClient: typeof _255.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _133.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _133.QueryParamsRequest;
@@ -3483,6 +3513,7 @@ export declare namespace cosmos {
     }
     namespace nft {
         const v1beta1: {
+            LCDQueryClient: typeof _256.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -3690,6 +3721,7 @@ export declare namespace cosmos {
     }
     namespace params {
         const v1beta1: {
+            LCDQueryClient: typeof _257.LCDQueryClient;
             QueryParamsRequest: {
                 encode(message: _144.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _144.QueryParamsRequest;
@@ -3729,6 +3761,7 @@ export declare namespace cosmos {
     }
     namespace slashing {
         const v1beta1: {
+            LCDQueryClient: typeof _258.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -3836,6 +3869,7 @@ export declare namespace cosmos {
     }
     namespace staking {
         const v1beta1: {
+            LCDQueryClient: typeof _259.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -4445,6 +4479,7 @@ export declare namespace cosmos {
             };
         }
         const v1beta1: {
+            LCDQueryClient: typeof _260.LCDQueryClient;
             Tx: {
                 encode(message: _156.Tx, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.Tx;
@@ -4572,6 +4607,7 @@ export declare namespace cosmos {
     }
     namespace upgrade {
         const v1beta1: {
+            LCDQueryClient: typeof _261.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -4925,4 +4961,66 @@ export declare namespace cosmos {
             };
         };
     }
+    const ClientFactory: {
+        createLCDClient: ({ restEndpoint }: {
+            restEndpoint: string;
+        }) => Promise<{
+            cosmos: {
+                auth: {
+                    v1beta1: _244.LCDQueryClient;
+                };
+                authz: {
+                    v1beta1: _245.LCDQueryClient;
+                };
+                bank: {
+                    v1beta1: _246.LCDQueryClient;
+                };
+                base: {
+                    node: {
+                        v1beta1: _247.LCDQueryClient;
+                    };
+                    tendermint: {
+                        v1beta1: _248.LCDQueryClient;
+                    };
+                };
+                distribution: {
+                    v1beta1: _249.LCDQueryClient;
+                };
+                evidence: {
+                    v1beta1: _250.LCDQueryClient;
+                };
+                feegrant: {
+                    v1beta1: _251.LCDQueryClient;
+                };
+                gov: {
+                    v1: _252.LCDQueryClient;
+                    v1beta1: _253.LCDQueryClient;
+                };
+                group: {
+                    v1: _254.LCDQueryClient;
+                };
+                mint: {
+                    v1beta1: _255.LCDQueryClient;
+                };
+                nft: {
+                    v1beta1: _256.LCDQueryClient;
+                };
+                params: {
+                    v1beta1: _257.LCDQueryClient;
+                };
+                slashing: {
+                    v1beta1: _258.LCDQueryClient;
+                };
+                staking: {
+                    v1beta1: _259.LCDQueryClient;
+                };
+                tx: {
+                    v1beta1: _260.LCDQueryClient;
+                };
+                upgrade: {
+                    v1beta1: _261.LCDQueryClient;
+                };
+            };
+        }>;
+    };
 }

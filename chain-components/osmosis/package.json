@@ -6,10 +6,19 @@
   "license": "ISC",
   "dependencies": {
     "@chain-clients/osmosis": "workspace:^",
+    "@common/components": "workspace:^",
+    "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "react": "^18.2.0"
+    "@keplr-wallet/unit": "^0.11.63",
+    "@tanstack/react-query": "^4.29.11",
+    "chain-registry": "workspace:^",
+    "long": "^5.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9"
   },
   "devDependencies": {
-    "@types/react": "^18.2.6"
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4"
   }
 }

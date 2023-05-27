@@ -15,9 +15,6 @@ telescope({
       patterns: ['**/*amino.ts', '**/*registry.ts']
     },
     experimentalGlobalProtoNamespace: true,
-    reactQuery:{
-      enabled: true,
-    },
     prototypes: {
       includePackageVar: false,
       typingsFormat: {
@@ -36,7 +33,7 @@ telescope({
       enabled: true,
     },
     lcdClients: {
-      enabled: false
+      enabled: true,
     },
     rpcClients: {
       enabled: false

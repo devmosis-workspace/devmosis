@@ -11,5 +11,3 @@ export * from "./tendermint/bundle";
 export * from "./cosmos_proto/bundle";
 export * from "./gogoproto/bundle";
 export * from "./google/bundle";
-export * from "./extern";
-export * from "./react-query";

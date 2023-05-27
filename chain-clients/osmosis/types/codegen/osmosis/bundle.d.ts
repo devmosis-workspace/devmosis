@@ -64,6 +64,22 @@ import * as _62 from "./txfees/v1beta1/query";
 import * as _63 from "./valset-pref/v1beta1/query";
 import * as _64 from "./valset-pref/v1beta1/state";
 import * as _65 from "./valset-pref/v1beta1/tx";
+import * as _200 from "./downtime-detector/v1beta1/query.lcd";
+import * as _201 from "./epochs/query.lcd";
+import * as _202 from "./gamm/v1beta1/query.lcd";
+import * as _203 from "./gamm/v2/query.lcd";
+import * as _204 from "./ibc-rate-limit/v1beta1/query.lcd";
+import * as _205 from "./incentives/query.lcd";
+import * as _206 from "./lockup/query.lcd";
+import * as _207 from "./mint/v1beta1/query.lcd";
+import * as _208 from "./pool-incentives/v1beta1/query.lcd";
+import * as _209 from "./poolmanager/v1beta1/query.lcd";
+import * as _210 from "./protorev/v1beta1/query.lcd";
+import * as _211 from "./superfluid/query.lcd";
+import * as _212 from "./tokenfactory/v1beta1/query.lcd";
+import * as _213 from "./twap/v1beta1/query.lcd";
+import * as _214 from "./txfees/v1beta1/query.lcd";
+import * as _215 from "./valset-pref/v1beta1/query.lcd";
 export declare namespace osmosis {
     namespace accum {
         const v1beta1: {
@@ -86,6 +102,7 @@ export declare namespace osmosis {
     }
     namespace downtimedetector {
         const v1beta1: {
+            LCDQueryClient: typeof _200.LCDQueryClient;
             RecoveredSinceDowntimeOfLengthRequest: {
                 encode(message: _3.RecoveredSinceDowntimeOfLengthRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _3.RecoveredSinceDowntimeOfLengthRequest;
@@ -114,6 +131,7 @@ export declare namespace osmosis {
     }
     namespace epochs {
         const v1beta1: {
+            LCDQueryClient: typeof _201.LCDQueryClient;
             QueryEpochsInfoRequest: {
                 encode(_: _5.QueryEpochsInfoRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _5.QueryEpochsInfoRequest;
@@ -148,6 +166,7 @@ export declare namespace osmosis {
     }
     namespace gamm {
         const v1beta1: {
+            LCDQueryClient: typeof _202.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -925,6 +944,7 @@ export declare namespace osmosis {
             }
         }
         const v2: {
+            LCDQueryClient: typeof _203.LCDQueryClient;
             QuerySpotPriceRequest: {
                 encode(message: _13.QuerySpotPriceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _13.QuerySpotPriceRequest;
@@ -939,6 +959,7 @@ export declare namespace osmosis {
     }
     namespace ibcratelimit {
         const v1beta1: {
+            LCDQueryClient: typeof _204.LCDQueryClient;
             ParamsRequest: {
                 encode(_: _16.ParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.ParamsRequest;
@@ -962,6 +983,7 @@ export declare namespace osmosis {
         };
     }
     const incentives: {
+        LCDQueryClient: typeof _205.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -1202,6 +1224,7 @@ export declare namespace osmosis {
         };
     };
     const lockup: {
+        LCDQueryClient: typeof _206.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -1627,6 +1650,7 @@ export declare namespace osmosis {
     };
     namespace mint {
         const v1beta1: {
+            LCDQueryClient: typeof _207.LCDQueryClient;
             QueryParamsRequest: {
                 encode(_: _29.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _29.QueryParamsRequest;
@@ -1676,6 +1700,7 @@ export declare namespace osmosis {
     }
     namespace poolincentives {
         const v1beta1: {
+            LCDQueryClient: typeof _208.LCDQueryClient;
             QueryGaugeIdsRequest: {
                 encode(message: _33.QueryGaugeIdsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _33.QueryGaugeIdsRequest;
@@ -1795,6 +1820,7 @@ export declare namespace osmosis {
     }
     namespace poolmanager {
         const v1beta1: {
+            LCDQueryClient: typeof _209.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -1978,6 +2004,7 @@ export declare namespace osmosis {
     }
     namespace protorev {
         const v1beta1: {
+            LCDQueryClient: typeof _210.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -2446,6 +2473,7 @@ export declare namespace osmosis {
         };
     }
     const superfluid: {
+        LCDQueryClient: typeof _211.LCDQueryClient;
         registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
         load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
         MessageComposer: {
@@ -2881,6 +2909,7 @@ export declare namespace osmosis {
     };
     namespace tokenfactory {
         const v1beta1: {
+            LCDQueryClient: typeof _212.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -3152,6 +3181,7 @@ export declare namespace osmosis {
     }
     namespace twap {
         const v1beta1: {
+            LCDQueryClient: typeof _213.LCDQueryClient;
             TwapRecord: {
                 encode(message: _58.TwapRecord, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _58.TwapRecord;
@@ -3221,6 +3251,7 @@ export declare namespace osmosis {
     }
     namespace txfees {
         const v1beta1: {
+            LCDQueryClient: typeof _214.LCDQueryClient;
             QueryFeeTokensRequest: {
                 encode(_: _62.QueryFeeTokensRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _62.QueryFeeTokensRequest;
@@ -3280,6 +3311,7 @@ export declare namespace osmosis {
     }
     namespace valsetpref {
         const v1beta1: {
+            LCDQueryClient: typeof _215.LCDQueryClient;
             registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
             load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
             MessageComposer: {
@@ -3534,4 +3566,108 @@ export declare namespace osmosis {
             };
         };
     }
+    const ClientFactory: {
+        createLCDClient: ({ restEndpoint }: {
+            restEndpoint: string;
+        }) => Promise<{
+            osmosis: {
+                downtimedetector: {
+                    v1beta1: _200.LCDQueryClient;
+                };
+                epochs: {
+                    v1beta1: _201.LCDQueryClient;
+                };
+                gamm: {
+                    v1beta1: _202.LCDQueryClient;
+                    v2: _203.LCDQueryClient;
+                };
+                ibcratelimit: {
+                    v1beta1: _204.LCDQueryClient;
+                };
+                incentives: _205.LCDQueryClient;
+                lockup: _206.LCDQueryClient;
+                mint: {
+                    v1beta1: _207.LCDQueryClient;
+                };
+                poolincentives: {
+                    v1beta1: _208.LCDQueryClient;
+                };
+                poolmanager: {
+                    v1beta1: _209.LCDQueryClient;
+                };
+                protorev: {
+                    v1beta1: _210.LCDQueryClient;
+                };
+                superfluid: _211.LCDQueryClient;
+                tokenfactory: {
+                    v1beta1: _212.LCDQueryClient;
+                };
+                twap: {
+                    v1beta1: _213.LCDQueryClient;
+                };
+                txfees: {
+                    v1beta1: _214.LCDQueryClient;
+                };
+                valsetpref: {
+                    v1beta1: _215.LCDQueryClient;
+                };
+            };
+            cosmos: {
+                auth: {
+                    v1beta1: import("../cosmos/auth/v1beta1/query.lcd").LCDQueryClient;
+                };
+                authz: {
+                    v1beta1: import("../cosmos/authz/v1beta1/query.lcd").LCDQueryClient;
+                };
+                bank: {
+                    v1beta1: import("../cosmos/bank/v1beta1/query.lcd").LCDQueryClient;
+                };
+                base: {
+                    node: {
+                        v1beta1: import("../cosmos/base/node/v1beta1/query.lcd").LCDQueryClient;
+                    };
+                    tendermint: {
+                        v1beta1: import("../cosmos/base/tendermint/v1beta1/query.lcd").LCDQueryClient;
+                    };
+                };
+                distribution: {
+                    v1beta1: import("../cosmos/distribution/v1beta1/query.lcd").LCDQueryClient;
+                };
+                evidence: {
+                    v1beta1: import("../cosmos/evidence/v1beta1/query.lcd").LCDQueryClient;
+                };
+                feegrant: {
+                    v1beta1: import("../cosmos/feegrant/v1beta1/query.lcd").LCDQueryClient;
+                };
+                gov: {
+                    v1: import("../cosmos/gov/v1/query.lcd").LCDQueryClient;
+                    v1beta1: import("../cosmos/gov/v1beta1/query.lcd").LCDQueryClient;
+                };
+                group: {
+                    v1: import("../cosmos/group/v1/query.lcd").LCDQueryClient;
+                };
+                mint: {
+                    v1beta1: import("../cosmos/mint/v1beta1/query.lcd").LCDQueryClient;
+                };
+                nft: {
+                    v1beta1: import("../cosmos/nft/v1beta1/query.lcd").LCDQueryClient;
+                };
+                params: {
+                    v1beta1: import("../cosmos/params/v1beta1/query.lcd").LCDQueryClient;
+                };
+                slashing: {
+                    v1beta1: import("../cosmos/slashing/v1beta1/query.lcd").LCDQueryClient;
+                };
+                staking: {
+                    v1beta1: import("../cosmos/staking/v1beta1/query.lcd").LCDQueryClient;
+                };
+                tx: {
+                    v1beta1: import("../cosmos/tx/v1beta1/service.lcd").LCDQueryClient;
+                };
+                upgrade: {
+                    v1beta1: import("../cosmos/upgrade/v1beta1/query.lcd").LCDQueryClient;
+                };
+            };
+        }>;
+    };
 }
