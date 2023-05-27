@@ -5,6 +5,7 @@
     "chain-clients/*",
     "chain-components/*",
     "chain-registry",
+    "common/*",
     "packages/*"
   ],
   "dependencies": {
