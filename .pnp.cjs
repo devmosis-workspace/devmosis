@@ -892,6 +892,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:0.79.2"\
       ],\
       [\
+        "@osmonauts/lcd",\
+        "npm:0.11.1"\
+      ],\
+      [\
         "@osmonauts/proto-parser",\
         "npm:0.41.2"\
       ],\
@@ -1305,7 +1309,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "axios",\
-        "npm:0.21.4"\
+        "npm:0.27.2"\
       ],\
       [\
         "axobject-query",\
@@ -8866,6 +8870,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cosmjs/proto-signing", "npm:0.29.4"],\
             ["@cosmjs/stargate", "npm:0.29.4"],\
             ["@cosmjs/tendermint-rpc", "npm:0.29.5"],\
+            ["@osmonauts/lcd", "npm:0.11.1"],\
             ["@osmonauts/telescope", "npm:0.92.2"],\
             ["babel-core", "virtual:632f41458ab00c8365d6f41b20f11e48b0654df71ed641cb0beba69d1e491bb20c4337ad365bbd0e3fe0e988abe88fb6ecd773ce6dc9439967d46cbc4d53a544#npm:7.0.0-bridge.0"],\
             ["babel-jest", "virtual:632f41458ab00c8365d6f41b20f11e48b0654df71ed641cb0beba69d1e491bb20c4337ad365bbd0e3fe0e988abe88fb6ecd773ce6dc9439967d46cbc4d53a544#npm:29.5.0"],\
@@ -10165,6 +10170,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@osmonauts/utils", "npm:0.11.1"],\
             ["case", "npm:1.6.3"],\
             ["dotty", "npm:0.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@osmonauts/lcd", [\
+        ["npm:0.11.1", {\
+          "packageLocation": "./.yarn/cache/@osmonauts-lcd-npm-0.11.1-160b669621-d2c92a7030.zip/node_modules/@osmonauts/lcd/",\
+          "packageDependencies": [\
+            ["@osmonauts/lcd", "npm:0.11.1"],\
+            ["@babel/runtime", "npm:7.21.5"],\
+            ["axios", "npm:0.27.2"]\
           ],\
           "linkType": "HARD"\
         }]\

@@ -1878,6 +1878,7 @@ __metadata:
     "@cosmjs/proto-signing": 0.29.4
     "@cosmjs/stargate": 0.29.4
     "@cosmjs/tendermint-rpc": ^0.29.4
+    "@osmonauts/lcd": ^0.11.1
     "@osmonauts/telescope": ^0.92.2
     babel-core: 7.0.0-bridge.0
     babel-jest: 29.5.0
@@ -2986,6 +2987,16 @@ __metadata:
     case: 1.6.3
     dotty: 0.1.2
   checksum: 23ee3ba912216c1902641850c39880a87727dcf033407e1cd60a57b0ebc3d32818760897ff39a3a0b878c80d9b03331fca44b56f84fecdeddc177379a7353ac6
+  languageName: node
+  linkType: hard
+
+"@osmonauts/lcd@npm:^0.11.1":
+  version: 0.11.1
+  resolution: "@osmonauts/lcd@npm:0.11.1"
+  dependencies:
+    "@babel/runtime": ^7.21.0
+    axios: 0.27.2
+  checksum: d2c92a7030cd04c95c1ad0155c7bc24824a85c57cda20d7be27b1c079bda639cfc3ef16797dfaf8f0a41681f56b32dd35e5ee689790fba32e4510e75492f10d7
   languageName: node
   linkType: hard
 
@@ -4186,22 +4197,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.2":
-  version: 0.21.4
-  resolution: "axios@npm:0.21.4"
-  dependencies:
-    follow-redirects: ^1.14.0
-  checksum: 44245f24ac971e7458f3120c92f9d66d1fc695e8b97019139de5b0cc65d9b8104647db01e5f46917728edfc0cfd88eb30fc4c55e6053eef4ace76768ce95ff3c
-  languageName: node
-  linkType: hard
-
-"axios@npm:^0.27.2":
+"axios@npm:0.27.2, axios@npm:^0.27.2":
   version: 0.27.2
   resolution: "axios@npm:0.27.2"
   dependencies:
     follow-redirects: ^1.14.9
     form-data: ^4.0.0
   checksum: 38cb7540465fe8c4102850c4368053c21683af85c5fdf0ea619f9628abbcb59415d1e22ebc8a6390d2bbc9b58a9806c874f139767389c862ec9b772235f06854
+  languageName: node
+  linkType: hard
+
+"axios@npm:^0.21.2":
+  version: 0.21.4
+  resolution: "axios@npm:0.21.4"
+  dependencies:
+    follow-redirects: ^1.14.0
+  checksum: 44245f24ac971e7458f3120c92f9d66d1fc695e8b97019139de5b0cc65d9b8104647db01e5f46917728edfc0cfd88eb30fc4c55e6053eef4ace76768ce95ff3c
   languageName: node
   linkType: hard
 
