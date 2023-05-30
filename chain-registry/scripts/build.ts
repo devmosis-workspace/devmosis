@@ -49,9 +49,9 @@ addAssets.forEach((asset) => {
   }
 });
 
-const write = (file, json, TypeName, isArray = false) => {
+const write = (file: string, json: any[], TypeName: string) => {
   const strfy = JSON.stringify(json, null, 2);
-  const exportType = isArray ? TypeName + "[]" : TypeName;
+  const exportType = TypeName + "[]";
   fs.writeFileSync(
     `${__dirname}/../src/${file}.ts`,
     `import type { ${TypeName} } from '../types';
@@ -61,6 +61,6 @@ export default ${file};
   );
 };
 
-write(`assets`, assets, "AssetList", true);
-write(`chains`, chains, "Chain", true);
-write(`ibc`, ibcs, "IBCInfo", true);
+write("assets", assets, "AssetList");
+write("chains", chains, "Chain");
+write("ibc", ibcs, "IBCInfo");

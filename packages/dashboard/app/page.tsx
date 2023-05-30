@@ -1,58 +1,71 @@
 "use client";
-import { registeredChainAtom } from "@/atoms/chainAtom";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useAtomValue } from "jotai";
-import { useCallback, useState } from "react";
 import { PlayIcon } from "@/styles/icons";
-import { MessageGroup } from "@/components/MessageGroup";
-
-type Message = {
-  [bech32Prefix: string]: any[];
-};
+import { FormProvider, useFieldArray, useForm } from "react-hook-form";
+import {
+  OsmosisTransactionList,
+  OsmosisTransactions,
+} from "@chain-sources/osmosis";
+import { useAtomValue } from "jotai";
+import { accountAtom } from "@/atoms/accountAtom";
+import { bech32 } from "bech32";
+import { type TransactionFormValues } from "@common/types";
 
 export default function Home() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const registeredChains = useAtomValue(registeredChainAtom);
+  const methods = useForm<TransactionFormValues>();
+  const { fields, append } = useFieldArray({
+    control: methods.control,
+    name: "transactions",
+  });
 
-  const createMessageGroup = (bech32Prefix: string) => {
-    setMessages((prev) => [...prev, { [bech32Prefix]: [] }]);
+  const handleSubmit = () => {
+    methods.handleSubmit((data) => console.log(data));
   };
 
-  const removeMessageGroup = (index: number) => {
-    setMessages((prev) => prev.filter((_, i) => i !== index));
-  };
+  const account = useAtomValue(accountAtom);
+  const fieldCount = fields.length;
 
-  const findChainInfoByBech32Prefix = useCallback(
-    (bech32Prefix: string) => {
-      return registeredChains.find(
-        (chain) => chain.bech32_prefix === bech32Prefix
-      );
-    },
-    [registeredChains]
-  );
+  const osmosisBech32Addreess = account?.find(
+    (acc) => bech32.decode(acc.bech32Address).prefix === "osmo"
+  )?.bech32Address;
 
   return (
     <Container>
       <Title>Transactions</Title>
       <Wrapper>
         <SelectArea>
+          <OsmosisTransactionList {...{ append }} />
         </SelectArea>
         <Basket>
-          <Header>
-            <Subtitle>{0} items</Subtitle>
-            <ExecuteButton type="button">
-              <PlayIcon />
-              <span
-                css={css`
-                  margin-left: 4px;
-                `}
-              >
-                Execute
-              </span>
-            </ExecuteButton>
-          </Header>
-          <Divider />
+          <FormProvider {...methods}>
+            <Form onSubmit={handleSubmit}>
+              <Header>
+                <Subtitle>{fieldCount} items</Subtitle>
+                <ExecuteButton type="submit">
+                  <PlayIcon />
+                  <span
+                    css={css`
+                      margin-left: 4px;
+                    `}
+                  >
+                    Execute
+                  </span>
+                </ExecuteButton>
+              </Header>
+              <Divider />
+              {fields.map((field, index) => {
+                return (
+                  <OsmosisTransactions
+                    id={field.id}
+                    index={index}
+                    myAddress={osmosisBech32Addreess}
+                    typeUrl={field.typeUrl}
+                  />
+                );
+              })}
+            </Form>
+          </FormProvider>
         </Basket>
       </Wrapper>
     </Container>
@@ -132,10 +145,10 @@ const SelectArea = styled.div`
   }
 `;
 
-const MessageList = styled.div`
+const Form = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  width: 100%;
 `;
 
 const Subtitle = styled.h5`

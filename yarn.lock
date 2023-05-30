@@ -1896,12 +1896,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chain-components/osmosis@workspace:^, @chain-components/osmosis@workspace:chain-components/osmosis":
+"@chain-sources/osmosis@workspace:^, @chain-sources/osmosis@workspace:chain-sources/osmosis":
   version: 0.0.0-use.local
-  resolution: "@chain-components/osmosis@workspace:chain-components/osmosis"
+  resolution: "@chain-sources/osmosis@workspace:chain-sources/osmosis"
   dependencies:
     "@chain-clients/osmosis": "workspace:^"
     "@common/components": "workspace:^"
+    "@common/types": "workspace:^"
     "@emotion/react": ^11.11.0
     "@emotion/styled": ^11.11.0
     "@keplr-wallet/unit": ^0.11.63
@@ -1927,6 +1928,12 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-hook-form: ^7.43.9
+  languageName: unknown
+  linkType: soft
+
+"@common/types@workspace:^, @common/types@workspace:common/types":
+  version: 0.0.0-use.local
+  resolution: "@common/types@workspace:common/types"
   languageName: unknown
   linkType: soft
 
@@ -4412,6 +4419,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bech32@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "bech32@npm:2.0.0"
+  checksum: fa15acb270b59aa496734a01f9155677b478987b773bf701f465858bf1606c6a970085babd43d71ce61895f1baa594cb41a2cd1394bd2c6698f03cc2d811300e
+  languageName: node
+  linkType: hard
+
 "big-integer@npm:^1.6.44, big-integer@npm:^1.6.48":
   version: 1.6.51
   resolution: "big-integer@npm:1.6.51"
@@ -5075,7 +5089,8 @@ __metadata:
   resolution: "dashboard@workspace:packages/dashboard"
   dependencies:
     "@chain-clients/osmosis": "workspace:^"
-    "@chain-components/osmosis": "workspace:^"
+    "@chain-sources/osmosis": "workspace:^"
+    "@common/types": "workspace:^"
     "@emotion/cache": ^11.11.0
     "@emotion/react": ^11.11.0
     "@emotion/styled": ^11.11.0
@@ -5086,6 +5101,7 @@ __metadata:
     "@types/node": 18.11.18
     "@types/react": ^18.2.6
     "@types/react-dom": ^18.2.4
+    bech32: ^2.0.0
     chain-registry: "workspace:^"
     eslint: 8.32.0
     eslint-config-next: ^13.1.4

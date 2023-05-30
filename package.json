@@ -3,7 +3,7 @@
   "license": "MIT",
   "workspaces": [
     "chain-clients/*",
-    "chain-components/*",
+    "chain-sources/*",
     "chain-registry",
     "common/*",
     "packages/*"

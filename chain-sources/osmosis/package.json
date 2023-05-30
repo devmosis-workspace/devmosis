@@ -1,5 +1,5 @@
 {
-  "name": "@chain-components/osmosis",
+  "name": "@chain-sources/osmosis",
   "version": "0.0.1",
   "main": "index.ts",
   "author": "",
@@ -7,6 +7,7 @@
   "dependencies": {
     "@chain-clients/osmosis": "workspace:^",
     "@common/components": "workspace:^",
+    "@common/types": "workspace:^",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@keplr-wallet/unit": "^0.11.63",

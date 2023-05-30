@@ -1,13 +1,13 @@
-import React, { useState, useEffect, type PropsWithChildren } from "react";
+import { useState, useEffect, type PropsWithChildren } from "react";
 import { createPortal } from "react-dom";
 import styled from "@emotion/styled";
 
 interface ModalProps extends PropsWithChildren {
   isOpen: boolean;
+  onClose: () => void;
 }
 
-export const Modal = ({ isOpen, children }: ModalProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(isOpen);
+export const Modal = ({ isOpen, children, onClose }: ModalProps) => {
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const Modal = ({ isOpen, children }: ModalProps) => {
 
   useEffect(
     function lockBodyScroll() {
-      if (isModalOpen) {
+      if (isOpen) {
         document.body.style.overflow = "hidden";
       } else {
         document.body.style.overflow = "unset";
@@ -25,12 +25,8 @@ export const Modal = ({ isOpen, children }: ModalProps) => {
         document.body.style.overflow = "unset";
       };
     },
-    [isModalOpen]
+    [isOpen]
   );
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <>
@@ -38,10 +34,10 @@ export const Modal = ({ isOpen, children }: ModalProps) => {
         isOpen &&
         createPortal(
           <ModalContainer>
-            <ModalBackground onClick={handleModalClose} />
+            <ModalBackground onClick={onClose} />
             <BaseContainer>
               {children}
-              <CloseButton onClick={handleModalClose} />
+              <CloseButton onClick={onClose} />
             </BaseContainer>
           </ModalContainer>,
           document.body
@@ -74,6 +70,7 @@ const BaseContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index:1001;
 
   width: 100%;
   max-width: 600px;
