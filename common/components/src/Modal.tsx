@@ -76,7 +76,7 @@ const BaseContainer = styled.div`
   max-width: 600px;
   padding: 24px;
   border-radius: 24px;
-  background-color: #caced7;
+  background-color: #5c5f65;
 
   display: flex;
   flex-direction: column;

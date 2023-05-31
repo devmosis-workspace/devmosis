@@ -19,8 +19,8 @@ export default function Home() {
     name: "transactions",
   });
 
-  const handleSubmit = () => {
-    methods.handleSubmit((data) => console.log(data));
+  const onSubmit = (data: TransactionFormValues) => {
+    console.log(data)
   };
 
   const account = useAtomValue(accountAtom);
@@ -39,7 +39,7 @@ export default function Home() {
         </SelectArea>
         <Basket>
           <FormProvider {...methods}>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={methods.handleSubmit(onSubmit)}>
               <Header>
                 <Subtitle>{fieldCount} items</Subtitle>
                 <ExecuteButton type="submit">
@@ -145,7 +145,7 @@ const SelectArea = styled.div`
   }
 `;
 
-const Form = styled.div`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;

@@ -1,14 +1,39 @@
-import { useState, type HTMLAttributes, type ChangeEvent } from "react";
+import {
+  useState,
+  type HTMLAttributes,
+  type ChangeEvent,
+  useEffect,
+  type MouseEvent,
+} from "react";
 import { cosmos } from "@chain-clients/osmosis";
 import styled from "@emotion/styled";
 import { Dec, DecUtils } from "@keplr-wallet/unit";
 import { Modal } from "@common/components";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import Long from "long";
 import { useQuery } from "@tanstack/react-query";
 import { type QueryValidatorsRequest } from "@chain-clients/osmosis/types/codegen/cosmos/staking/v1beta1/query";
 import { type ValidatorSDKType } from "@chain-clients/osmosis/types/codegen/cosmos/staking/v1beta1/staking";
 import { osmosisInfo } from "../../utils";
+
+const getValidatorProfilePicture = async (identity: string | undefined) => {
+  if (identity === undefined) return undefined;
+
+  const fetchThumbnail = (
+    await fetch(
+      `https://keybase.io/_/api/1.0/user/lookup.json?fields=pictures&key_suffix=${identity}`
+    )
+  ).json();
+
+  const thumbnail:
+    | {
+        status: { code: number; name: string };
+        them: { id: string; pictures: { primary: { url: string } } }[];
+      }
+    | undefined = await fetchThumbnail;
+
+  return thumbnail?.them?.[0]?.pictures?.primary?.url;
+};
 
 const osmosisBalanceQuery = async () => {
   const { chain } = osmosisInfo;
@@ -37,6 +62,168 @@ const osmosisBalanceQuery = async () => {
   });
 
   return osmosisBalance;
+};
+
+const osmosisValidatorQuery = async (validatorAddr: string) => {
+  const { chain } = osmosisInfo;
+  const restEndpoint = chain?.apis?.rest?.[0].address ?? "";
+
+  const {
+    cosmos: {
+      staking: {
+        v1beta1: { validator },
+      },
+    },
+  } = await cosmos.ClientFactory.createLCDClient({
+    restEndpoint,
+  });
+
+  const { validator: osmosisValidator } = await validator({
+    validatorAddr,
+  });
+
+  const validatorProfilePicture = await getValidatorProfilePicture(
+    osmosisValidator?.description?.identity
+  );
+
+  return { ...osmosisValidator, profilePicture: validatorProfilePicture };
+};
+
+type MsgDelegateProps = HTMLAttributes<HTMLDivElement> & {
+  index: number;
+  delegatorAddress: string | undefined;
+};
+
+export const MsgDelegate = ({
+  delegatorAddress,
+  children,
+  index,
+  ...props
+}: MsgDelegateProps) => {
+  const { register, setValue, control } = useFormContext();
+  const selectedValidatorAddress: string | undefined = useWatch({
+    control,
+    name: `transactions.${index}.validatorAddress`,
+  });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [amount, setAmount] = useState("");
+  const { chain, stakingToken, coinDecimal } = osmosisInfo;
+  const baseDenom = stakingToken?.base;
+
+  const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setAmount(e.target.value);
+  };
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const { data: validatorData } = useQuery({
+    queryKey: [
+      "osmosis/validator",
+      { valdatorAddress: selectedValidatorAddress },
+    ],
+    queryFn: () => osmosisValidatorQuery(selectedValidatorAddress!),
+    enabled: selectedValidatorAddress !== undefined,
+  });
+
+  useEffect(
+    function setAmount() {
+      if (amount === "" || baseDenom === undefined) return;
+      if (coinDecimal === undefined) {
+        throw new Error(
+          `MsgDelegate - ${chain?.chain_name} coin decimal is undefined`
+        );
+      }
+      const actualAmount = new Dec(amount)
+        .mul(DecUtils.getTenExponentNInPrecisionRange(coinDecimal))
+        .truncate()
+        .toString();
+
+      setValue(`transactions.${index}.amount`, {
+        amount: actualAmount,
+        denom: baseDenom,
+      });
+    },
+    [amount, baseDenom]
+  );
+
+  useEffect(
+    function setDelegatorAddress() {
+      setValue(`transactions.${index}.delegatorAddress`, delegatorAddress);
+    },
+    [delegatorAddress]
+  );
+
+  return (
+    <>
+      <Container {...props}>
+        <Box>
+          <span>MsgDelegate</span>
+        </Box>
+        <Box>
+          <HiddenAmountInput
+            type="hidden"
+            {...register(`transactions.${index}.delegatorAddress`, {
+              required: true,
+            })}
+          />
+          <HiddenAmountInput
+            type="hidden"
+            {...register(`transactions.${index}.validatorAddress`, {
+              required: true,
+            })}
+          />
+          <span>validator :</span>
+          {validatorData !== undefined ? (
+            <ValidatorBox>
+              {validatorData.profilePicture !== undefined ? (
+                <ValidatorProfilePicture
+                  src={validatorData.profilePicture}
+                  alt={validatorData.description?.moniker}
+                />
+              ) : null}
+              <span style={{marginRight: 4}}>{validatorData.description?.moniker}</span>
+            </ValidatorBox>
+          ) : null}
+
+          <button type="button" onClick={handleModalOpen}>
+            <span>Select a validator</span>
+          </button>
+        </Box>
+        <Box>
+          <span>amount :</span>
+          <input
+            type="number"
+            value={amount}
+            onChange={handleAmountChange}
+            placeholder=""
+          />
+          <HiddenAmountInput
+            type="hidden"
+            {...register(`transactions.${index}.amount.amount`, {
+              required: true,
+            })}
+          />
+          <HiddenAmountInput
+            type="hidden"
+            {...register(`transactions.${index}.amount.denom`, {
+              required: true,
+            })}
+          />
+        </Box>
+      </Container>
+
+      <Modal isOpen={isModalOpen} onClose={handleModalClose}>
+        <ValidatorsModalContent {...{ index, handleModalClose }} />
+      </Modal>
+    </>
+  );
 };
 
 const osmosisValidatorsQuery = async () => {
@@ -92,112 +279,50 @@ const osmosisValidatorsQuery = async () => {
   return classifiedValidators;
 };
 
-type MsgDelegateProps = HTMLAttributes<HTMLDivElement> & {
+interface ValidatorsModalContentProps {
   index: number;
-  delegatorAddress: string | undefined;
-};
+  handleModalClose: () => void;
+}
 
-export const MsgDelegate = ({
-  delegatorAddress,
-  children,
+const ValidatorsModalContent = ({
   index,
-  ...props
-}: MsgDelegateProps) => {
-  const { register } = useFormContext();
+  handleModalClose,
+}: ValidatorsModalContentProps) => {
+  const { setValue } = useFormContext();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [amount, setAmount] = useState("");
-
-  const { chain, stakingToken, coinDecimal } = osmosisInfo;
-  const baseDenom = stakingToken?.base;
-
-  const actualAmount = (() => {
-    if (amount === "") return "";
-    if (coinDecimal === undefined) {
-      throw new Error(
-        `MsgDelegate - ${chain?.chain_name} coin decimal is undefined`
-      );
-    }
-    let dec = new Dec(amount);
-    dec = dec.mul(DecUtils.getTenExponentNInPrecisionRange(coinDecimal));
-    return dec.truncate().toString();
-  })();
-
-  const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setAmount(e.target.value);
-  };
-
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
-
-  return (
-    <>
-      <Container {...props}>
-        <Box>
-          <span>MsgDelegate</span>
-        </Box>
-        <Box>
-          <HiddenAmountInput
-            type="hidden"
-            {...register(`transactions.${index}.delegatorAddress`, {
-              required: true,
-              value: actualAmount,
-              disabled: true,
-            })}
-          />
-          <span>validator :</span>
-          <button type="button" onClick={handleModalOpen}>
-            <span>Select a validator</span>
-          </button>
-        </Box>
-        <Box>
-          <span>amount :</span>
-          <input
-            type="number"
-            value={amount}
-            onChange={handleAmountChange}
-            placeholder=""
-          />
-          <HiddenAmountInput
-            type="hidden"
-            {...register(`transactions.${index}.amount.amount`, {
-              required: true,
-              value: actualAmount,
-              disabled: true,
-            })}
-          />
-          <HiddenAmountInput
-            type="hidden"
-            {...register(`transactions.${index}.amount.denom`, {
-              required: true,
-              value: baseDenom,
-              disabled: true,
-            })}
-          />
-        </Box>
-      </Container>
-
-      <Modal isOpen={isModalOpen} onClose={handleModalClose}>
-        <ValidatorsModalContent />
-      </Modal>
-    </>
-  );
-};
-
-const ValidatorsModalContent = () => {
   const { data: validatorsData } = useQuery({
     queryKey: ["osmosis/validators"],
     queryFn: osmosisValidatorsQuery,
   });
 
-  console.log(validatorsData);
+  const handleValidatorClick = (
+    event: MouseEvent<HTMLButtonElement>,
+    operatorAddress: string
+  ) => {
+    event.preventDefault();
+    setValue(`transactions.${index}.validatorAddress`, operatorAddress);
+    handleModalClose();
+  };
 
-  return <>Modal</>;
+  return (
+    <>
+      <ModalTitle>
+        <span> Select a validator</span>
+      </ModalTitle>
+
+      <ValidatorList>
+        {validatorsData?.bonded.map((validator) => (
+          <ValidatorListItem
+            type="button"
+            key={validator.operator_address}
+            onClick={(e) => handleValidatorClick(e, validator.operator_address)}
+          >
+            <span>{validator.description?.moniker}</span>
+          </ValidatorListItem>
+        ))}
+      </ValidatorList>
+    </>
+  );
 };
 
 const Container = styled.div`
@@ -231,4 +356,41 @@ const Box = styled.div`
 
 const HiddenAmountInput = styled.input`
   display: none;
+`;
+
+const ModalTitle = styled.div`
+  display: flex;
+  width: 100%;
+  margin-bottom: 12px;
+`;
+
+const ValidatorList = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  overflow-y: scroll;
+`;
+
+const ValidatorListItem = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: #4b4f5b;
+  margin-top: 4px;
+  cursor: pointer;
+`;
+
+const ValidatorBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ValidatorProfilePicture = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 8px;
 `;
