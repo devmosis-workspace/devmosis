@@ -12,6 +12,7 @@
     "@chain-clients/osmosis": "workspace:^",
     "@chain-sources/osmosis": "workspace:^",
     "@common/types": "workspace:^",
+    "@common/utils": "workspace:^",
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",

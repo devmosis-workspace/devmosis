@@ -36,6 +36,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:common/types"\
       },\
       {\
+        "name": "@common/utils",\
+        "reference": "workspace:common/utils"\
+      },\
+      {\
         "name": "dashboard",\
         "reference": "workspace:packages/dashboard"\
       }\
@@ -47,6 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@chain-sources/osmosis", ["workspace:chain-sources/osmosis"]],\
       ["@common/components", ["workspace:common/components"]],\
       ["@common/types", ["workspace:common/types"]],\
+      ["@common/utils", ["workspace:common/utils"]],\
       ["chain-registry", ["workspace:chain-registry"]],\
       ["dashboard", ["workspace:packages/dashboard"]],\
       ["root-workspace-0b6124", ["workspace:."]]\
@@ -525,12 +530,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "workspace:common/types"\
       ],\
       [\
+        "@common/utils",\
+        "workspace:common/utils"\
+      ],\
+      [\
         "@confio/ics23",\
         "npm:0.6.8"\
       ],\
       [\
         "@cosmjs/amino",\
-        "npm:0.29.4"\
+        "npm:0.30.1"\
       ],\
       [\
         "@cosmjs/crypto",\
@@ -798,11 +807,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "@keplr-wallet/types",\
-        "npm:0.11.63"\
+        "npm:0.12.4"\
       ],\
       [\
         "@keplr-wallet/unit",\
-        "npm:0.11.63"\
+        "npm:0.12.4"\
       ],\
       [\
         "@microsoft/api-extractor",\
@@ -8906,9 +8915,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@chain-clients/osmosis", "workspace:chain-clients/osmosis"],\
             ["@common/components", "workspace:common/components"],\
             ["@common/types", "workspace:common/types"],\
+            ["@common/utils", "workspace:common/utils"],\
+            ["@cosmjs/amino", "npm:0.30.1"],\
+            ["@cosmjs/proto-signing", "npm:0.30.1"],\
             ["@emotion/react", "virtual:6ab316078bc2ebe07c628d89191e87ee68ebf8c0a75c9d7f910d63af1df1ebb370b6d4607310f2f1c8fda3d56d85f831b1763935ea4c1b41b19e5b1e353b13c4#npm:11.11.0"],\
             ["@emotion/styled", "virtual:6ab316078bc2ebe07c628d89191e87ee68ebf8c0a75c9d7f910d63af1df1ebb370b6d4607310f2f1c8fda3d56d85f831b1763935ea4c1b41b19e5b1e353b13c4#npm:11.11.0"],\
-            ["@keplr-wallet/unit", "npm:0.11.63"],\
+            ["@keplr-wallet/types", "npm:0.12.4"],\
+            ["@keplr-wallet/unit", "npm:0.12.4"],\
             ["@tanstack/react-query", "virtual:f2d0373b5c0dbb4b647d04fc2b99c8c23542e1853e6c32b12694b153c53afb6b69bf593f344eb433951ee36f7bcb8324748c68eaac3095e5904aec6adaaf2b7d#npm:4.29.11"],\
             ["@types/react", "npm:18.2.6"],\
             ["@types/react-dom", "npm:18.2.4"],\
@@ -8946,6 +8959,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
+      ["@common/utils", [\
+        ["workspace:common/utils", {\
+          "packageLocation": "./common/utils/",\
+          "packageDependencies": [\
+            ["@common/utils", "workspace:common/utils"],\
+            ["@keplr-wallet/types", "npm:0.12.4"],\
+            ["@keplr-wallet/unit", "npm:0.12.4"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
       ["@confio/ics23", [\
         ["npm:0.6.8", {\
           "packageLocation": "./.yarn/cache/@confio-ics23-npm-0.6.8-c87607eb2c-376d72f644.zip/node_modules/@confio/ics23/",\
@@ -8979,6 +9003,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cosmjs/utils", "npm:0.29.5"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.30.1", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-amino-npm-0.30.1-fa65a9d84a-aa254f936f.zip/node_modules/@cosmjs/amino/",\
+          "packageDependencies": [\
+            ["@cosmjs/amino", "npm:0.30.1"],\
+            ["@cosmjs/crypto", "npm:0.30.1"],\
+            ["@cosmjs/encoding", "npm:0.30.1"],\
+            ["@cosmjs/math", "npm:0.30.1"],\
+            ["@cosmjs/utils", "npm:0.30.1"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@cosmjs/crypto", [\
@@ -8989,6 +9024,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cosmjs/encoding", "npm:0.29.5"],\
             ["@cosmjs/math", "npm:0.29.5"],\
             ["@cosmjs/utils", "npm:0.29.5"],\
+            ["@noble/hashes", "npm:1.3.0"],\
+            ["bn.js", "npm:5.2.1"],\
+            ["elliptic", "npm:6.5.4"],\
+            ["libsodium-wrappers", "npm:0.7.11"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.30.1", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-crypto-npm-0.30.1-00df919891-f1989a5cab.zip/node_modules/@cosmjs/crypto/",\
+          "packageDependencies": [\
+            ["@cosmjs/crypto", "npm:0.30.1"],\
+            ["@cosmjs/encoding", "npm:0.30.1"],\
+            ["@cosmjs/math", "npm:0.30.1"],\
+            ["@cosmjs/utils", "npm:0.30.1"],\
             ["@noble/hashes", "npm:1.3.0"],\
             ["bn.js", "npm:5.2.1"],\
             ["elliptic", "npm:6.5.4"],\
@@ -9038,6 +9087,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["bn.js", "npm:5.2.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.30.1", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-math-npm-0.30.1-bfef2aeb61-c13d2a8934.zip/node_modules/@cosmjs/math/",\
+          "packageDependencies": [\
+            ["@cosmjs/math", "npm:0.30.1"],\
+            ["bn.js", "npm:5.2.1"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@cosmjs/proto-signing", [\
@@ -9065,6 +9122,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cosmjs/math", "npm:0.29.5"],\
             ["@cosmjs/utils", "npm:0.29.5"],\
             ["cosmjs-types", "npm:0.5.2"],\
+            ["long", "npm:4.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.30.1", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-proto-signing-npm-0.30.1-b42598b7f0-15e13e3397.zip/node_modules/@cosmjs/proto-signing/",\
+          "packageDependencies": [\
+            ["@cosmjs/proto-signing", "npm:0.30.1"],\
+            ["@cosmjs/amino", "npm:0.30.1"],\
+            ["@cosmjs/crypto", "npm:0.30.1"],\
+            ["@cosmjs/encoding", "npm:0.30.1"],\
+            ["@cosmjs/math", "npm:0.30.1"],\
+            ["@cosmjs/utils", "npm:0.30.1"],\
+            ["cosmjs-types", "npm:0.7.2"],\
             ["long", "npm:4.0.0"]\
           ],\
           "linkType": "HARD"\
@@ -9138,6 +9209,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@cosmjs-utils-npm-0.29.5-668b1002e6-7939a6d324.zip/node_modules/@cosmjs/utils/",\
           "packageDependencies": [\
             ["@cosmjs/utils", "npm:0.29.5"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.30.1", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-utils-npm-0.30.1-c5856c2196-64ea16cdeb.zip/node_modules/@cosmjs/utils/",\
+          "packageDependencies": [\
+            ["@cosmjs/utils", "npm:0.30.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -9926,14 +10004,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["long", "npm:4.0.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.12.4", {\
+          "packageLocation": "./.yarn/cache/@keplr-wallet-types-npm-0.12.4-dc143b8b08-4a5aa787f7.zip/node_modules/@keplr-wallet/types/",\
+          "packageDependencies": [\
+            ["@keplr-wallet/types", "npm:0.12.4"],\
+            ["long", "npm:4.0.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@keplr-wallet/unit", [\
-        ["npm:0.11.63", {\
-          "packageLocation": "./.yarn/cache/@keplr-wallet-unit-npm-0.11.63-38e7afcf78-99fa435028.zip/node_modules/@keplr-wallet/unit/",\
+        ["npm:0.12.4", {\
+          "packageLocation": "./.yarn/cache/@keplr-wallet-unit-npm-0.12.4-b0bf00947a-3e2c9adf07.zip/node_modules/@keplr-wallet/unit/",\
           "packageDependencies": [\
-            ["@keplr-wallet/unit", "npm:0.11.63"],\
-            ["@keplr-wallet/types", "npm:0.11.63"],\
+            ["@keplr-wallet/unit", "npm:0.12.4"],\
+            ["@keplr-wallet/types", "npm:0.12.4"],\
             ["big-integer", "npm:1.6.51"],\
             ["utility-types", "npm:3.10.0"]\
           ],\
@@ -12777,6 +12863,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["protobufjs", "npm:6.11.3"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.7.2", {\
+          "packageLocation": "./.yarn/cache/cosmjs-types-npm-0.7.2-655e4f4384-4a0b730a7f.zip/node_modules/cosmjs-types/",\
+          "packageDependencies": [\
+            ["cosmjs-types", "npm:0.7.2"],\
+            ["long", "npm:4.0.0"],\
+            ["protobufjs", "npm:6.11.3"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["create-require", [\
@@ -12909,6 +13004,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@chain-clients/osmosis", "workspace:chain-clients/osmosis"],\
             ["@chain-sources/osmosis", "workspace:chain-sources/osmosis"],\
             ["@common/types", "workspace:common/types"],\
+            ["@common/utils", "workspace:common/utils"],\
             ["@emotion/cache", "npm:11.11.0"],\
             ["@emotion/react", "virtual:6ab316078bc2ebe07c628d89191e87ee68ebf8c0a75c9d7f910d63af1df1ebb370b6d4607310f2f1c8fda3d56d85f831b1763935ea4c1b41b19e5b1e353b13c4#npm:11.11.0"],\
             ["@emotion/styled", "virtual:6ab316078bc2ebe07c628d89191e87ee68ebf8c0a75c9d7f910d63af1df1ebb370b6d4607310f2f1c8fda3d56d85f831b1763935ea4c1b41b19e5b1e353b13c4#npm:11.11.0"],\

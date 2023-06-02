@@ -3,7 +3,7 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { accountAtom } from "@/atoms/accountAtom";
 import { registeredChainAtom } from "@/atoms/chainAtom";
 import { assertFulfilled } from "@/utils/assertFulfilled";
-import { getKeplrFromWindow } from "@/utils/keplr";
+import { getKeplrFromWindow } from "@common/utils";
 
 const getAccountsFromKeplr = async (registeredChains: any[]) => {
   try {

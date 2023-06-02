@@ -1,6 +1,6 @@
 import { type TransactionFormValues } from "@common/types";
 import { type UseFieldArrayAppend } from "react-hook-form";
-import { supportedTypeUrls } from "../../utils";
+import { osmosisInfo, supportedTypeUrls } from "../../utils";
 import { TransactionSelectButton } from "@common/components";
 import styled from "@emotion/styled";
 
@@ -11,6 +11,9 @@ interface OsmosisTransactionListProps {
 export const OsmosisTransactionList = ({
   append,
 }: OsmosisTransactionListProps) => {
+  const { chain } = osmosisInfo;
+  const bech32Prefix = chain?.bech32_prefix;
+
   return (
     <Container>
       {supportedTypeUrls.map((typeUrl) => {
@@ -25,6 +28,7 @@ export const OsmosisTransactionList = ({
               onClick={() =>
                 append({
                   typeUrl,
+                  bech32Prefix,
                 })
               }
             />

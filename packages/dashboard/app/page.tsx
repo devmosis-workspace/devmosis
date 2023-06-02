@@ -11,6 +11,7 @@ import { useAtomValue } from "jotai";
 import { accountAtom } from "@/atoms/accountAtom";
 import { bech32 } from "bech32";
 import { type TransactionFormValues } from "@common/types";
+import { osmosisMsgs, osmosisTxs } from "@chain-sources/osmosis/utils";
 
 export default function Home() {
   const methods = useForm<TransactionFormValues>();
@@ -19,8 +20,16 @@ export default function Home() {
     name: "transactions",
   });
 
-  const onSubmit = (data: TransactionFormValues) => {
-    console.log(data)
+  const onSubmit = async (data: TransactionFormValues) => {
+    await Promise.all(
+      data.transactions.map(async (transation) => {
+        const bech32Prefix = transation.bech32Prefix;
+
+        if (bech32Prefix === "osmo") {
+          return await osmosisTxs(transation);
+        }
+      })
+    );
   };
 
   const account = useAtomValue(accountAtom);

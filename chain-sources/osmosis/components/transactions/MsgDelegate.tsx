@@ -15,6 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import { type QueryValidatorsRequest } from "@chain-clients/osmosis/types/codegen/cosmos/staking/v1beta1/query";
 import { type ValidatorSDKType } from "@chain-clients/osmosis/types/codegen/cosmos/staking/v1beta1/staking";
 import { osmosisInfo } from "../../utils";
+import { MessageContainer } from "@common/components/src/MessageContainer";
 
 const getValidatorProfilePicture = async (identity: string | undefined) => {
   if (identity === undefined) return undefined;
@@ -162,10 +163,7 @@ export const MsgDelegate = ({
 
   return (
     <>
-      <Container {...props}>
-        <Box>
-          <span>MsgDelegate</span>
-        </Box>
+      <MessageContainer title={"MsgDelegate"} {...props}>
         <Box>
           <HiddenAmountInput
             type="hidden"
@@ -188,7 +186,9 @@ export const MsgDelegate = ({
                   alt={validatorData.description?.moniker}
                 />
               ) : null}
-              <span style={{marginRight: 4}}>{validatorData.description?.moniker}</span>
+              <span style={{ marginRight: 4 }}>
+                {validatorData.description?.moniker}
+              </span>
             </ValidatorBox>
           ) : null}
 
@@ -217,7 +217,7 @@ export const MsgDelegate = ({
             })}
           />
         </Box>
-      </Container>
+      </MessageContainer>
 
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <ValidatorsModalContent {...{ index, handleModalClose }} />
@@ -324,29 +324,6 @@ const ValidatorsModalContent = ({
     </>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-radius: 12px;
-  background: #4b4f5b;
-  padding: 24px;
-  position: relative;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 22px;
-    left: 18px;
-    right: 18px;
-    bottom: -40px;
-    z-index: -2;
-    background: #000;
-    opacity: 0.51;
-    filter: blur(86.985px);
-    border-radius: 24px;
-  }
-`;
 
 const Box = styled.div`
   display: flex;

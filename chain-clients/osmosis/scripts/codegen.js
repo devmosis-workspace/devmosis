@@ -36,7 +36,7 @@ telescope({
       enabled: true,
     },
     rpcClients: {
-      enabled: false
+      enabled: false,
     }
   }
 })

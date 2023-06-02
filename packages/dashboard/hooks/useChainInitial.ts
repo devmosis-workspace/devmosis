@@ -1,12 +1,12 @@
 import { assets, chains, type Chain } from "chain-registry";
 import { useSetAtom } from "jotai";
+import { getKeplrFromWindow } from "@common/utils";
 
 import {
   registeredChainAtom,
   unregisteredChainAtom,
   unsupportedChainAtom,
 } from "@/atoms/chainAtom";
-import { getKeplrFromWindow } from "@/utils/keplr";
 
 import type { ChainInfoWithoutEndpoints } from "@keplr-wallet/types";
 
