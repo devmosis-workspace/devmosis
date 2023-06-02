@@ -2,8 +2,15 @@ export type TransactionFormValues = {
   transactions: {
     typeUrl: string;
     bech32Prefix: string;
+    memo: string;
   }[];
 };
+
+export type TransactionBaseFormValue = {
+    typeUrl: string;
+    bech32Prefix: string;
+    memo: string;
+}
 
 export interface AminoMsg {
   type: string;

@@ -13,6 +13,7 @@ import type { Fee } from "@chain-clients/osmosis/types/codegen/cosmos/tx/v1beta1
 import { osmosisInfo } from "./osmosisInfo";
 import type { QueryAccountResponse } from "@common/types";
 import type { SimulateResponseSDKType } from "@chain-clients/osmosis/types/codegen/cosmos/tx/v1beta1/service";
+import { calculateStdFee, escapeHTML, getKeplrFromWindow } from "@common/utils";
 
 interface AminoTx {
   keplr: Keplr;
@@ -26,7 +27,7 @@ interface AminoTx {
   bech32Address: string;
 }
 
-export const broadcastOsmosisAminoTx = async ({
+const broadcastOsmosisAminoTx = async ({
   keplr,
   aminoMsgs,
   protoMsgs,
@@ -107,7 +108,7 @@ interface ProtoTx extends Omit<AminoTx, "aminoMsgs"> {
   pubKey: Required<QueryAccountResponse>["account"]["pub_key"];
 }
 
-export const broadcastOsmosisProtoTx = async ({
+const broadcastOsmosisProtoTx = async ({
   keplr,
   protoMsgs,
   stdFee,
@@ -187,7 +188,7 @@ interface SimulateTx {
   baseDenom: string;
 }
 
-export const simulateOsmosisTx = async ({
+const simulateOsmosisTx = async ({
   protoMsgs,
   memo,
   sequence,
@@ -254,4 +255,115 @@ export const simulateOsmosisTx = async ({
   const simulatedTx = await simulateTx();
 
   return { simulatedTx };
+};
+
+const getOsmosisAccount = async (bech32Address: string) => {
+  const { chain } = osmosisInfo;
+  const restEndpoint = chain?.apis?.rest?.[0].address ?? "";
+
+  const {
+    cosmos: {
+      auth: {
+        v1beta1: { account: getAccount },
+      },
+    },
+  } = await cosmos.ClientFactory.createLCDClient({
+    restEndpoint,
+  });
+
+  const { account } = (await getAccount({
+    address: bech32Address,
+  })) as QueryAccountResponse;
+
+  return { account };
+};
+
+interface BroadcastOsmosisTx {
+  aminoMsgs: AminoMsg[];
+  protoMsgs: Any[];
+  memo: string;
+}
+
+export const broadcastOsmosisTx = async ({
+  aminoMsgs,
+  protoMsgs,
+  memo,
+}: BroadcastOsmosisTx) => {
+  const { chain } = osmosisInfo;
+  const chainId = chain.chain_id;
+  const escapedMemo = escapeHTML(memo);
+
+  try {
+    const keplr = await getKeplrFromWindow();
+
+    if (keplr === undefined) {
+      throw new Error("Keplr is not installed");
+    }
+
+    const { bech32Address, isNanoLedger } = await keplr.getKey(chainId);
+
+    const { account } = await getOsmosisAccount(bech32Address);
+
+    const baseDenom = chain.fees?.fee_tokens[0].denom;
+    if (account === undefined || baseDenom === undefined) {
+      throw new Error("Unable to load account");
+    }
+
+    const { simulatedTx } = await simulateOsmosisTx({
+      isNanoLedger,
+      memo: escapedMemo,
+      protoMsgs,
+      pubKey: {
+        "@type": account.pub_key["@type"],
+        key: account.pub_key.key,
+      },
+      sequence: account.sequence,
+      baseDenom,
+    });
+
+    const gasUsed = simulatedTx?.gas_info?.gas_used as string | undefined;
+    const averageGasPrice = chain.fees?.fee_tokens[0].average_gas_price;
+
+    if (gasUsed === undefined || averageGasPrice === undefined) {
+      throw new Error("Unable to calculate fee");
+    }
+
+    const { stdFee } = calculateStdFee({
+      averageGasPrice,
+      gasUsed,
+      baseDenom,
+    });
+
+    if (isNanoLedger) {
+      return await broadcastOsmosisAminoTx({
+        keplr,
+        chainId,
+        stdFee,
+        memo: escapedMemo,
+        bech32Address,
+        aminoMsgs,
+        protoMsgs,
+        sequence: account.sequence,
+        accountNumber: account.account_number,
+      });
+    } else {
+      return await broadcastOsmosisProtoTx({
+        keplr,
+        chainId,
+        stdFee,
+        memo: escapedMemo,
+        bech32Address,
+        protoMsgs,
+        sequence: account.sequence,
+        accountNumber: account.account_number,
+        pubKey: {
+          "@type": account.pub_key["@type"],
+          key: account.pub_key.key,
+        },
+      });
+    }
+  } catch (error) {
+    if (error instanceof Error) return error.message;
+    return "Unknown error";
+  }
 };
