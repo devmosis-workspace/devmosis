@@ -32,6 +32,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:common/components"\
       },\
       {\
+        "name": "@common/queries",\
+        "reference": "workspace:common/queries"\
+      },\
+      {\
         "name": "@common/types",\
         "reference": "workspace:common/types"\
       },\
@@ -50,6 +54,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@chain-clients/osmosis", ["workspace:chain-clients/osmosis"]],\
       ["@chain-sources/osmosis", ["workspace:chain-sources/osmosis"]],\
       ["@common/components", ["workspace:common/components"]],\
+      ["@common/queries", ["workspace:common/queries"]],\
       ["@common/types", ["workspace:common/types"]],\
       ["@common/utils", ["workspace:common/utils"]],\
       ["chain-registry", ["workspace:chain-registry"]],\
@@ -524,6 +529,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [\
         "@common/components",\
         "workspace:common/components"\
+      ],\
+      [\
+        "@common/queries",\
+        "workspace:common/queries"\
       ],\
       [\
         "@common/types",\
@@ -8914,6 +8923,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@chain-sources/osmosis", "workspace:chain-sources/osmosis"],\
             ["@chain-clients/osmosis", "workspace:chain-clients/osmosis"],\
             ["@common/components", "workspace:common/components"],\
+            ["@common/queries", "workspace:common/queries"],\
             ["@common/types", "workspace:common/types"],\
             ["@common/utils", "workspace:common/utils"],\
             ["@cosmjs/amino", "npm:0.30.1"],\
@@ -8946,6 +8956,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:6ab316078bc2ebe07c628d89191e87ee68ebf8c0a75c9d7f910d63af1df1ebb370b6d4607310f2f1c8fda3d56d85f831b1763935ea4c1b41b19e5b1e353b13c4#npm:18.2.0"],\
             ["react-hook-form", "virtual:6ab316078bc2ebe07c628d89191e87ee68ebf8c0a75c9d7f910d63af1df1ebb370b6d4607310f2f1c8fda3d56d85f831b1763935ea4c1b41b19e5b1e353b13c4#npm:7.43.9"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@common/queries", [\
+        ["workspace:common/queries", {\
+          "packageLocation": "./common/queries/",\
+          "packageDependencies": [\
+            ["@common/queries", "workspace:common/queries"]\
           ],\
           "linkType": "SOFT"\
         }]\
