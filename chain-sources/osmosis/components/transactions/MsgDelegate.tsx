@@ -16,25 +16,7 @@ import { type QueryValidatorsRequest } from "@chain-clients/osmosis/types/codege
 import { type ValidatorSDKType } from "@chain-clients/osmosis/types/codegen/cosmos/staking/v1beta1/staking";
 import { osmosisInfo } from "../../utils";
 import { MessageContainer } from "@common/components/src/MessageContainer";
-
-const getValidatorProfilePicture = async (identity: string | undefined) => {
-  if (identity === undefined) return undefined;
-
-  const fetchThumbnail = (
-    await fetch(
-      `https://keybase.io/_/api/1.0/user/lookup.json?fields=pictures&key_suffix=${identity}`
-    )
-  ).json();
-
-  const thumbnail:
-    | {
-        status: { code: number; name: string };
-        them: { id: string; pictures: { primary: { url: string } } }[];
-      }
-    | undefined = await fetchThumbnail;
-
-  return thumbnail?.them?.[0]?.pictures?.primary?.url;
-};
+import { getValidatorProfilePicture } from "@common/queries";
 
 const osmosisBalanceQuery = async () => {
   const { chain } = osmosisInfo;

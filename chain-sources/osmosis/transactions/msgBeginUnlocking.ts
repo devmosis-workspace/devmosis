@@ -2,26 +2,30 @@ import { osmosis } from "@chain-clients/osmosis";
 import type { Any } from "@chain-clients/osmosis/types/codegen/google/protobuf/any";
 import type { AminoMsg } from "@common/types";
 import { broadcastOsmosisTx } from "../utils";
-import type { MsgWithdrawDelegationRewards } from "@chain-clients/osmosis/types/codegen/osmosis/valset-pref/v1beta1/tx";
+import type { MsgBeginUnlocking } from "@chain-clients/osmosis/types/codegen/osmosis/lockup/tx";
 
-export const msgWithdrawDelegationRewards = async (
-  data: MsgWithdrawDelegationRewards,
+export const msgBeginUnlocking = async (
+  data: MsgBeginUnlocking,
   memo: string
 ) => {
-  const { delegator } = data;
-  const { AminoConverter, MessageComposer } = osmosis.valsetpref.v1beta1;
+  const { ID, coins, owner } = data;
+  const { AminoConverter, MessageComposer } = osmosis.lockup;
 
   const { aminoType, toAmino } =
-    AminoConverter["/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards"];
+    AminoConverter["/osmosis.lockup.MsgBeginUnlocking"];
 
   const aminoMsg: AminoMsg = {
     type: aminoType,
     value: toAmino({
-      delegator,
+      ID,
+      coins,
+      owner,
     }),
   };
-  const protoMsg: Any = MessageComposer.encoded.withdrawDelegationRewards({
-    delegator,
+  const protoMsg: Any = MessageComposer.encoded.beginUnlocking({
+    ID,
+    coins,
+    owner,
   });
   const aminoMsgs = [aminoMsg];
   const protoMsgs = [protoMsg];

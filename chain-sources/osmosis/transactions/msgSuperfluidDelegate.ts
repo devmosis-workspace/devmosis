@@ -2,26 +2,30 @@ import { osmosis } from "@chain-clients/osmosis";
 import type { Any } from "@chain-clients/osmosis/types/codegen/google/protobuf/any";
 import type { AminoMsg } from "@common/types";
 import { broadcastOsmosisTx } from "../utils";
-import type { MsgWithdrawDelegationRewards } from "@chain-clients/osmosis/types/codegen/osmosis/valset-pref/v1beta1/tx";
+import type { MsgSuperfluidDelegate } from "@chain-clients/osmosis/types/codegen/osmosis/superfluid/tx";
 
-export const msgWithdrawDelegationRewards = async (
-  data: MsgWithdrawDelegationRewards,
+export const msgSuperfluidDelegate = async (
+  data: MsgSuperfluidDelegate,
   memo: string
 ) => {
-  const { delegator } = data;
-  const { AminoConverter, MessageComposer } = osmosis.valsetpref.v1beta1;
+  const { sender, lockId, valAddr } = data;
+  const { AminoConverter, MessageComposer } = osmosis.superfluid;
 
   const { aminoType, toAmino } =
-    AminoConverter["/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards"];
+    AminoConverter["/osmosis.superfluid.MsgSuperfluidDelegate"];
 
   const aminoMsg: AminoMsg = {
     type: aminoType,
     value: toAmino({
-      delegator,
+      lockId,
+      sender,
+      valAddr,
     }),
   };
-  const protoMsg: Any = MessageComposer.encoded.withdrawDelegationRewards({
-    delegator,
+  const protoMsg: Any = MessageComposer.encoded.superfluidDelegate({
+    lockId,
+    sender,
+    valAddr,
   });
   const aminoMsgs = [aminoMsg];
   const protoMsgs = [protoMsg];
