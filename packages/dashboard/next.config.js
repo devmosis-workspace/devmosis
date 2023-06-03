@@ -1,3 +1,7 @@
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
 const securityHeaders = [
   {
     key: "Strict-Transport-Security",
@@ -17,9 +21,11 @@ const securityHeaders = [
   },
 ];
 
-const componentPackages = ["@chain-components/osmosis"];
+const chainPackages = ["@chain-sources/osmosis"];
 
-const transpilePackages = [...componentPackages];
+const commonPackages = ["@common/types", "@common/utils"];
+
+const transpilePackages = [...commonPackages, ...chainPackages];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -57,4 +63,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);

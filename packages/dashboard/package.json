@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "analyze": "cross-env ANALYZE=true yarn build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -17,12 +18,13 @@
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@keplr-wallet/types": "^0.11.63",
+    "@next/bundle-analyzer": "^13.4.4",
     "@tanstack/react-query": "^4.29.11",
     "@tanstack/react-query-devtools": "^4.29.11",
     "bech32": "^2.0.0",
     "chain-registry": "workspace:^",
     "jotai": "^2.1.0",
-    "next": "^13.4.3",
+    "next": "^13.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
