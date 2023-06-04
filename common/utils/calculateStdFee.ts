@@ -11,7 +11,7 @@ export const calculateStdFee = ({
   averageGasPrice,
   baseDenom,
 }: CalculateStdFee) => {
-  const GAS_ADJUSTMENT = 1.5;
+  const GAS_ADJUSTMENT = 1.3;
   const gasUsedDec = new Dec(gasUsed);
   const gasWantedDec = gasUsedDec.mul(new Dec(GAS_ADJUSTMENT)).roundUpDec();
   const gasWanted = gasWantedDec.toString(0);

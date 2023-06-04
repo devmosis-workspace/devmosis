@@ -11,7 +11,7 @@ import Long from "long";
 import { cosmos } from "@chain-clients/osmosis";
 import type { Fee } from "@chain-clients/osmosis/types/codegen/cosmos/tx/v1beta1/tx";
 import { osmosisInfo } from "./osmosisInfo";
-import type { QueryAccountResponse } from "@common/types";
+import type { QueryAccountResponse, TxResult } from "@common/types";
 import type { SimulateResponseSDKType } from "@chain-clients/osmosis/types/codegen/cosmos/tx/v1beta1/service";
 import { calculateStdFee, escapeHTML, getKeplrFromWindow } from "@common/utils";
 
@@ -99,9 +99,7 @@ const broadcastOsmosisAminoTx = async ({
     "sync" as BroadcastMode
   );
 
-  const txHash = Buffer.from(encodedTxHash).toString("hex");
-
-  return txHash;
+  return encodedTxHash;
 };
 
 interface ProtoTx extends Omit<AminoTx, "aminoMsgs"> {
@@ -174,9 +172,7 @@ const broadcastOsmosisProtoTx = async ({
     "sync" as BroadcastMode
   );
 
-  const txHash = Buffer.from(encodedTxHash).toString("hex");
-
-  return txHash;
+  return encodedTxHash;
 };
 
 interface SimulateTx {
@@ -237,7 +233,8 @@ const simulateOsmosisTx = async ({
   }).finish();
 
   const simulateTx = async () => {
-    const restEndpoint = chain?.apis?.rest?.[2].address ?? "";
+    const restEndpoint =
+      "https://lcd-osmosis.keplr.app" ?? chain?.apis?.rest?.[2].address ?? "";
     const data = (
       await fetch(`${restEndpoint}/cosmos/tx/v1beta1/simulate`, {
         method: "POST",
@@ -278,6 +275,84 @@ const getOsmosisAccount = async (bech32Address: string) => {
   return { account };
 };
 
+export const getTxResult = (txHash: Uint8Array): Promise<TxResult> => {
+  const hexTxHash = Buffer.from(txHash).toString("hex");
+  const base64TxHash = Buffer.from(txHash).toString("base64");
+  const uppercasedTxHash = hexTxHash.toUpperCase();
+  const { chain } = osmosisInfo;
+  const rpcEndpoint = chain?.apis?.rpc?.[1].address ?? "";
+  const wsEndpoint = rpcEndpoint.replace("http", "ws") + "/websocket";
+
+  const createRandomId = () =>
+    parseInt(
+      Array.from({ length: 6 })
+        .map(() => Math.floor(Math.random() * 100))
+        .join("")
+    );
+
+  return new Promise<TxResult>((resolve) => {
+    const LIMIT_RETRY_COUNT = 5;
+    let currentRetryCount = 0;
+    const ws = new WebSocket(wsEndpoint);
+
+    const subscribeMessage = () => {
+      ws.send(
+        JSON.stringify({
+          id: createRandomId(),
+          jsonrpc: "2.0",
+          method: "subscribe",
+          params: [`tm.event='Tx' AND tx.hash='${uppercasedTxHash}'`],
+        })
+      );
+    };
+
+    const txMessage = () => {
+      ws.send(
+        JSON.stringify({
+          id: createRandomId(),
+          jsonrpc: "2.0",
+          method: "tx",
+          params: [base64TxHash, false],
+        })
+      );
+    };
+
+    ws.onopen = function getTxResult() {
+      subscribeMessage();
+      txMessage();
+    };
+
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.error) {
+        if (
+          (data.error.data as string | undefined)?.includes("not found") &&
+          currentRetryCount < LIMIT_RETRY_COUNT
+        ) {
+          setTimeout(() => {
+            currentRetryCount + 1;
+            txMessage();
+          }, 200);
+          return;
+        }
+        ws.close();
+        resolve({
+          status: "error",
+          data,
+        });
+      }
+
+      if (data.result?.tx_result?.code === 0) {
+        ws.close();
+        resolve({
+          status: "success",
+          data,
+        });
+      }
+    };
+  });
+};
+
 interface BroadcastOsmosisTx {
   aminoMsgs: AminoMsg[];
   protoMsgs: Any[];
@@ -293,77 +368,76 @@ export const broadcastOsmosisTx = async ({
   const chainId = chain.chain_id;
   const escapedMemo = escapeHTML(memo);
 
-  try {
-    const keplr = await getKeplrFromWindow();
+  const keplr = await getKeplrFromWindow();
 
-    if (keplr === undefined) {
-      throw new Error("Keplr is not installed");
-    }
+  if (keplr === undefined) {
+    throw new Error("Keplr is not installed");
+  }
 
-    const { bech32Address, isNanoLedger } = await keplr.getKey(chainId);
+  const { bech32Address, isNanoLedger } = await keplr.getKey(chainId);
 
-    const { account } = await getOsmosisAccount(bech32Address);
+  const { account } = await getOsmosisAccount(bech32Address);
 
-    const baseDenom = chain.fees?.fee_tokens[0].denom;
-    if (account === undefined || baseDenom === undefined) {
-      throw new Error("Unable to load account");
-    }
+  const baseDenom = chain.fees?.fee_tokens[0].denom;
+  if (account === undefined || baseDenom === undefined) {
+    throw new Error("Unable to load account");
+  }
 
-    const { simulatedTx } = await simulateOsmosisTx({
-      isNanoLedger,
+  const { simulatedTx } = await simulateOsmosisTx({
+    isNanoLedger,
+    memo: escapedMemo,
+    protoMsgs,
+    pubKey: {
+      "@type": account.pub_key["@type"],
+      key: account.pub_key.key,
+    },
+    sequence: account.sequence,
+    baseDenom,
+  });
+
+  const gasUsed = simulatedTx?.gas_info?.gas_used as string | undefined;
+  const averageGasPrice = chain.fees?.fee_tokens[0].average_gas_price;
+
+  if (gasUsed === undefined || averageGasPrice === undefined) {
+    throw new Error("Unable to calculate fee");
+  }
+
+  const { stdFee } = calculateStdFee({
+    averageGasPrice,
+    gasUsed,
+    baseDenom,
+  });
+
+  if (isNanoLedger) {
+    const txHash = await broadcastOsmosisAminoTx({
+      keplr,
+      chainId,
+      stdFee,
       memo: escapedMemo,
+      bech32Address,
+      aminoMsgs,
       protoMsgs,
+      sequence: account.sequence,
+      accountNumber: account.account_number,
+    });
+
+    return txHash;
+  } else {
+    const txHash = await broadcastOsmosisProtoTx({
+      keplr,
+      chainId,
+      stdFee,
+      memo: escapedMemo,
+      bech32Address,
+      protoMsgs,
+      sequence: account.sequence,
+      accountNumber: account.account_number,
       pubKey: {
         "@type": account.pub_key["@type"],
         key: account.pub_key.key,
       },
-      sequence: account.sequence,
-      baseDenom,
     });
 
-    const gasUsed = simulatedTx?.gas_info?.gas_used as string | undefined;
-    const averageGasPrice = chain.fees?.fee_tokens[0].average_gas_price;
-
-    if (gasUsed === undefined || averageGasPrice === undefined) {
-      throw new Error("Unable to calculate fee");
-    }
-
-    const { stdFee } = calculateStdFee({
-      averageGasPrice,
-      gasUsed,
-      baseDenom,
-    });
-
-    if (isNanoLedger) {
-      return await broadcastOsmosisAminoTx({
-        keplr,
-        chainId,
-        stdFee,
-        memo: escapedMemo,
-        bech32Address,
-        aminoMsgs,
-        protoMsgs,
-        sequence: account.sequence,
-        accountNumber: account.account_number,
-      });
-    } else {
-      return await broadcastOsmosisProtoTx({
-        keplr,
-        chainId,
-        stdFee,
-        memo: escapedMemo,
-        bech32Address,
-        protoMsgs,
-        sequence: account.sequence,
-        accountNumber: account.account_number,
-        pubKey: {
-          "@type": account.pub_key["@type"],
-          key: account.pub_key.key,
-        },
-      });
-    }
-  } catch (error) {
-    if (error instanceof Error) return error.message;
-    return "Unknown error";
+    return txHash;
   }
 };

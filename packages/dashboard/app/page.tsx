@@ -10,25 +10,61 @@ import {
 import { useAtomValue } from "jotai";
 import { accountAtom } from "@/atoms/accountAtom";
 import { bech32 } from "bech32";
-import { type TransactionFormValues } from "@common/types";
-import { osmosisMsgs, osmosisTxs } from "@chain-sources/osmosis/utils";
+import {
+  TransactionBaseFormValue,
+  TxResult,
+  type TransactionBaseFormValues,
+} from "@common/types";
+import { osmosisTxs } from "@chain-sources/osmosis/utils";
+import { useState } from "react";
 
 export default function Home() {
-  const methods = useForm<TransactionFormValues>();
+  const methods = useForm<TransactionBaseFormValues>();
+  const [shouldBroadcastTxContinue, setShouldBroadcastTxContinue] =
+    useState(false);
   const { fields, append } = useFieldArray({
     control: methods.control,
     name: "transactions",
   });
+  const [txResult, setTxResult] = useState<TxResult[]>([]);
 
-  const onSubmit = async (data: TransactionFormValues) => {
-    await Promise.all(
-      data.transactions.map(async (transation) => {
-        const bech32Prefix = transation.bech32Prefix;
+  const onSubmit = async (data: TransactionBaseFormValues) => {
+    const onTxEvent = {
+      event: {
+        onFulfill(data: any) {
+          setTxResult((prevResult) => [...prevResult, data]);
+        },
+        onError(data: any) {
+          setTxResult((prevResult) => [...prevResult, data]);
+        },
+      },
+    };
 
-        if (bech32Prefix === "osmo") {
-          return await osmosisTxs(transation);
+    await data.transactions.reduce(
+      async (
+        promise: Promise<Uint8Array | null>,
+        transaction: TransactionBaseFormValue
+      ) => {
+        try {
+          await promise;
+
+          const bech32Prefix = transaction.bech32Prefix;
+
+          if (bech32Prefix === "osmo") {
+            return osmosisTxs({ ...transaction, ...onTxEvent });
+          }
+
+          throw new Error("Invalid bech32 prefix");
+        } catch (error) {
+          console.error(error);
+          if (shouldBroadcastTxContinue) {
+            return Promise.resolve(null);
+          } else {
+            throw error;
+          }
         }
-      })
+      },
+      Promise.resolve(null)
     );
   };
 

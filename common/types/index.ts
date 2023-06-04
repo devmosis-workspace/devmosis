@@ -3,10 +3,10 @@ export type TransactionBaseFormValues = {
 };
 
 export type TransactionBaseFormValue = {
-    typeUrl: string;
-    bech32Prefix: string;
-    memo: string;
-}
+  typeUrl: string;
+  bech32Prefix: string;
+  memo: string;
+};
 
 export interface AminoMsg {
   type: string;
@@ -23,5 +23,16 @@ export interface QueryAccountResponse {
       "@type": string;
       key: string;
     };
+  };
+}
+
+export interface TxResult {
+  status: "success" | "error";
+  data: Record<string, any>;
+}
+export interface TxEvent {
+  event?: {
+    onError?: (data: any) => void;
+    onFulfill?: (data: any) => void;
   };
 }

@@ -1,4 +1,4 @@
-import type { TransactionBaseFormValue } from "@common/types";
+import type { TransactionBaseFormValue, TxEvent } from "@common/types";
 import { osmosisMsgs } from "./osmosisMsgs";
 import type {
   MsgBeginRedelegate,
@@ -78,13 +78,15 @@ import type {
   MsgJoinSwapExternAmountIn,
   MsgJoinSwapShareAmountOut,
 } from "@chain-clients/osmosis/types/codegen/osmosis/gamm/v1beta1/tx";
+import { getTxResult } from "./osmosisTxUtils";
 
 export const osmosisTxs = async ({
   bech32Prefix,
   typeUrl,
   memo,
+  event,
   ...formValues
-}: TransactionBaseFormValue) => {
+}: TransactionBaseFormValue & TxEvent) => {
   const {
     // cosmos
     beginRedelegate,
@@ -120,132 +122,130 @@ export const osmosisTxs = async ({
     withdrawDelegationRewards,
   } = osmosisMsgs;
 
-  switch (typeUrl) {
-    case beginRedelegate(null as any).typeUrl:
-      return await msgBeginRedelegate(formValues as MsgBeginRedelegate, memo);
-    case cancelUnbondingDelegation(null as any).typeUrl:
-      return await msgCancelUnbondingDelegation(
-        formValues as MsgCancelUnbondingDelegation,
-        memo
-      );
-    case delegate(null as any).typeUrl:
-      return await msgDelegate(formValues as MsgDelegate, memo);
-    case multiSend(null as any).typeUrl:
-      return await msgMultiSend(formValues as MsgMultiSend, memo);
-    case send(null as any).typeUrl:
-      return await msgSend(formValues as MsgSend, memo);
-    case undelegate(null as any).typeUrl:
-      return await msgUndelegate(formValues as MsgUndelegate, memo);
-    case setWithdrawAddress(null as any).typeUrl:
-      return await msgSetWithdrawAddress(
-        formValues as MsgSetWithdrawAddress,
-        memo
-      );
-    case withdrawDelegatorReward(null as any).typeUrl:
-      return await msgWithdrawDelegatorReward(
-        formValues as MsgWithdrawDelegatorReward,
-        memo
-      );
+  const txs = () => {
+    switch (typeUrl) {
+      case beginRedelegate(null as any).typeUrl:
+        return msgBeginRedelegate(formValues as MsgBeginRedelegate, memo);
+      case cancelUnbondingDelegation(null as any).typeUrl:
+        return msgCancelUnbondingDelegation(
+          formValues as MsgCancelUnbondingDelegation,
+          memo
+        );
+      case delegate(null as any).typeUrl:
+        return msgDelegate(formValues as MsgDelegate, memo);
+      case multiSend(null as any).typeUrl:
+        return msgMultiSend(formValues as MsgMultiSend, memo);
+      case send(null as any).typeUrl:
+        return msgSend(formValues as MsgSend, memo);
+      case undelegate(null as any).typeUrl:
+        return msgUndelegate(formValues as MsgUndelegate, memo);
+      case setWithdrawAddress(null as any).typeUrl:
+        return msgSetWithdrawAddress(formValues as MsgSetWithdrawAddress, memo);
+      case withdrawDelegatorReward(null as any).typeUrl:
+        return msgWithdrawDelegatorReward(
+          formValues as MsgWithdrawDelegatorReward,
+          memo
+        );
 
-    case beginUnlocking(null as any).typeUrl:
-      return await msgBeginUnlocking(formValues as MsgBeginUnlocking, memo);
-    case beginUnlockingAll(null as any).typeUrl:
-      return await msgBeginUnlockingAll(
-        formValues as MsgBeginUnlockingAll,
-        memo
-      );
-    case delegateBondedTokens(null as any).typeUrl:
-      return await msgDelegateBondedTokens(
-        formValues as MsgDelegateBondedTokens,
-        memo
-      );
-    case delegateToValidatorSet(null as any).typeUrl:
-      return await msgDelegateToValidatorSet(
-        formValues as MsgDelegateToValidatorSet,
-        memo
-      );
-    case exitPool(null as any).typeUrl:
-      return await msgExitPool(formValues as MsgExitPool, memo);
-    case exitSwapExternAmountOut(null as any).typeUrl:
-      return await msgExitSwapExternAmountOut(
-        formValues as MsgExitSwapExternAmountOut,
-        memo
-      );
-    case exitSwapShareAmountIn(null as any).typeUrl:
-      return await msgExitSwapShareAmountIn(
-        formValues as MsgExitSwapShareAmountIn,
-        memo
-      );
-    case joinPool(null as any).typeUrl:
-      return await msgJoinPool(formValues as MsgJoinPool, memo);
-    case joinSwapExternAmountIn(null as any).typeUrl:
-      return await msgJoinSwapExternAmountIn(
-        formValues as MsgJoinSwapExternAmountIn,
-        memo
-      );
-    case joinSwapShareAmountOut(null as any).typeUrl:
-      return await msgJoinSwapShareAmountOut(
-        formValues as MsgJoinSwapShareAmountOut,
-        memo
-      );
-    case lockAndSuperfluidDelegate(null as any).typeUrl:
-      return await msgLockAndSuperfluidDelegate(
-        formValues as MsgLockAndSuperfluidDelegate,
-        memo
-      );
-    case lockTokens(null as any).typeUrl:
-      return await msgLockTokens(formValues as MsgLockTokens, memo);
-    case redelegateValidatorSet(null as any).typeUrl:
-      return await msgRedelegateValidatorSet(
-        formValues as MsgRedelegateValidatorSet,
-        memo
-      );
-    case setValidatorSetPreference(null as any).typeUrl:
-      return await msgSetValidatorSetPreference(
-        formValues as MsgSetValidatorSetPreference,
-        memo
-      );
-    case superfluidDelegate(null as any).typeUrl:
-      return await msgSuperfluidDelegate(
-        formValues as MsgSuperfluidDelegate,
-        memo
-      );
-    case superfluidUnbondLock(null as any).typeUrl:
-      return await msgSuperfluidUnbondLock(
-        formValues as MsgSuperfluidUnbondLock,
-        memo
-      );
-    case superfluidUndelegate(null as any).typeUrl:
-      return await msgSuperfluidUndelegate(
-        formValues as MsgSuperfluidUndelegate,
-        memo
-      );
-    case superfluidUndelegateAndUnbondLock(null as any).typeUrl:
-      return await msgSuperfluidUndelegateAndUnbondLock(
-        formValues as MsgSuperfluidUndelegateAndUnbondLock,
-        memo
-      );
-    case swapExactAmountIn(null as any).typeUrl:
-      return await msgSwapExactAmountIn(
-        formValues as MsgSwapExactAmountIn,
-        memo
-      );
-    case swapExactAmountOut(null as any).typeUrl:
-      return await msgSwapExactAmountOut(
-        formValues as MsgSwapExactAmountOut,
-        memo
-      );
-    case undelegateFromValidatorSet(null as any).typeUrl:
-      return await msgUndelegateFromValidatorSet(
-        formValues as MsgUndelegateFromValidatorSet,
-        memo
-      );
-    case withdrawDelegationRewards(null as any).typeUrl:
-      return await msgWithdrawDelegationRewards(
-        formValues as MsgWithdrawDelegationRewards,
-        memo
-      );
-    default:
-      return null;
+      case beginUnlocking(null as any).typeUrl:
+        return msgBeginUnlocking(formValues as MsgBeginUnlocking, memo);
+      case beginUnlockingAll(null as any).typeUrl:
+        return msgBeginUnlockingAll(formValues as MsgBeginUnlockingAll, memo);
+      case delegateBondedTokens(null as any).typeUrl:
+        return msgDelegateBondedTokens(
+          formValues as MsgDelegateBondedTokens,
+          memo
+        );
+      case delegateToValidatorSet(null as any).typeUrl:
+        return msgDelegateToValidatorSet(
+          formValues as MsgDelegateToValidatorSet,
+          memo
+        );
+      case exitPool(null as any).typeUrl:
+        return msgExitPool(formValues as MsgExitPool, memo);
+      case exitSwapExternAmountOut(null as any).typeUrl:
+        return msgExitSwapExternAmountOut(
+          formValues as MsgExitSwapExternAmountOut,
+          memo
+        );
+      case exitSwapShareAmountIn(null as any).typeUrl:
+        return msgExitSwapShareAmountIn(
+          formValues as MsgExitSwapShareAmountIn,
+          memo
+        );
+      case joinPool(null as any).typeUrl:
+        return msgJoinPool(formValues as MsgJoinPool, memo);
+      case joinSwapExternAmountIn(null as any).typeUrl:
+        return msgJoinSwapExternAmountIn(
+          formValues as MsgJoinSwapExternAmountIn,
+          memo
+        );
+      case joinSwapShareAmountOut(null as any).typeUrl:
+        return msgJoinSwapShareAmountOut(
+          formValues as MsgJoinSwapShareAmountOut,
+          memo
+        );
+      case lockAndSuperfluidDelegate(null as any).typeUrl:
+        return msgLockAndSuperfluidDelegate(
+          formValues as MsgLockAndSuperfluidDelegate,
+          memo
+        );
+      case lockTokens(null as any).typeUrl:
+        return msgLockTokens(formValues as MsgLockTokens, memo);
+      case redelegateValidatorSet(null as any).typeUrl:
+        return msgRedelegateValidatorSet(
+          formValues as MsgRedelegateValidatorSet,
+          memo
+        );
+      case setValidatorSetPreference(null as any).typeUrl:
+        return msgSetValidatorSetPreference(
+          formValues as MsgSetValidatorSetPreference,
+          memo
+        );
+      case superfluidDelegate(null as any).typeUrl:
+        return msgSuperfluidDelegate(formValues as MsgSuperfluidDelegate, memo);
+      case superfluidUnbondLock(null as any).typeUrl:
+        return msgSuperfluidUnbondLock(
+          formValues as MsgSuperfluidUnbondLock,
+          memo
+        );
+      case superfluidUndelegate(null as any).typeUrl:
+        return msgSuperfluidUndelegate(
+          formValues as MsgSuperfluidUndelegate,
+          memo
+        );
+      case superfluidUndelegateAndUnbondLock(null as any).typeUrl:
+        return msgSuperfluidUndelegateAndUnbondLock(
+          formValues as MsgSuperfluidUndelegateAndUnbondLock,
+          memo
+        );
+      case swapExactAmountIn(null as any).typeUrl:
+        return msgSwapExactAmountIn(formValues as MsgSwapExactAmountIn, memo);
+      case swapExactAmountOut(null as any).typeUrl:
+        return msgSwapExactAmountOut(formValues as MsgSwapExactAmountOut, memo);
+      case undelegateFromValidatorSet(null as any).typeUrl:
+        return msgUndelegateFromValidatorSet(
+          formValues as MsgUndelegateFromValidatorSet,
+          memo
+        );
+      case withdrawDelegationRewards(null as any).typeUrl:
+        return msgWithdrawDelegationRewards(
+          formValues as MsgWithdrawDelegationRewards,
+          memo
+        );
+      default:
+        throw new Error("Unknown typeUrl: " + typeUrl);
+    }
+  };
+
+  const txHash = await txs();
+  const txResult = await getTxResult(txHash);
+
+  if (txResult.status === "error") {
+    event?.onError?.(txResult);
+  } else {
+    event?.onFulfill?.(txResult);
   }
+
+  return txHash;
 };
