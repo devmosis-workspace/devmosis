@@ -31,15 +31,15 @@ export const MsgDelegate = ({
       control,
       name: `transactions.${index}.validatorAddress`,
     }) ?? "";
+  const originAmount: string =
+    useWatch({
+      control,
+      name: `transactions.${index}.originAmount`,
+    }) ?? "";
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [amount, setAmount] = useState("");
   const { chain, stakingToken, coinDecimal } = osmosisInfo;
   const baseDenom = stakingToken?.base;
-
-  const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setAmount(e.target.value);
-  };
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -61,13 +61,13 @@ export const MsgDelegate = ({
 
   useEffect(
     function setAmount() {
-      if (amount === "" || baseDenom === undefined) return;
+      if (originAmount === "" || baseDenom === undefined) return;
       if (coinDecimal === undefined) {
         throw new Error(
           `MsgDelegate - ${chain?.chain_name} coin decimal is undefined`
         );
       }
-      const actualAmount = new Dec(amount)
+      const actualAmount = new Dec(originAmount)
         .mul(DecUtils.getTenExponentNInPrecisionRange(coinDecimal))
         .truncate()
         .toString();
@@ -77,7 +77,7 @@ export const MsgDelegate = ({
         denom: baseDenom,
       });
     },
-    [amount, baseDenom]
+    [originAmount, baseDenom]
   );
 
   useEffect(
@@ -125,10 +125,10 @@ export const MsgDelegate = ({
         <Box>
           <span>amount :</span>
           <input
-            type="number"
-            value={amount}
-            onChange={handleAmountChange}
             placeholder=""
+            {...register(`transactions.${index}.originAmount`, {
+              required: true,
+            })}
           />
           <HiddenAmountInput
             type="hidden"

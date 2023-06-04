@@ -43,14 +43,13 @@ export const OsmosisTransactionList = ({
   );
 };
 
-const Container = styled.ul`
+const Container = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
 `;
 
-const ListItem = styled.li`
-  margin-bottom: 4px;
-  list-style: none;
+const ListItem = styled.div`
+  width: 100%;
 `;

@@ -233,8 +233,7 @@ const simulateOsmosisTx = async ({
   }).finish();
 
   const simulateTx = async () => {
-    const restEndpoint =
-      "https://lcd-osmosis.keplr.app" ?? chain?.apis?.rest?.[2].address ?? "";
+    const restEndpoint = chain?.apis?.rest?.[2].address ?? "";
     const data = (
       await fetch(`${restEndpoint}/cosmos/tx/v1beta1/simulate`, {
         method: "POST",

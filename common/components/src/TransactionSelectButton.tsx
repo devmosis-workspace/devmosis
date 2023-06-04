@@ -15,7 +15,7 @@ export const TransactionSelectButton = ({
 }: TransactionSelectButtonProps) => {
   return (
     <Button {...props}>
-      <Title>{title}</Title>
+      <Title><span>{title}</span></Title>
       <Description>{description}</Description>
     </Button>
   );
@@ -24,10 +24,13 @@ export const TransactionSelectButton = ({
 const Button = styled.button`
   width: 100%;
   display: flex;
+  justify-content: center;
+  height: 40px;
   flex-direction: column;
-  padding: 4px;
+  padding: 8px;
   border-radius: 4px;
   background-color: #4b4f5b;
+  color: white;
 `;
 
 const Title = styled.span``;
