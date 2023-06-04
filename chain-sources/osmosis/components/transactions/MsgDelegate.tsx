@@ -5,72 +5,14 @@ import {
   useEffect,
   type MouseEvent,
 } from "react";
-import { cosmos } from "@chain-clients/osmosis";
 import styled from "@emotion/styled";
 import { Dec, DecUtils } from "@keplr-wallet/unit";
 import { Modal } from "@common/components";
 import { useFormContext, useWatch } from "react-hook-form";
-import Long from "long";
 import { useQuery } from "@tanstack/react-query";
-import { type QueryValidatorsRequest } from "@chain-clients/osmosis/types/codegen/cosmos/staking/v1beta1/query";
-import { type ValidatorSDKType } from "@chain-clients/osmosis/types/codegen/cosmos/staking/v1beta1/staking";
 import { osmosisInfo } from "../../utils";
 import { MessageContainer } from "@common/components/src/MessageContainer";
-import { getValidatorProfilePicture } from "@common/queries";
-
-const osmosisBalanceQuery = async () => {
-  const { chain } = osmosisInfo;
-  const baseDenom = chain?.staking?.staking_tokens?.[0].denom;
-  const restEndpoint = chain?.apis?.rest?.[0].address ?? "";
-
-  if (baseDenom === undefined) {
-    throw new Error(
-      `MsgDelegate - ${chain?.chain_name} base denom is undefined`
-    );
-  }
-
-  const {
-    cosmos: {
-      bank: {
-        v1beta1: { balance },
-      },
-    },
-  } = await cosmos.ClientFactory.createLCDClient({
-    restEndpoint,
-  });
-
-  const { balance: osmosisBalance } = await balance({
-    denom: baseDenom,
-    address: "",
-  });
-
-  return osmosisBalance;
-};
-
-const osmosisValidatorQuery = async (validatorAddr: string) => {
-  const { chain } = osmosisInfo;
-  const restEndpoint = chain?.apis?.rest?.[0].address ?? "";
-
-  const {
-    cosmos: {
-      staking: {
-        v1beta1: { validator },
-      },
-    },
-  } = await cosmos.ClientFactory.createLCDClient({
-    restEndpoint,
-  });
-
-  const { validator: osmosisValidator } = await validator({
-    validatorAddr,
-  });
-
-  const validatorProfilePicture = await getValidatorProfilePicture(
-    osmosisValidator?.description?.identity
-  );
-
-  return { ...osmosisValidator, profilePicture: validatorProfilePicture };
-};
+import { osmosisValidatorQuery, osmosisValidatorsQuery } from "../../queries";
 
 type MsgDelegateProps = HTMLAttributes<HTMLDivElement> & {
   index: number;
@@ -84,10 +26,11 @@ export const MsgDelegate = ({
   ...props
 }: MsgDelegateProps) => {
   const { register, setValue, control } = useFormContext();
-  const selectedValidatorAddress: string | undefined = useWatch({
-    control,
-    name: `transactions.${index}.validatorAddress`,
-  });
+  const selectedValidatorAddress: string =
+    useWatch({
+      control,
+      name: `transactions.${index}.validatorAddress`,
+    }) ?? "";
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [amount, setAmount] = useState("");
@@ -111,8 +54,9 @@ export const MsgDelegate = ({
       "osmosis/validator",
       { valdatorAddress: selectedValidatorAddress },
     ],
-    queryFn: () => osmosisValidatorQuery(selectedValidatorAddress!),
-    enabled: selectedValidatorAddress !== undefined,
+    queryFn: () =>
+      osmosisValidatorQuery({ validatorAddr: selectedValidatorAddress! }),
+    enabled: selectedValidatorAddress !== "",
   });
 
   useEffect(
@@ -206,59 +150,6 @@ export const MsgDelegate = ({
       </Modal>
     </>
   );
-};
-
-const osmosisValidatorsQuery = async () => {
-  const { chain } = osmosisInfo;
-  const baseDenom = chain?.staking?.staking_tokens?.[0].denom;
-  const restEndpoint = chain?.apis?.rest?.[0].address ?? "";
-
-  if (baseDenom === undefined) {
-    throw new Error(
-      `MsgDelegate - ${chain?.chain_name} base denom is undefined`
-    );
-  }
-
-  const {
-    cosmos: {
-      staking: {
-        v1beta1: { validators },
-      },
-    },
-  } = await cosmos.ClientFactory.createLCDClient({
-    restEndpoint,
-  });
-
-  const osmosisValidators = await validators({
-    pagination: {
-      limit: new Long(1000),
-      offset: new Long(0),
-    },
-  } as QueryValidatorsRequest);
-
-  const classifiedValidators = osmosisValidators.validators?.reduce(
-    (acc, validator) => {
-      const validatorStatus = validator.status as any as string;
-      if (validator.jailed) {
-        acc.jailed.push(validator);
-      } else if (validatorStatus === "BOND_STATUS_BONDED") {
-        acc.bonded.push(validator);
-      } else if (validatorStatus === "BOND_STATUS_UNBONDED") {
-        acc.unbonded.push(validator);
-      } else if (validatorStatus === "BOND_STATUS_UNBONDING") {
-        acc.unbonding.push(validator);
-      }
-      return acc;
-    },
-    {
-      bonded: [] as ValidatorSDKType[],
-      unbonded: [] as ValidatorSDKType[],
-      unbonding: [] as ValidatorSDKType[],
-      jailed: [] as ValidatorSDKType[],
-    }
-  );
-
-  return classifiedValidators;
 };
 
 interface ValidatorsModalContentProps {

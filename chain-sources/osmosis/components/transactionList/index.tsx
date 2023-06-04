@@ -1,7 +1,4 @@
-import {
-  TransactionBaseFormValue,
-  type TransactionFormValues,
-} from "@common/types";
+import { TransactionBaseFormValue } from "@common/types";
 import { type UseFieldArrayAppend } from "react-hook-form";
 import { osmosisInfo, supportedTypeUrls } from "../../utils";
 import { TransactionSelectButton } from "@common/components";

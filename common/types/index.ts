@@ -1,9 +1,5 @@
-export type TransactionFormValues = {
-  transactions: {
-    typeUrl: string;
-    bech32Prefix: string;
-    memo: string;
-  }[];
+export type TransactionBaseFormValues = {
+  transactions: TransactionBaseFormValue[];
 };
 
 export type TransactionBaseFormValue = {
