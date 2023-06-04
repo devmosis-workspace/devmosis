@@ -13077,6 +13077,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dashboard", "workspace:packages/dashboard"],\
             ["@chain-clients/osmosis", "workspace:chain-clients/osmosis"],\
             ["@chain-sources/osmosis", "workspace:chain-sources/osmosis"],\
+            ["@common/components", "workspace:common/components"],\
             ["@common/types", "workspace:common/types"],\
             ["@common/utils", "workspace:common/utils"],\
             ["@emotion/cache", "npm:11.11.0"],\

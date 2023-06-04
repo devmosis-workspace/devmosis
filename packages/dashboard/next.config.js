@@ -23,7 +23,7 @@ const securityHeaders = [
 
 const chainPackages = ["@chain-sources/osmosis"];
 
-const commonPackages = ["@common/types", "@common/utils"];
+const commonPackages = ["@common/types", "@common/utils", "@common/components"];
 
 const transpilePackages = [...commonPackages, ...chainPackages];
 

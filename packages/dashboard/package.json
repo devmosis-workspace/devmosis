@@ -12,6 +12,7 @@
   "dependencies": {
     "@chain-clients/osmosis": "workspace:^",
     "@chain-sources/osmosis": "workspace:^",
+    "@common/components": "workspace:^",
     "@common/types": "workspace:^",
     "@common/utils": "workspace:^",
     "@emotion/cache": "^11.11.0",
