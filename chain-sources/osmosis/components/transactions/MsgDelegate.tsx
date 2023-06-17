@@ -6,7 +6,7 @@ import {
   type MouseEvent,
 } from "react";
 import styled from "@emotion/styled";
-import { Dec, DecUtils } from "@keplr-wallet/unit";
+import { Dec, DecUtils, IntPretty } from "@keplr-wallet/unit";
 import { Modal } from "@common/components";
 import { useFormContext, useWatch } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
@@ -31,13 +31,14 @@ export const MsgDelegate = ({
       control,
       name: `transactions.${index}.validatorAddress`,
     }) ?? "";
-  const originAmount: string =
+  const baseDenomAmount: string =
     useWatch({
       control,
-      name: `transactions.${index}.originAmount`,
+      name: `transactions.${index}.amount.amount`,
     }) ?? "";
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [amountInputValue, setAmountInputValue] = useState("");
   const { chain, stakingToken, coinDecimal } = osmosisInfo;
   const baseDenom = stakingToken?.base;
 
@@ -47,6 +48,24 @@ export const MsgDelegate = ({
 
   const handleModalClose = () => {
     setIsModalOpen(false);
+  };
+
+  const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    let numericValue = inputValue.replace(/[^0-9.]/g, "");
+
+    if (numericValue === ".") return setAmountInputValue("0.");
+
+    const decimalCount = numericValue.split(".").length - 1;
+    if (decimalCount > 1) {
+      numericValue = numericValue.slice(0, numericValue.lastIndexOf("."));
+    }
+
+    if (/^0[0-9]+/.test(inputValue)) {
+      numericValue = numericValue.replace(/^0+/, "");
+    }
+
+    setAmountInputValue(numericValue);
   };
 
   const { data: validatorData } = useQuery({
@@ -59,15 +78,34 @@ export const MsgDelegate = ({
     enabled: selectedValidatorAddress !== "",
   });
 
-  useEffect(
-    function setAmount() {
-      if (originAmount === "" || baseDenom === undefined) return;
+  useEffect(function loadSavedAmount() {
+    if (baseDenomAmount.length > 0 && amountInputValue.length === 0) {
       if (coinDecimal === undefined) {
         throw new Error(
           `MsgDelegate - ${chain?.chain_name} coin decimal is undefined`
         );
       }
-      const actualAmount = new Dec(originAmount)
+      const amount = new IntPretty(
+        new Dec(baseDenomAmount).quo(
+          DecUtils.getTenExponentNInPrecisionRange(coinDecimal)
+        )
+      ).toString();
+
+      handleAmountChange({
+        target: { value: amount },
+      } as ChangeEvent<HTMLInputElement>);
+    }
+  }, []);
+
+  useEffect(
+    function setAmount() {
+      if (amountInputValue.length === 0 || baseDenom === undefined) return;
+      if (coinDecimal === undefined) {
+        throw new Error(
+          `MsgDelegate - ${chain?.chain_name} coin decimal is undefined`
+        );
+      }
+      const actualAmount = new Dec(amountInputValue)
         .mul(DecUtils.getTenExponentNInPrecisionRange(coinDecimal))
         .truncate()
         .toString();
@@ -77,7 +115,7 @@ export const MsgDelegate = ({
         denom: baseDenom,
       });
     },
-    [originAmount, baseDenom]
+    [amountInputValue, baseDenom]
   );
 
   useEffect(
@@ -126,9 +164,9 @@ export const MsgDelegate = ({
           <span>amount :</span>
           <input
             placeholder=""
-            {...register(`transactions.${index}.originAmount`, {
-              required: true,
-            })}
+            type="text"
+            value={amountInputValue}
+            onChange={handleAmountChange}
           />
           <HiddenAmountInput
             type="hidden"
