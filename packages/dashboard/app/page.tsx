@@ -19,6 +19,7 @@ import { osmosisTxs } from "@chain-sources/osmosis/utils";
 import { type MouseEvent, useState } from "react";
 import { savedFormAtom } from "@/atoms/savedFormAtom";
 import { TxProcessModal } from "@/components/modals/TxProcessModal";
+import { FormSaveModal } from "@/components/modals/FormSaveModal";
 
 export default function Home() {
   const methods = useForm<TransactionBaseFormValues>();
@@ -29,8 +30,9 @@ export default function Home() {
     name: "transactions",
   });
   const [isTxProcessModalOpen, setIsTxProcessModalOpen] = useState(false);
+  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [txResult, setTxResult] = useState<TxResult[]>([]);
-  const [savedForm, setSavedForm] = useAtom(savedFormAtom);
+  const savedForm = useAtomValue(savedFormAtom);
   const savedFormEntries = Object.entries(savedForm ?? {});
 
   const handleTxProcessModalOpen = () => {
@@ -46,17 +48,13 @@ export default function Home() {
     handleTxResultClear();
   };
 
+  const handleSaveModalClose = () => {
+    setIsSaveModalOpen(false);
+  };
 
-  const handleFormSave = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleSaveModalOpen = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-
-    setSavedForm((prev) => {
-      return {
-        ...prev,
-        // TODO: Add a title input
-        ["My validators"]: methods.getValues().transactions,
-      };
-    });
+    setIsSaveModalOpen(true);
   };
 
   const handleSavedFormSelect = (form: TransactionBaseFormValue[]) => {
@@ -178,7 +176,7 @@ export default function Home() {
                   <ButtonContainer>
                     <SaveButton
                       type="button"
-                      onClick={(e) => handleFormSave(e)}
+                      onClick={(e) => handleSaveModalOpen(e)}
                     >
                       <span>Save</span>
                     </SaveButton>
@@ -218,6 +216,11 @@ export default function Home() {
         shouldContinueBroadcastingTx={shouldContinueBroadcastingTx}
         fields={fields}
         txResult={txResult}
+      />
+      <FormSaveModal
+        isOpen={isSaveModalOpen}
+        onClose={handleSaveModalClose}
+        methods={methods}
       />
     </>
   );
