@@ -26,10 +26,15 @@ export interface QueryAccountResponse {
   };
 }
 
-export interface TxResult {
-  status: "success" | "error";
-  data: Record<string, any>;
-}
+export type TxResult =
+  | {
+      status: "success" | "error";
+      data: Record<string, any>;
+    }
+  | {
+      status: "cancelled";
+      data?: undefined;
+    };
 export interface TxEvent {
   event?: {
     onError?: (data: any) => void;

@@ -18,18 +18,34 @@ import {
 import { osmosisTxs } from "@chain-sources/osmosis/utils";
 import { type MouseEvent, useState } from "react";
 import { savedFormAtom } from "@/atoms/savedFormAtom";
+import { TxProcessModal } from "@/components/modals/TxProcessModal";
 
 export default function Home() {
   const methods = useForm<TransactionBaseFormValues>();
-  const [shouldBroadcastTxContinue, setShouldBroadcastTxContinue] =
+  const [shouldContinueBroadcastingTx, setShouldContinueBroadcastingTx] =
     useState(false);
   const { fields, append } = useFieldArray({
     control: methods.control,
     name: "transactions",
   });
+  const [isTxProcessModalOpen, setIsTxProcessModalOpen] = useState(false);
   const [txResult, setTxResult] = useState<TxResult[]>([]);
   const [savedForm, setSavedForm] = useAtom(savedFormAtom);
   const savedFormEntries = Object.entries(savedForm ?? {});
+
+  const handleTxProcessModalOpen = () => {
+    setIsTxProcessModalOpen(true);
+  };
+
+  const handleTxResultClear = () => {
+    setTxResult([]);
+  };
+
+  const handleTxProcessModalClose = () => {
+    setIsTxProcessModalOpen(false);
+    handleTxResultClear();
+  };
+
 
   const handleFormSave = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -53,41 +69,58 @@ export default function Home() {
   const onSubmit = async (data: TransactionBaseFormValues) => {
     const onTxEvent = {
       event: {
-        onFulfill(data: any) {
-          setTxResult((prevResult) => [...prevResult, data]);
+        onFulfill(result: any) {
+          setTxResult((prevResult) => [...prevResult, result]);
         },
-        onError(data: any) {
-          setTxResult((prevResult) => [...prevResult, data]);
+        onError(result: any) {
+          setTxResult((prevResult) => [...prevResult, result]);
         },
       },
     };
+    handleTxProcessModalOpen();
+    try {
+      await data.transactions.reduce(
+        async (
+          promise: Promise<Uint8Array | null>,
+          transaction: TransactionBaseFormValue
+        ) => {
+          try {
+            await promise;
 
-    await data.transactions.reduce(
-      async (
-        promise: Promise<Uint8Array | null>,
-        transaction: TransactionBaseFormValue
-      ) => {
-        try {
-          await promise;
+            const bech32Prefix = transaction.bech32Prefix;
 
-          const bech32Prefix = transaction.bech32Prefix;
+            if (bech32Prefix === "osmo") {
+              return osmosisTxs({ ...transaction, ...onTxEvent });
+            }
 
-          if (bech32Prefix === "osmo") {
-            return osmosisTxs({ ...transaction, ...onTxEvent });
+            throw new Error("Invalid bech32 prefix");
+          } catch (e) {
+            const error = e as Error;
+            console.error(error);
+            if (shouldContinueBroadcastingTx) {
+              return Promise.resolve(null);
+            } else {
+              throw error;
+            }
           }
-
-          throw new Error("Invalid bech32 prefix");
-        } catch (error) {
-          console.error(error);
-          if (shouldBroadcastTxContinue) {
-            return Promise.resolve(null);
-          } else {
-            throw error;
-          }
+        },
+        Promise.resolve(null)
+      );
+    } catch (error) {
+      if (error instanceof Error) {
+        const isRequestRejected = error.message === "Request rejected";
+        if (isRequestRejected) {
+          setTxResult((prevResult) => [
+            ...prevResult,
+            {
+              status: "cancelled",
+            },
+          ]);
+          return;
         }
-      },
-      Promise.resolve(null)
-    );
+      }
+      throw error;
+    }
   };
 
   const account = useAtomValue(accountAtom);
@@ -98,83 +131,95 @@ export default function Home() {
   )?.bech32Address;
 
   return (
-    <Container>
-      <Title>Transactions</Title>
-      <Wrapper>
-        <SelectAreaContainer>
-          {savedFormEntries.length > 0 ? (
+    <>
+      <Container>
+        <Title>Transactions</Title>
+        <Wrapper>
+          <SelectAreaContainer>
+            {savedFormEntries.length > 0 ? (
+              <SelectArea>
+                <Subtitle>My TXs</Subtitle>
+                <SavedFormGrid>
+                  {savedFormEntries.map(([key, value]) => {
+                    return (
+                      <SavedFormButton
+                        key={key}
+                        type="button"
+                        onClick={() => handleSavedFormSelect(value)}
+                      >
+                        <span>{key}</span>
+                        <div
+                          css={css`
+                            position: absolute;
+                            bottom: 12px;
+                            right: 12px;
+                            z-index: 1;
+                          `}
+                        >
+                          <PlayIcon />
+                        </div>
+                      </SavedFormButton>
+                    );
+                  })}
+                </SavedFormGrid>
+              </SelectArea>
+            ) : null}
             <SelectArea>
-              <Subtitle>My TXs</Subtitle>
-              <SavedFormGrid>
-                {savedFormEntries.map(([key, value]) => {
-                  return (
-                    <SavedFormButton
-                      key={key}
+              <Subtitle>Select Osmosis Msgs</Subtitle>
+              <OsmosisTransactionList {...{ append }} />
+            </SelectArea>
+          </SelectAreaContainer>
+          <Basket>
+            <FormProvider {...methods}>
+              <Form onSubmit={methods.handleSubmit(onSubmit)}>
+                <Header>
+                  <ItemText>{fieldCount} items</ItemText>
+
+                  <ButtonContainer>
+                    <SaveButton
                       type="button"
-                      onClick={() => handleSavedFormSelect(value)}
+                      onClick={(e) => handleFormSave(e)}
                     >
-                      <span>{key}</span>
-                      <div
+                      <span>Save</span>
+                    </SaveButton>
+                    <ExecuteButton type="submit">
+                      <PlayIcon />
+                      <span
                         css={css`
-                          position: absolute;
-                          bottom: 12px;
-                          right: 12px;
-                          z-index: 1;
+                          margin-left: 4px;
                         `}
                       >
-                        <PlayIcon />
-                      </div>
-                    </SavedFormButton>
-                  );
-                })}
-              </SavedFormGrid>
-            </SelectArea>
-          ) : null}
-          <SelectArea>
-            <Subtitle>Select Osmosis Msgs</Subtitle>
-            <OsmosisTransactionList {...{ append }} />
-          </SelectArea>
-        </SelectAreaContainer>
-        <Basket>
-          <FormProvider {...methods}>
-            <Form onSubmit={methods.handleSubmit(onSubmit)}>
-              <Header>
-                <ItemText>{fieldCount} items</ItemText>
-
-                <ButtonContainer>
-                  <SaveButton type="button" onClick={(e) => handleFormSave(e)}>
-                    <span>Save</span>
-                  </SaveButton>
-                  <ExecuteButton type="submit">
-                    <PlayIcon />
-                    <span
-                      css={css`
-                        margin-left: 4px;
-                      `}
-                    >
-                      Execute
-                    </span>
-                  </ExecuteButton>
-                </ButtonContainer>
-              </Header>
-              <Divider />
-              <TransactionList>
-                {fields.map((field, index) => {
-                  return (
-                    <OsmosisTransactions
-                      id={field.id}
-                      index={index}
-                      myAddress={osmosisBech32Addreess}
-                      typeUrl={field.typeUrl}
-                    />
-                  );
-                })}
-              </TransactionList>
-            </Form>
-          </FormProvider>
-        </Basket>
-      </Wrapper>
-    </Container>
+                        Execute
+                      </span>
+                    </ExecuteButton>
+                  </ButtonContainer>
+                </Header>
+                <Divider />
+                <TransactionList>
+                  {fields.map((field, index) => {
+                    return (
+                      <OsmosisTransactions
+                        id={field.id}
+                        index={index}
+                        myAddress={osmosisBech32Addreess}
+                        typeUrl={field.typeUrl}
+                      />
+                    );
+                  })}
+                </TransactionList>
+              </Form>
+            </FormProvider>
+          </Basket>
+        </Wrapper>
+      </Container>
+      <TxProcessModal
+        isOpen={isTxProcessModalOpen}
+        onClose={handleTxProcessModalClose}
+        shouldContinueBroadcastingTx={shouldContinueBroadcastingTx}
+        fields={fields}
+        txResult={txResult}
+      />
+    </>
   );
 }
 

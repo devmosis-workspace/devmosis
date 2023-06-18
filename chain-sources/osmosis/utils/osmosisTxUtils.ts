@@ -255,7 +255,7 @@ const simulateOsmosisTx = async ({
 
 const getOsmosisAccount = async (bech32Address: string) => {
   const { chain } = osmosisInfo;
-  const restEndpoint = chain?.apis?.rest?.[0].address ?? "";
+  const restEndpoint = chain?.apis?.rest?.[2].address ?? "";
 
   const {
     cosmos: {
@@ -323,9 +323,9 @@ export const getTxResult = (txHash: Uint8Array): Promise<TxResult> => {
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      if (data.error) {
+      if (data?.error) {
         if (
-          (data.error.data as string | undefined)?.includes("not found") &&
+          (data?.error?.data as string | undefined)?.includes("not found") &&
           currentRetryCount < LIMIT_RETRY_COUNT
         ) {
           setTimeout(() => {
@@ -334,19 +334,26 @@ export const getTxResult = (txHash: Uint8Array): Promise<TxResult> => {
           }, 200);
           return;
         }
-        ws.close();
-        resolve({
-          status: "error",
-          data,
-        });
       }
 
-      if (data.result?.tx_result?.code === 0) {
-        ws.close();
-        resolve({
-          status: "success",
-          data,
-        });
+      if (data?.result?.tx_result?.code !== undefined) {
+        const isSuccessful = data.result.tx_result.code === 0;
+        const isFailed = data.result.tx_result.code !== 0;
+        if (isFailed) {
+          ws.close();
+          resolve({
+            status: "error",
+            data,
+          });
+        }
+
+        if (isSuccessful) {
+          ws.close();
+          resolve({
+            status: "success",
+            data,
+          });
+        }
       }
     };
   });
