@@ -7,7 +7,7 @@ export const osmosisBalanceQuery = async ({
 }: Pick<QueryBalanceRequest, "address">) => {
   const { chain } = osmosisInfo;
   const baseDenom = chain?.staking?.staking_tokens?.[0].denom;
-  const restEndpoint = chain?.apis?.rest?.[0].address ?? "";
+  const restEndpoint = chain?.apis?.rest?.[2].address ?? "";
 
   if (baseDenom === undefined) {
     throw new Error(

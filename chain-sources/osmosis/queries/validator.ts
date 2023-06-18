@@ -7,7 +7,7 @@ export const osmosisValidatorQuery = async ({
   validatorAddr,
 }: QueryValidatorRequest) => {
   const { chain } = osmosisInfo;
-  const restEndpoint = chain?.apis?.rest?.[0].address ?? "";
+  const restEndpoint = chain?.apis?.rest?.[2].address ?? "";
 
   const {
     cosmos: {
