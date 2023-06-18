@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { HTMLAttributes, type PropsWithChildren } from "react";
+import { HTMLAttributes } from "react";
 
 interface MessageContainerProps extends HTMLAttributes<HTMLDivElement> {
   title: string;

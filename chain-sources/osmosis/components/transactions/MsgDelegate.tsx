@@ -11,8 +11,9 @@ import { Modal } from "@common/components";
 import { useFormContext, useWatch } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import { osmosisInfo } from "../../utils";
-import { MessageContainer } from "@common/components/src/MessageContainer";
+import { MessageContainer } from "@common/components";
 import { osmosisValidatorQuery, osmosisValidatorsQuery } from "../../queries";
+import { MemoTextarea } from "@common/components/src/message/MemoTextarea";
 
 type MsgDelegateProps = HTMLAttributes<HTMLDivElement> & {
   index: number;
@@ -179,6 +180,14 @@ export const MsgDelegate = ({
             {...register(`transactions.${index}.amount.denom`, {
               required: true,
             })}
+          />
+        </Box>
+        <Box>
+          <span>memo :</span>
+          <MemoTextarea
+            placeholder="memo"
+            defaultValue=""
+            {...register(`transactions.${index}.memo`, { required: false })}
           />
         </Box>
       </MessageContainer>
