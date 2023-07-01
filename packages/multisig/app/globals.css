@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-rubik), sans-serif;
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+p {
+  margin: 0;
+}

@@ -1,7 +1,7 @@
 import { assets, type AssetDenomUnit, type Chain } from "chain-registry";
 
-import { generateBech32Config } from "/Users/dan/Documents/GitHub/devmosis/packages/dashboard/utils/bech32Config";
 import type { ChainInfo, Currency, FeeCurrency } from "@keplr-wallet/types";
+import { generateBech32Config } from "./bech32Config";
 
 export const generateKeplrChainInfo = (chain: Chain) => {
   const chainAssets = assets.find(
