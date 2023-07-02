@@ -1,3 +1,7 @@
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
 const securityHeaders = [
   {
     key: "Strict-Transport-Security",
@@ -17,11 +21,15 @@ const securityHeaders = [
   },
 ];
 
-const chainTypesPackages = ["@chain-types/osmosis"];
+const chainPackages = ["@chain-sources/osmosis"];
+
+const commonPackages = ["@common/types", "@common/utils", "@common/components"];
+
+const transpilePackages = [...commonPackages, ...chainPackages];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: [...chainTypesPackages],
+  transpilePackages,
   reactStrictMode: true,
   poweredByHeader: false,
   compiler: {
@@ -36,6 +44,15 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ["@svgr/webpack"],
+    });
+
+    return config;
+  },
   async headers() {
     return [
       {
@@ -46,4 +63,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);

@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-head-element */
 "use client";
 
-import { useEffect } from "react";
-import { Inter, Poppins } from "@next/font/google";
+import { useEffect, useState } from "react";
+import { Inter, Poppins } from "next/font/google";
 
 import { useKeplrListener } from "@/hooks/useKeplrListener";
 import { useAccountInitial } from "@/hooks/useAccountInitial";
@@ -10,8 +10,10 @@ import { useChainInitial } from "@/hooks/useChainInitial";
 import { globalStyles } from "@/styles/globalStyles";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { Sidebar } from "@/components/layout/Sidebar";
-import { Layout } from "@/components/layout/Layout";
+import styled from "@emotion/styled";
+import { Sidebar } from "@/components/layouts/Sidebar";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +34,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [client] = useState(
+    new QueryClient({ defaultOptions: { queries: { staleTime: 5000 } } })
+  );
   const { chainInfoInit } = useChainInitial();
   const { accountInit } = useAccountInitial();
 
@@ -52,10 +57,34 @@ export default function RootLayout({
       <body>
         <CacheProvider value={cache}>
           {globalStyles}
-          <Sidebar />
-          <Layout>{children}</Layout>
+          <>
+            <QueryClientProvider client={client}>
+              <Sidebar />
+              <Container>
+                <Wrapper>{children}</Wrapper>
+              </Container>
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+          </>
         </CacheProvider>
       </body>
     </html>
   );
 }
+
+const Container = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  padding-left: 220px;
+
+  display: flex;
+  justify-content: center;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  padding: 60px 40px 40px;
+`;

@@ -2,16 +2,14 @@
   "private": true,
   "license": "MIT",
   "workspaces": [
-    "packages/*",
-    "chain-types/*"
+    "chain-clients/*",
+    "chain-sources/*",
+    "chain-registry",
+    "common/*",
+    "packages/*"
   ],
-  "dependenciesMeta": {
-    "next@13.1.6": {
-      "unplugged": true
-    }
-  },
-  "packageManager": "yarn@3.4.1",
   "dependencies": {
-    "typescript": "4.9.3"
-  }
+    "typescript": "^5.0.4"
+  },
+  "packageManager": "yarn@3.5.1"
 }

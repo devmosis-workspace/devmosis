@@ -1,9 +1,9 @@
-[submodule "chain-types/osmosis/osmosis-v14.0.0"]
-	path = chain-types/osmosis/osmosis-v14.0.0
-	url = https://github.com/osmosis-labs/osmosis.git
-[submodule "chain-types/stride/stride-v5.1.1"]
-	path = chain-types/stride/stride-v5.1.1
-	url = https://github.com/Stride-Labs/stride.git
-[submodule "chain-types/cosmoshub/cosmoshub-v0.45.9"]
-	path = chain-types/cosmoshub/cosmoshub-v0.45.9
-	url = https://github.com/cosmos/cosmos-sdk.git
+[submodule "chain-registry/chain-registry"]
+	path = chain-registry/chain-registry
+	url = https://github.com/cosmos/chain-registry
+[submodule "chain-clients/osmosis/osmosis-v15.1.0"]
+	path = chain-clients/osmosis/osmosis-v15.1.0
+	url = https://github.com/osmosis-labs/osmosis
+[submodule "chain-clients/osmosis/cosmos-sdk-v0.46.1"]
+	path = chain-clients/osmosis/cosmos-sdk-v0.46.1
+	url = https://github.com/Ryz0nd/cosmos-sdk

@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { Chain } from "@chain-registry/types";
+import type { Chain } from "chain-registry";
 
 export const registeredChainAtom = atom<Chain[]>([]);
 
