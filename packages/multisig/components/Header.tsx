@@ -4,19 +4,25 @@ import Image from "next/image";
 
 const items = [
   {
-    name: "Dashboard",
-    href: "/",
-  },
-  {
     name: "Ongoing TXs",
     href: "/txs/ongoing",
+  },
+  {
+    name: "Account",
+    href: "/account/",
+  },
+  {
+    name: "Dashboard",
+    href: "/",
   },
 ];
 
 export const Header = () => {
   const pathname = usePathname();
 
-  const currentPageName = items.find((item) => item.href === pathname)?.name;
+  const currentPageName = items.find((item) =>
+    pathname?.includes(item.href)
+  )?.name;
 
   return (
     <div className="flex items-center px-6 w-full h-16 bg-white border-b border-[#E8ECEF]">

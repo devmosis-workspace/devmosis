@@ -17,7 +17,7 @@ import {
   CREATE_MULTISIG_ACCOUNT_DRAFT,
   CreateMultisigAccountDraftInput,
   type CreateMultisigAccountDraftResponse,
-} from "@/graphql/mutations/createMultisigAccountDraft";
+} from "@/graphql/mutations/multisigAccount";
 import { useRouter } from "next/navigation";
 
 interface Account {
@@ -52,7 +52,7 @@ export const AccountCreateModal = ({
     Record<number, string>
   >({});
 
-  const [createMultisigAccountDraft, { loading, error }] = useMutation<
+  const [createMultisigAccountDraft, { loading }] = useMutation<
     CreateMultisigAccountDraftResponse,
     CreateMultisigAccountDraftInput
   >(CREATE_MULTISIG_ACCOUNT_DRAFT);
@@ -201,7 +201,7 @@ export const AccountCreateModal = ({
       if (data === null || data === undefined) {
         throw new Error("Data is null");
       }
-      router.push(`/accounts/${data.createMultisigAccountDraft.address}`);
+      router.push(`/account/${data.createMultisigAccountDraft.address}`);
     } catch (e) {
       const error = e as Error;
       toast(error.message, { type: "error" });

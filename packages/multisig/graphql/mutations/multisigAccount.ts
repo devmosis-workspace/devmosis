@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_MULTISIG_ACCOUNT_DRAFT = gql`
-  mutation createMultisigAccountDraft($data: MultisigAccountDraftInput!) {
+  mutation CreateMultisigAccountDraft($data: MultisigAccountDraftInput!) {
     createMultisigAccountDraft(data: $data) {
       address
     }

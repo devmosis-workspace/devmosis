@@ -14,11 +14,11 @@ const navigationItems = [
     href: "/",
     icon: <HomeIcon />,
   },
-  {
-    name: "Ongoing TXs",
-    href: "/txs/ongoing",
-    icon: <RocketLaunchIcon />,
-  },
+  // {
+  //   name: "Ongoing TXs",
+  //   href: "/txs/ongoing",
+  //   icon: <RocketLaunchIcon />,
+  // },
 ];
 
 export const Navigation = () => {

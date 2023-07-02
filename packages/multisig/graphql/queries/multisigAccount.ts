@@ -51,3 +51,59 @@ export interface MultisigAccountsResponse {
     }[];
   }[];
 }
+
+export const GET_MULTISIG_ACCOUNT_BY_ADDRESS = gql`
+  query Query($multisigAddress: String!) {
+    multisigAccountByMultisigAddress(multisigAddress: $multisigAddress) {
+      id
+      address
+      bech32Prefix
+      description
+      name
+      owners {
+        name
+        address
+        certified
+        rejected
+      }
+      threshold
+      transactions {
+        id
+        title
+        createdAt
+        description
+        txHash
+        signatures {
+          signerAddress
+        }
+      }
+    }
+  }
+`;
+
+export interface MultisigAccountResponse {
+  multisigAccountByMultisigAddress: {
+    id: number;
+    address: string;
+    bech32Prefix: string;
+    description: string | null;
+    name: string;
+    owners: {
+      name: string;
+      address: string;
+      certified: boolean;
+      rejected: boolean;
+    }[];
+    threshold: number;
+    transactions: {
+      id: number;
+      title: string;
+      createdAt: string;
+      description: string | null;
+      txHash: string | null;
+      signatures: {
+        signerAddress: string;
+      }[];
+    }[];
+  };
+}
