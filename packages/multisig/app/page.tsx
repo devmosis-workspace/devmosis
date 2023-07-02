@@ -6,7 +6,7 @@ import { OverviewGrid } from "@/pages/home/components/OverviewGrid";
 import {
   GET_MULTISIG_ACCOUNTS_BY_OWNER_ADDRESS,
   type MultisigAccountsResponse,
-} from "@/queries/multisigAccount";
+} from "@/graphql/queries/multisigAccount";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 import { useAtomValue } from "jotai";
 
@@ -34,6 +34,7 @@ export default function Home() {
         multisigAccounts={multisigAccountsData?.multisigAccountsByOwnerAddress}
       />
       <MultisigAccountList
+        addresses={addresses}
         multisigAccounts={multisigAccountsData?.multisigAccountsByOwnerAddress}
       />
     </div>

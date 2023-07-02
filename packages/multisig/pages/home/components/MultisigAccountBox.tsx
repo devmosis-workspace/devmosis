@@ -1,18 +1,37 @@
 import { Typography } from "@/components/Typography";
-import type { MultisigAccountsResponse } from "@/queries/multisigAccount";
+import type { MultisigAccountsResponse } from "@/graphql/queries/multisigAccount";
 import Image from "next/image";
 import Link from "next/link";
+import { useMemo } from "react";
 
 interface MultisigAccountBoxProps {
+  addresses: string[] | undefined;
   account: MultisigAccountsResponse["multisigAccountsByOwnerAddress"][0];
 }
 
-export const MultisigAccountBox = ({ account }: MultisigAccountBoxProps) => {
+export const MultisigAccountBox = ({
+  addresses,
+  account,
+}: MultisigAccountBoxProps) => {
   const ongoingTransactions = account.transactions.filter(
     (transaction) => transaction.txHash === null
   ).length;
 
-  const transactionCount = `${ongoingTransactions} ${ongoingTransactions === 1 ? "TX" : "TXs"}`
+  const isTransactionZero = ongoingTransactions === 0;
+  const needsInvitationAcceptance = useMemo(
+    () =>
+      account.owners.some(
+        (owner) =>
+          owner.certified === false &&
+          owner.rejected === false &&
+          addresses?.includes(owner.address)
+      ),
+    [account, addresses]
+  );
+
+  const transactionCount = `Ongoing ${ongoingTransactions} ${
+    ongoingTransactions === 1 ? "TX" : "TXs"
+  }`;
 
   return (
     <Link
@@ -26,12 +45,20 @@ export const MultisigAccountBox = ({ account }: MultisigAccountBoxProps) => {
         </Typography.SMText>
       </div>
       <div className="flex items-center">
-        <div className="flex items-center mr-4">
-          <Image src="/spinner.svg" alt="spinner" width={16} height={16.07} className="animate-spin pb-[1px]" />
-          <Typography.SMText className="text-[#98A9BC] ml-2">
-            {transactionCount}
-          </Typography.SMText>
-        </div>
+        {!isTransactionZero ? (
+          <div className="flex items-center py-1 px-2 rounded bg-[#6DD230]/10 mr-4">
+            <Typography.SMText className="text-[#6DD230]">
+              {transactionCount}
+            </Typography.SMText>
+          </div>
+        ) : null}
+        {needsInvitationAcceptance && (
+          <div className="flex items-center py-1 px-2 rounded bg-[#FE4D97]/10 mr-4">
+            <Typography.SMText className="text-[#FE4D97]">
+              Requires invitation acceptance
+            </Typography.SMText>
+          </div>
+        )}
         <Image
           src="/chevron-right.svg"
           alt="chevron-right"

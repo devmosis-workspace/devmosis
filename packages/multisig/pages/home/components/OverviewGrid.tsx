@@ -1,7 +1,7 @@
 "use client";
 
 import { Typography } from "@/components/Typography";
-import type { MultisigAccountsResponse } from "@/queries/multisigAccount";
+import type { MultisigAccountsResponse } from "@/graphql/queries/multisigAccount";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -20,6 +20,7 @@ export const OverviewGrid = ({
   const overviewDefaultData = {
     ongoingTransactions: 0,
     pendingAccounts: 0,
+    rejectedAccounts: 0,
   };
   const overviewData = useMemo(
     () =>
@@ -35,16 +36,24 @@ export const OverviewGrid = ({
             addresses?.includes(owner.address)
         );
 
+        const rejectedAccounts = curr.owners.filter(
+          (owner) => owner.rejected === true
+        );
+
         return {
           ongoingTransactions:
             acc.ongoingTransactions + onGoingTransactions.length,
           pendingAccounts: acc.pendingAccounts + pendingAccounts.length,
+          rejectedAccounts: rejectedAccounts.length,
         };
       }, overviewDefaultData) ?? overviewDefaultData,
     [multisigAccounts, addresses]
   );
 
-  const validAccountCount = (multisigAccounts?.length ?? 0) - overviewData.pendingAccounts;
+  const validAccountCount =
+    (multisigAccounts?.length ?? 0) -
+    overviewData.pendingAccounts -
+    overviewData.rejectedAccounts;
 
   return (
     <div className="flex flex-col w-full mb-5">

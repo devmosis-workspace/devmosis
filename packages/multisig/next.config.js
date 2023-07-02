@@ -26,7 +26,6 @@ const nextConfig = {
   transpilePackages,
   reactStrictMode: true,
   poweredByHeader: false,
-
   images: {
     domains: ["raw.githubusercontent.com"],
   },

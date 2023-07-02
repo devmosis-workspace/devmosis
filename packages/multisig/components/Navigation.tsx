@@ -5,7 +5,21 @@ import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { navigationItems } from "@/constants/navigationItems";
+
+import { HomeIcon, RocketLaunchIcon } from "@heroicons/react/24/outline";
+
+const navigationItems = [
+  {
+    name: "Dashboard",
+    href: "/",
+    icon: <HomeIcon />,
+  },
+  {
+    name: "Ongoing TXs",
+    href: "/txs/ongoing",
+    icon: <RocketLaunchIcon />,
+  },
+];
 
 export const Navigation = () => {
   const pathname = usePathname();

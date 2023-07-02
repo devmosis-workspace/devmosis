@@ -1,8 +1,11 @@
 "use client";
 
 import "./globals.css";
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer } from 'react-toastify';
 import { ApolloWrapper } from "@/lib/ApolloWrapper";
-import { Inter, Poppins, Rubik } from "next/font/google";
+import { Rubik } from "next/font/google";
 import { type PropsWithChildren } from "react";
 import { useAccountInitial } from "@/hooks/useAccountInitial";
 import { useKeplrListener } from "@/hooks/useKeplrListener";
@@ -30,6 +33,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </body>
     </html>
   );
