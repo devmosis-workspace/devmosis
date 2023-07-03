@@ -31,6 +31,10 @@ export default function Transaction() {
   const currentSigners = signatures.length;
   const isNotEnoughSigners = currentSigners < (threshold ?? 0);
 
+  const handleTxSign = async () => {
+    
+  }
+
   return (
     <div className="flex flex-col w-full">
       <Typography.H4 className="text-[#778CA2] mb-6">
