@@ -1,7 +1,7 @@
 import { Modal } from "@/components/Modal";
 import { Typography } from "@/components/Typography";
 import { type ChangeEvent, useEffect, useState } from "react";
-import { pubkeyToAddress } from "@cosmjs/amino";
+import { createMultisigThresholdPubkey, pubkeyToAddress } from "@cosmjs/amino";
 import { Dropdown } from "@/components/Dropdown";
 import { supportedChainInfos } from "@/constants/supportedChainInfos";
 import { twMerge } from "tailwind-merge";
@@ -131,7 +131,10 @@ export const AccountCreateModal = ({
     ) {
       throw new Error("Pubkey is null");
     }
-    return accountData.data.account.pub_key.key;
+    return {
+      type: "tendermint/PubKeySecp256k1",
+      value: accountData.data.account.pub_key.key,
+    };
   };
 
   const handleCreateMultisig = async () => {
@@ -169,21 +172,14 @@ export const AccountCreateModal = ({
 
       const pubkeys = await Promise.all(addresses.map(addressToPubkey));
 
-      const multisigPubkey = {
-        type: "tendermint/PubKeyMultisigThreshold",
-        value: {
-          threshold: String(threshold),
-          pubkeys: pubkeys.map((pubkey) => ({
-            type: "tendermint/PubKeySecp256k1",
-            value: pubkey,
-          })),
-        },
-      };
+      const multisigPubkey = createMultisigThresholdPubkey(pubkeys, threshold);
+
       const multisigAddressFromPubkey = pubkeyToAddress(
         multisigPubkey,
         selectedChain?.bech32_prefix
       );
 
+      console.log(multisigAddressFromPubkey)
       const myAddress = addressesForMultisig[0];
       const { data } = await createMultisigAccountDraft({
         variables: {
