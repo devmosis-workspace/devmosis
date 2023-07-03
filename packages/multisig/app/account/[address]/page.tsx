@@ -126,10 +126,10 @@ export default function Account() {
         <Link
           href={`/account/${params?.address}/tx/create`}
           prefetch={false}
-          className="flex justify-center items-center w-[185px] h-[40px] bg-[#4D7CFE] rounded"
+          className="flex justify-center items-center w-[165px] h-[40px] bg-[#4D7CFE] rounded"
         >
           <Typography.SMText className="text-white">
-            Create Multisig Account
+            Create Transaction
           </Typography.SMText>
         </Link>
       </div>
