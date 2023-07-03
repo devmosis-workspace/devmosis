@@ -3,6 +3,7 @@ import type { MultisigAccountResponse } from "@/graphql/queries/multisigAccount"
 import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 interface OngoingTransactionsProps {
@@ -14,6 +15,8 @@ export const OngoingTransactions = ({
   ongoingTx,
   threshold,
 }: OngoingTransactionsProps) => {
+  const params = useParams();
+
   return (
     <div className="w-full flex flex-col p-6 rounded-lg bg-white">
       <Typography.H3>Ongoing Transactions</Typography.H3>
@@ -52,7 +55,7 @@ export const OngoingTransactions = ({
 
             return (
               <Link
-                href={`/transaction/${transaction.id}`}
+                href={`/account/${params?.address}/tx/${transaction.id}`}
                 prefetch={false}
                 className="w-full flex"
               >

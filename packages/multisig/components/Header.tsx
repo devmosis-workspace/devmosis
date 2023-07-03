@@ -6,7 +6,11 @@ import Image from "next/image";
 const items = [
   {
     name: "Ongoing TXs",
-    href: "/txs/ongoing",
+    href: "/tx/ongoing",
+  },
+  {
+    name: "Transaction",
+    href: "/tx/"
   },
   {
     name: "Account",

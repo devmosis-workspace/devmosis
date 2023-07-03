@@ -19,6 +19,8 @@ import Link from "next/link";
 
 dayjs.extend(relativeTime);
 
+export const dynamic = "force-dynamic";
+
 export default function Account() {
   const params = useParams();
   const [tab, setTab] = useState<"ongoing" | "history" | "owners">("ongoing");
