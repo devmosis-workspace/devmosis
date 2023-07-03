@@ -15,6 +15,9 @@ export const GET_TRANSACTION_BY_TRANSACTION_ID = gql`
         createdAt
         bodyBytes
       }
+      MultisigAccount {
+        threshold
+      }
     }
   }
 `;
@@ -33,5 +36,8 @@ export interface TransactionResponse {
       createdAt: string;
       bodyBytes: string;
     }[];
+    MultisigAccount: {
+      threshold: number;
+    };
   };
 }
