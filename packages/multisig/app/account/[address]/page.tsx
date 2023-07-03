@@ -8,13 +8,12 @@ import { useParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { OngoingTransactions } from "@/pages/account/components/OngoingTransactions";
-import { TransactionHistory } from "@/pages/account/components/TransactionHistory";
-import { AccountDetail } from "@/pages/account/components/AccountDetail";
-import { OwnerList } from "@/pages/account/components/OwnerList";
+import { OngoingTransactions } from "@/shared/account/components/OngoingTransactions";
+import { TransactionHistory } from "@/shared/account/components/TransactionHistory";
+import { AccountDetail } from "@/shared/account/components/AccountDetail";
+import { OwnerList } from "@/shared/account/components/OwnerList";
 import { Typography } from "@/components/Typography";
 import { twMerge } from "tailwind-merge";
-import { AccountAssets } from "@/pages/account/components/AccountAssets";
 import { supportedChainInfos } from "@/constants/supportedChainInfos";
 import Link from "next/link";
 

@@ -1,14 +1,16 @@
 "use client";
 
 import { accountAtom } from "@/atoms/accountAtom";
-import { MultisigAccountList } from "@/pages/home/components/MultisigAccountList";
-import { OverviewGrid } from "@/pages/home/components/OverviewGrid";
+import { MultisigAccountList } from "@/shared/home/components/MultisigAccountList";
+import { OverviewGrid } from "@/shared/home/components/OverviewGrid";
 import {
   GET_MULTISIG_ACCOUNTS_BY_OWNER_ADDRESS,
   type MultisigAccountsResponse,
 } from "@/graphql/queries/multisigAccount";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 import { useAtomValue } from "jotai";
+
+export const dynamic = "force-dynamic";
 
 export default function Home() {
   const accounts = useAtomValue(accountAtom);

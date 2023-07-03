@@ -1,3 +1,4 @@
+"use client";
 import { usePathname } from "next/navigation";
 import { Typography } from "./Typography";
 import Image from "next/image";
