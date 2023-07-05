@@ -6,7 +6,7 @@ export const GET_TRANSACTION_BY_TRANSACTION_ID = gql`
       title
       description
       createdAt
-      txData
+      txDataJSON
       txHash
       signatures {
         memo
@@ -27,7 +27,7 @@ export interface TransactionResponse {
     title: string;
     description: string | null;
     createdAt: string;
-    txData: string;
+    txDataJSON: string;
     txHash: string | null;
     signatures: {
       memo: string | null;
