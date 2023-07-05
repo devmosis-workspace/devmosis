@@ -62,6 +62,7 @@ export const GET_MULTISIG_ACCOUNT_BY_ADDRESS = gql`
       name
       owners {
         name
+        pubKeyJSON
         address
         certified
         rejected
@@ -91,6 +92,7 @@ export interface MultisigAccountResponse {
     owners: {
       name: string;
       address: string;
+      pubKeyJSON: string;
       certified: boolean;
       rejected: boolean;
     }[];

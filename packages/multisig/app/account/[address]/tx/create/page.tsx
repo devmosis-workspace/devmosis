@@ -23,7 +23,7 @@ export default function CreateTransaction() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [txData, setTxData] = useState("");
+  const [txDataJSON, setTxDataJSON] = useState("");
 
   const { data: accountData } = useSuspenseQuery<MultisigAccountResponse>(
     GET_MULTISIG_ACCOUNT_BY_ADDRESS,
@@ -51,13 +51,13 @@ export default function CreateTransaction() {
       return;
     }
 
-    if (txData === "") {
+    if (txDataJSON === "") {
       toast.error("Transaction data is required");
       return;
     }
 
     try {
-      JSON.parse(txData);
+      JSON.parse(txDataJSON);
     } catch {
       toast.error("Invalid transaction data");
       return;
@@ -72,7 +72,7 @@ export default function CreateTransaction() {
             multisigAccountId: Number(
               accountData.multisigAccountByMultisigAddress.id
             ),
-            txData,
+            txDataJSON,
           },
         },
       });
@@ -102,15 +102,15 @@ export default function CreateTransaction() {
 
   const handleTxDataChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     try {
-      if (txData === "") {
+      if (txDataJSON === "") {
         const parsedTxData = JSON.parse(e.target.value);
         const prettyTxData = JSON.stringify(parsedTxData, null, 4);
-        setTxData(prettyTxData);
+        setTxDataJSON(prettyTxData);
       } else {
-        setTxData(e.target.value);
+        setTxDataJSON(e.target.value);
       }
     } catch {
-      setTxData(e.target.value);
+      setTxDataJSON(e.target.value);
     }
   };
 
@@ -144,7 +144,7 @@ export default function CreateTransaction() {
         Transaction Data (Paste your unsignedTx.json here)
       </Typography.SMText>
       <TextareaAutosize
-        value={txData}
+        value={txDataJSON}
         onChange={handleTxDataChange}
         minRows={10}
         className="border-[1px] border-[#E5E7EB] p-3 resize-none"

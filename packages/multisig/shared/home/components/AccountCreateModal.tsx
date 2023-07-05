@@ -19,6 +19,7 @@ import {
   type CreateMultisigAccountDraftResponse,
 } from "@/graphql/mutations/multisigAccount";
 import { useRouter } from "next/navigation";
+import { AddressPubKeyInput } from "./AddressPubKeyInput";
 
 interface Account {
   account: {
@@ -48,8 +49,14 @@ export const AccountCreateModal = ({
   const [threshold, setThreshold] = useState(0);
   const [accountName, setAccountName] = useState("");
   const [selectedChain, setSelectedChain] = useState<Chain | null>(null);
-  const [addressesForMultisig, setAddressesForMultisig] = useState<
-    Record<number, string>
+  const [addressDataForMultisig, setAddressDataForMultisig] = useState<
+    Record<
+      number,
+      {
+        address: string | null;
+        pubKey: string | null;
+      }
+    >
   >({});
 
   const [createMultisigAccountDraft, { loading }] = useMutation<
@@ -59,10 +66,10 @@ export const AccountCreateModal = ({
 
   useEffect(
     function resetThreshold() {
-      const addressCount = Object.keys(addressesForMultisig).length;
+      const addressCount = Object.keys(addressDataForMultisig).length;
       setThreshold(addressCount);
     },
-    [addressesForMultisig]
+    [addressDataForMultisig]
   );
 
   const handleModalClose = () => {
@@ -76,28 +83,46 @@ export const AccountCreateModal = ({
   };
 
   const handleAddAddress = () => {
-    setAddressesForMultisig((prev) => {
+    setAddressDataForMultisig((prev) => {
       const nextIndex = Object.keys(prev).length;
       return {
         ...prev,
-        [nextIndex]: "",
+        [nextIndex]: {
+          address: null,
+          pubKey: null,
+        },
       };
     });
   };
 
   const handleRemoveAddress = (index: number) => {
-    setAddressesForMultisig((prev) => {
+    setAddressDataForMultisig((prev) => {
       const next = { ...prev };
       delete next[index];
       return next;
     });
   };
 
-  const handleAddressChange = (index: number, value: string) => {
-    setAddressesForMultisig((prev) => {
+  const handleAddressChange = (index: number, value: string | null) => {
+    setAddressDataForMultisig((prev) => {
       return {
         ...prev,
-        [index]: value,
+        [index]: {
+          ...prev[index],
+          address: value,
+        },
+      };
+    });
+  };
+
+  const handlePubKeyChange = (index: number, value: string | null) => {
+    setAddressDataForMultisig((prev) => {
+      return {
+        ...prev,
+        [index]: {
+          ...prev[index],
+          pubKey: value,
+        },
       };
     });
   };
@@ -111,30 +136,39 @@ export const AccountCreateModal = ({
 
   const handleThresholdPlus = () => {
     setThreshold((prev) => {
-      if (prev === Object.keys(addressesForMultisig).length) return prev;
+      if (prev === Object.keys(addressDataForMultisig).length) return prev;
       return prev + 1;
     });
   };
 
-  const addressToPubkey = async (address: string) => {
+  const addressDataToPubkey = async (
+    address: string | null,
+    pubKey: string | null
+  ) => {
+    if (pubKey !== null) {
+      return {
+        type: "tendermint/PubKeySecp256k1",
+        value: pubKey,
+      };
+    }
     const restEndpoint = selectedChain?.apis?.rest?.[2];
     if (restEndpoint === undefined) {
       throw new Error("Rest endpoint is undefined");
     }
-    const accountData = await axios.get<Account>(
-      `${restEndpoint.address}/cosmos/auth/v1beta1/accounts/${address}`
-    );
+    try {
+      const accountData = await axios.get<Account>(
+        `${restEndpoint.address}/cosmos/auth/v1beta1/accounts/${address}`
+      );
 
-    if (
-      accountData?.data?.account.pub_key === null ||
-      accountData?.data?.account.pub_key === undefined
-    ) {
-      throw new Error("Pubkey is null");
+      return {
+        type: "tendermint/PubKeySecp256k1",
+        value: accountData.data.account.pub_key.key,
+      };
+    } catch {
+      throw new Error(
+        `Failed to get account data for "${address}".\nPlease enter the public key instead of the address.`
+      );
     }
-    return {
-      type: "tendermint/PubKeySecp256k1",
-      value: accountData.data.account.pub_key.key,
-    };
   };
 
   const handleCreateMultisig = async () => {
@@ -148,19 +182,25 @@ export const AccountCreateModal = ({
       return;
     }
 
-    if (Object.keys(addressesForMultisig).length === 1) {
+    if (Object.keys(addressDataForMultisig).length === 1) {
       toast("Please add more addresses", { type: "error" });
       return;
     }
 
-    if (Object.values(addressesForMultisig).includes("")) {
+    if (
+      Object.values(addressDataForMultisig).find(
+        (v) => v.address === null && v.pubKey === null
+      )
+    ) {
       toast("Please fill all addresses", { type: "error" });
       return;
     }
 
     try {
-      for (const address of Object.values(addressesForMultisig)) {
-        Bech32Address.validate(address, selectedChain.bech32_prefix);
+      for (const { address } of Object.values(addressDataForMultisig)) {
+        if (address !== null && address !== "") {
+          Bech32Address.validate(address, selectedChain.bech32_prefix);
+        }
       }
     } catch {
       toast("Invalid address, please check again", { type: "error" });
@@ -168,9 +208,13 @@ export const AccountCreateModal = ({
     }
 
     try {
-      const addresses = Object.values(addressesForMultisig);
+      const addressData = Object.values(addressDataForMultisig);
 
-      const pubkeys = await Promise.all(addresses.map(addressToPubkey));
+      const pubkeys = await Promise.all(
+        addressData.map(({ address, pubKey }) =>
+          addressDataToPubkey(address, pubKey)
+        )
+      );
 
       const multisigPubkey = createMultisigThresholdPubkey(pubkeys, threshold);
 
@@ -179,8 +223,33 @@ export const AccountCreateModal = ({
         selectedChain?.bech32_prefix
       );
 
-      console.log(multisigAddressFromPubkey)
-      const myAddress = addressesForMultisig[0];
+      const myAddress =
+        addressDataForMultisig[0].address ??
+        pubkeyToAddress(
+          {
+            type: "tendermint/PubKeySecp256k1",
+            value: addressDataForMultisig[0].pubKey!,
+          },
+          selectedChain?.bech32_prefix
+        );
+
+      const owners = addressData.map((addressData, index) => {
+        const address =
+          addressData.address ??
+          pubkeyToAddress(
+            {
+              type: "tendermint/PubKeySecp256k1",
+              value: addressData.pubKey!,
+            },
+            selectedChain?.bech32_prefix
+          );
+        const pubKey = pubkeys[index];
+        return JSON.stringify({
+          address,
+          pubKey,
+        });
+      });
+
       const { data } = await createMultisigAccountDraft({
         variables: {
           data: {
@@ -190,7 +259,7 @@ export const AccountCreateModal = ({
             description: null,
             myAddress,
             threshold,
-            ownersAddresses: addresses,
+            ownersJSON: owners,
           },
         },
       });
@@ -292,8 +361,13 @@ export const AccountCreateModal = ({
                       )?.[chain.bech32_prefix];
 
                       if (selectedChainAddress !== undefined) {
-                        setAddressesForMultisig({
-                          0: selectedChainAddress.bech32Address,
+                        setAddressDataForMultisig({
+                          0: {
+                            pubKey: Buffer.from(
+                              selectedChainAddress.pubKey
+                            ).toString("base64"),
+                            address: selectedChainAddress.bech32Address,
+                          },
                         });
                       }
                       handleClose();
@@ -333,18 +407,18 @@ export const AccountCreateModal = ({
 
       <div className="flex flex-col mt-3">
         <Typography.SMText className="text-[#252631] mb-3">
-          Enter the addresses
+          Enter the address or pubkey
         </Typography.SMText>
         <div className="flex flex-col max-h-[350px] overflow-y-auto">
-          {Object.keys(addressesForMultisig).map((_, index) => {
+          {Object.keys(addressDataForMultisig).map((_, index) => {
             return (
-              <div className="flex items-center mb-2">
-                <input
-                  type="text"
+              <div key={index} className="flex mb-2">
+                <AddressPubKeyInput
                   disabled={index === 0}
-                  className="w-[430px] h-[40px] rounded border-[1px] border-[#E5E7EB] px-3 mr-2"
-                  value={addressesForMultisig[index]}
-                  onChange={(e) => handleAddressChange(index, e.target.value)}
+                  addressData={addressDataForMultisig[index]}
+                  currentIndex={index}
+                  onAddressChange={handleAddressChange}
+                  onPubKeyChange={handlePubKeyChange}
                 />
                 {index !== 0 ? (
                   <button
