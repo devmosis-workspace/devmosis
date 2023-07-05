@@ -13,7 +13,7 @@ export interface CreateTransactionInput {
     title: string;
     description: string | null;
     multisigAccountId: number;
-    txData: string;
+    txDataJSON: string;
   };
 }
 
