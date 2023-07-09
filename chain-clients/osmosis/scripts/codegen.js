@@ -2,7 +2,7 @@ import { join } from 'path';
 import telescope from '@osmonauts/telescope';
 import { rimrafSync as rimraf } from 'rimraf';
 
-const protoDirs = [join(__dirname, '/../osmosis-v15.1.0/proto'), join(__dirname, '/../cosmos-sdk-v0.46.1/proto'), join(__dirname, '/../proto')];
+const protoDirs = [join(__dirname, '/../osmosis-v15.2.0/proto'), join(__dirname, '/../cosmos-sdk-v0.46.1/proto'), join(__dirname, '/../proto')];
 const outPath = join(__dirname, '../src/codegen');
 rimraf(outPath);
 

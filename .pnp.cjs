@@ -9573,6 +9573,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["xstream", "npm:11.14.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.31.0", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-json-rpc-npm-0.31.0-c43cfbe4fa-d2e5fff7b2.zip/node_modules/@cosmjs/json-rpc/",\
+          "packageDependencies": [\
+            ["@cosmjs/json-rpc", "npm:0.31.0"],\
+            ["@cosmjs/stream", "npm:0.31.0"],\
+            ["xstream", "npm:11.14.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@cosmjs/math", [\
@@ -9643,6 +9652,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["long", "npm:4.0.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.31.0", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-proto-signing-npm-0.31.0-cf6864d4fa-b025545671.zip/node_modules/@cosmjs/proto-signing/",\
+          "packageDependencies": [\
+            ["@cosmjs/proto-signing", "npm:0.31.0"],\
+            ["@cosmjs/amino", "npm:0.31.0"],\
+            ["@cosmjs/crypto", "npm:0.31.0"],\
+            ["@cosmjs/encoding", "npm:0.31.0"],\
+            ["@cosmjs/math", "npm:0.31.0"],\
+            ["@cosmjs/utils", "npm:0.31.0"],\
+            ["cosmjs-types", "npm:0.8.0"],\
+            ["long", "npm:4.0.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@cosmjs/socket", [\
@@ -9651,6 +9674,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@cosmjs/socket", "npm:0.29.5"],\
             ["@cosmjs/stream", "npm:0.29.5"],\
+            ["isomorphic-ws", "virtual:98e3caa468f78c8d1772297fdca2bb95c2f2ac62eba849cccf74d659866440d5f484c849bf4209670a28b43ae6333190e0cc19aa99c859b69eec0c5e48ddc600#npm:4.0.1"],\
+            ["ws", "virtual:98e3caa468f78c8d1772297fdca2bb95c2f2ac62eba849cccf74d659866440d5f484c849bf4209670a28b43ae6333190e0cc19aa99c859b69eec0c5e48ddc600#npm:7.5.9"],\
+            ["xstream", "npm:11.14.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.31.0", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-socket-npm-0.31.0-92d5cc181c-97c3858274.zip/node_modules/@cosmjs/socket/",\
+          "packageDependencies": [\
+            ["@cosmjs/socket", "npm:0.31.0"],\
+            ["@cosmjs/stream", "npm:0.31.0"],\
             ["isomorphic-ws", "virtual:98e3caa468f78c8d1772297fdca2bb95c2f2ac62eba849cccf74d659866440d5f484c849bf4209670a28b43ae6333190e0cc19aa99c859b69eec0c5e48ddc600#npm:4.0.1"],\
             ["ws", "virtual:98e3caa468f78c8d1772297fdca2bb95c2f2ac62eba849cccf74d659866440d5f484c849bf4209670a28b43ae6333190e0cc19aa99c859b69eec0c5e48ddc600#npm:7.5.9"],\
             ["xstream", "npm:11.14.0"]\
@@ -9677,6 +9711,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["xstream", "npm:11.14.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.31.0", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-stargate-npm-0.31.0-06c4a1e6dd-e57f30ecfe.zip/node_modules/@cosmjs/stargate/",\
+          "packageDependencies": [\
+            ["@cosmjs/stargate", "npm:0.31.0"],\
+            ["@confio/ics23", "npm:0.6.8"],\
+            ["@cosmjs/amino", "npm:0.31.0"],\
+            ["@cosmjs/encoding", "npm:0.31.0"],\
+            ["@cosmjs/math", "npm:0.31.0"],\
+            ["@cosmjs/proto-signing", "npm:0.31.0"],\
+            ["@cosmjs/stream", "npm:0.31.0"],\
+            ["@cosmjs/tendermint-rpc", "npm:0.31.0"],\
+            ["@cosmjs/utils", "npm:0.31.0"],\
+            ["cosmjs-types", "npm:0.8.0"],\
+            ["long", "npm:4.0.0"],\
+            ["protobufjs", "npm:6.11.3"],\
+            ["xstream", "npm:11.14.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@cosmjs/stream", [\
@@ -9684,6 +9737,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@cosmjs-stream-npm-0.29.5-19afeab7b0-6b6d28f50b.zip/node_modules/@cosmjs/stream/",\
           "packageDependencies": [\
             ["@cosmjs/stream", "npm:0.29.5"],\
+            ["xstream", "npm:11.14.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.31.0", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-stream-npm-0.31.0-ab38691a55-cbc60f33c0.zip/node_modules/@cosmjs/stream/",\
+          "packageDependencies": [\
+            ["@cosmjs/stream", "npm:0.31.0"],\
             ["xstream", "npm:11.14.0"]\
           ],\
           "linkType": "HARD"\
@@ -9701,6 +9762,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cosmjs/socket", "npm:0.29.5"],\
             ["@cosmjs/stream", "npm:0.29.5"],\
             ["@cosmjs/utils", "npm:0.29.5"],\
+            ["axios", "npm:0.21.4"],\
+            ["readonly-date", "npm:1.0.0"],\
+            ["xstream", "npm:11.14.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.31.0", {\
+          "packageLocation": "./.yarn/cache/@cosmjs-tendermint-rpc-npm-0.31.0-25020f2486-d5213d52ba.zip/node_modules/@cosmjs/tendermint-rpc/",\
+          "packageDependencies": [\
+            ["@cosmjs/tendermint-rpc", "npm:0.31.0"],\
+            ["@cosmjs/crypto", "npm:0.31.0"],\
+            ["@cosmjs/encoding", "npm:0.31.0"],\
+            ["@cosmjs/json-rpc", "npm:0.31.0"],\
+            ["@cosmjs/math", "npm:0.31.0"],\
+            ["@cosmjs/socket", "npm:0.31.0"],\
+            ["@cosmjs/stream", "npm:0.31.0"],\
+            ["@cosmjs/utils", "npm:0.31.0"],\
             ["axios", "npm:0.21.4"],\
             ["readonly-date", "npm:1.0.0"],\
             ["xstream", "npm:11.14.0"]\
@@ -14026,6 +14104,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["protobufjs", "npm:6.11.3"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.8.0", {\
+          "packageLocation": "./.yarn/cache/cosmjs-types-npm-0.8.0-4c175fd383-99714ec956.zip/node_modules/cosmjs-types/",\
+          "packageDependencies": [\
+            ["cosmjs-types", "npm:0.8.0"],\
+            ["long", "npm:4.0.0"],\
+            ["protobufjs", "npm:6.11.3"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["create-hash", [\
@@ -18299,8 +18386,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["multisig", "workspace:packages/multisig"],\
             ["@apollo/client", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:3.8.0-beta.5"],\
             ["@apollo/experimental-nextjs-app-support", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:0.3.1"],\
+            ["@chain-clients/osmosis", "workspace:chain-clients/osmosis"],\
+            ["@chain-sources/osmosis", "workspace:chain-sources/osmosis"],\
             ["@common/utils", "workspace:common/utils"],\
             ["@cosmjs/amino", "npm:0.31.0"],\
+            ["@cosmjs/stargate", "npm:0.31.0"],\
             ["@heroicons/react", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:2.0.18"],\
             ["@keplr-wallet/cosmos", "npm:0.12.13"],\
             ["@keplr-wallet/types", "npm:0.12.12"],\

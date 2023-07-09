@@ -2,7 +2,7 @@
 	path = chain-registry/chain-registry
 	url = https://github.com/cosmos/chain-registry
 [submodule "chain-clients/osmosis/osmosis-v15.1.0"]
-	path = chain-clients/osmosis/osmosis-v15.1.0
+	path = chain-clients/osmosis/osmosis-v15.2.0
 	url = https://github.com/osmosis-labs/osmosis
 [submodule "chain-clients/osmosis/cosmos-sdk-v0.46.1"]
 	path = chain-clients/osmosis/cosmos-sdk-v0.46.1
