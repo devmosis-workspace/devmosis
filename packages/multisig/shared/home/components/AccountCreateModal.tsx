@@ -20,19 +20,7 @@ import {
 } from "@/graphql/mutations/multisigAccount";
 import { useRouter } from "next/navigation";
 import { AddressPubKeyInput } from "./AddressPubKeyInput";
-
-interface Account {
-  account: {
-    "@type": string;
-    address: string;
-    pub_key: {
-      "@type": string;
-      key: string;
-    };
-    account_number: string;
-    sequence: string;
-  };
-}
+import { Account } from "@/types/Account";
 
 interface AccountCreateModalProps {
   isOpen: boolean;
@@ -255,6 +243,7 @@ export const AccountCreateModal = ({
           data: {
             address: multisigAddressFromPubkey,
             name: accountName,
+            pubKeyJSON: JSON.stringify(multisigPubkey),
             bech32Prefix: selectedChain.bech32_prefix,
             description: null,
             myAddress,

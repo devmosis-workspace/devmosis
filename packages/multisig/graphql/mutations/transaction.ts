@@ -19,6 +19,25 @@ export interface CreateTransactionInput {
 
 export interface CreateTransactionResponse {
   createTransaction: {
-    id: number;
+    id: string;
+  };
+}
+
+export const UPDATE_TRANSACTION_TX_HASH = gql`
+  mutation UpdateTransactionTxHash($transactionId: Int!, $txHash: String!) {
+    updateTransactionTxHash(transactionId: $transactionId, txHash: $txHash) {
+      id
+    }
+  }
+`;
+
+export interface UpdateTransactionTxHashInput {
+  transactionId: number;
+  txHash: string;
+}
+
+export interface UpdateTransactionTxHashResponse {
+  updateTransactionTxHash: {
+    id: string;
   };
 }

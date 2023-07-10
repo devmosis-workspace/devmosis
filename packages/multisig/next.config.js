@@ -19,7 +19,9 @@ const securityHeaders = [
 
 const commonPackages = ["@common/utils"];
 
-const transpilePackages = [...commonPackages];
+const chainPackages = ["@chain-sources/osmosis"];
+
+const transpilePackages = [...commonPackages, ...chainPackages];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

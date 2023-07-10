@@ -15,6 +15,7 @@ export interface CreateMultisigAccountDraftInput {
     description: string | null;
     name: string;
     threshold: number;
+    pubKeyJSON: string;
     ownersJSON: string[];
     myAddress: string;
   };

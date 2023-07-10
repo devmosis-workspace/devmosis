@@ -5,8 +5,14 @@ import {
   makeSignDoc as makeAminoSignDoc,
   type StdFee,
   type AminoMsg,
+  type MultisigThresholdPubkey,
+  type Pubkey,
+  isMultisigThresholdPubkey,
 } from "@cosmjs/amino";
-import { makeSignDoc as makeProtoSignDoc } from "@cosmjs/proto-signing";
+import {
+  encodePubkey,
+  makeSignDoc as makeProtoSignDoc,
+} from "@cosmjs/proto-signing";
 import Long from "long";
 import { cosmos } from "@chain-clients/osmosis";
 import type { Fee } from "@chain-clients/osmosis/types/codegen/cosmos/tx/v1beta1/tx";
@@ -14,6 +20,7 @@ import { osmosisInfo } from "./osmosisInfo";
 import type { QueryAccountResponse, TxResult } from "@common/types";
 import type { SimulateResponseSDKType } from "@chain-clients/osmosis/types/codegen/cosmos/tx/v1beta1/service";
 import { calculateStdFee, escapeHTML, getKeplrFromWindow } from "@common/utils";
+import { Uint53 } from "@cosmjs/math";
 
 interface AminoTx {
   keplr: Keplr;
@@ -180,11 +187,11 @@ interface SimulateTx {
   memo: string;
   sequence: string;
   isNanoLedger: boolean;
-  pubKey: Required<QueryAccountResponse>["account"]["pub_key"];
+  pubKey: Pubkey | MultisigThresholdPubkey;
   baseDenom: string;
 }
 
-const simulateOsmosisTx = async ({
+export const simulateOsmosisTx = async ({
   protoMsgs,
   memo,
   sequence,
@@ -193,11 +200,21 @@ const simulateOsmosisTx = async ({
   baseDenom,
 }: SimulateTx) => {
   const { chain } = osmosisInfo;
+  const escapedMemo = escapeHTML(memo);
+  console.log(pubKey.value);
+  console.log(
+    cosmos.crypto.multisig.LegacyAminoPubKey.encode(
+      cosmos.crypto.multisig.LegacyAminoPubKey.fromPartial({
+        publicKeys: pubKey.value.pubkeys.map(encodePubkey),
+        threshold: Uint53.fromString(pubKey.value.threshold).toNumber(),
+      })
+    ).finish()
+  );
 
   const txBytesForSimulation = cosmos.tx.v1beta1.TxRaw.encode({
     bodyBytes: cosmos.tx.v1beta1.TxBody.encode(
       cosmos.tx.v1beta1.TxBody.fromPartial({
-        memo,
+        memo: escapedMemo,
         messages: protoMsgs,
       })
     ).finish(),
@@ -206,10 +223,21 @@ const simulateOsmosisTx = async ({
         {
           sequence: Long.fromString(sequence),
           publicKey: {
-            typeUrl: pubKey["@type"],
-            value: cosmos.crypto.secp256k1.PubKey.encode({
-              key: Buffer.from(pubKey.key, "base64"),
-            }).finish(),
+            typeUrl: isMultisigThresholdPubkey(pubKey)
+              ? "/cosmos.crypto.multisig.LegacyAminoPubKey"
+              : pubKey.type,
+            value: isMultisigThresholdPubkey(pubKey)
+              ? cosmos.crypto.multisig.LegacyAminoPubKey.encode(
+                  cosmos.crypto.multisig.LegacyAminoPubKey.fromPartial({
+                    publicKeys: pubKey.value.pubkeys.map(encodePubkey),
+                    threshold: Uint53.fromString(
+                      pubKey.value.threshold
+                    ).toNumber(),
+                  })
+                ).finish()
+              : cosmos.crypto.secp256k1.PubKey.encode({
+                  key: Buffer.from(pubKey.value, "base64"),
+                }).finish(),
           },
           modeInfo: {
             single: {
@@ -394,8 +422,8 @@ export const broadcastOsmosisTx = async ({
     memo: escapedMemo,
     protoMsgs,
     pubKey: {
-      "@type": account.pub_key["@type"],
-      key: account.pub_key.key,
+      type: account.pub_key["@type"],
+      value: account.pub_key.key,
     },
     sequence: account.sequence,
     baseDenom,

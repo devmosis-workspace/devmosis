@@ -39,6 +39,8 @@ export interface GenesisState {
     maxPoolPointsPerTx: Long;
     /** The number of pool points that have been consumed in the current block. */
     pointCountForBlock: Long;
+    /** All of the profits that have been accumulated by the module. */
+    profits: Coin[];
 }
 /** GenesisState defines the protorev module's genesis state. */
 export interface GenesisStateSDKType {
@@ -53,6 +55,7 @@ export interface GenesisStateSDKType {
     max_pool_points_per_block: Long;
     max_pool_points_per_tx: Long;
     point_count_for_block: Long;
+    profits: CoinSDKType[];
 }
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
