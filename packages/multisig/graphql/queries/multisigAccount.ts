@@ -84,7 +84,7 @@ export const GET_MULTISIG_ACCOUNT_BY_ADDRESS = gql`
 
 export interface MultisigAccountResponse {
   multisigAccountByMultisigAddress: {
-    id: number;
+    id: string;
     address: string;
     bech32Prefix: string;
     description: string | null;
@@ -98,7 +98,7 @@ export interface MultisigAccountResponse {
     }[];
     threshold: number;
     transactions: {
-      id: number;
+      id: string;
       title: string;
       createdAt: string;
       description: string | null;

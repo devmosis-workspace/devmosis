@@ -557,7 +557,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "@cosmjs/amino",\
-        "npm:0.30.1"\
+        "npm:0.31.0"\
       ],\
       [\
         "@cosmjs/crypto",\
@@ -573,11 +573,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "@cosmjs/math",\
-        "npm:0.29.5"\
+        "npm:0.31.0"\
       ],\
       [\
         "@cosmjs/proto-signing",\
-        "npm:0.29.4"\
+        "npm:0.31.0"\
       ],\
       [\
         "@cosmjs/socket",\
@@ -9367,7 +9367,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@common/queries", "workspace:common/queries"],\
             ["@common/types", "workspace:common/types"],\
             ["@common/utils", "workspace:common/utils"],\
-            ["@cosmjs/amino", "npm:0.30.1"],\
+            ["@cosmjs/amino", "npm:0.31.0"],\
+            ["@cosmjs/math", "npm:0.31.0"],\
             ["@cosmjs/proto-signing", "npm:0.30.1"],\
             ["@emotion/react", "virtual:6ab316078bc2ebe07c628d89191e87ee68ebf8c0a75c9d7f910d63af1df1ebb370b6d4607310f2f1c8fda3d56d85f831b1763935ea4c1b41b19e5b1e353b13c4#npm:11.11.0"],\
             ["@emotion/styled", "virtual:6ab316078bc2ebe07c628d89191e87ee68ebf8c0a75c9d7f910d63af1df1ebb370b6d4607310f2f1c8fda3d56d85f831b1763935ea4c1b41b19e5b1e353b13c4#npm:11.11.0"],\
@@ -18390,6 +18391,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@chain-sources/osmosis", "workspace:chain-sources/osmosis"],\
             ["@common/utils", "workspace:common/utils"],\
             ["@cosmjs/amino", "npm:0.31.0"],\
+            ["@cosmjs/math", "npm:0.31.0"],\
+            ["@cosmjs/proto-signing", "npm:0.31.0"],\
             ["@cosmjs/stargate", "npm:0.31.0"],\
             ["@heroicons/react", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:2.0.18"],\
             ["@keplr-wallet/cosmos", "npm:0.12.13"],\
@@ -18406,6 +18409,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:13.4.7"],\
             ["graphql", "npm:16.7.1"],\
             ["jotai", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:2.2.1"],\
+            ["long", "npm:5.2.3"],\
             ["next", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:13.4.7"],\
             ["postcss", "npm:8.4.24"],\
             ["react", "npm:18.2.0"],\
