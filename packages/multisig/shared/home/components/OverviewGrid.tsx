@@ -50,10 +50,8 @@ export const OverviewGrid = ({
     [multisigAccounts, addresses]
   );
 
-  const validAccountCount =
-    (multisigAccounts?.length ?? 0) -
-    overviewData.pendingAccounts -
-    overviewData.rejectedAccounts;
+  // TODO: Replace with real data
+  const expiredSignatureCount = 0
 
   return (
     <div className="flex flex-col w-full mb-5">
@@ -108,10 +106,10 @@ export const OverviewGrid = ({
           />
           <div className="flex flex-col ml-5">
             <Typography.H2 className="mb-[1px] text-[#252631]">
-              {validAccountCount}
+              {expiredSignatureCount}
             </Typography.H2>
             <Typography.SMText className="text-[#98A9BC]">
-              Multisig Accounts
+              Expired Signatures
             </Typography.SMText>
           </div>
         </div>
