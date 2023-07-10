@@ -36,6 +36,7 @@ import {
   UpdateTransactionTxHashInput,
   UpdateTransactionTxHashResponse,
 } from "@/graphql/mutations/transaction";
+import { JsonViewer } from "@textea/json-viewer";
 
 export const dynamic = "force-dynamic";
 
@@ -392,6 +393,8 @@ export default function Transaction() {
             <Typography.H5 className="mt-2 text-[#778CA2]">
               {transaction?.description ?? "No description"}
             </Typography.H5>
+
+            <JsonViewer className="mt-4 p-2" value={JSON.parse(transaction?.txDataJSON ?? "")} theme={"dark"} />
           </div>
           <div className="flex justify-between items-center mb-4">
             <Typography.H4 className="text-[#778CA2]">
@@ -455,11 +458,15 @@ export default function Transaction() {
           <button
             type="button"
             onClick={handleTxBroadcast}
-            disabled={loading || updateLoading || !isAchievingThreshold || txLoading}
+            disabled={
+              loading || updateLoading || !isAchievingThreshold || txLoading
+            }
             className="flex justify-center items-center ml-auto w-[150px] h-[40px] bg-[#4D7CFE] rounded mt-5"
           >
             <Typography.SMText className="text-white">
-              {isAchievingThreshold ? "Execute Transaction" : "Waiting for threshold"}
+              {isAchievingThreshold
+                ? "Execute Transaction"
+                : "Waiting for threshold"}
             </Typography.SMText>
           </button>
         </div>
