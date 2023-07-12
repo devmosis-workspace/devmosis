@@ -23,11 +23,11 @@ import { useAtomValue } from "jotai";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
-import { MultisigThresholdPubkey, makeSignDoc } from "@cosmjs/amino";
-import { escapeHTML, getKeplrFromWindow } from "@common/utils";
+import { type MultisigThresholdPubkey } from "@cosmjs/amino";
+import { escapeHTML } from "@common/utils";
 import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
-import { BroadcastMode, StdFee } from "@keplr-wallet/types";
+import { StdFee } from "@keplr-wallet/types";
 import {
   SigningStargateClient,
   StargateClient,
@@ -39,8 +39,6 @@ import {
   UpdateTransactionTxHashResponse,
 } from "@/graphql/mutations/transaction";
 import { JsonViewer } from "@textea/json-viewer";
-import { cosmos } from "@chain-clients/osmosis";
-import Long from "long";
 
 export const dynamic = "force-dynamic";
 
@@ -197,30 +195,6 @@ export default function Transaction() {
         aminoMsgs = amino;
         protoMsgs = proto;
       }
-
-      // const baseDenom = currentChain.fees?.fee_tokens[0].denom;
-      // if (baseDenom === undefined) {
-      //   throw new Error("Unable to load account");
-      // }
-
-      // const offChainPubkey: MultisigThresholdPubkey | undefined =
-      //   transaction?.MultisigAccount.pubKeyJSON !== undefined
-      //     ? JSON.parse(transaction?.MultisigAccount.pubKeyJSON)
-      //     : undefined;
-
-      // const onChainPubkey = accountData.pub_key;
-
-      // if (offChainPubkey === undefined) {
-      //   throw new Error("Unable to load account");
-      // }
-
-      // const pubkey =
-      //   onChainPubkey === null
-      //     ? offChainPubkey
-      //     : {
-      //         type: onChainPubkey["@type"],
-      //         value: onChainPubkey.key,
-      //       };
 
       const signingClient = await SigningStargateClient.offline(offlineSigner);
 

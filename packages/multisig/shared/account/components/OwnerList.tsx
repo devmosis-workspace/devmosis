@@ -16,7 +16,7 @@ export const OwnerList = ({ owners }: OwnerListProps) => {
         {owners?.map((owner) => {
           const isLast = owners.indexOf(owner) === owners.length - 1;
           return (
-            <div className="flex flex-col w-full">
+            <div key={owner.address} className="flex flex-col w-full">
               <div className="flex justify-between items-center">
                 <Typography.SMText className="w-full text-[#252631] break-words">
                   {owner.address}
