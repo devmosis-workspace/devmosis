@@ -34,6 +34,7 @@ export default function CreateTransaction() {
         multisigAddress: params?.address,
       },
       skip: params?.address === undefined,
+      fetchPolicy: "network-only"
     }
   );
 
