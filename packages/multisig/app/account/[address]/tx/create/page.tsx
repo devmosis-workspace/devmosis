@@ -69,8 +69,9 @@ export default function CreateTransaction() {
           data: {
             title,
             description: description === "" ? null : description,
-            multisigAccountId: Number(
-              accountData.multisigAccountByMultisigAddress.id
+            multisigAccountId: parseInt(
+              accountData.multisigAccountByMultisigAddress.id,
+              10
             ),
             txDataJSON,
           },

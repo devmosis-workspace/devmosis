@@ -34,6 +34,9 @@ var Module = {
     }
     return message;
   },
+  fromJSON: function fromJSON(_) {
+    return {};
+  },
   fromPartial: function fromPartial(_) {
     var message = createBaseModule();
     return message;

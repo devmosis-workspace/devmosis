@@ -1,5 +1,5 @@
 import { FeeToken, FeeTokenSDKType } from "./feetoken";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface QueryFeeTokensRequest {}
 export interface QueryFeeTokensRequestSDKType {}
@@ -80,6 +80,9 @@ export const QueryFeeTokensRequest = {
     }
     return message;
   },
+  fromJSON(_: any): QueryFeeTokensRequest {
+    return {};
+  },
   fromPartial(_: Partial<QueryFeeTokensRequest>): QueryFeeTokensRequest {
     const message = createBaseQueryFeeTokensRequest();
     return message;
@@ -113,6 +116,11 @@ export const QueryFeeTokensResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryFeeTokensResponse {
+    return {
+      feeTokens: Array.isArray(object?.feeTokens) ? object.feeTokens.map((e: any) => FeeToken.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<QueryFeeTokensResponse>): QueryFeeTokensResponse {
     const message = createBaseQueryFeeTokensResponse();
@@ -148,6 +156,11 @@ export const QueryDenomSpotPriceRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryDenomSpotPriceRequest {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
   },
   fromPartial(object: Partial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest {
     const message = createBaseQueryDenomSpotPriceRequest();
@@ -191,6 +204,12 @@ export const QueryDenomSpotPriceResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryDenomSpotPriceResponse {
+    return {
+      poolID: isSet(object.poolID) ? Long.fromValue(object.poolID) : Long.UZERO,
+      spotPrice: isSet(object.spotPrice) ? String(object.spotPrice) : ""
+    };
+  },
   fromPartial(object: Partial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse {
     const message = createBaseQueryDenomSpotPriceResponse();
     message.poolID = object.poolID !== undefined && object.poolID !== null ? Long.fromValue(object.poolID) : Long.UZERO;
@@ -227,6 +246,11 @@ export const QueryDenomPoolIdRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryDenomPoolIdRequest {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial(object: Partial<QueryDenomPoolIdRequest>): QueryDenomPoolIdRequest {
     const message = createBaseQueryDenomPoolIdRequest();
     message.denom = object.denom ?? "";
@@ -262,6 +286,11 @@ export const QueryDenomPoolIdResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryDenomPoolIdResponse {
+    return {
+      poolID: isSet(object.poolID) ? Long.fromValue(object.poolID) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse {
     const message = createBaseQueryDenomPoolIdResponse();
     message.poolID = object.poolID !== undefined && object.poolID !== null ? Long.fromValue(object.poolID) : Long.UZERO;
@@ -288,6 +317,9 @@ export const QueryBaseDenomRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryBaseDenomRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryBaseDenomRequest>): QueryBaseDenomRequest {
     const message = createBaseQueryBaseDenomRequest();
@@ -322,6 +354,11 @@ export const QueryBaseDenomResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryBaseDenomResponse {
+    return {
+      baseDenom: isSet(object.baseDenom) ? String(object.baseDenom) : ""
+    };
   },
   fromPartial(object: Partial<QueryBaseDenomResponse>): QueryBaseDenomResponse {
     const message = createBaseQueryBaseDenomResponse();

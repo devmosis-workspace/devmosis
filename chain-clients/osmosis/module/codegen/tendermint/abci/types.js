@@ -3,7 +3,7 @@ import { Header } from "../types/types";
 import { ProofOps } from "../crypto/proof";
 import { EvidenceParams, ValidatorParams, VersionParams } from "../types/params";
 import { PublicKey } from "../crypto/keys";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, isSet, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64 } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export let CheckTxType = /*#__PURE__*/function (CheckTxType) {
   CheckTxType[CheckTxType["NEW"] = 0] = "NEW";
@@ -397,6 +397,25 @@ export const Request = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      echo: isSet(object.echo) ? RequestEcho.fromJSON(object.echo) : undefined,
+      flush: isSet(object.flush) ? RequestFlush.fromJSON(object.flush) : undefined,
+      info: isSet(object.info) ? RequestInfo.fromJSON(object.info) : undefined,
+      setOption: isSet(object.setOption) ? RequestSetOption.fromJSON(object.setOption) : undefined,
+      initChain: isSet(object.initChain) ? RequestInitChain.fromJSON(object.initChain) : undefined,
+      query: isSet(object.query) ? RequestQuery.fromJSON(object.query) : undefined,
+      beginBlock: isSet(object.beginBlock) ? RequestBeginBlock.fromJSON(object.beginBlock) : undefined,
+      checkTx: isSet(object.checkTx) ? RequestCheckTx.fromJSON(object.checkTx) : undefined,
+      deliverTx: isSet(object.deliverTx) ? RequestDeliverTx.fromJSON(object.deliverTx) : undefined,
+      endBlock: isSet(object.endBlock) ? RequestEndBlock.fromJSON(object.endBlock) : undefined,
+      commit: isSet(object.commit) ? RequestCommit.fromJSON(object.commit) : undefined,
+      listSnapshots: isSet(object.listSnapshots) ? RequestListSnapshots.fromJSON(object.listSnapshots) : undefined,
+      offerSnapshot: isSet(object.offerSnapshot) ? RequestOfferSnapshot.fromJSON(object.offerSnapshot) : undefined,
+      loadSnapshotChunk: isSet(object.loadSnapshotChunk) ? RequestLoadSnapshotChunk.fromJSON(object.loadSnapshotChunk) : undefined,
+      applySnapshotChunk: isSet(object.applySnapshotChunk) ? RequestApplySnapshotChunk.fromJSON(object.applySnapshotChunk) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseRequest();
     message.echo = object.echo !== undefined && object.echo !== null ? RequestEcho.fromPartial(object.echo) : undefined;
@@ -446,6 +465,11 @@ export const RequestEcho = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      message: isSet(object.message) ? String(object.message) : ""
+    };
+  },
   fromPartial(object) {
     var _object$message;
     const message = createBaseRequestEcho();
@@ -473,6 +497,9 @@ export const RequestFlush = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseRequestFlush();
@@ -522,6 +549,13 @@ export const RequestInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      version: isSet(object.version) ? String(object.version) : "",
+      blockVersion: isSet(object.blockVersion) ? Long.fromValue(object.blockVersion) : Long.UZERO,
+      p2pVersion: isSet(object.p2pVersion) ? Long.fromValue(object.p2pVersion) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     var _object$version;
     const message = createBaseRequestInfo();
@@ -566,6 +600,12 @@ export const RequestSetOption = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value) ? String(object.value) : ""
+    };
   },
   fromPartial(object) {
     var _object$key, _object$value;
@@ -639,6 +679,16 @@ export const RequestInitChain = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
+      chainId: isSet(object.chainId) ? String(object.chainId) : "",
+      consensusParams: isSet(object.consensusParams) ? ConsensusParams.fromJSON(object.consensusParams) : undefined,
+      validators: Array.isArray(object === null || object === void 0 ? void 0 : object.validators) ? object.validators.map(e => ValidatorUpdate.fromJSON(e)) : [],
+      appStateBytes: isSet(object.appStateBytes) ? bytesFromBase64(object.appStateBytes) : new Uint8Array(),
+      initialHeight: isSet(object.initialHeight) ? Long.fromValue(object.initialHeight) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     var _object$time, _object$chainId, _object$validators, _object$appStateBytes;
     const message = createBaseRequestInitChain();
@@ -701,6 +751,14 @@ export const RequestQuery = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      path: isSet(object.path) ? String(object.path) : "",
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      prove: isSet(object.prove) ? Boolean(object.prove) : false
+    };
+  },
   fromPartial(object) {
     var _object$data, _object$path, _object$prove;
     const message = createBaseRequestQuery();
@@ -761,6 +819,14 @@ export const RequestBeginBlock = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array(),
+      header: isSet(object.header) ? Header.fromJSON(object.header) : undefined,
+      lastCommitInfo: isSet(object.lastCommitInfo) ? LastCommitInfo.fromJSON(object.lastCommitInfo) : undefined,
+      byzantineValidators: Array.isArray(object === null || object === void 0 ? void 0 : object.byzantineValidators) ? object.byzantineValidators.map(e => Evidence.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$hash, _object$byzantineVali;
     const message = createBaseRequestBeginBlock();
@@ -807,6 +873,12 @@ export const RequestCheckTx = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      tx: isSet(object.tx) ? bytesFromBase64(object.tx) : new Uint8Array(),
+      type: isSet(object.type) ? checkTxTypeFromJSON(object.type) : 0
+    };
+  },
   fromPartial(object) {
     var _object$tx, _object$type;
     const message = createBaseRequestCheckTx();
@@ -844,6 +916,11 @@ export const RequestDeliverTx = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      tx: isSet(object.tx) ? bytesFromBase64(object.tx) : new Uint8Array()
+    };
+  },
   fromPartial(object) {
     var _object$tx2;
     const message = createBaseRequestDeliverTx();
@@ -880,6 +957,11 @@ export const RequestEndBlock = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseRequestEndBlock();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
@@ -907,6 +989,9 @@ export const RequestCommit = {
     }
     return message;
   },
+  fromJSON(_) {
+    return {};
+  },
   fromPartial(_) {
     const message = createBaseRequestCommit();
     return message;
@@ -932,6 +1017,9 @@ export const RequestListSnapshots = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseRequestListSnapshots();
@@ -973,6 +1061,12 @@ export const RequestOfferSnapshot = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      snapshot: isSet(object.snapshot) ? Snapshot.fromJSON(object.snapshot) : undefined,
+      appHash: isSet(object.appHash) ? bytesFromBase64(object.appHash) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$appHash;
@@ -1025,6 +1119,13 @@ export const RequestLoadSnapshotChunk = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
+      format: isSet(object.format) ? Number(object.format) : 0,
+      chunk: isSet(object.chunk) ? Number(object.chunk) : 0
+    };
+  },
   fromPartial(object) {
     var _object$format, _object$chunk;
     const message = createBaseRequestLoadSnapshotChunk();
@@ -1076,6 +1177,13 @@ export const RequestApplySnapshotChunk = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      index: isSet(object.index) ? Number(object.index) : 0,
+      chunk: isSet(object.chunk) ? bytesFromBase64(object.chunk) : new Uint8Array(),
+      sender: isSet(object.sender) ? String(object.sender) : ""
+    };
   },
   fromPartial(object) {
     var _object$index, _object$chunk2, _object$sender;
@@ -1220,6 +1328,26 @@ export const Response = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      exception: isSet(object.exception) ? ResponseException.fromJSON(object.exception) : undefined,
+      echo: isSet(object.echo) ? ResponseEcho.fromJSON(object.echo) : undefined,
+      flush: isSet(object.flush) ? ResponseFlush.fromJSON(object.flush) : undefined,
+      info: isSet(object.info) ? ResponseInfo.fromJSON(object.info) : undefined,
+      setOption: isSet(object.setOption) ? ResponseSetOption.fromJSON(object.setOption) : undefined,
+      initChain: isSet(object.initChain) ? ResponseInitChain.fromJSON(object.initChain) : undefined,
+      query: isSet(object.query) ? ResponseQuery.fromJSON(object.query) : undefined,
+      beginBlock: isSet(object.beginBlock) ? ResponseBeginBlock.fromJSON(object.beginBlock) : undefined,
+      checkTx: isSet(object.checkTx) ? ResponseCheckTx.fromJSON(object.checkTx) : undefined,
+      deliverTx: isSet(object.deliverTx) ? ResponseDeliverTx.fromJSON(object.deliverTx) : undefined,
+      endBlock: isSet(object.endBlock) ? ResponseEndBlock.fromJSON(object.endBlock) : undefined,
+      commit: isSet(object.commit) ? ResponseCommit.fromJSON(object.commit) : undefined,
+      listSnapshots: isSet(object.listSnapshots) ? ResponseListSnapshots.fromJSON(object.listSnapshots) : undefined,
+      offerSnapshot: isSet(object.offerSnapshot) ? ResponseOfferSnapshot.fromJSON(object.offerSnapshot) : undefined,
+      loadSnapshotChunk: isSet(object.loadSnapshotChunk) ? ResponseLoadSnapshotChunk.fromJSON(object.loadSnapshotChunk) : undefined,
+      applySnapshotChunk: isSet(object.applySnapshotChunk) ? ResponseApplySnapshotChunk.fromJSON(object.applySnapshotChunk) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseResponse();
     message.exception = object.exception !== undefined && object.exception !== null ? ResponseException.fromPartial(object.exception) : undefined;
@@ -1270,6 +1398,11 @@ export const ResponseException = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      error: isSet(object.error) ? String(object.error) : ""
+    };
+  },
   fromPartial(object) {
     var _object$error;
     const message = createBaseResponseException();
@@ -1306,6 +1439,11 @@ export const ResponseEcho = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      message: isSet(object.message) ? String(object.message) : ""
+    };
+  },
   fromPartial(object) {
     var _object$message2;
     const message = createBaseResponseEcho();
@@ -1333,6 +1471,9 @@ export const ResponseFlush = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseResponseFlush();
@@ -1396,6 +1537,15 @@ export const ResponseInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      data: isSet(object.data) ? String(object.data) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      appVersion: isSet(object.appVersion) ? Long.fromValue(object.appVersion) : Long.UZERO,
+      lastBlockHeight: isSet(object.lastBlockHeight) ? Long.fromValue(object.lastBlockHeight) : Long.ZERO,
+      lastBlockAppHash: isSet(object.lastBlockAppHash) ? bytesFromBase64(object.lastBlockAppHash) : new Uint8Array()
+    };
+  },
   fromPartial(object) {
     var _object$data2, _object$version2, _object$lastBlockAppH;
     const message = createBaseResponseInfo();
@@ -1450,6 +1600,13 @@ export const ResponseSetOption = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      code: isSet(object.code) ? Number(object.code) : 0,
+      log: isSet(object.log) ? String(object.log) : "",
+      info: isSet(object.info) ? String(object.info) : ""
+    };
+  },
   fromPartial(object) {
     var _object$code, _object$log, _object$info;
     const message = createBaseResponseSetOption();
@@ -1501,6 +1658,13 @@ export const ResponseInitChain = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      consensusParams: isSet(object.consensusParams) ? ConsensusParams.fromJSON(object.consensusParams) : undefined,
+      validators: Array.isArray(object === null || object === void 0 ? void 0 : object.validators) ? object.validators.map(e => ValidatorUpdate.fromJSON(e)) : [],
+      appHash: isSet(object.appHash) ? bytesFromBase64(object.appHash) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$validators2, _object$appHash2;
@@ -1596,6 +1760,19 @@ export const ResponseQuery = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      code: isSet(object.code) ? Number(object.code) : 0,
+      log: isSet(object.log) ? String(object.log) : "",
+      info: isSet(object.info) ? String(object.info) : "",
+      index: isSet(object.index) ? Long.fromValue(object.index) : Long.ZERO,
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(),
+      proofOps: isSet(object.proofOps) ? ProofOps.fromJSON(object.proofOps) : undefined,
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      codespace: isSet(object.codespace) ? String(object.codespace) : ""
+    };
+  },
   fromPartial(object) {
     var _object$code2, _object$log2, _object$info2, _object$key2, _object$value2, _object$codespace;
     const message = createBaseResponseQuery();
@@ -1639,6 +1816,11 @@ export const ResponseBeginBlock = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      events: Array.isArray(object === null || object === void 0 ? void 0 : object.events) ? object.events.map(e => Event.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$events;
@@ -1746,6 +1928,21 @@ export const ResponseCheckTx = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      code: isSet(object.code) ? Number(object.code) : 0,
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      log: isSet(object.log) ? String(object.log) : "",
+      info: isSet(object.info) ? String(object.info) : "",
+      gasWanted: isSet(object.gas_wanted) ? Long.fromValue(object.gas_wanted) : Long.ZERO,
+      gasUsed: isSet(object.gas_used) ? Long.fromValue(object.gas_used) : Long.ZERO,
+      events: Array.isArray(object === null || object === void 0 ? void 0 : object.events) ? object.events.map(e => Event.fromJSON(e)) : [],
+      codespace: isSet(object.codespace) ? String(object.codespace) : "",
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      priority: isSet(object.priority) ? Long.fromValue(object.priority) : Long.ZERO,
+      mempoolError: isSet(object.mempoolError) ? String(object.mempoolError) : ""
+    };
+  },
   fromPartial(object) {
     var _object$code3, _object$data3, _object$log3, _object$info3, _object$events2, _object$codespace2, _object$sender2, _object$mempoolError;
     const message = createBaseResponseCheckTx();
@@ -1841,6 +2038,18 @@ export const ResponseDeliverTx = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      code: isSet(object.code) ? Number(object.code) : 0,
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      log: isSet(object.log) ? String(object.log) : "",
+      info: isSet(object.info) ? String(object.info) : "",
+      gasWanted: isSet(object.gas_wanted) ? Long.fromValue(object.gas_wanted) : Long.ZERO,
+      gasUsed: isSet(object.gas_used) ? Long.fromValue(object.gas_used) : Long.ZERO,
+      events: Array.isArray(object === null || object === void 0 ? void 0 : object.events) ? object.events.map(e => Event.fromJSON(e)) : [],
+      codespace: isSet(object.codespace) ? String(object.codespace) : ""
+    };
+  },
   fromPartial(object) {
     var _object$code4, _object$data4, _object$log4, _object$info4, _object$events3, _object$codespace3;
     const message = createBaseResponseDeliverTx();
@@ -1898,6 +2107,13 @@ export const ResponseEndBlock = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validatorUpdates: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorUpdates) ? object.validatorUpdates.map(e => ValidatorUpdate.fromJSON(e)) : [],
+      consensusParamUpdates: isSet(object.consensusParamUpdates) ? ConsensusParams.fromJSON(object.consensusParamUpdates) : undefined,
+      events: Array.isArray(object === null || object === void 0 ? void 0 : object.events) ? object.events.map(e => Event.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$validatorUpda, _object$events4;
     const message = createBaseResponseEndBlock();
@@ -1943,6 +2159,12 @@ export const ResponseCommit = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      retainHeight: isSet(object.retainHeight) ? Long.fromValue(object.retainHeight) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     var _object$data5;
     const message = createBaseResponseCommit();
@@ -1980,6 +2202,11 @@ export const ResponseListSnapshots = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      snapshots: Array.isArray(object === null || object === void 0 ? void 0 : object.snapshots) ? object.snapshots.map(e => Snapshot.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$snapshots;
     const message = createBaseResponseListSnapshots();
@@ -2016,6 +2243,11 @@ export const ResponseOfferSnapshot = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      result: isSet(object.result) ? responseOfferSnapshot_ResultFromJSON(object.result) : 0
+    };
+  },
   fromPartial(object) {
     var _object$result;
     const message = createBaseResponseOfferSnapshot();
@@ -2051,6 +2283,11 @@ export const ResponseLoadSnapshotChunk = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      chunk: isSet(object.chunk) ? bytesFromBase64(object.chunk) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$chunk3;
@@ -2111,6 +2348,13 @@ export const ResponseApplySnapshotChunk = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      result: isSet(object.result) ? responseApplySnapshotChunk_ResultFromJSON(object.result) : 0,
+      refetchChunks: Array.isArray(object === null || object === void 0 ? void 0 : object.refetchChunks) ? object.refetchChunks.map(e => Number(e)) : [],
+      rejectSenders: Array.isArray(object === null || object === void 0 ? void 0 : object.rejectSenders) ? object.rejectSenders.map(e => String(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$result2, _object$refetchChunks, _object$rejectSenders;
     const message = createBaseResponseApplySnapshotChunk();
@@ -2170,6 +2414,14 @@ export const ConsensusParams = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      block: isSet(object.block) ? BlockParams.fromJSON(object.block) : undefined,
+      evidence: isSet(object.evidence) ? EvidenceParams.fromJSON(object.evidence) : undefined,
+      validator: isSet(object.validator) ? ValidatorParams.fromJSON(object.validator) : undefined,
+      version: isSet(object.version) ? VersionParams.fromJSON(object.version) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseConsensusParams();
     message.block = object.block !== undefined && object.block !== null ? BlockParams.fromPartial(object.block) : undefined;
@@ -2215,6 +2467,12 @@ export const BlockParams = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      maxBytes: isSet(object.maxBytes) ? Long.fromValue(object.maxBytes) : Long.ZERO,
+      maxGas: isSet(object.maxGas) ? Long.fromValue(object.maxGas) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseBlockParams();
     message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? Long.fromValue(object.maxBytes) : Long.ZERO;
@@ -2257,6 +2515,12 @@ export const LastCommitInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      round: isSet(object.round) ? Number(object.round) : 0,
+      votes: Array.isArray(object === null || object === void 0 ? void 0 : object.votes) ? object.votes.map(e => VoteInfo.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$round, _object$votes;
@@ -2301,6 +2565,12 @@ export const Event = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      type: isSet(object.type) ? String(object.type) : "",
+      attributes: Array.isArray(object === null || object === void 0 ? void 0 : object.attributes) ? object.attributes.map(e => EventAttribute.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$type2, _object$attributes;
@@ -2352,6 +2622,13 @@ export const EventAttribute = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(),
+      index: isSet(object.index) ? Boolean(object.index) : false
+    };
   },
   fromPartial(object) {
     var _object$key3, _object$value3, _object$index2;
@@ -2412,6 +2689,14 @@ export const TxResult = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      index: isSet(object.index) ? Number(object.index) : 0,
+      tx: isSet(object.tx) ? bytesFromBase64(object.tx) : new Uint8Array(),
+      result: isSet(object.result) ? ResponseDeliverTx.fromJSON(object.result) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$index3, _object$tx3;
     const message = createBaseTxResult();
@@ -2458,6 +2743,12 @@ export const Validator = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? bytesFromBase64(object.address) : new Uint8Array(),
+      power: isSet(object.power) ? Long.fromValue(object.power) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     var _object$address;
     const message = createBaseValidator();
@@ -2502,6 +2793,12 @@ export const ValidatorUpdate = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      pubKey: isSet(object.pubKey) ? PublicKey.fromJSON(object.pubKey) : undefined,
+      power: isSet(object.power) ? Long.fromValue(object.power) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseValidatorUpdate();
     message.pubKey = object.pubKey !== undefined && object.pubKey !== null ? PublicKey.fromPartial(object.pubKey) : undefined;
@@ -2544,6 +2841,12 @@ export const VoteInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      validator: isSet(object.validator) ? Validator.fromJSON(object.validator) : undefined,
+      signedLastBlock: isSet(object.signedLastBlock) ? Boolean(object.signedLastBlock) : false
+    };
   },
   fromPartial(object) {
     var _object$signedLastBlo;
@@ -2609,6 +2912,15 @@ export const Evidence = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      type: isSet(object.type) ? evidenceTypeFromJSON(object.type) : 0,
+      validator: isSet(object.validator) ? Validator.fromJSON(object.validator) : undefined,
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
+      totalVotingPower: isSet(object.totalVotingPower) ? Long.fromValue(object.totalVotingPower) : Long.ZERO
+    };
   },
   fromPartial(object) {
     var _object$type3, _object$time2;
@@ -2677,6 +2989,15 @@ export const Snapshot = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
+      format: isSet(object.format) ? Number(object.format) : 0,
+      chunks: isSet(object.chunks) ? Number(object.chunks) : 0,
+      hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array(),
+      metadata: isSet(object.metadata) ? bytesFromBase64(object.metadata) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$format2, _object$chunks, _object$hash2, _object$metadata;

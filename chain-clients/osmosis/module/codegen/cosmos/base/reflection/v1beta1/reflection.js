@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../../helpers";
 /** ListAllInterfacesRequest is the request type of the ListAllInterfaces RPC. */
 
 /** ListAllInterfacesRequest is the request type of the ListAllInterfaces RPC. */
@@ -48,6 +49,9 @@ export const ListAllInterfacesRequest = {
     }
     return message;
   },
+  fromJSON(_) {
+    return {};
+  },
   fromPartial(_) {
     const message = createBaseListAllInterfacesRequest();
     return message;
@@ -81,6 +85,11 @@ export const ListAllInterfacesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      interfaceNames: Array.isArray(object === null || object === void 0 ? void 0 : object.interfaceNames) ? object.interfaceNames.map(e => String(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$interfaceName;
@@ -118,6 +127,11 @@ export const ListImplementationsRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      interfaceName: isSet(object.interfaceName) ? String(object.interfaceName) : ""
+    };
+  },
   fromPartial(object) {
     var _object$interfaceName2;
     const message = createBaseListImplementationsRequest();
@@ -153,6 +167,11 @@ export const ListImplementationsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      implementationMessageNames: Array.isArray(object === null || object === void 0 ? void 0 : object.implementationMessageNames) ? object.implementationMessageNames.map(e => String(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$implementatio;

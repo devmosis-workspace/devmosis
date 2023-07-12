@@ -62,25 +62,30 @@ export interface Record_OfflineSDKType {
 export declare const Record: {
     encode(message: Record, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record;
+    fromJSON(object: any): Record;
     fromPartial(object: Partial<Record>): Record;
 };
 export declare const Record_Local: {
     encode(message: Record_Local, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Local;
+    fromJSON(object: any): Record_Local;
     fromPartial(object: Partial<Record_Local>): Record_Local;
 };
 export declare const Record_Ledger: {
     encode(message: Record_Ledger, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Ledger;
+    fromJSON(object: any): Record_Ledger;
     fromPartial(object: Partial<Record_Ledger>): Record_Ledger;
 };
 export declare const Record_Multi: {
     encode(_: Record_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Multi;
+    fromJSON(_: any): Record_Multi;
     fromPartial(_: Partial<Record_Multi>): Record_Multi;
 };
 export declare const Record_Offline: {
     encode(_: Record_Offline, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record_Offline;
+    fromJSON(_: any): Record_Offline;
     fromPartial(_: Partial<Record_Offline>): Record_Offline;
 };

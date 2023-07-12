@@ -1,6 +1,7 @@
 import { Params } from "./params";
 import { SuperfluidAsset, OsmoEquivalentMultiplierRecord, SuperfluidIntermediaryAccount, LockIdIntermediaryAccountConnection } from "./superfluid";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../helpers";
 /** GenesisState defines the module's genesis state. */
 
 /** GenesisState defines the module's genesis state. */
@@ -61,6 +62,15 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      superfluidAssets: Array.isArray(object === null || object === void 0 ? void 0 : object.superfluidAssets) ? object.superfluidAssets.map(e => SuperfluidAsset.fromJSON(e)) : [],
+      osmoEquivalentMultipliers: Array.isArray(object === null || object === void 0 ? void 0 : object.osmoEquivalentMultipliers) ? object.osmoEquivalentMultipliers.map(e => OsmoEquivalentMultiplierRecord.fromJSON(e)) : [],
+      intermediaryAccounts: Array.isArray(object === null || object === void 0 ? void 0 : object.intermediaryAccounts) ? object.intermediaryAccounts.map(e => SuperfluidIntermediaryAccount.fromJSON(e)) : [],
+      intemediaryAccountConnections: Array.isArray(object === null || object === void 0 ? void 0 : object.intemediaryAccountConnections) ? object.intemediaryAccountConnections.map(e => LockIdIntermediaryAccountConnection.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$superfluidAss, _object$osmoEquivalen, _object$intermediaryA, _object$intemediaryAc;

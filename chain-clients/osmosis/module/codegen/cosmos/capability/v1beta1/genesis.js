@@ -1,5 +1,5 @@
 import { CapabilityOwners } from "./capability";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisOwners defines the capability owners with their corresponding index. */
 
@@ -45,6 +45,12 @@ export const GenesisOwners = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      index: isSet(object.index) ? Long.fromValue(object.index) : Long.UZERO,
+      indexOwners: isSet(object.indexOwners) ? CapabilityOwners.fromJSON(object.indexOwners) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseGenesisOwners();
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
@@ -87,6 +93,12 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      index: isSet(object.index) ? Long.fromValue(object.index) : Long.UZERO,
+      owners: Array.isArray(object === null || object === void 0 ? void 0 : object.owners) ? object.owners.map(e => GenesisOwners.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$owners;

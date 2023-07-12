@@ -36,10 +36,12 @@ export interface QuerySpotPriceResponseSDKType {
 export declare const QuerySpotPriceRequest: {
     encode(message: QuerySpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceRequest;
+    fromJSON(object: any): QuerySpotPriceRequest;
     fromPartial(object: Partial<QuerySpotPriceRequest>): QuerySpotPriceRequest;
 };
 export declare const QuerySpotPriceResponse: {
     encode(message: QuerySpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponse;
+    fromJSON(object: any): QuerySpotPriceResponse;
     fromPartial(object: Partial<QuerySpotPriceResponse>): QuerySpotPriceResponse;
 };

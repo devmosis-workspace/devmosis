@@ -1,7 +1,7 @@
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock, PeriodLockSDKType } from "./lock";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface MsgLockTokens {
   owner: string;
@@ -146,6 +146,13 @@ export const MsgLockTokens = {
     }
     return message;
   },
+  fromJSON(object: any): MsgLockTokens {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgLockTokens>): MsgLockTokens {
     const message = createBaseMsgLockTokens();
     message.owner = object.owner ?? "";
@@ -183,6 +190,11 @@ export const MsgLockTokensResponse = {
     }
     return message;
   },
+  fromJSON(object: any): MsgLockTokensResponse {
+    return {
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<MsgLockTokensResponse>): MsgLockTokensResponse {
     const message = createBaseMsgLockTokensResponse();
     message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
@@ -218,6 +230,11 @@ export const MsgBeginUnlockingAll = {
     }
     return message;
   },
+  fromJSON(object: any): MsgBeginUnlockingAll {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : ""
+    };
+  },
   fromPartial(object: Partial<MsgBeginUnlockingAll>): MsgBeginUnlockingAll {
     const message = createBaseMsgBeginUnlockingAll();
     message.owner = object.owner ?? "";
@@ -252,6 +269,11 @@ export const MsgBeginUnlockingAllResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgBeginUnlockingAllResponse {
+    return {
+      unlocks: Array.isArray(object?.unlocks) ? object.unlocks.map((e: any) => PeriodLock.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<MsgBeginUnlockingAllResponse>): MsgBeginUnlockingAllResponse {
     const message = createBaseMsgBeginUnlockingAllResponse();
@@ -302,6 +324,13 @@ export const MsgBeginUnlocking = {
     }
     return message;
   },
+  fromJSON(object: any): MsgBeginUnlocking {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgBeginUnlocking>): MsgBeginUnlocking {
     const message = createBaseMsgBeginUnlocking();
     message.owner = object.owner ?? "";
@@ -345,6 +374,12 @@ export const MsgBeginUnlockingResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgBeginUnlockingResponse {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false,
+      unlockingLockID: isSet(object.unlockingLockID) ? Long.fromValue(object.unlockingLockID) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse {
     const message = createBaseMsgBeginUnlockingResponse();
@@ -396,6 +431,13 @@ export const MsgExtendLockup = {
     }
     return message;
   },
+  fromJSON(object: any): MsgExtendLockup {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO,
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined
+    };
+  },
   fromPartial(object: Partial<MsgExtendLockup>): MsgExtendLockup {
     const message = createBaseMsgExtendLockup();
     message.owner = object.owner ?? "";
@@ -432,6 +474,11 @@ export const MsgExtendLockupResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgExtendLockupResponse {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false
+    };
   },
   fromPartial(object: Partial<MsgExtendLockupResponse>): MsgExtendLockupResponse {
     const message = createBaseMsgExtendLockupResponse();
@@ -482,6 +529,13 @@ export const MsgForceUnlock = {
     }
     return message;
   },
+  fromJSON(object: any): MsgForceUnlock {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgForceUnlock>): MsgForceUnlock {
     const message = createBaseMsgForceUnlock();
     message.owner = object.owner ?? "";
@@ -518,6 +572,11 @@ export const MsgForceUnlockResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgForceUnlockResponse {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false
+    };
   },
   fromPartial(object: Partial<MsgForceUnlockResponse>): MsgForceUnlockResponse {
     const message = createBaseMsgForceUnlockResponse();

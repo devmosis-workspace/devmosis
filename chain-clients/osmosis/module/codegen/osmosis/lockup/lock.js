@@ -1,7 +1,7 @@
 import { Duration } from "../../google/protobuf/duration";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * LockQueryType defines the type of the lock query that can
@@ -138,6 +138,15 @@ export const PeriodLock = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO,
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
+      endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$owner, _object$endTime, _object$coins;
     const message = createBasePeriodLock();
@@ -199,6 +208,14 @@ export const QueryCondition = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      lockQueryType: isSet(object.lockQueryType) ? lockQueryTypeFromJSON(object.lockQueryType) : 0,
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
+      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$lockQueryType, _object$denom, _object$timestamp;
     const message = createBaseQueryCondition();
@@ -258,6 +275,14 @@ export const SyntheticLock = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      underlyingLockId: isSet(object.underlyingLockId) ? Long.fromValue(object.underlyingLockId) : Long.UZERO,
+      synthDenom: isSet(object.synthDenom) ? String(object.synthDenom) : "",
+      endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined,
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined
+    };
   },
   fromPartial(object) {
     var _object$synthDenom, _object$endTime2;

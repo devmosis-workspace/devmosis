@@ -54,30 +54,36 @@ export interface PoolToGaugesSDKType {
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
     fromPartial(object: Partial<Params>): Params;
 };
 export declare const LockableDurationsInfo: {
     encode(message: LockableDurationsInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockableDurationsInfo;
+    fromJSON(object: any): LockableDurationsInfo;
     fromPartial(object: Partial<LockableDurationsInfo>): LockableDurationsInfo;
 };
 export declare const DistrInfo: {
     encode(message: DistrInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrInfo;
+    fromJSON(object: any): DistrInfo;
     fromPartial(object: Partial<DistrInfo>): DistrInfo;
 };
 export declare const DistrRecord: {
     encode(message: DistrRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DistrRecord;
+    fromJSON(object: any): DistrRecord;
     fromPartial(object: Partial<DistrRecord>): DistrRecord;
 };
 export declare const PoolToGauge: {
     encode(message: PoolToGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauge;
+    fromJSON(object: any): PoolToGauge;
     fromPartial(object: Partial<PoolToGauge>): PoolToGauge;
 };
 export declare const PoolToGauges: {
     encode(message: PoolToGauges, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolToGauges;
+    fromJSON(object: any): PoolToGauges;
     fromPartial(object: Partial<PoolToGauges>): PoolToGauges;
 };

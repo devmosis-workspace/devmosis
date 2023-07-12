@@ -276,6 +276,17 @@ var GetTxsEventRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      events: Array.isArray(object === null || object === void 0 ? void 0 : object.events) ? object.events.map(function (e) {
+        return String(e);
+      }) : [],
+      pagination: (0, _helpers.isSet)(object.pagination) ? _pagination.PageRequest.fromJSON(object.pagination) : undefined,
+      orderBy: (0, _helpers.isSet)(object.orderBy) ? orderByFromJSON(object.orderBy) : 0,
+      page: (0, _helpers.isSet)(object.page) ? _helpers.Long.fromValue(object.page) : _helpers.Long.UZERO,
+      limit: (0, _helpers.isSet)(object.limit) ? _helpers.Long.fromValue(object.limit) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$events, _object$orderBy;
     var message = createBaseGetTxsEventRequest();
@@ -359,6 +370,18 @@ var GetTxsEventResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      txs: Array.isArray(object === null || object === void 0 ? void 0 : object.txs) ? object.txs.map(function (e) {
+        return _tx.Tx.fromJSON(e);
+      }) : [],
+      txResponses: Array.isArray(object === null || object === void 0 ? void 0 : object.txResponses) ? object.txResponses.map(function (e) {
+        return _abci.TxResponse.fromJSON(e);
+      }) : [],
+      pagination: (0, _helpers.isSet)(object.pagination) ? _pagination.PageResponse.fromJSON(object.pagination) : undefined,
+      total: (0, _helpers.isSet)(object.total) ? _helpers.Long.fromValue(object.total) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$txs, _object$txResponses;
     var message = createBaseGetTxsEventResponse();
@@ -411,6 +434,12 @@ var BroadcastTxRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      txBytes: (0, _helpers.isSet)(object.txBytes) ? (0, _helpers.bytesFromBase64)(object.txBytes) : new Uint8Array(),
+      mode: (0, _helpers.isSet)(object.mode) ? broadcastModeFromJSON(object.mode) : 0
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$txBytes, _object$mode;
     var message = createBaseBroadcastTxRequest();
@@ -449,6 +478,11 @@ var BroadcastTxResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      txResponse: (0, _helpers.isSet)(object.txResponse) ? _abci.TxResponse.fromJSON(object.txResponse) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseBroadcastTxResponse();
@@ -493,6 +527,12 @@ var SimulateRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      tx: (0, _helpers.isSet)(object.tx) ? _tx.Tx.fromJSON(object.tx) : undefined,
+      txBytes: (0, _helpers.isSet)(object.txBytes) ? (0, _helpers.bytesFromBase64)(object.txBytes) : new Uint8Array()
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$txBytes2;
@@ -540,6 +580,12 @@ var SimulateResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      gasInfo: (0, _helpers.isSet)(object.gasInfo) ? _abci.GasInfo.fromJSON(object.gasInfo) : undefined,
+      result: (0, _helpers.isSet)(object.result) ? _abci.Result.fromJSON(object.result) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseSimulateResponse();
     message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? _abci.GasInfo.fromPartial(object.gasInfo) : undefined;
@@ -577,6 +623,11 @@ var GetTxRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      hash: (0, _helpers.isSet)(object.hash) ? String(object.hash) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$hash;
@@ -623,6 +674,12 @@ var GetTxResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      tx: (0, _helpers.isSet)(object.tx) ? _tx.Tx.fromJSON(object.tx) : undefined,
+      txResponse: (0, _helpers.isSet)(object.txResponse) ? _abci.TxResponse.fromJSON(object.txResponse) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseGetTxResponse();
     message.tx = object.tx !== undefined && object.tx !== null ? _tx.Tx.fromPartial(object.tx) : undefined;
@@ -667,6 +724,12 @@ var GetBlockWithTxsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
+      pagination: (0, _helpers.isSet)(object.pagination) ? _pagination.PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseGetBlockWithTxsRequest();
@@ -735,6 +798,16 @@ var GetBlockWithTxsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      txs: Array.isArray(object === null || object === void 0 ? void 0 : object.txs) ? object.txs.map(function (e) {
+        return _tx.Tx.fromJSON(e);
+      }) : [],
+      blockId: (0, _helpers.isSet)(object.blockId) ? _types.BlockID.fromJSON(object.blockId) : undefined,
+      block: (0, _helpers.isSet)(object.block) ? _block.Block.fromJSON(object.block) : undefined,
+      pagination: (0, _helpers.isSet)(object.pagination) ? _pagination.PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$txs2;

@@ -51,20 +51,24 @@ export interface EvidenceListSDKType {
 export declare const Evidence: {
     encode(message: Evidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Evidence;
+    fromJSON(object: any): Evidence;
     fromPartial(object: Partial<Evidence>): Evidence;
 };
 export declare const DuplicateVoteEvidence: {
     encode(message: DuplicateVoteEvidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DuplicateVoteEvidence;
+    fromJSON(object: any): DuplicateVoteEvidence;
     fromPartial(object: Partial<DuplicateVoteEvidence>): DuplicateVoteEvidence;
 };
 export declare const LightClientAttackEvidence: {
     encode(message: LightClientAttackEvidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LightClientAttackEvidence;
+    fromJSON(object: any): LightClientAttackEvidence;
     fromPartial(object: Partial<LightClientAttackEvidence>): LightClientAttackEvidence;
 };
 export declare const EvidenceList: {
     encode(message: EvidenceList, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EvidenceList;
+    fromJSON(object: any): EvidenceList;
     fromPartial(object: Partial<EvidenceList>): EvidenceList;
 };

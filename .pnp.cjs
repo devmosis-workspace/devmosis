@@ -573,7 +573,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "@cosmjs/encoding",\
-        "npm:0.30.1"\
+        "npm:0.31.0"\
       ],\
       [\
         "@cosmjs/json-rpc",\
@@ -18879,6 +18879,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@chain-sources/osmosis", "workspace:chain-sources/osmosis"],\
             ["@common/utils", "workspace:common/utils"],\
             ["@cosmjs/amino", "npm:0.31.0"],\
+            ["@cosmjs/encoding", "npm:0.31.0"],\
             ["@cosmjs/math", "npm:0.31.0"],\
             ["@cosmjs/proto-signing", "npm:0.31.0"],\
             ["@cosmjs/stargate", "npm:0.31.0"],\

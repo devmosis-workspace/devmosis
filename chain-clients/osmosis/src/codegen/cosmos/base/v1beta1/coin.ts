@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * Coin defines a token with a denomination and an amount.
  * 
@@ -91,6 +92,12 @@ export const Coin = {
     }
     return message;
   },
+  fromJSON(object: any): Coin {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      amount: isSet(object.amount) ? String(object.amount) : ""
+    };
+  },
   fromPartial(object: Partial<Coin>): Coin {
     const message = createBaseCoin();
     message.denom = object.denom ?? "";
@@ -134,6 +141,12 @@ export const DecCoin = {
     }
     return message;
   },
+  fromJSON(object: any): DecCoin {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      amount: isSet(object.amount) ? String(object.amount) : ""
+    };
+  },
   fromPartial(object: Partial<DecCoin>): DecCoin {
     const message = createBaseDecCoin();
     message.denom = object.denom ?? "";
@@ -170,6 +183,11 @@ export const IntProto = {
     }
     return message;
   },
+  fromJSON(object: any): IntProto {
+    return {
+      int: isSet(object.int) ? String(object.int) : ""
+    };
+  },
   fromPartial(object: Partial<IntProto>): IntProto {
     const message = createBaseIntProto();
     message.int = object.int ?? "";
@@ -204,6 +222,11 @@ export const DecProto = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DecProto {
+    return {
+      dec: isSet(object.dec) ? String(object.dec) : ""
+    };
   },
   fromPartial(object: Partial<DecProto>): DecProto {
     const message = createBaseDecProto();

@@ -88,6 +88,15 @@ var MsgLockTokens = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$owner, _object$coins;
     var message = createBaseMsgLockTokens();
@@ -130,6 +139,11 @@ var MsgLockTokensResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      ID: (0, _helpers.isSet)(object.ID) ? _helpers.Long.fromValue(object.ID) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseMsgLockTokensResponse();
     message.ID = object.ID !== undefined && object.ID !== null ? _helpers.Long.fromValue(object.ID) : _helpers.Long.UZERO;
@@ -166,6 +180,11 @@ var MsgBeginUnlockingAll = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner2;
@@ -213,6 +232,13 @@ var MsgBeginUnlockingAllResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      unlocks: Array.isArray(object === null || object === void 0 ? void 0 : object.unlocks) ? object.unlocks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$unlocks;
@@ -277,6 +303,15 @@ var MsgBeginUnlocking = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      ID: (0, _helpers.isSet)(object.ID) ? _helpers.Long.fromValue(object.ID) : _helpers.Long.UZERO,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$owner3, _object$coins2;
     var message = createBaseMsgBeginUnlocking();
@@ -325,6 +360,12 @@ var MsgBeginUnlockingResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      success: (0, _helpers.isSet)(object.success) ? Boolean(object.success) : false,
+      unlockingLockID: (0, _helpers.isSet)(object.unlockingLockID) ? _helpers.Long.fromValue(object.unlockingLockID) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$success;
@@ -379,6 +420,13 @@ var MsgExtendLockup = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      ID: (0, _helpers.isSet)(object.ID) ? _helpers.Long.fromValue(object.ID) : _helpers.Long.UZERO,
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$owner4;
     var message = createBaseMsgExtendLockup();
@@ -418,6 +466,11 @@ var MsgExtendLockupResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      success: (0, _helpers.isSet)(object.success) ? Boolean(object.success) : false
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$success2;
@@ -480,6 +533,15 @@ var MsgForceUnlock = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      ID: (0, _helpers.isSet)(object.ID) ? _helpers.Long.fromValue(object.ID) : _helpers.Long.UZERO,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$owner5, _object$coins3;
     var message = createBaseMsgForceUnlock();
@@ -521,6 +583,11 @@ var MsgForceUnlockResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      success: (0, _helpers.isSet)(object.success) ? Boolean(object.success) : false
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$success3;

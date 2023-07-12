@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /** StorageType */
 export enum StorageType {
   /**
@@ -159,6 +160,12 @@ export const ModuleSchemaDescriptor = {
     }
     return message;
   },
+  fromJSON(object: any): ModuleSchemaDescriptor {
+    return {
+      schemaFile: Array.isArray(object?.schemaFile) ? object.schemaFile.map((e: any) => ModuleSchemaDescriptor_FileEntry.fromJSON(e)) : [],
+      prefix: isSet(object.prefix) ? bytesFromBase64(object.prefix) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<ModuleSchemaDescriptor>): ModuleSchemaDescriptor {
     const message = createBaseModuleSchemaDescriptor();
     message.schemaFile = object.schemaFile?.map(e => ModuleSchemaDescriptor_FileEntry.fromPartial(e)) || [];
@@ -208,6 +215,13 @@ export const ModuleSchemaDescriptor_FileEntry = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ModuleSchemaDescriptor_FileEntry {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      protoFileName: isSet(object.protoFileName) ? String(object.protoFileName) : "",
+      storageType: isSet(object.storageType) ? storageTypeFromJSON(object.storageType) : 0
+    };
   },
   fromPartial(object: Partial<ModuleSchemaDescriptor_FileEntry>): ModuleSchemaDescriptor_FileEntry {
     const message = createBaseModuleSchemaDescriptor_FileEntry();

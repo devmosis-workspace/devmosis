@@ -97,6 +97,12 @@ var ModuleRoute = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolType: (0, _helpers.isSet)(object.poolType) ? poolTypeFromJSON(object.poolType) : 0,
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$poolType;
     var message = createBaseModuleRoute();

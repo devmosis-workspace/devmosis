@@ -75,30 +75,36 @@ export interface QueryDenomsFromCreatorResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    fromJSON(_: any): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryDenomAuthorityMetadataRequest: {
     encode(message: QueryDenomAuthorityMetadataRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomAuthorityMetadataRequest;
+    fromJSON(object: any): QueryDenomAuthorityMetadataRequest;
     fromPartial(object: Partial<QueryDenomAuthorityMetadataRequest>): QueryDenomAuthorityMetadataRequest;
 };
 export declare const QueryDenomAuthorityMetadataResponse: {
     encode(message: QueryDenomAuthorityMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomAuthorityMetadataResponse;
+    fromJSON(object: any): QueryDenomAuthorityMetadataResponse;
     fromPartial(object: Partial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse;
 };
 export declare const QueryDenomsFromCreatorRequest: {
     encode(message: QueryDenomsFromCreatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsFromCreatorRequest;
+    fromJSON(object: any): QueryDenomsFromCreatorRequest;
     fromPartial(object: Partial<QueryDenomsFromCreatorRequest>): QueryDenomsFromCreatorRequest;
 };
 export declare const QueryDenomsFromCreatorResponse: {
     encode(message: QueryDenomsFromCreatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomsFromCreatorResponse;
+    fromJSON(object: any): QueryDenomsFromCreatorResponse;
     fromPartial(object: Partial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse;
 };

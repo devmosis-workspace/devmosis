@@ -1,5 +1,6 @@
 import { Params } from "./mint";
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -49,6 +50,9 @@ export const QueryParamsRequest = {
     }
     return message;
   },
+  fromJSON(_) {
+    return {};
+  },
   fromPartial(_) {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -83,6 +87,11 @@ export const QueryParamsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -109,6 +118,9 @@ export const QueryEpochProvisionsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryEpochProvisionsRequest();
@@ -143,6 +155,11 @@ export const QueryEpochProvisionsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      epochProvisions: isSet(object.epochProvisions) ? bytesFromBase64(object.epochProvisions) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$epochProvisio;

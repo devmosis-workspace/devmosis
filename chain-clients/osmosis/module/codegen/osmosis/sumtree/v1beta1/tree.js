@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 function createBaseNode() {
   return {
     children: []
@@ -27,6 +28,11 @@ export const Node = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      children: Array.isArray(object === null || object === void 0 ? void 0 : object.children) ? object.children.map(e => Child.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$children;
@@ -71,6 +77,12 @@ export const Child = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      index: isSet(object.index) ? bytesFromBase64(object.index) : new Uint8Array(),
+      accumulation: isSet(object.accumulation) ? String(object.accumulation) : ""
+    };
+  },
   fromPartial(object) {
     var _object$index, _object$accumulation;
     const message = createBaseChild();
@@ -107,6 +119,11 @@ export const Leaf = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      leaf: isSet(object.leaf) ? Child.fromJSON(object.leaf) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseLeaf();

@@ -78,6 +78,11 @@ var GenericAuthorization = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      msg: (0, _helpers.isSet)(object.msg) ? String(object.msg) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$msg;
     var message = createBaseGenericAuthorization();
@@ -122,6 +127,12 @@ var Grant = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      authorization: (0, _helpers.isSet)(object.authorization) ? _any.Any.fromJSON(object.authorization) : undefined,
+      expiration: (0, _helpers.isSet)(object.expiration) ? (0, _helpers.fromJsonTimestamp)(object.expiration) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$expiration;
@@ -183,6 +194,14 @@ var GrantAuthorization = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      granter: (0, _helpers.isSet)(object.granter) ? String(object.granter) : "",
+      grantee: (0, _helpers.isSet)(object.grantee) ? String(object.grantee) : "",
+      authorization: (0, _helpers.isSet)(object.authorization) ? _any.Any.fromJSON(object.authorization) : undefined,
+      expiration: (0, _helpers.isSet)(object.expiration) ? (0, _helpers.fromJsonTimestamp)(object.expiration) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$granter, _object$grantee, _object$expiration2;
     var message = createBaseGrantAuthorization();
@@ -232,6 +251,13 @@ var GrantQueueItem = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      msgTypeUrls: Array.isArray(object === null || object === void 0 ? void 0 : object.msgTypeUrls) ? object.msgTypeUrls.map(function (e) {
+        return String(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$msgTypeUrls;

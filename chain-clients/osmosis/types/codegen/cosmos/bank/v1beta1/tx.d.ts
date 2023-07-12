@@ -38,20 +38,24 @@ export interface MsgMultiSendResponseSDKType {
 export declare const MsgSend: {
     encode(message: MsgSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSend;
+    fromJSON(object: any): MsgSend;
     fromPartial(object: Partial<MsgSend>): MsgSend;
 };
 export declare const MsgSendResponse: {
     encode(_: MsgSendResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponse;
+    fromJSON(_: any): MsgSendResponse;
     fromPartial(_: Partial<MsgSendResponse>): MsgSendResponse;
 };
 export declare const MsgMultiSend: {
     encode(message: MsgMultiSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSend;
+    fromJSON(object: any): MsgMultiSend;
     fromPartial(object: Partial<MsgMultiSend>): MsgMultiSend;
 };
 export declare const MsgMultiSendResponse: {
     encode(_: MsgMultiSendResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMultiSendResponse;
+    fromJSON(_: any): MsgMultiSendResponse;
     fromPartial(_: Partial<MsgMultiSendResponse>): MsgMultiSendResponse;
 };

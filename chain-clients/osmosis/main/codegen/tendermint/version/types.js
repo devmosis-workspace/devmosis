@@ -70,6 +70,12 @@ var App = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      protocol: (0, _helpers.isSet)(object.protocol) ? _helpers.Long.fromValue(object.protocol) : _helpers.Long.UZERO,
+      software: (0, _helpers.isSet)(object.software) ? String(object.software) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$software;
     var message = createBaseApp();
@@ -115,6 +121,12 @@ var Consensus = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      block: (0, _helpers.isSet)(object.block) ? _helpers.Long.fromValue(object.block) : _helpers.Long.UZERO,
+      app: (0, _helpers.isSet)(object.app) ? _helpers.Long.fromValue(object.app) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseConsensus();

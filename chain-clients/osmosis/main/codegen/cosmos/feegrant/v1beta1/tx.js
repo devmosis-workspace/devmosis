@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.MsgRevokeAllowanceResponse = exports.MsgRevokeAllowance = exports.MsgGrantAllowanceResponse = exports.MsgGrantAllowance = void 0;
 var _any = require("../../../google/protobuf/any");
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
+var _helpers = require("../../../helpers");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 /**
@@ -75,6 +76,13 @@ var MsgGrantAllowance = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      granter: (0, _helpers.isSet)(object.granter) ? String(object.granter) : "",
+      grantee: (0, _helpers.isSet)(object.grantee) ? String(object.grantee) : "",
+      allowance: (0, _helpers.isSet)(object.allowance) ? _any.Any.fromJSON(object.allowance) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$granter, _object$grantee;
     var message = createBaseMsgGrantAllowance();
@@ -106,6 +114,9 @@ var MsgGrantAllowanceResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgGrantAllowanceResponse();
@@ -150,6 +161,12 @@ var MsgRevokeAllowance = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      granter: (0, _helpers.isSet)(object.granter) ? String(object.granter) : "",
+      grantee: (0, _helpers.isSet)(object.grantee) ? String(object.grantee) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$granter2, _object$grantee2;
     var message = createBaseMsgRevokeAllowance();
@@ -180,6 +197,9 @@ var MsgRevokeAllowanceResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgRevokeAllowanceResponse();

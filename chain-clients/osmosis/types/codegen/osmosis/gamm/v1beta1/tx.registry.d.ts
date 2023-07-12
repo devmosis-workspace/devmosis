@@ -71,6 +71,40 @@ export declare const MessageComposer: {
             value: MsgExitSwapShareAmountIn;
         };
     };
+    fromJSON: {
+        joinPool(value: any): {
+            typeUrl: string;
+            value: MsgJoinPool;
+        };
+        exitPool(value: any): {
+            typeUrl: string;
+            value: MsgExitPool;
+        };
+        swapExactAmountIn(value: any): {
+            typeUrl: string;
+            value: MsgSwapExactAmountIn;
+        };
+        swapExactAmountOut(value: any): {
+            typeUrl: string;
+            value: MsgSwapExactAmountOut;
+        };
+        joinSwapExternAmountIn(value: any): {
+            typeUrl: string;
+            value: MsgJoinSwapExternAmountIn;
+        };
+        joinSwapShareAmountOut(value: any): {
+            typeUrl: string;
+            value: MsgJoinSwapShareAmountOut;
+        };
+        exitSwapExternAmountOut(value: any): {
+            typeUrl: string;
+            value: MsgExitSwapExternAmountOut;
+        };
+        exitSwapShareAmountIn(value: any): {
+            typeUrl: string;
+            value: MsgExitSwapShareAmountIn;
+        };
+    };
     fromPartial: {
         joinPool(value: MsgJoinPool): {
             typeUrl: string;

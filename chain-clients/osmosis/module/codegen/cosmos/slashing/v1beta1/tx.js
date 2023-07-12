@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** MsgUnjail defines the Msg/Unjail request type */
 
 /** MsgUnjail defines the Msg/Unjail request type */
@@ -36,6 +37,11 @@ export const MsgUnjail = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validatorAddr: isSet(object.validatorAddr) ? String(object.validatorAddr) : ""
+    };
+  },
   fromPartial(object) {
     var _object$validatorAddr;
     const message = createBaseMsgUnjail();
@@ -63,6 +69,9 @@ export const MsgUnjailResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgUnjailResponse();

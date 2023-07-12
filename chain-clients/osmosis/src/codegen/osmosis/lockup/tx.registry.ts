@@ -72,6 +72,38 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    lockTokens(value: any) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgLockTokens",
+        value: MsgLockTokens.fromJSON(value)
+      };
+    },
+    beginUnlockingAll(value: any) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgBeginUnlockingAll",
+        value: MsgBeginUnlockingAll.fromJSON(value)
+      };
+    },
+    beginUnlocking(value: any) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgBeginUnlocking",
+        value: MsgBeginUnlocking.fromJSON(value)
+      };
+    },
+    extendLockup(value: any) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgExtendLockup",
+        value: MsgExtendLockup.fromJSON(value)
+      };
+    },
+    forceUnlock(value: any) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgForceUnlock",
+        value: MsgForceUnlock.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     lockTokens(value: MsgLockTokens) {
       return {

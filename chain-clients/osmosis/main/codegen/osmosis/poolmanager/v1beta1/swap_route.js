@@ -46,6 +46,12 @@ var SwapAmountInRoute = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      tokenOutDenom: (0, _helpers.isSet)(object.tokenOutDenom) ? String(object.tokenOutDenom) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$tokenOutDenom;
     var message = createBaseSwapAmountInRoute();
@@ -91,6 +97,12 @@ var SwapAmountOutRoute = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      tokenInDenom: (0, _helpers.isSet)(object.tokenInDenom) ? String(object.tokenInDenom) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$tokenInDenom;

@@ -106,50 +106,60 @@ export interface MsgForceUnlockResponseSDKType {
 export declare const MsgLockTokens: {
     encode(message: MsgLockTokens, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokens;
+    fromJSON(object: any): MsgLockTokens;
     fromPartial(object: Partial<MsgLockTokens>): MsgLockTokens;
 };
 export declare const MsgLockTokensResponse: {
     encode(message: MsgLockTokensResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLockTokensResponse;
+    fromJSON(object: any): MsgLockTokensResponse;
     fromPartial(object: Partial<MsgLockTokensResponse>): MsgLockTokensResponse;
 };
 export declare const MsgBeginUnlockingAll: {
     encode(message: MsgBeginUnlockingAll, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAll;
+    fromJSON(object: any): MsgBeginUnlockingAll;
     fromPartial(object: Partial<MsgBeginUnlockingAll>): MsgBeginUnlockingAll;
 };
 export declare const MsgBeginUnlockingAllResponse: {
     encode(message: MsgBeginUnlockingAllResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingAllResponse;
+    fromJSON(object: any): MsgBeginUnlockingAllResponse;
     fromPartial(object: Partial<MsgBeginUnlockingAllResponse>): MsgBeginUnlockingAllResponse;
 };
 export declare const MsgBeginUnlocking: {
     encode(message: MsgBeginUnlocking, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlocking;
+    fromJSON(object: any): MsgBeginUnlocking;
     fromPartial(object: Partial<MsgBeginUnlocking>): MsgBeginUnlocking;
 };
 export declare const MsgBeginUnlockingResponse: {
     encode(message: MsgBeginUnlockingResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginUnlockingResponse;
+    fromJSON(object: any): MsgBeginUnlockingResponse;
     fromPartial(object: Partial<MsgBeginUnlockingResponse>): MsgBeginUnlockingResponse;
 };
 export declare const MsgExtendLockup: {
     encode(message: MsgExtendLockup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockup;
+    fromJSON(object: any): MsgExtendLockup;
     fromPartial(object: Partial<MsgExtendLockup>): MsgExtendLockup;
 };
 export declare const MsgExtendLockupResponse: {
     encode(message: MsgExtendLockupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExtendLockupResponse;
+    fromJSON(object: any): MsgExtendLockupResponse;
     fromPartial(object: Partial<MsgExtendLockupResponse>): MsgExtendLockupResponse;
 };
 export declare const MsgForceUnlock: {
     encode(message: MsgForceUnlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlock;
+    fromJSON(object: any): MsgForceUnlock;
     fromPartial(object: Partial<MsgForceUnlock>): MsgForceUnlock;
 };
 export declare const MsgForceUnlockResponse: {
     encode(message: MsgForceUnlockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgForceUnlockResponse;
+    fromJSON(object: any): MsgForceUnlockResponse;
     fromPartial(object: Partial<MsgForceUnlockResponse>): MsgForceUnlockResponse;
 };

@@ -1,5 +1,6 @@
 import { Params, ParamsSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** GenesisState defines the ibc-rate-limit module's genesis state. */
 export interface GenesisState {
   /** params are all the parameters of the module */
@@ -37,6 +38,11 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();

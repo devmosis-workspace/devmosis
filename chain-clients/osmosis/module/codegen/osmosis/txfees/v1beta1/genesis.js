@@ -1,5 +1,6 @@
 import { FeeToken } from "./feetoken";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** GenesisState defines the txfees module's genesis state. */
 
 /** GenesisState defines the txfees module's genesis state. */
@@ -39,6 +40,12 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      basedenom: isSet(object.basedenom) ? String(object.basedenom) : "",
+      feetokens: Array.isArray(object === null || object === void 0 ? void 0 : object.feetokens) ? object.feetokens.map(e => FeeToken.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$basedenom, _object$feetokens;

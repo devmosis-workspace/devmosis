@@ -7,11 +7,13 @@ export declare const cosmos_proto: {
     InterfaceDescriptor: {
         encode(message: _173.InterfaceDescriptor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
         decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _173.InterfaceDescriptor;
+        fromJSON(object: any): _173.InterfaceDescriptor;
         fromPartial(object: Partial<_173.InterfaceDescriptor>): _173.InterfaceDescriptor;
     };
     ScalarDescriptor: {
         encode(message: _173.ScalarDescriptor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
         decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _173.ScalarDescriptor;
+        fromJSON(object: any): _173.ScalarDescriptor;
         fromPartial(object: Partial<_173.ScalarDescriptor>): _173.ScalarDescriptor;
     };
 };

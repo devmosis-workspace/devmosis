@@ -24,6 +24,14 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createBalancerPool(value) {
+      return {
+        typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPool",
+        value: MsgCreateBalancerPool.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createBalancerPool(value) {
       return {

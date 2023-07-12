@@ -84,6 +84,44 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    superfluidDelegate(value) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidDelegate",
+        value: MsgSuperfluidDelegate.fromJSON(value)
+      };
+    },
+    superfluidUndelegate(value) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegate",
+        value: MsgSuperfluidUndelegate.fromJSON(value)
+      };
+    },
+    superfluidUnbondLock(value) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUnbondLock",
+        value: MsgSuperfluidUnbondLock.fromJSON(value)
+      };
+    },
+    superfluidUndelegateAndUnbondLock(value) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgSuperfluidUndelegateAndUnbondLock",
+        value: MsgSuperfluidUndelegateAndUnbondLock.fromJSON(value)
+      };
+    },
+    lockAndSuperfluidDelegate(value) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgLockAndSuperfluidDelegate",
+        value: MsgLockAndSuperfluidDelegate.fromJSON(value)
+      };
+    },
+    unPoolWhitelistedPool(value) {
+      return {
+        typeUrl: "/osmosis.superfluid.MsgUnPoolWhitelistedPool",
+        value: MsgUnPoolWhitelistedPool.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     superfluidDelegate(value) {
       return {

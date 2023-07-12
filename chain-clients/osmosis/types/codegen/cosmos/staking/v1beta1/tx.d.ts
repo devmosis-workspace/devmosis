@@ -174,60 +174,72 @@ export interface MsgCancelUnbondingDelegationResponseSDKType {
 export declare const MsgCreateValidator: {
     encode(message: MsgCreateValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidator;
+    fromJSON(object: any): MsgCreateValidator;
     fromPartial(object: Partial<MsgCreateValidator>): MsgCreateValidator;
 };
 export declare const MsgCreateValidatorResponse: {
     encode(_: MsgCreateValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateValidatorResponse;
+    fromJSON(_: any): MsgCreateValidatorResponse;
     fromPartial(_: Partial<MsgCreateValidatorResponse>): MsgCreateValidatorResponse;
 };
 export declare const MsgEditValidator: {
     encode(message: MsgEditValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidator;
+    fromJSON(object: any): MsgEditValidator;
     fromPartial(object: Partial<MsgEditValidator>): MsgEditValidator;
 };
 export declare const MsgEditValidatorResponse: {
     encode(_: MsgEditValidatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgEditValidatorResponse;
+    fromJSON(_: any): MsgEditValidatorResponse;
     fromPartial(_: Partial<MsgEditValidatorResponse>): MsgEditValidatorResponse;
 };
 export declare const MsgDelegate: {
     encode(message: MsgDelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegate;
+    fromJSON(object: any): MsgDelegate;
     fromPartial(object: Partial<MsgDelegate>): MsgDelegate;
 };
 export declare const MsgDelegateResponse: {
     encode(_: MsgDelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateResponse;
+    fromJSON(_: any): MsgDelegateResponse;
     fromPartial(_: Partial<MsgDelegateResponse>): MsgDelegateResponse;
 };
 export declare const MsgBeginRedelegate: {
     encode(message: MsgBeginRedelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegate;
+    fromJSON(object: any): MsgBeginRedelegate;
     fromPartial(object: Partial<MsgBeginRedelegate>): MsgBeginRedelegate;
 };
 export declare const MsgBeginRedelegateResponse: {
     encode(message: MsgBeginRedelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBeginRedelegateResponse;
+    fromJSON(object: any): MsgBeginRedelegateResponse;
     fromPartial(object: Partial<MsgBeginRedelegateResponse>): MsgBeginRedelegateResponse;
 };
 export declare const MsgUndelegate: {
     encode(message: MsgUndelegate, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegate;
+    fromJSON(object: any): MsgUndelegate;
     fromPartial(object: Partial<MsgUndelegate>): MsgUndelegate;
 };
 export declare const MsgUndelegateResponse: {
     encode(message: MsgUndelegateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateResponse;
+    fromJSON(object: any): MsgUndelegateResponse;
     fromPartial(object: Partial<MsgUndelegateResponse>): MsgUndelegateResponse;
 };
 export declare const MsgCancelUnbondingDelegation: {
     encode(message: MsgCancelUnbondingDelegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUnbondingDelegation;
+    fromJSON(object: any): MsgCancelUnbondingDelegation;
     fromPartial(object: Partial<MsgCancelUnbondingDelegation>): MsgCancelUnbondingDelegation;
 };
 export declare const MsgCancelUnbondingDelegationResponse: {
     encode(_: MsgCancelUnbondingDelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelUnbondingDelegationResponse;
+    fromJSON(_: any): MsgCancelUnbondingDelegationResponse;
     fromPartial(_: Partial<MsgCancelUnbondingDelegationResponse>): MsgCancelUnbondingDelegationResponse;
 };

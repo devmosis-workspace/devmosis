@@ -1,5 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** Class defines the class of the nft type. */
 export interface Class {
   /** id defines the unique identifier of the NFT classification, similar to the contract address of ERC721 */
@@ -119,6 +120,17 @@ export const Class = {
     }
     return message;
   },
+  fromJSON(object: any): Class {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      name: isSet(object.name) ? String(object.name) : "",
+      symbol: isSet(object.symbol) ? String(object.symbol) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      uri: isSet(object.uri) ? String(object.uri) : "",
+      uriHash: isSet(object.uriHash) ? String(object.uriHash) : "",
+      data: isSet(object.data) ? Any.fromJSON(object.data) : undefined
+    };
+  },
   fromPartial(object: Partial<Class>): Class {
     const message = createBaseClass();
     message.id = object.id ?? "";
@@ -187,6 +199,15 @@ export const NFT = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): NFT {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : "",
+      id: isSet(object.id) ? String(object.id) : "",
+      uri: isSet(object.uri) ? String(object.uri) : "",
+      uriHash: isSet(object.uriHash) ? String(object.uriHash) : "",
+      data: isSet(object.data) ? Any.fromJSON(object.data) : undefined
+    };
   },
   fromPartial(object: Partial<NFT>): NFT {
     const message = createBaseNFT();

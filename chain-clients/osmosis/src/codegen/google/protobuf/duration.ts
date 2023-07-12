@@ -1,4 +1,4 @@
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * A Duration represents a signed, fixed-length span of time represented
@@ -176,6 +176,12 @@ export const Duration = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Duration {
+    return {
+      seconds: isSet(object.seconds) ? Long.fromValue(object.seconds) : Long.ZERO,
+      nanos: isSet(object.nanos) ? Number(object.nanos) : 0
+    };
   },
   fromPartial(object: Partial<Duration>): Duration {
     const message = createBaseDuration();

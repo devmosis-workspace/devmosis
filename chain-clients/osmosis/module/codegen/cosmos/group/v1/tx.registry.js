@@ -180,6 +180,92 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createGroup(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgCreateGroup",
+        value: MsgCreateGroup.fromJSON(value)
+      };
+    },
+    updateGroupMembers(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgUpdateGroupMembers",
+        value: MsgUpdateGroupMembers.fromJSON(value)
+      };
+    },
+    updateGroupAdmin(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgUpdateGroupAdmin",
+        value: MsgUpdateGroupAdmin.fromJSON(value)
+      };
+    },
+    updateGroupMetadata(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgUpdateGroupMetadata",
+        value: MsgUpdateGroupMetadata.fromJSON(value)
+      };
+    },
+    createGroupPolicy(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgCreateGroupPolicy",
+        value: MsgCreateGroupPolicy.fromJSON(value)
+      };
+    },
+    createGroupWithPolicy(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgCreateGroupWithPolicy",
+        value: MsgCreateGroupWithPolicy.fromJSON(value)
+      };
+    },
+    updateGroupPolicyAdmin(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgUpdateGroupPolicyAdmin",
+        value: MsgUpdateGroupPolicyAdmin.fromJSON(value)
+      };
+    },
+    updateGroupPolicyDecisionPolicy(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy",
+        value: MsgUpdateGroupPolicyDecisionPolicy.fromJSON(value)
+      };
+    },
+    updateGroupPolicyMetadata(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgUpdateGroupPolicyMetadata",
+        value: MsgUpdateGroupPolicyMetadata.fromJSON(value)
+      };
+    },
+    submitProposal(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgSubmitProposal",
+        value: MsgSubmitProposal.fromJSON(value)
+      };
+    },
+    withdrawProposal(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgWithdrawProposal",
+        value: MsgWithdrawProposal.fromJSON(value)
+      };
+    },
+    vote(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgVote",
+        value: MsgVote.fromJSON(value)
+      };
+    },
+    exec(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgExec",
+        value: MsgExec.fromJSON(value)
+      };
+    },
+    leaveGroup(value) {
+      return {
+        typeUrl: "/cosmos.group.v1.MsgLeaveGroup",
+        value: MsgLeaveGroup.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createGroup(value) {
       return {

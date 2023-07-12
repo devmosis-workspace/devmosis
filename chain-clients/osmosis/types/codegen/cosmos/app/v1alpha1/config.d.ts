@@ -54,10 +54,12 @@ export interface ModuleConfigSDKType {
 export declare const Config: {
     encode(message: Config, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Config;
+    fromJSON(object: any): Config;
     fromPartial(object: Partial<Config>): Config;
 };
 export declare const ModuleConfig: {
     encode(message: ModuleConfig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleConfig;
+    fromJSON(object: any): ModuleConfig;
     fromPartial(object: Partial<ModuleConfig>): ModuleConfig;
 };

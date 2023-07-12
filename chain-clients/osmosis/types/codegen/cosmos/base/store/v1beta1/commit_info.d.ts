@@ -51,15 +51,18 @@ export interface CommitIDSDKType {
 export declare const CommitInfo: {
     encode(message: CommitInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitInfo;
+    fromJSON(object: any): CommitInfo;
     fromPartial(object: Partial<CommitInfo>): CommitInfo;
 };
 export declare const StoreInfo: {
     encode(message: StoreInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StoreInfo;
+    fromJSON(object: any): StoreInfo;
     fromPartial(object: Partial<StoreInfo>): StoreInfo;
 };
 export declare const CommitID: {
     encode(message: CommitID, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitID;
+    fromJSON(object: any): CommitID;
     fromPartial(object: Partial<CommitID>): CommitID;
 };

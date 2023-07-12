@@ -1,7 +1,7 @@
 import { Params, ParamsSDKType } from "./params";
 import { Gauge, GaugeSDKType } from "./gauge";
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * GenesisState defines the incentives module's various parameters when first
@@ -82,6 +82,14 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      gauges: Array.isArray(object?.gauges) ? object.gauges.map((e: any) => Gauge.fromJSON(e)) : [],
+      lockableDurations: Array.isArray(object?.lockableDurations) ? object.lockableDurations.map((e: any) => Duration.fromJSON(e)) : [],
+      lastGaugeId: isSet(object.lastGaugeId) ? Long.fromValue(object.lastGaugeId) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();

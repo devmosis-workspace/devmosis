@@ -1,7 +1,7 @@
 import { Vote, LightBlock } from "./types";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Validator } from "./validator";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 
 /** DuplicateVoteEvidence contains evidence of a validator signed two conflicting votes. */
@@ -47,6 +47,12 @@ export const Evidence = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      duplicateVoteEvidence: isSet(object.duplicateVoteEvidence) ? DuplicateVoteEvidence.fromJSON(object.duplicateVoteEvidence) : undefined,
+      lightClientAttackEvidence: isSet(object.lightClientAttackEvidence) ? LightClientAttackEvidence.fromJSON(object.lightClientAttackEvidence) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseEvidence();
@@ -111,6 +117,15 @@ export const DuplicateVoteEvidence = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      voteA: isSet(object.voteA) ? Vote.fromJSON(object.voteA) : undefined,
+      voteB: isSet(object.voteB) ? Vote.fromJSON(object.voteB) : undefined,
+      totalVotingPower: isSet(object.totalVotingPower) ? Long.fromValue(object.totalVotingPower) : Long.ZERO,
+      validatorPower: isSet(object.validatorPower) ? Long.fromValue(object.validatorPower) : Long.ZERO,
+      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
+    };
   },
   fromPartial(object) {
     var _object$timestamp;
@@ -180,6 +195,15 @@ export const LightClientAttackEvidence = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      conflictingBlock: isSet(object.conflictingBlock) ? LightBlock.fromJSON(object.conflictingBlock) : undefined,
+      commonHeight: isSet(object.commonHeight) ? Long.fromValue(object.commonHeight) : Long.ZERO,
+      byzantineValidators: Array.isArray(object === null || object === void 0 ? void 0 : object.byzantineValidators) ? object.byzantineValidators.map(e => Validator.fromJSON(e)) : [],
+      totalVotingPower: isSet(object.totalVotingPower) ? Long.fromValue(object.totalVotingPower) : Long.ZERO,
+      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$byzantineVali, _object$timestamp2;
     const message = createBaseLightClientAttackEvidence();
@@ -219,6 +243,11 @@ export const EvidenceList = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      evidence: Array.isArray(object === null || object === void 0 ? void 0 : object.evidence) ? object.evidence.map(e => Evidence.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$evidence;

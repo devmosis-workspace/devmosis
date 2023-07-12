@@ -59,10 +59,12 @@ export interface UpdatePoolIncentivesProposalSDKType {
 export declare const ReplacePoolIncentivesProposal: {
     encode(message: ReplacePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ReplacePoolIncentivesProposal;
+    fromJSON(object: any): ReplacePoolIncentivesProposal;
     fromPartial(object: Partial<ReplacePoolIncentivesProposal>): ReplacePoolIncentivesProposal;
 };
 export declare const UpdatePoolIncentivesProposal: {
     encode(message: UpdatePoolIncentivesProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdatePoolIncentivesProposal;
+    fromJSON(object: any): UpdatePoolIncentivesProposal;
     fromPartial(object: Partial<UpdatePoolIncentivesProposal>): UpdatePoolIncentivesProposal;
 };

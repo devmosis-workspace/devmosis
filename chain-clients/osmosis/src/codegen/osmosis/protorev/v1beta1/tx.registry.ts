@@ -84,6 +84,44 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    setHotRoutes(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutes",
+        value: MsgSetHotRoutes.fromJSON(value)
+      };
+    },
+    setDeveloperAccount(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
+        value: MsgSetDeveloperAccount.fromJSON(value)
+      };
+    },
+    setMaxPoolPointsPerTx(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
+        value: MsgSetMaxPoolPointsPerTx.fromJSON(value)
+      };
+    },
+    setMaxPoolPointsPerBlock(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
+        value: MsgSetMaxPoolPointsPerBlock.fromJSON(value)
+      };
+    },
+    setPoolWeights(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
+        value: MsgSetPoolWeights.fromJSON(value)
+      };
+    },
+    setBaseDenoms(value: any) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
+        value: MsgSetBaseDenoms.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     setHotRoutes(value: MsgSetHotRoutes) {
       return {

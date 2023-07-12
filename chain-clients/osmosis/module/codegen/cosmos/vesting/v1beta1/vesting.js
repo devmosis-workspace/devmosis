@@ -1,6 +1,6 @@
 import { BaseAccount } from "../../auth/v1beta1/auth";
 import { Coin } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * BaseVestingAccount implements the VestingAccount interface. It contains all
@@ -121,6 +121,15 @@ export const BaseVestingAccount = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      baseAccount: isSet(object.baseAccount) ? BaseAccount.fromJSON(object.baseAccount) : undefined,
+      originalVesting: Array.isArray(object === null || object === void 0 ? void 0 : object.originalVesting) ? object.originalVesting.map(e => Coin.fromJSON(e)) : [],
+      delegatedFree: Array.isArray(object === null || object === void 0 ? void 0 : object.delegatedFree) ? object.delegatedFree.map(e => Coin.fromJSON(e)) : [],
+      delegatedVesting: Array.isArray(object === null || object === void 0 ? void 0 : object.delegatedVesting) ? object.delegatedVesting.map(e => Coin.fromJSON(e)) : [],
+      endTime: isSet(object.endTime) ? Long.fromValue(object.endTime) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     var _object$originalVesti, _object$delegatedFree, _object$delegatedVest;
     const message = createBaseBaseVestingAccount();
@@ -168,6 +177,12 @@ export const ContinuousVestingAccount = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined,
+      startTime: isSet(object.startTime) ? Long.fromValue(object.startTime) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseContinuousVestingAccount();
     message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
@@ -203,6 +218,11 @@ export const DelayedVestingAccount = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseDelayedVestingAccount();
@@ -245,6 +265,12 @@ export const Period = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      length: isSet(object.length) ? Long.fromValue(object.length) : Long.ZERO,
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(e => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$amount;
@@ -297,6 +323,13 @@ export const PeriodicVestingAccount = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined,
+      startTime: isSet(object.startTime) ? Long.fromValue(object.startTime) : Long.ZERO,
+      vestingPeriods: Array.isArray(object === null || object === void 0 ? void 0 : object.vestingPeriods) ? object.vestingPeriods.map(e => Period.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$vestingPeriod;
     const message = createBasePeriodicVestingAccount();
@@ -334,6 +367,11 @@ export const PermanentLockedAccount = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBasePermanentLockedAccount();

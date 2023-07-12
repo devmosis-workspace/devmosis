@@ -43,6 +43,11 @@ var Params = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      mintedDenom: (0, _helpers.isSet)(object.mintedDenom) ? String(object.mintedDenom) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$mintedDenom;
     var message = createBaseParams();
@@ -89,6 +94,13 @@ var LockableDurationsInfo = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      lockableDurations: Array.isArray(object === null || object === void 0 ? void 0 : object.lockableDurations) ? object.lockableDurations.map(function (e) {
+        return _duration.Duration.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$lockableDurat;
@@ -146,6 +158,14 @@ var DistrInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      totalWeight: (0, _helpers.isSet)(object.totalWeight) ? String(object.totalWeight) : "",
+      records: Array.isArray(object === null || object === void 0 ? void 0 : object.records) ? object.records.map(function (e) {
+        return DistrRecord.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$totalWeight, _object$records;
     var message = createBaseDistrInfo();
@@ -193,6 +213,12 @@ var DistrRecord = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      gaugeId: (0, _helpers.isSet)(object.gaugeId) ? _helpers.Long.fromValue(object.gaugeId) : _helpers.Long.UZERO,
+      weight: (0, _helpers.isSet)(object.weight) ? String(object.weight) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$weight;
@@ -247,6 +273,13 @@ var PoolToGauge = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      gaugeId: (0, _helpers.isSet)(object.gaugeId) ? _helpers.Long.fromValue(object.gaugeId) : _helpers.Long.UZERO,
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBasePoolToGauge();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO;
@@ -294,6 +327,13 @@ var PoolToGauges = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolToGauge: Array.isArray(object === null || object === void 0 ? void 0 : object.poolToGauge) ? object.poolToGauge.map(function (e) {
+        return PoolToGauge.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$poolToGauge;

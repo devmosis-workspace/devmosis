@@ -33,6 +33,11 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      allowances: Array.isArray(object === null || object === void 0 ? void 0 : object.allowances) ? object.allowances.map(e => Grant.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$allowances;
     const message = createBaseGenesisState();

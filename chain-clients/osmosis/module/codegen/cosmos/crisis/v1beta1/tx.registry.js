@@ -24,6 +24,14 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    verifyInvariant(value) {
+      return {
+        typeUrl: "/cosmos.crisis.v1beta1.MsgVerifyInvariant",
+        value: MsgVerifyInvariant.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     verifyInvariant(value) {
       return {

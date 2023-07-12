@@ -1,7 +1,7 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
-import { VoteOption, WeightedVoteOption, WeightedVoteOptionSDKType } from "./gov";
-import { Long } from "../../../helpers";
+import { VoteOption, WeightedVoteOption, WeightedVoteOptionSDKType, voteOptionFromJSON } from "./gov";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * MsgSubmitProposal defines an sdk.Msg type that supports submitting arbitrary
@@ -156,6 +156,14 @@ export const MsgSubmitProposal = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSubmitProposal {
+    return {
+      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromJSON(e)) : [],
+      initialDeposit: Array.isArray(object?.initialDeposit) ? object.initialDeposit.map((e: any) => Coin.fromJSON(e)) : [],
+      proposer: isSet(object.proposer) ? String(object.proposer) : "",
+      metadata: isSet(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal {
     const message = createBaseMsgSubmitProposal();
     message.messages = object.messages?.map(e => Any.fromPartial(e)) || [];
@@ -193,6 +201,11 @@ export const MsgSubmitProposalResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSubmitProposalResponse {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse {
     const message = createBaseMsgSubmitProposalResponse();
@@ -236,6 +249,12 @@ export const MsgExecLegacyContent = {
     }
     return message;
   },
+  fromJSON(object: any): MsgExecLegacyContent {
+    return {
+      content: isSet(object.content) ? Any.fromJSON(object.content) : undefined,
+      authority: isSet(object.authority) ? String(object.authority) : ""
+    };
+  },
   fromPartial(object: Partial<MsgExecLegacyContent>): MsgExecLegacyContent {
     const message = createBaseMsgExecLegacyContent();
     message.content = object.content !== undefined && object.content !== null ? Any.fromPartial(object.content) : undefined;
@@ -263,6 +282,9 @@ export const MsgExecLegacyContentResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgExecLegacyContentResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgExecLegacyContentResponse>): MsgExecLegacyContentResponse {
     const message = createBaseMsgExecLegacyContentResponse();
@@ -319,6 +341,14 @@ export const MsgVote = {
     }
     return message;
   },
+  fromJSON(object: any): MsgVote {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO,
+      voter: isSet(object.voter) ? String(object.voter) : "",
+      option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0,
+      metadata: isSet(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial(object: Partial<MsgVote>): MsgVote {
     const message = createBaseMsgVote();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
@@ -348,6 +378,9 @@ export const MsgVoteResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgVoteResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse {
     const message = createBaseMsgVoteResponse();
@@ -404,6 +437,14 @@ export const MsgVoteWeighted = {
     }
     return message;
   },
+  fromJSON(object: any): MsgVoteWeighted {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO,
+      voter: isSet(object.voter) ? String(object.voter) : "",
+      options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromJSON(e)) : [],
+      metadata: isSet(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial(object: Partial<MsgVoteWeighted>): MsgVoteWeighted {
     const message = createBaseMsgVoteWeighted();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
@@ -433,6 +474,9 @@ export const MsgVoteWeightedResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgVoteWeightedResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse {
     const message = createBaseMsgVoteWeightedResponse();
@@ -482,6 +526,13 @@ export const MsgDeposit = {
     }
     return message;
   },
+  fromJSON(object: any): MsgDeposit {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO,
+      depositor: isSet(object.depositor) ? String(object.depositor) : "",
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgDeposit>): MsgDeposit {
     const message = createBaseMsgDeposit();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
@@ -510,6 +561,9 @@ export const MsgDepositResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgDepositResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgDepositResponse>): MsgDepositResponse {
     const message = createBaseMsgDepositResponse();

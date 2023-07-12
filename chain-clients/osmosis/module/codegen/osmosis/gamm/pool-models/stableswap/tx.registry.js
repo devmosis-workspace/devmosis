@@ -36,6 +36,20 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createStableswapPool(value) {
+      return {
+        typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgCreateStableswapPool",
+        value: MsgCreateStableswapPool.fromJSON(value)
+      };
+    },
+    stableSwapAdjustScalingFactors(value) {
+      return {
+        typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgStableSwapAdjustScalingFactors",
+        value: MsgStableSwapAdjustScalingFactors.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createStableswapPool(value) {
       return {

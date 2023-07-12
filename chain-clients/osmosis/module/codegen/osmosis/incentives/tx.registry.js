@@ -36,6 +36,20 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createGauge(value) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgCreateGauge",
+        value: MsgCreateGauge.fromJSON(value)
+      };
+    },
+    addToGauge(value) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgAddToGauge",
+        value: MsgAddToGauge.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createGauge(value) {
       return {

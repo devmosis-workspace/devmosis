@@ -1,5 +1,6 @@
 import { Params, ParamsSDKType } from "./mint";
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -78,6 +79,9 @@ export const QueryParamsRequest = {
     }
     return message;
   },
+  fromJSON(_: any): QueryParamsRequest {
+    return {};
+  },
   fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -112,6 +116,11 @@ export const QueryParamsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -138,6 +147,9 @@ export const QueryInflationRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryInflationRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryInflationRequest>): QueryInflationRequest {
     const message = createBaseQueryInflationRequest();
@@ -173,6 +185,11 @@ export const QueryInflationResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryInflationResponse {
+    return {
+      inflation: isSet(object.inflation) ? bytesFromBase64(object.inflation) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<QueryInflationResponse>): QueryInflationResponse {
     const message = createBaseQueryInflationResponse();
     message.inflation = object.inflation ?? new Uint8Array();
@@ -199,6 +216,9 @@ export const QueryAnnualProvisionsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryAnnualProvisionsRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryAnnualProvisionsRequest>): QueryAnnualProvisionsRequest {
     const message = createBaseQueryAnnualProvisionsRequest();
@@ -233,6 +253,11 @@ export const QueryAnnualProvisionsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryAnnualProvisionsResponse {
+    return {
+      annualProvisions: isSet(object.annualProvisions) ? bytesFromBase64(object.annualProvisions) : new Uint8Array()
+    };
   },
   fromPartial(object: Partial<QueryAnnualProvisionsResponse>): QueryAnnualProvisionsResponse {
     const message = createBaseQueryAnnualProvisionsResponse();

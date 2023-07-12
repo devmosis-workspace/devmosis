@@ -148,6 +148,12 @@ var SuperfluidAsset = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : "",
+      assetType: (0, _helpers.isSet)(object.assetType) ? superfluidAssetTypeFromJSON(object.assetType) : 0
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$denom, _object$assetType;
     var message = createBaseSuperfluidAsset();
@@ -200,6 +206,13 @@ var SuperfluidIntermediaryAccount = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : "",
+      valAddr: (0, _helpers.isSet)(object.valAddr) ? String(object.valAddr) : "",
+      gaugeId: (0, _helpers.isSet)(object.gaugeId) ? _helpers.Long.fromValue(object.gaugeId) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$denom2, _object$valAddr;
@@ -254,6 +267,13 @@ var OsmoEquivalentMultiplierRecord = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      epochNumber: (0, _helpers.isSet)(object.epochNumber) ? _helpers.Long.fromValue(object.epochNumber) : _helpers.Long.ZERO,
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : "",
+      multiplier: (0, _helpers.isSet)(object.multiplier) ? String(object.multiplier) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$denom3, _object$multiplier;
@@ -316,6 +336,14 @@ var SuperfluidDelegationRecord = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegatorAddress: (0, _helpers.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      delegationAmount: (0, _helpers.isSet)(object.delegationAmount) ? _coin.Coin.fromJSON(object.delegationAmount) : undefined,
+      equivalentStakedAmount: (0, _helpers.isSet)(object.equivalentStakedAmount) ? _coin.Coin.fromJSON(object.equivalentStakedAmount) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegatorAddr, _object$validatorAddr;
     var message = createBaseSuperfluidDelegationRecord();
@@ -363,6 +391,12 @@ var LockIdIntermediaryAccountConnection = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      lockId: (0, _helpers.isSet)(object.lockId) ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO,
+      intermediaryAccount: (0, _helpers.isSet)(object.intermediaryAccount) ? String(object.intermediaryAccount) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$intermediaryA;
@@ -420,6 +454,13 @@ var UnpoolWhitelistedPools = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      ids: Array.isArray(object === null || object === void 0 ? void 0 : object.ids) ? object.ids.map(function (e) {
+        return _helpers.Long.fromValue(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$ids;

@@ -100,6 +100,17 @@ var EpochInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      identifier: (0, _helpers.isSet)(object.identifier) ? String(object.identifier) : "",
+      startTime: (0, _helpers.isSet)(object.startTime) ? (0, _helpers.fromJsonTimestamp)(object.startTime) : undefined,
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined,
+      currentEpoch: (0, _helpers.isSet)(object.currentEpoch) ? _helpers.Long.fromValue(object.currentEpoch) : _helpers.Long.ZERO,
+      currentEpochStartTime: (0, _helpers.isSet)(object.currentEpochStartTime) ? (0, _helpers.fromJsonTimestamp)(object.currentEpochStartTime) : undefined,
+      epochCountingStarted: (0, _helpers.isSet)(object.epochCountingStarted) ? Boolean(object.epochCountingStarted) : false,
+      currentEpochStartHeight: (0, _helpers.isSet)(object.currentEpochStartHeight) ? _helpers.Long.fromValue(object.currentEpochStartHeight) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$identifier, _object$startTime, _object$currentEpochS, _object$epochCounting;
     var message = createBaseEpochInfo();
@@ -152,6 +163,13 @@ var GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      epochs: Array.isArray(object === null || object === void 0 ? void 0 : object.epochs) ? object.epochs.map(function (e) {
+        return EpochInfo.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$epochs;

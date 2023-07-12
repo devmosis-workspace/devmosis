@@ -61,6 +61,13 @@ var Params = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolCreationFee: Array.isArray(object === null || object === void 0 ? void 0 : object.poolCreationFee) ? object.poolCreationFee.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$poolCreationF;
     var message = createBaseParams();
@@ -123,6 +130,15 @@ var GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      pools: Array.isArray(object === null || object === void 0 ? void 0 : object.pools) ? object.pools.map(function (e) {
+        return _any.Any.fromJSON(e);
+      }) : [],
+      nextPoolNumber: (0, _helpers.isSet)(object.nextPoolNumber) ? _helpers.Long.fromValue(object.nextPoolNumber) : _helpers.Long.UZERO,
+      params: (0, _helpers.isSet)(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$pools;

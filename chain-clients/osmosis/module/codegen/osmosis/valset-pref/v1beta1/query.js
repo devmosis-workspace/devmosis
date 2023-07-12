@@ -1,5 +1,6 @@
 import { ValidatorPreference } from "./state";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** Request type for UserValidatorPreferences. */
 
 /** Request type for UserValidatorPreferences. */
@@ -37,6 +38,11 @@ export const UserValidatorPreferencesRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
+  },
   fromPartial(object) {
     var _object$address;
     const message = createBaseUserValidatorPreferencesRequest();
@@ -72,6 +78,11 @@ export const UserValidatorPreferencesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      preferences: Array.isArray(object === null || object === void 0 ? void 0 : object.preferences) ? object.preferences.map(e => ValidatorPreference.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$preferences;

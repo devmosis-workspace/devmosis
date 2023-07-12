@@ -331,95 +331,114 @@ export interface ProofOpsSDKType {
 export declare const GetValidatorSetByHeightRequest: {
     encode(message: GetValidatorSetByHeightRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetValidatorSetByHeightRequest;
+    fromJSON(object: any): GetValidatorSetByHeightRequest;
     fromPartial(object: Partial<GetValidatorSetByHeightRequest>): GetValidatorSetByHeightRequest;
 };
 export declare const GetValidatorSetByHeightResponse: {
     encode(message: GetValidatorSetByHeightResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetValidatorSetByHeightResponse;
+    fromJSON(object: any): GetValidatorSetByHeightResponse;
     fromPartial(object: Partial<GetValidatorSetByHeightResponse>): GetValidatorSetByHeightResponse;
 };
 export declare const GetLatestValidatorSetRequest: {
     encode(message: GetLatestValidatorSetRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestValidatorSetRequest;
+    fromJSON(object: any): GetLatestValidatorSetRequest;
     fromPartial(object: Partial<GetLatestValidatorSetRequest>): GetLatestValidatorSetRequest;
 };
 export declare const GetLatestValidatorSetResponse: {
     encode(message: GetLatestValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestValidatorSetResponse;
+    fromJSON(object: any): GetLatestValidatorSetResponse;
     fromPartial(object: Partial<GetLatestValidatorSetResponse>): GetLatestValidatorSetResponse;
 };
 export declare const Validator: {
     encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
+    fromJSON(object: any): Validator;
     fromPartial(object: Partial<Validator>): Validator;
 };
 export declare const GetBlockByHeightRequest: {
     encode(message: GetBlockByHeightRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockByHeightRequest;
+    fromJSON(object: any): GetBlockByHeightRequest;
     fromPartial(object: Partial<GetBlockByHeightRequest>): GetBlockByHeightRequest;
 };
 export declare const GetBlockByHeightResponse: {
     encode(message: GetBlockByHeightResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockByHeightResponse;
+    fromJSON(object: any): GetBlockByHeightResponse;
     fromPartial(object: Partial<GetBlockByHeightResponse>): GetBlockByHeightResponse;
 };
 export declare const GetLatestBlockRequest: {
     encode(_: GetLatestBlockRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestBlockRequest;
+    fromJSON(_: any): GetLatestBlockRequest;
     fromPartial(_: Partial<GetLatestBlockRequest>): GetLatestBlockRequest;
 };
 export declare const GetLatestBlockResponse: {
     encode(message: GetLatestBlockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetLatestBlockResponse;
+    fromJSON(object: any): GetLatestBlockResponse;
     fromPartial(object: Partial<GetLatestBlockResponse>): GetLatestBlockResponse;
 };
 export declare const GetSyncingRequest: {
     encode(_: GetSyncingRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetSyncingRequest;
+    fromJSON(_: any): GetSyncingRequest;
     fromPartial(_: Partial<GetSyncingRequest>): GetSyncingRequest;
 };
 export declare const GetSyncingResponse: {
     encode(message: GetSyncingResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetSyncingResponse;
+    fromJSON(object: any): GetSyncingResponse;
     fromPartial(object: Partial<GetSyncingResponse>): GetSyncingResponse;
 };
 export declare const GetNodeInfoRequest: {
     encode(_: GetNodeInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetNodeInfoRequest;
+    fromJSON(_: any): GetNodeInfoRequest;
     fromPartial(_: Partial<GetNodeInfoRequest>): GetNodeInfoRequest;
 };
 export declare const GetNodeInfoResponse: {
     encode(message: GetNodeInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetNodeInfoResponse;
+    fromJSON(object: any): GetNodeInfoResponse;
     fromPartial(object: Partial<GetNodeInfoResponse>): GetNodeInfoResponse;
 };
 export declare const VersionInfo: {
     encode(message: VersionInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VersionInfo;
+    fromJSON(object: any): VersionInfo;
     fromPartial(object: Partial<VersionInfo>): VersionInfo;
 };
 export declare const Module: {
     encode(message: Module, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Module;
+    fromJSON(object: any): Module;
     fromPartial(object: Partial<Module>): Module;
 };
 export declare const ABCIQueryRequest: {
     encode(message: ABCIQueryRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ABCIQueryRequest;
+    fromJSON(object: any): ABCIQueryRequest;
     fromPartial(object: Partial<ABCIQueryRequest>): ABCIQueryRequest;
 };
 export declare const ABCIQueryResponse: {
     encode(message: ABCIQueryResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ABCIQueryResponse;
+    fromJSON(object: any): ABCIQueryResponse;
     fromPartial(object: Partial<ABCIQueryResponse>): ABCIQueryResponse;
 };
 export declare const ProofOp: {
     encode(message: ProofOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOp;
+    fromJSON(object: any): ProofOp;
     fromPartial(object: Partial<ProofOp>): ProofOp;
 };
 export declare const ProofOps: {
     encode(message: ProofOps, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOps;
+    fromJSON(object: any): ProofOps;
     fromPartial(object: Partial<ProofOps>): ProofOps;
 };

@@ -1,5 +1,6 @@
 import { FeeToken } from "./feetoken";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * UpdateFeeTokenProposal is a gov Content type for adding a new whitelisted fee
  * token. It must specify a denom along with gamm pool ID to use as a spot price
@@ -58,6 +59,13 @@ export const UpdateFeeTokenProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      feetoken: isSet(object.feetoken) ? FeeToken.fromJSON(object.feetoken) : undefined
+    };
   },
   fromPartial(object) {
     var _object$title, _object$description;

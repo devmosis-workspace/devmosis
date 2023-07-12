@@ -1,5 +1,5 @@
 import { PublicKey } from "../crypto/keys";
-import { Long } from "../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 function createBaseValidatorSet() {
   return {
@@ -43,6 +43,13 @@ export const ValidatorSet = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      validators: Array.isArray(object === null || object === void 0 ? void 0 : object.validators) ? object.validators.map(e => Validator.fromJSON(e)) : [],
+      proposer: isSet(object.proposer) ? Validator.fromJSON(object.proposer) : undefined,
+      totalVotingPower: isSet(object.totalVotingPower) ? Long.fromValue(object.totalVotingPower) : Long.ZERO
+    };
   },
   fromPartial(object) {
     var _object$validators;
@@ -103,6 +110,14 @@ export const Validator = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? bytesFromBase64(object.address) : new Uint8Array(),
+      pubKey: isSet(object.pubKey) ? PublicKey.fromJSON(object.pubKey) : undefined,
+      votingPower: isSet(object.votingPower) ? Long.fromValue(object.votingPower) : Long.ZERO,
+      proposerPriority: isSet(object.proposerPriority) ? Long.fromValue(object.proposerPriority) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     var _object$address;
     const message = createBaseValidator();
@@ -148,6 +163,12 @@ export const SimpleValidator = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      pubKey: isSet(object.pubKey) ? PublicKey.fromJSON(object.pubKey) : undefined,
+      votingPower: isSet(object.votingPower) ? Long.fromValue(object.votingPower) : Long.ZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseSimpleValidator();

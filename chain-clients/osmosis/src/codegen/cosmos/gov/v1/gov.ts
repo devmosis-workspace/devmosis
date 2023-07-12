@@ -2,7 +2,7 @@ import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
-import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
+import { Long, isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** VoteOption enumerates the valid vote options for a given governance proposal. */
 export enum VoteOption {
@@ -312,6 +312,12 @@ export const WeightedVoteOption = {
     }
     return message;
   },
+  fromJSON(object: any): WeightedVoteOption {
+    return {
+      option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0,
+      weight: isSet(object.weight) ? String(object.weight) : ""
+    };
+  },
   fromPartial(object: Partial<WeightedVoteOption>): WeightedVoteOption {
     const message = createBaseWeightedVoteOption();
     message.option = object.option ?? 0;
@@ -361,6 +367,13 @@ export const Deposit = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Deposit {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO,
+      depositor: isSet(object.depositor) ? String(object.depositor) : "",
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<Deposit>): Deposit {
     const message = createBaseDeposit();
@@ -462,6 +475,20 @@ export const Proposal = {
     }
     return message;
   },
+  fromJSON(object: any): Proposal {
+    return {
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
+      messages: Array.isArray(object?.messages) ? object.messages.map((e: any) => Any.fromJSON(e)) : [],
+      status: isSet(object.status) ? proposalStatusFromJSON(object.status) : 0,
+      finalTallyResult: isSet(object.finalTallyResult) ? TallyResult.fromJSON(object.finalTallyResult) : undefined,
+      submitTime: isSet(object.submitTime) ? fromJsonTimestamp(object.submitTime) : undefined,
+      depositEndTime: isSet(object.depositEndTime) ? fromJsonTimestamp(object.depositEndTime) : undefined,
+      totalDeposit: Array.isArray(object?.totalDeposit) ? object.totalDeposit.map((e: any) => Coin.fromJSON(e)) : [],
+      votingStartTime: isSet(object.votingStartTime) ? fromJsonTimestamp(object.votingStartTime) : undefined,
+      votingEndTime: isSet(object.votingEndTime) ? fromJsonTimestamp(object.votingEndTime) : undefined,
+      metadata: isSet(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial(object: Partial<Proposal>): Proposal {
     const message = createBaseProposal();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
@@ -527,6 +554,14 @@ export const TallyResult = {
     }
     return message;
   },
+  fromJSON(object: any): TallyResult {
+    return {
+      yesCount: isSet(object.yesCount) ? String(object.yesCount) : "",
+      abstainCount: isSet(object.abstainCount) ? String(object.abstainCount) : "",
+      noCount: isSet(object.noCount) ? String(object.noCount) : "",
+      noWithVetoCount: isSet(object.noWithVetoCount) ? String(object.noWithVetoCount) : ""
+    };
+  },
   fromPartial(object: Partial<TallyResult>): TallyResult {
     const message = createBaseTallyResult();
     message.yesCount = object.yesCount ?? "";
@@ -586,6 +621,14 @@ export const Vote = {
     }
     return message;
   },
+  fromJSON(object: any): Vote {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO,
+      voter: isSet(object.voter) ? String(object.voter) : "",
+      options: Array.isArray(object?.options) ? object.options.map((e: any) => WeightedVoteOption.fromJSON(e)) : [],
+      metadata: isSet(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial(object: Partial<Vote>): Vote {
     const message = createBaseVote();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
@@ -631,6 +674,12 @@ export const DepositParams = {
     }
     return message;
   },
+  fromJSON(object: any): DepositParams {
+    return {
+      minDeposit: Array.isArray(object?.minDeposit) ? object.minDeposit.map((e: any) => Coin.fromJSON(e)) : [],
+      maxDepositPeriod: isSet(object.maxDepositPeriod) ? Duration.fromJSON(object.maxDepositPeriod) : undefined
+    };
+  },
   fromPartial(object: Partial<DepositParams>): DepositParams {
     const message = createBaseDepositParams();
     message.minDeposit = object.minDeposit?.map(e => Coin.fromPartial(e)) || [];
@@ -666,6 +715,11 @@ export const VotingParams = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): VotingParams {
+    return {
+      votingPeriod: isSet(object.votingPeriod) ? Duration.fromJSON(object.votingPeriod) : undefined
+    };
   },
   fromPartial(object: Partial<VotingParams>): VotingParams {
     const message = createBaseVotingParams();
@@ -715,6 +769,13 @@ export const TallyParams = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TallyParams {
+    return {
+      quorum: isSet(object.quorum) ? String(object.quorum) : "",
+      threshold: isSet(object.threshold) ? String(object.threshold) : "",
+      vetoThreshold: isSet(object.vetoThreshold) ? String(object.vetoThreshold) : ""
+    };
   },
   fromPartial(object: Partial<TallyParams>): TallyParams {
     const message = createBaseTallyParams();

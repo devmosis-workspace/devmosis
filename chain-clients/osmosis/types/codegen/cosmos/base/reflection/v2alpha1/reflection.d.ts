@@ -321,130 +321,156 @@ export interface QueryMethodDescriptorSDKType {
 export declare const AppDescriptor: {
     encode(message: AppDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AppDescriptor;
+    fromJSON(object: any): AppDescriptor;
     fromPartial(object: Partial<AppDescriptor>): AppDescriptor;
 };
 export declare const TxDescriptor: {
     encode(message: TxDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxDescriptor;
+    fromJSON(object: any): TxDescriptor;
     fromPartial(object: Partial<TxDescriptor>): TxDescriptor;
 };
 export declare const AuthnDescriptor: {
     encode(message: AuthnDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AuthnDescriptor;
+    fromJSON(object: any): AuthnDescriptor;
     fromPartial(object: Partial<AuthnDescriptor>): AuthnDescriptor;
 };
 export declare const SigningModeDescriptor: {
     encode(message: SigningModeDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SigningModeDescriptor;
+    fromJSON(object: any): SigningModeDescriptor;
     fromPartial(object: Partial<SigningModeDescriptor>): SigningModeDescriptor;
 };
 export declare const ChainDescriptor: {
     encode(message: ChainDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ChainDescriptor;
+    fromJSON(object: any): ChainDescriptor;
     fromPartial(object: Partial<ChainDescriptor>): ChainDescriptor;
 };
 export declare const CodecDescriptor: {
     encode(message: CodecDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CodecDescriptor;
+    fromJSON(object: any): CodecDescriptor;
     fromPartial(object: Partial<CodecDescriptor>): CodecDescriptor;
 };
 export declare const InterfaceDescriptor: {
     encode(message: InterfaceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceDescriptor;
+    fromJSON(object: any): InterfaceDescriptor;
     fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor;
 };
 export declare const InterfaceImplementerDescriptor: {
     encode(message: InterfaceImplementerDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceImplementerDescriptor;
+    fromJSON(object: any): InterfaceImplementerDescriptor;
     fromPartial(object: Partial<InterfaceImplementerDescriptor>): InterfaceImplementerDescriptor;
 };
 export declare const InterfaceAcceptingMessageDescriptor: {
     encode(message: InterfaceAcceptingMessageDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): InterfaceAcceptingMessageDescriptor;
+    fromJSON(object: any): InterfaceAcceptingMessageDescriptor;
     fromPartial(object: Partial<InterfaceAcceptingMessageDescriptor>): InterfaceAcceptingMessageDescriptor;
 };
 export declare const ConfigurationDescriptor: {
     encode(message: ConfigurationDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConfigurationDescriptor;
+    fromJSON(object: any): ConfigurationDescriptor;
     fromPartial(object: Partial<ConfigurationDescriptor>): ConfigurationDescriptor;
 };
 export declare const MsgDescriptor: {
     encode(message: MsgDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDescriptor;
+    fromJSON(object: any): MsgDescriptor;
     fromPartial(object: Partial<MsgDescriptor>): MsgDescriptor;
 };
 export declare const GetAuthnDescriptorRequest: {
     encode(_: GetAuthnDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorRequest;
+    fromJSON(_: any): GetAuthnDescriptorRequest;
     fromPartial(_: Partial<GetAuthnDescriptorRequest>): GetAuthnDescriptorRequest;
 };
 export declare const GetAuthnDescriptorResponse: {
     encode(message: GetAuthnDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetAuthnDescriptorResponse;
+    fromJSON(object: any): GetAuthnDescriptorResponse;
     fromPartial(object: Partial<GetAuthnDescriptorResponse>): GetAuthnDescriptorResponse;
 };
 export declare const GetChainDescriptorRequest: {
     encode(_: GetChainDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorRequest;
+    fromJSON(_: any): GetChainDescriptorRequest;
     fromPartial(_: Partial<GetChainDescriptorRequest>): GetChainDescriptorRequest;
 };
 export declare const GetChainDescriptorResponse: {
     encode(message: GetChainDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetChainDescriptorResponse;
+    fromJSON(object: any): GetChainDescriptorResponse;
     fromPartial(object: Partial<GetChainDescriptorResponse>): GetChainDescriptorResponse;
 };
 export declare const GetCodecDescriptorRequest: {
     encode(_: GetCodecDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorRequest;
+    fromJSON(_: any): GetCodecDescriptorRequest;
     fromPartial(_: Partial<GetCodecDescriptorRequest>): GetCodecDescriptorRequest;
 };
 export declare const GetCodecDescriptorResponse: {
     encode(message: GetCodecDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetCodecDescriptorResponse;
+    fromJSON(object: any): GetCodecDescriptorResponse;
     fromPartial(object: Partial<GetCodecDescriptorResponse>): GetCodecDescriptorResponse;
 };
 export declare const GetConfigurationDescriptorRequest: {
     encode(_: GetConfigurationDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorRequest;
+    fromJSON(_: any): GetConfigurationDescriptorRequest;
     fromPartial(_: Partial<GetConfigurationDescriptorRequest>): GetConfigurationDescriptorRequest;
 };
 export declare const GetConfigurationDescriptorResponse: {
     encode(message: GetConfigurationDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetConfigurationDescriptorResponse;
+    fromJSON(object: any): GetConfigurationDescriptorResponse;
     fromPartial(object: Partial<GetConfigurationDescriptorResponse>): GetConfigurationDescriptorResponse;
 };
 export declare const GetQueryServicesDescriptorRequest: {
     encode(_: GetQueryServicesDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorRequest;
+    fromJSON(_: any): GetQueryServicesDescriptorRequest;
     fromPartial(_: Partial<GetQueryServicesDescriptorRequest>): GetQueryServicesDescriptorRequest;
 };
 export declare const GetQueryServicesDescriptorResponse: {
     encode(message: GetQueryServicesDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetQueryServicesDescriptorResponse;
+    fromJSON(object: any): GetQueryServicesDescriptorResponse;
     fromPartial(object: Partial<GetQueryServicesDescriptorResponse>): GetQueryServicesDescriptorResponse;
 };
 export declare const GetTxDescriptorRequest: {
     encode(_: GetTxDescriptorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorRequest;
+    fromJSON(_: any): GetTxDescriptorRequest;
     fromPartial(_: Partial<GetTxDescriptorRequest>): GetTxDescriptorRequest;
 };
 export declare const GetTxDescriptorResponse: {
     encode(message: GetTxDescriptorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxDescriptorResponse;
+    fromJSON(object: any): GetTxDescriptorResponse;
     fromPartial(object: Partial<GetTxDescriptorResponse>): GetTxDescriptorResponse;
 };
 export declare const QueryServicesDescriptor: {
     encode(message: QueryServicesDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryServicesDescriptor;
+    fromJSON(object: any): QueryServicesDescriptor;
     fromPartial(object: Partial<QueryServicesDescriptor>): QueryServicesDescriptor;
 };
 export declare const QueryServiceDescriptor: {
     encode(message: QueryServiceDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryServiceDescriptor;
+    fromJSON(object: any): QueryServiceDescriptor;
     fromPartial(object: Partial<QueryServiceDescriptor>): QueryServiceDescriptor;
 };
 export declare const QueryMethodDescriptor: {
     encode(message: QueryMethodDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryMethodDescriptor;
+    fromJSON(object: any): QueryMethodDescriptor;
     fromPartial(object: Partial<QueryMethodDescriptor>): QueryMethodDescriptor;
 };

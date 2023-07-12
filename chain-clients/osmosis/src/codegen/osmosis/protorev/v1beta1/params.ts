@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** Params defines the parameters for the module. */
 export interface Params {
   /** Boolean whether the protorev module is enabled. */
@@ -46,6 +47,12 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false,
+      admin: isSet(object.admin) ? String(object.admin) : ""
+    };
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();

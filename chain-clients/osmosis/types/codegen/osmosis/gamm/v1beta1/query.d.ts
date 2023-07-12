@@ -281,150 +281,180 @@ export interface QueryTotalLiquidityResponseSDKType {
 export declare const QueryPoolRequest: {
     encode(message: QueryPoolRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolRequest;
+    fromJSON(object: any): QueryPoolRequest;
     fromPartial(object: Partial<QueryPoolRequest>): QueryPoolRequest;
 };
 export declare const QueryPoolResponse: {
     encode(message: QueryPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolResponse;
+    fromJSON(object: any): QueryPoolResponse;
     fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse;
 };
 export declare const QueryPoolsRequest: {
     encode(message: QueryPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsRequest;
+    fromJSON(object: any): QueryPoolsRequest;
     fromPartial(object: Partial<QueryPoolsRequest>): QueryPoolsRequest;
 };
 export declare const QueryPoolsResponse: {
     encode(message: QueryPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsResponse;
+    fromJSON(object: any): QueryPoolsResponse;
     fromPartial(object: Partial<QueryPoolsResponse>): QueryPoolsResponse;
 };
 export declare const QueryNumPoolsRequest: {
     encode(_: QueryNumPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsRequest;
+    fromJSON(_: any): QueryNumPoolsRequest;
     fromPartial(_: Partial<QueryNumPoolsRequest>): QueryNumPoolsRequest;
 };
 export declare const QueryNumPoolsResponse: {
     encode(message: QueryNumPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNumPoolsResponse;
+    fromJSON(object: any): QueryNumPoolsResponse;
     fromPartial(object: Partial<QueryNumPoolsResponse>): QueryNumPoolsResponse;
 };
 export declare const QueryPoolTypeRequest: {
     encode(message: QueryPoolTypeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeRequest;
+    fromJSON(object: any): QueryPoolTypeRequest;
     fromPartial(object: Partial<QueryPoolTypeRequest>): QueryPoolTypeRequest;
 };
 export declare const QueryPoolTypeResponse: {
     encode(message: QueryPoolTypeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolTypeResponse;
+    fromJSON(object: any): QueryPoolTypeResponse;
     fromPartial(object: Partial<QueryPoolTypeResponse>): QueryPoolTypeResponse;
 };
 export declare const QueryCalcJoinPoolSharesRequest: {
     encode(message: QueryCalcJoinPoolSharesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesRequest;
+    fromJSON(object: any): QueryCalcJoinPoolSharesRequest;
     fromPartial(object: Partial<QueryCalcJoinPoolSharesRequest>): QueryCalcJoinPoolSharesRequest;
 };
 export declare const QueryCalcJoinPoolSharesResponse: {
     encode(message: QueryCalcJoinPoolSharesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolSharesResponse;
+    fromJSON(object: any): QueryCalcJoinPoolSharesResponse;
     fromPartial(object: Partial<QueryCalcJoinPoolSharesResponse>): QueryCalcJoinPoolSharesResponse;
 };
 export declare const QueryCalcExitPoolCoinsFromSharesRequest: {
     encode(message: QueryCalcExitPoolCoinsFromSharesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesRequest;
+    fromJSON(object: any): QueryCalcExitPoolCoinsFromSharesRequest;
     fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesRequest>): QueryCalcExitPoolCoinsFromSharesRequest;
 };
 export declare const QueryCalcExitPoolCoinsFromSharesResponse: {
     encode(message: QueryCalcExitPoolCoinsFromSharesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcExitPoolCoinsFromSharesResponse;
+    fromJSON(object: any): QueryCalcExitPoolCoinsFromSharesResponse;
     fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesResponse>): QueryCalcExitPoolCoinsFromSharesResponse;
 };
 export declare const QueryPoolParamsRequest: {
     encode(message: QueryPoolParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsRequest;
+    fromJSON(object: any): QueryPoolParamsRequest;
     fromPartial(object: Partial<QueryPoolParamsRequest>): QueryPoolParamsRequest;
 };
 export declare const QueryPoolParamsResponse: {
     encode(message: QueryPoolParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolParamsResponse;
+    fromJSON(object: any): QueryPoolParamsResponse;
     fromPartial(object: Partial<QueryPoolParamsResponse>): QueryPoolParamsResponse;
 };
 export declare const QueryTotalPoolLiquidityRequest: {
     encode(message: QueryTotalPoolLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityRequest;
+    fromJSON(object: any): QueryTotalPoolLiquidityRequest;
     fromPartial(object: Partial<QueryTotalPoolLiquidityRequest>): QueryTotalPoolLiquidityRequest;
 };
 export declare const QueryTotalPoolLiquidityResponse: {
     encode(message: QueryTotalPoolLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalPoolLiquidityResponse;
+    fromJSON(object: any): QueryTotalPoolLiquidityResponse;
     fromPartial(object: Partial<QueryTotalPoolLiquidityResponse>): QueryTotalPoolLiquidityResponse;
 };
 export declare const QueryTotalSharesRequest: {
     encode(message: QueryTotalSharesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesRequest;
+    fromJSON(object: any): QueryTotalSharesRequest;
     fromPartial(object: Partial<QueryTotalSharesRequest>): QueryTotalSharesRequest;
 };
 export declare const QueryTotalSharesResponse: {
     encode(message: QueryTotalSharesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalSharesResponse;
+    fromJSON(object: any): QueryTotalSharesResponse;
     fromPartial(object: Partial<QueryTotalSharesResponse>): QueryTotalSharesResponse;
 };
 export declare const QueryCalcJoinPoolNoSwapSharesRequest: {
     encode(message: QueryCalcJoinPoolNoSwapSharesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesRequest;
+    fromJSON(object: any): QueryCalcJoinPoolNoSwapSharesRequest;
     fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesRequest>): QueryCalcJoinPoolNoSwapSharesRequest;
 };
 export declare const QueryCalcJoinPoolNoSwapSharesResponse: {
     encode(message: QueryCalcJoinPoolNoSwapSharesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCalcJoinPoolNoSwapSharesResponse;
+    fromJSON(object: any): QueryCalcJoinPoolNoSwapSharesResponse;
     fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesResponse>): QueryCalcJoinPoolNoSwapSharesResponse;
 };
 export declare const QuerySpotPriceRequest: {
     encode(message: QuerySpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceRequest;
+    fromJSON(object: any): QuerySpotPriceRequest;
     fromPartial(object: Partial<QuerySpotPriceRequest>): QuerySpotPriceRequest;
 };
 export declare const QueryPoolsWithFilterRequest: {
     encode(message: QueryPoolsWithFilterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterRequest;
+    fromJSON(object: any): QueryPoolsWithFilterRequest;
     fromPartial(object: Partial<QueryPoolsWithFilterRequest>): QueryPoolsWithFilterRequest;
 };
 export declare const QueryPoolsWithFilterResponse: {
     encode(message: QueryPoolsWithFilterResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPoolsWithFilterResponse;
+    fromJSON(object: any): QueryPoolsWithFilterResponse;
     fromPartial(object: Partial<QueryPoolsWithFilterResponse>): QueryPoolsWithFilterResponse;
 };
 export declare const QuerySpotPriceResponse: {
     encode(message: QuerySpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySpotPriceResponse;
+    fromJSON(object: any): QuerySpotPriceResponse;
     fromPartial(object: Partial<QuerySpotPriceResponse>): QuerySpotPriceResponse;
 };
 export declare const QuerySwapExactAmountInRequest: {
     encode(message: QuerySwapExactAmountInRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInRequest;
+    fromJSON(object: any): QuerySwapExactAmountInRequest;
     fromPartial(object: Partial<QuerySwapExactAmountInRequest>): QuerySwapExactAmountInRequest;
 };
 export declare const QuerySwapExactAmountInResponse: {
     encode(message: QuerySwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountInResponse;
+    fromJSON(object: any): QuerySwapExactAmountInResponse;
     fromPartial(object: Partial<QuerySwapExactAmountInResponse>): QuerySwapExactAmountInResponse;
 };
 export declare const QuerySwapExactAmountOutRequest: {
     encode(message: QuerySwapExactAmountOutRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutRequest;
+    fromJSON(object: any): QuerySwapExactAmountOutRequest;
     fromPartial(object: Partial<QuerySwapExactAmountOutRequest>): QuerySwapExactAmountOutRequest;
 };
 export declare const QuerySwapExactAmountOutResponse: {
     encode(message: QuerySwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySwapExactAmountOutResponse;
+    fromJSON(object: any): QuerySwapExactAmountOutResponse;
     fromPartial(object: Partial<QuerySwapExactAmountOutResponse>): QuerySwapExactAmountOutResponse;
 };
 export declare const QueryTotalLiquidityRequest: {
     encode(_: QueryTotalLiquidityRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityRequest;
+    fromJSON(_: any): QueryTotalLiquidityRequest;
     fromPartial(_: Partial<QueryTotalLiquidityRequest>): QueryTotalLiquidityRequest;
 };
 export declare const QueryTotalLiquidityResponse: {
     encode(message: QueryTotalLiquidityResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalLiquidityResponse;
+    fromJSON(object: any): QueryTotalLiquidityResponse;
     fromPartial(object: Partial<QueryTotalLiquidityResponse>): QueryTotalLiquidityResponse;
 };

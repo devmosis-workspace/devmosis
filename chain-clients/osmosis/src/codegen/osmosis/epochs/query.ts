@@ -1,5 +1,5 @@
 import { EpochInfo, EpochInfoSDKType } from "./genesis";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface QueryEpochsInfoRequest {}
 export interface QueryEpochsInfoRequestSDKType {}
@@ -42,6 +42,9 @@ export const QueryEpochsInfoRequest = {
     }
     return message;
   },
+  fromJSON(_: any): QueryEpochsInfoRequest {
+    return {};
+  },
   fromPartial(_: Partial<QueryEpochsInfoRequest>): QueryEpochsInfoRequest {
     const message = createBaseQueryEpochsInfoRequest();
     return message;
@@ -75,6 +78,11 @@ export const QueryEpochsInfoResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryEpochsInfoResponse {
+    return {
+      epochs: Array.isArray(object?.epochs) ? object.epochs.map((e: any) => EpochInfo.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<QueryEpochsInfoResponse>): QueryEpochsInfoResponse {
     const message = createBaseQueryEpochsInfoResponse();
@@ -111,6 +119,11 @@ export const QueryCurrentEpochRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryCurrentEpochRequest {
+    return {
+      identifier: isSet(object.identifier) ? String(object.identifier) : ""
+    };
+  },
   fromPartial(object: Partial<QueryCurrentEpochRequest>): QueryCurrentEpochRequest {
     const message = createBaseQueryCurrentEpochRequest();
     message.identifier = object.identifier ?? "";
@@ -145,6 +158,11 @@ export const QueryCurrentEpochResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryCurrentEpochResponse {
+    return {
+      currentEpoch: isSet(object.currentEpoch) ? Long.fromValue(object.currentEpoch) : Long.ZERO
+    };
   },
   fromPartial(object: Partial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse {
     const message = createBaseQueryCurrentEpochResponse();

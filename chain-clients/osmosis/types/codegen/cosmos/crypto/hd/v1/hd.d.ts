@@ -26,5 +26,6 @@ export interface BIP44ParamsSDKType {
 export declare const BIP44Params: {
     encode(message: BIP44Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BIP44Params;
+    fromJSON(object: any): BIP44Params;
     fromPartial(object: Partial<BIP44Params>): BIP44Params;
 };

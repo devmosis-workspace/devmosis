@@ -83,30 +83,36 @@ export interface MsgRevokeResponseSDKType {
 export declare const MsgGrant: {
     encode(message: MsgGrant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrant;
+    fromJSON(object: any): MsgGrant;
     fromPartial(object: Partial<MsgGrant>): MsgGrant;
 };
 export declare const MsgExecResponse: {
     encode(message: MsgExecResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecResponse;
+    fromJSON(object: any): MsgExecResponse;
     fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse;
 };
 export declare const MsgExec: {
     encode(message: MsgExec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExec;
+    fromJSON(object: any): MsgExec;
     fromPartial(object: Partial<MsgExec>): MsgExec;
 };
 export declare const MsgGrantResponse: {
     encode(_: MsgGrantResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgGrantResponse;
+    fromJSON(_: any): MsgGrantResponse;
     fromPartial(_: Partial<MsgGrantResponse>): MsgGrantResponse;
 };
 export declare const MsgRevoke: {
     encode(message: MsgRevoke, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevoke;
+    fromJSON(object: any): MsgRevoke;
     fromPartial(object: Partial<MsgRevoke>): MsgRevoke;
 };
 export declare const MsgRevokeResponse: {
     encode(_: MsgRevokeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRevokeResponse;
+    fromJSON(_: any): MsgRevokeResponse;
     fromPartial(_: Partial<MsgRevokeResponse>): MsgRevokeResponse;
 };

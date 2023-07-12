@@ -1,7 +1,7 @@
 import { Duration, DurationSDKType } from "../../google/protobuf/duration";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * LockQueryType defines the type of the lock query that can
@@ -216,6 +216,15 @@ export const PeriodLock = {
     }
     return message;
   },
+  fromJSON(object: any): PeriodLock {
+    return {
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO,
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
+      endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<PeriodLock>): PeriodLock {
     const message = createBasePeriodLock();
     message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
@@ -276,6 +285,14 @@ export const QueryCondition = {
     }
     return message;
   },
+  fromJSON(object: any): QueryCondition {
+    return {
+      lockQueryType: isSet(object.lockQueryType) ? lockQueryTypeFromJSON(object.lockQueryType) : 0,
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
+      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryCondition>): QueryCondition {
     const message = createBaseQueryCondition();
     message.lockQueryType = object.lockQueryType ?? 0;
@@ -334,6 +351,14 @@ export const SyntheticLock = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SyntheticLock {
+    return {
+      underlyingLockId: isSet(object.underlyingLockId) ? Long.fromValue(object.underlyingLockId) : Long.UZERO,
+      synthDenom: isSet(object.synthDenom) ? String(object.synthDenom) : "",
+      endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined,
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined
+    };
   },
   fromPartial(object: Partial<SyntheticLock>): SyntheticLock {
     const message = createBaseSyntheticLock();

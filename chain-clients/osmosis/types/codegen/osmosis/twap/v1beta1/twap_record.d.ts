@@ -63,5 +63,6 @@ export interface TwapRecordSDKType {
 export declare const TwapRecord: {
     encode(message: TwapRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TwapRecord;
+    fromJSON(object: any): TwapRecord;
     fromPartial(object: Partial<TwapRecord>): TwapRecord;
 };

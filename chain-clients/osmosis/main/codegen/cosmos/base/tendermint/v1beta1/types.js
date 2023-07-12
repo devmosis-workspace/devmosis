@@ -78,6 +78,14 @@ var Block = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      header: (0, _helpers.isSet)(object.header) ? Header.fromJSON(object.header) : undefined,
+      data: (0, _helpers.isSet)(object.data) ? _types.Data.fromJSON(object.data) : undefined,
+      evidence: (0, _helpers.isSet)(object.evidence) ? _evidence.EvidenceList.fromJSON(object.evidence) : undefined,
+      lastCommit: (0, _helpers.isSet)(object.lastCommit) ? _types.Commit.fromJSON(object.lastCommit) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseBlock();
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
@@ -208,6 +216,24 @@ var Header = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      version: (0, _helpers.isSet)(object.version) ? _types2.Consensus.fromJSON(object.version) : undefined,
+      chainId: (0, _helpers.isSet)(object.chainId) ? String(object.chainId) : "",
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
+      time: (0, _helpers.isSet)(object.time) ? (0, _helpers.fromJsonTimestamp)(object.time) : undefined,
+      lastBlockId: (0, _helpers.isSet)(object.lastBlockId) ? _types.BlockID.fromJSON(object.lastBlockId) : undefined,
+      lastCommitHash: (0, _helpers.isSet)(object.lastCommitHash) ? (0, _helpers.bytesFromBase64)(object.lastCommitHash) : new Uint8Array(),
+      dataHash: (0, _helpers.isSet)(object.dataHash) ? (0, _helpers.bytesFromBase64)(object.dataHash) : new Uint8Array(),
+      validatorsHash: (0, _helpers.isSet)(object.validatorsHash) ? (0, _helpers.bytesFromBase64)(object.validatorsHash) : new Uint8Array(),
+      nextValidatorsHash: (0, _helpers.isSet)(object.nextValidatorsHash) ? (0, _helpers.bytesFromBase64)(object.nextValidatorsHash) : new Uint8Array(),
+      consensusHash: (0, _helpers.isSet)(object.consensusHash) ? (0, _helpers.bytesFromBase64)(object.consensusHash) : new Uint8Array(),
+      appHash: (0, _helpers.isSet)(object.appHash) ? (0, _helpers.bytesFromBase64)(object.appHash) : new Uint8Array(),
+      lastResultsHash: (0, _helpers.isSet)(object.lastResultsHash) ? (0, _helpers.bytesFromBase64)(object.lastResultsHash) : new Uint8Array(),
+      evidenceHash: (0, _helpers.isSet)(object.evidenceHash) ? (0, _helpers.bytesFromBase64)(object.evidenceHash) : new Uint8Array(),
+      proposerAddress: (0, _helpers.isSet)(object.proposerAddress) ? String(object.proposerAddress) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$chainId, _object$time, _object$lastCommitHas, _object$dataHash, _object$validatorsHas, _object$nextValidator, _object$consensusHash, _object$appHash, _object$lastResultsHa, _object$evidenceHash, _object$proposerAddre;

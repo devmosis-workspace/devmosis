@@ -39,6 +39,9 @@ var ModuleBalanceRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(_) {
+    return {};
+  },
   fromPartial: function fromPartial(_) {
     var message = createBaseModuleBalanceRequest();
     return message;
@@ -84,6 +87,13 @@ var ModuleBalanceResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$coins;
     var message = createBaseModuleBalanceResponse();
@@ -115,6 +125,9 @@ var ModuleLockedAmountRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseModuleLockedAmountRequest();
@@ -161,6 +174,13 @@ var ModuleLockedAmountResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$coins2;
     var message = createBaseModuleLockedAmountResponse();
@@ -200,6 +220,11 @@ var AccountUnlockableCoinsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner;
@@ -248,6 +273,13 @@ var AccountUnlockableCoinsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$coins3;
     var message = createBaseAccountUnlockableCoinsResponse();
@@ -287,6 +319,11 @@ var AccountUnlockingCoinsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner2;
@@ -335,6 +372,13 @@ var AccountUnlockingCoinsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$coins4;
     var message = createBaseAccountUnlockingCoinsResponse();
@@ -374,6 +418,11 @@ var AccountLockedCoinsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner3;
@@ -422,6 +471,13 @@ var AccountLockedCoinsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$coins5;
     var message = createBaseAccountLockedCoinsResponse();
@@ -468,6 +524,12 @@ var AccountLockedPastTimeRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner4, _object$timestamp;
@@ -517,6 +579,13 @@ var AccountLockedPastTimeResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$locks;
     var message = createBaseAccountLockedPastTimeResponse();
@@ -563,6 +632,12 @@ var AccountLockedPastTimeNotUnlockingOnlyRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner5, _object$timestamp2;
@@ -612,6 +687,13 @@ var AccountLockedPastTimeNotUnlockingOnlyResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$locks2;
     var message = createBaseAccountLockedPastTimeNotUnlockingOnlyResponse();
@@ -658,6 +740,12 @@ var AccountUnlockedBeforeTimeRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner6, _object$timestamp3;
@@ -706,6 +794,13 @@ var AccountUnlockedBeforeTimeResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$locks3;
@@ -761,6 +856,13 @@ var AccountLockedPastTimeDenomRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined,
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$owner7, _object$timestamp4, _object$denom;
     var message = createBaseAccountLockedPastTimeDenomRequest();
@@ -810,6 +912,13 @@ var AccountLockedPastTimeDenomResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$locks4;
     var message = createBaseAccountLockedPastTimeDenomResponse();
@@ -857,6 +966,12 @@ var LockedDenomRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : "",
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$denom2;
     var message = createBaseLockedDenomRequest();
@@ -896,6 +1011,11 @@ var LockedDenomResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      amount: (0, _helpers.isSet)(object.amount) ? String(object.amount) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$amount;
     var message = createBaseLockedDenomResponse();
@@ -934,6 +1054,11 @@ var LockedRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      lockId: (0, _helpers.isSet)(object.lockId) ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseLockedRequest();
     message.lockId = object.lockId !== undefined && object.lockId !== null ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO;
@@ -971,6 +1096,11 @@ var LockedResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      lock: (0, _helpers.isSet)(object.lock) ? _lock.PeriodLock.fromJSON(object.lock) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseLockedResponse();
     message.lock = object.lock !== undefined && object.lock !== null ? _lock.PeriodLock.fromPartial(object.lock) : undefined;
@@ -999,6 +1129,9 @@ var NextLockIDRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseNextLockIDRequest();
@@ -1036,6 +1169,11 @@ var NextLockIDResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      lockId: (0, _helpers.isSet)(object.lockId) ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseNextLockIDResponse();
     message.lockId = object.lockId !== undefined && object.lockId !== null ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO;
@@ -1072,6 +1210,11 @@ var SyntheticLockupsByLockupIDRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      lockId: (0, _helpers.isSet)(object.lockId) ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseSyntheticLockupsByLockupIDRequest();
@@ -1119,6 +1262,13 @@ var SyntheticLockupsByLockupIDResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      syntheticLocks: Array.isArray(object === null || object === void 0 ? void 0 : object.syntheticLocks) ? object.syntheticLocks.map(function (e) {
+        return _lock.SyntheticLock.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$syntheticLock;
     var message = createBaseSyntheticLockupsByLockupIDResponse();
@@ -1165,6 +1315,12 @@ var AccountLockedLongerDurationRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner8;
@@ -1214,6 +1370,13 @@ var AccountLockedLongerDurationResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$locks5;
     var message = createBaseAccountLockedLongerDurationResponse();
@@ -1260,6 +1423,12 @@ var AccountLockedDurationRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner9;
@@ -1309,6 +1478,13 @@ var AccountLockedDurationResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$locks6;
     var message = createBaseAccountLockedDurationResponse();
@@ -1355,6 +1531,12 @@ var AccountLockedLongerDurationNotUnlockingOnlyRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owner10;
@@ -1403,6 +1585,13 @@ var AccountLockedLongerDurationNotUnlockingOnlyResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$locks7;
@@ -1458,6 +1647,13 @@ var AccountLockedLongerDurationDenomRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined,
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$owner11, _object$denom3;
     var message = createBaseAccountLockedLongerDurationDenomRequest();
@@ -1507,6 +1703,13 @@ var AccountLockedLongerDurationDenomResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$locks8;
     var message = createBaseAccountLockedLongerDurationDenomResponse();
@@ -1538,6 +1741,9 @@ var QueryParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryParamsRequest();
@@ -1574,6 +1780,11 @@ var QueryParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _params.Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryParamsResponse();

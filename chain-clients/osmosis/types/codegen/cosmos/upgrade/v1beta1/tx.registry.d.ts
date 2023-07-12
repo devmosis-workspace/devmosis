@@ -23,6 +23,16 @@ export declare const MessageComposer: {
             value: MsgCancelUpgrade;
         };
     };
+    fromJSON: {
+        softwareUpgrade(value: any): {
+            typeUrl: string;
+            value: MsgSoftwareUpgrade;
+        };
+        cancelUpgrade(value: any): {
+            typeUrl: string;
+            value: MsgCancelUpgrade;
+        };
+    };
     fromPartial: {
         softwareUpgrade(value: MsgSoftwareUpgrade): {
             typeUrl: string;

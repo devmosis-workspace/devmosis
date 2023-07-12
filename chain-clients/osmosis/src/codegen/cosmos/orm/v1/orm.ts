@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** TableDescriptor describes an ORM table. */
 export interface TableDescriptor {
   /** primary_key defines the primary key for the table. */
@@ -150,6 +151,13 @@ export const TableDescriptor = {
     }
     return message;
   },
+  fromJSON(object: any): TableDescriptor {
+    return {
+      primaryKey: isSet(object.primaryKey) ? PrimaryKeyDescriptor.fromJSON(object.primaryKey) : undefined,
+      index: Array.isArray(object?.index) ? object.index.map((e: any) => SecondaryIndexDescriptor.fromJSON(e)) : [],
+      id: isSet(object.id) ? Number(object.id) : 0
+    };
+  },
   fromPartial(object: Partial<TableDescriptor>): TableDescriptor {
     const message = createBaseTableDescriptor();
     message.primaryKey = object.primaryKey !== undefined && object.primaryKey !== null ? PrimaryKeyDescriptor.fromPartial(object.primaryKey) : undefined;
@@ -193,6 +201,12 @@ export const PrimaryKeyDescriptor = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PrimaryKeyDescriptor {
+    return {
+      fields: isSet(object.fields) ? String(object.fields) : "",
+      autoIncrement: isSet(object.autoIncrement) ? Boolean(object.autoIncrement) : false
+    };
   },
   fromPartial(object: Partial<PrimaryKeyDescriptor>): PrimaryKeyDescriptor {
     const message = createBasePrimaryKeyDescriptor();
@@ -244,6 +258,13 @@ export const SecondaryIndexDescriptor = {
     }
     return message;
   },
+  fromJSON(object: any): SecondaryIndexDescriptor {
+    return {
+      fields: isSet(object.fields) ? String(object.fields) : "",
+      id: isSet(object.id) ? Number(object.id) : 0,
+      unique: isSet(object.unique) ? Boolean(object.unique) : false
+    };
+  },
   fromPartial(object: Partial<SecondaryIndexDescriptor>): SecondaryIndexDescriptor {
     const message = createBaseSecondaryIndexDescriptor();
     message.fields = object.fields ?? "";
@@ -280,6 +301,11 @@ export const SingletonDescriptor = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SingletonDescriptor {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0
+    };
   },
   fromPartial(object: Partial<SingletonDescriptor>): SingletonDescriptor {
     const message = createBaseSingletonDescriptor();

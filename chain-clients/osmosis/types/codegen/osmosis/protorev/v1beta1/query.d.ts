@@ -429,150 +429,180 @@ export interface QueryGetProtoRevPoolResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    fromJSON(_: any): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryGetProtoRevNumberOfTradesRequest: {
     encode(_: QueryGetProtoRevNumberOfTradesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesRequest;
+    fromJSON(_: any): QueryGetProtoRevNumberOfTradesRequest;
     fromPartial(_: Partial<QueryGetProtoRevNumberOfTradesRequest>): QueryGetProtoRevNumberOfTradesRequest;
 };
 export declare const QueryGetProtoRevNumberOfTradesResponse: {
     encode(message: QueryGetProtoRevNumberOfTradesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevNumberOfTradesResponse;
+    fromJSON(object: any): QueryGetProtoRevNumberOfTradesResponse;
     fromPartial(object: Partial<QueryGetProtoRevNumberOfTradesResponse>): QueryGetProtoRevNumberOfTradesResponse;
 };
 export declare const QueryGetProtoRevProfitsByDenomRequest: {
     encode(message: QueryGetProtoRevProfitsByDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomRequest;
+    fromJSON(object: any): QueryGetProtoRevProfitsByDenomRequest;
     fromPartial(object: Partial<QueryGetProtoRevProfitsByDenomRequest>): QueryGetProtoRevProfitsByDenomRequest;
 };
 export declare const QueryGetProtoRevProfitsByDenomResponse: {
     encode(message: QueryGetProtoRevProfitsByDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevProfitsByDenomResponse;
+    fromJSON(object: any): QueryGetProtoRevProfitsByDenomResponse;
     fromPartial(object: Partial<QueryGetProtoRevProfitsByDenomResponse>): QueryGetProtoRevProfitsByDenomResponse;
 };
 export declare const QueryGetProtoRevAllProfitsRequest: {
     encode(_: QueryGetProtoRevAllProfitsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsRequest;
+    fromJSON(_: any): QueryGetProtoRevAllProfitsRequest;
     fromPartial(_: Partial<QueryGetProtoRevAllProfitsRequest>): QueryGetProtoRevAllProfitsRequest;
 };
 export declare const QueryGetProtoRevAllProfitsResponse: {
     encode(message: QueryGetProtoRevAllProfitsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllProfitsResponse;
+    fromJSON(object: any): QueryGetProtoRevAllProfitsResponse;
     fromPartial(object: Partial<QueryGetProtoRevAllProfitsResponse>): QueryGetProtoRevAllProfitsResponse;
 };
 export declare const QueryGetProtoRevStatisticsByRouteRequest: {
     encode(message: QueryGetProtoRevStatisticsByRouteRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteRequest;
+    fromJSON(object: any): QueryGetProtoRevStatisticsByRouteRequest;
     fromPartial(object: Partial<QueryGetProtoRevStatisticsByRouteRequest>): QueryGetProtoRevStatisticsByRouteRequest;
 };
 export declare const QueryGetProtoRevStatisticsByRouteResponse: {
     encode(message: QueryGetProtoRevStatisticsByRouteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevStatisticsByRouteResponse;
+    fromJSON(object: any): QueryGetProtoRevStatisticsByRouteResponse;
     fromPartial(object: Partial<QueryGetProtoRevStatisticsByRouteResponse>): QueryGetProtoRevStatisticsByRouteResponse;
 };
 export declare const QueryGetProtoRevAllRouteStatisticsRequest: {
     encode(_: QueryGetProtoRevAllRouteStatisticsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsRequest;
+    fromJSON(_: any): QueryGetProtoRevAllRouteStatisticsRequest;
     fromPartial(_: Partial<QueryGetProtoRevAllRouteStatisticsRequest>): QueryGetProtoRevAllRouteStatisticsRequest;
 };
 export declare const QueryGetProtoRevAllRouteStatisticsResponse: {
     encode(message: QueryGetProtoRevAllRouteStatisticsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAllRouteStatisticsResponse;
+    fromJSON(object: any): QueryGetProtoRevAllRouteStatisticsResponse;
     fromPartial(object: Partial<QueryGetProtoRevAllRouteStatisticsResponse>): QueryGetProtoRevAllRouteStatisticsResponse;
 };
 export declare const QueryGetProtoRevTokenPairArbRoutesRequest: {
     encode(_: QueryGetProtoRevTokenPairArbRoutesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesRequest;
+    fromJSON(_: any): QueryGetProtoRevTokenPairArbRoutesRequest;
     fromPartial(_: Partial<QueryGetProtoRevTokenPairArbRoutesRequest>): QueryGetProtoRevTokenPairArbRoutesRequest;
 };
 export declare const QueryGetProtoRevTokenPairArbRoutesResponse: {
     encode(message: QueryGetProtoRevTokenPairArbRoutesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevTokenPairArbRoutesResponse;
+    fromJSON(object: any): QueryGetProtoRevTokenPairArbRoutesResponse;
     fromPartial(object: Partial<QueryGetProtoRevTokenPairArbRoutesResponse>): QueryGetProtoRevTokenPairArbRoutesResponse;
 };
 export declare const QueryGetProtoRevAdminAccountRequest: {
     encode(_: QueryGetProtoRevAdminAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountRequest;
+    fromJSON(_: any): QueryGetProtoRevAdminAccountRequest;
     fromPartial(_: Partial<QueryGetProtoRevAdminAccountRequest>): QueryGetProtoRevAdminAccountRequest;
 };
 export declare const QueryGetProtoRevAdminAccountResponse: {
     encode(message: QueryGetProtoRevAdminAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevAdminAccountResponse;
+    fromJSON(object: any): QueryGetProtoRevAdminAccountResponse;
     fromPartial(object: Partial<QueryGetProtoRevAdminAccountResponse>): QueryGetProtoRevAdminAccountResponse;
 };
 export declare const QueryGetProtoRevDeveloperAccountRequest: {
     encode(_: QueryGetProtoRevDeveloperAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountRequest;
+    fromJSON(_: any): QueryGetProtoRevDeveloperAccountRequest;
     fromPartial(_: Partial<QueryGetProtoRevDeveloperAccountRequest>): QueryGetProtoRevDeveloperAccountRequest;
 };
 export declare const QueryGetProtoRevDeveloperAccountResponse: {
     encode(message: QueryGetProtoRevDeveloperAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevDeveloperAccountResponse;
+    fromJSON(object: any): QueryGetProtoRevDeveloperAccountResponse;
     fromPartial(object: Partial<QueryGetProtoRevDeveloperAccountResponse>): QueryGetProtoRevDeveloperAccountResponse;
 };
 export declare const QueryGetProtoRevPoolWeightsRequest: {
     encode(_: QueryGetProtoRevPoolWeightsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsRequest;
+    fromJSON(_: any): QueryGetProtoRevPoolWeightsRequest;
     fromPartial(_: Partial<QueryGetProtoRevPoolWeightsRequest>): QueryGetProtoRevPoolWeightsRequest;
 };
 export declare const QueryGetProtoRevPoolWeightsResponse: {
     encode(message: QueryGetProtoRevPoolWeightsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolWeightsResponse;
+    fromJSON(object: any): QueryGetProtoRevPoolWeightsResponse;
     fromPartial(object: Partial<QueryGetProtoRevPoolWeightsResponse>): QueryGetProtoRevPoolWeightsResponse;
 };
 export declare const QueryGetProtoRevMaxPoolPointsPerBlockRequest: {
     encode(_: QueryGetProtoRevMaxPoolPointsPerBlockRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockRequest;
+    fromJSON(_: any): QueryGetProtoRevMaxPoolPointsPerBlockRequest;
     fromPartial(_: Partial<QueryGetProtoRevMaxPoolPointsPerBlockRequest>): QueryGetProtoRevMaxPoolPointsPerBlockRequest;
 };
 export declare const QueryGetProtoRevMaxPoolPointsPerBlockResponse: {
     encode(message: QueryGetProtoRevMaxPoolPointsPerBlockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerBlockResponse;
+    fromJSON(object: any): QueryGetProtoRevMaxPoolPointsPerBlockResponse;
     fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerBlockResponse>): QueryGetProtoRevMaxPoolPointsPerBlockResponse;
 };
 export declare const QueryGetProtoRevMaxPoolPointsPerTxRequest: {
     encode(_: QueryGetProtoRevMaxPoolPointsPerTxRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxRequest;
+    fromJSON(_: any): QueryGetProtoRevMaxPoolPointsPerTxRequest;
     fromPartial(_: Partial<QueryGetProtoRevMaxPoolPointsPerTxRequest>): QueryGetProtoRevMaxPoolPointsPerTxRequest;
 };
 export declare const QueryGetProtoRevMaxPoolPointsPerTxResponse: {
     encode(message: QueryGetProtoRevMaxPoolPointsPerTxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevMaxPoolPointsPerTxResponse;
+    fromJSON(object: any): QueryGetProtoRevMaxPoolPointsPerTxResponse;
     fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerTxResponse>): QueryGetProtoRevMaxPoolPointsPerTxResponse;
 };
 export declare const QueryGetProtoRevBaseDenomsRequest: {
     encode(_: QueryGetProtoRevBaseDenomsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsRequest;
+    fromJSON(_: any): QueryGetProtoRevBaseDenomsRequest;
     fromPartial(_: Partial<QueryGetProtoRevBaseDenomsRequest>): QueryGetProtoRevBaseDenomsRequest;
 };
 export declare const QueryGetProtoRevBaseDenomsResponse: {
     encode(message: QueryGetProtoRevBaseDenomsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevBaseDenomsResponse;
+    fromJSON(object: any): QueryGetProtoRevBaseDenomsResponse;
     fromPartial(object: Partial<QueryGetProtoRevBaseDenomsResponse>): QueryGetProtoRevBaseDenomsResponse;
 };
 export declare const QueryGetProtoRevEnabledRequest: {
     encode(_: QueryGetProtoRevEnabledRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevEnabledRequest;
+    fromJSON(_: any): QueryGetProtoRevEnabledRequest;
     fromPartial(_: Partial<QueryGetProtoRevEnabledRequest>): QueryGetProtoRevEnabledRequest;
 };
 export declare const QueryGetProtoRevEnabledResponse: {
     encode(message: QueryGetProtoRevEnabledResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevEnabledResponse;
+    fromJSON(object: any): QueryGetProtoRevEnabledResponse;
     fromPartial(object: Partial<QueryGetProtoRevEnabledResponse>): QueryGetProtoRevEnabledResponse;
 };
 export declare const QueryGetProtoRevPoolRequest: {
     encode(message: QueryGetProtoRevPoolRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolRequest;
+    fromJSON(object: any): QueryGetProtoRevPoolRequest;
     fromPartial(object: Partial<QueryGetProtoRevPoolRequest>): QueryGetProtoRevPoolRequest;
 };
 export declare const QueryGetProtoRevPoolResponse: {
     encode(message: QueryGetProtoRevPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetProtoRevPoolResponse;
+    fromJSON(object: any): QueryGetProtoRevPoolResponse;
     fromPartial(object: Partial<QueryGetProtoRevPoolResponse>): QueryGetProtoRevPoolResponse;
 };

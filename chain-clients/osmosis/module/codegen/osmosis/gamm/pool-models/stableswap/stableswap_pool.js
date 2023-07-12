@@ -1,5 +1,5 @@
 import { Coin } from "../../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../../helpers";
+import { Long, isSet } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * PoolParams defined the parameters that will be managed by the pool
@@ -54,6 +54,12 @@ export const PoolParams = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      swapFee: isSet(object.swapFee) ? String(object.swapFee) : "",
+      exitFee: isSet(object.exitFee) ? String(object.exitFee) : ""
+    };
   },
   fromPartial(object) {
     var _object$swapFee, _object$exitFee;
@@ -149,6 +155,18 @@ export const Pool = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
+      poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      totalShares: isSet(object.totalShares) ? Coin.fromJSON(object.totalShares) : undefined,
+      poolLiquidity: Array.isArray(object === null || object === void 0 ? void 0 : object.poolLiquidity) ? object.poolLiquidity.map(e => Coin.fromJSON(e)) : [],
+      scalingFactors: Array.isArray(object === null || object === void 0 ? void 0 : object.scalingFactors) ? object.scalingFactors.map(e => Long.fromValue(e)) : [],
+      scalingFactorController: isSet(object.scalingFactorController) ? String(object.scalingFactorController) : ""
+    };
   },
   fromPartial(object) {
     var _object$address, _object$futurePoolGov, _object$poolLiquidity, _object$scalingFactor, _object$scalingFactor2;

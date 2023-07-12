@@ -122,6 +122,15 @@ var MsgSubmitProposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      content: (0, _helpers.isSet)(object.content) ? _any.Any.fromJSON(object.content) : undefined,
+      initialDeposit: Array.isArray(object === null || object === void 0 ? void 0 : object.initialDeposit) ? object.initialDeposit.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      proposer: (0, _helpers.isSet)(object.proposer) ? String(object.proposer) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$initialDeposi, _object$proposer;
     var message = createBaseMsgSubmitProposal();
@@ -163,6 +172,11 @@ var MsgSubmitProposalResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseMsgSubmitProposalResponse();
@@ -215,6 +229,13 @@ var MsgVote = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      voter: (0, _helpers.isSet)(object.voter) ? String(object.voter) : "",
+      option: (0, _helpers.isSet)(object.option) ? (0, _gov.voteOptionFromJSON)(object.option) : 0
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$voter, _object$option;
     var message = createBaseMsgVote();
@@ -246,6 +267,9 @@ var MsgVoteResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgVoteResponse();
@@ -306,6 +330,15 @@ var MsgVoteWeighted = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      voter: (0, _helpers.isSet)(object.voter) ? String(object.voter) : "",
+      options: Array.isArray(object === null || object === void 0 ? void 0 : object.options) ? object.options.map(function (e) {
+        return _gov.WeightedVoteOption.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$voter2, _object$options;
     var message = createBaseMsgVoteWeighted();
@@ -339,6 +372,9 @@ var MsgVoteWeightedResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgVoteWeightedResponse();
@@ -399,6 +435,15 @@ var MsgDeposit = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      depositor: (0, _helpers.isSet)(object.depositor) ? String(object.depositor) : "",
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$depositor, _object$amount;
     var message = createBaseMsgDeposit();
@@ -432,6 +477,9 @@ var MsgDepositResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgDepositResponse();

@@ -161,6 +161,21 @@ var BaseVestingAccount = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      baseAccount: (0, _helpers.isSet)(object.baseAccount) ? _auth.BaseAccount.fromJSON(object.baseAccount) : undefined,
+      originalVesting: Array.isArray(object === null || object === void 0 ? void 0 : object.originalVesting) ? object.originalVesting.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      delegatedFree: Array.isArray(object === null || object === void 0 ? void 0 : object.delegatedFree) ? object.delegatedFree.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      delegatedVesting: Array.isArray(object === null || object === void 0 ? void 0 : object.delegatedVesting) ? object.delegatedVesting.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      endTime: (0, _helpers.isSet)(object.endTime) ? _helpers.Long.fromValue(object.endTime) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$originalVesti, _object$delegatedFree, _object$delegatedVest;
     var message = createBaseBaseVestingAccount();
@@ -216,6 +231,12 @@ var ContinuousVestingAccount = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      baseVestingAccount: (0, _helpers.isSet)(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined,
+      startTime: (0, _helpers.isSet)(object.startTime) ? _helpers.Long.fromValue(object.startTime) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseContinuousVestingAccount();
     message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
@@ -253,6 +274,11 @@ var DelayedVestingAccount = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      baseVestingAccount: (0, _helpers.isSet)(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseDelayedVestingAccount();
@@ -306,6 +332,14 @@ var Period = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      length: (0, _helpers.isSet)(object.length) ? _helpers.Long.fromValue(object.length) : _helpers.Long.ZERO,
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$amount;
@@ -371,6 +405,15 @@ var PeriodicVestingAccount = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      baseVestingAccount: (0, _helpers.isSet)(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined,
+      startTime: (0, _helpers.isSet)(object.startTime) ? _helpers.Long.fromValue(object.startTime) : _helpers.Long.ZERO,
+      vestingPeriods: Array.isArray(object === null || object === void 0 ? void 0 : object.vestingPeriods) ? object.vestingPeriods.map(function (e) {
+        return Period.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$vestingPeriod;
     var message = createBasePeriodicVestingAccount();
@@ -412,6 +455,11 @@ var PermanentLockedAccount = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      baseVestingAccount: (0, _helpers.isSet)(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBasePermanentLockedAccount();

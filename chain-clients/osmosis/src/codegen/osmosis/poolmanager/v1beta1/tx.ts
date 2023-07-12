@@ -1,6 +1,7 @@
 import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteSDKType } from "./swap_route";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** ===================== MsgSwapExactAmountIn */
 export interface MsgSwapExactAmountIn {
   sender: string;
@@ -91,6 +92,14 @@ export const MsgSwapExactAmountIn = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSwapExactAmountIn {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountInRoute.fromJSON(e)) : [],
+      tokenIn: isSet(object.tokenIn) ? Coin.fromJSON(object.tokenIn) : undefined,
+      tokenOutMinAmount: isSet(object.tokenOutMinAmount) ? String(object.tokenOutMinAmount) : ""
+    };
+  },
   fromPartial(object: Partial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn {
     const message = createBaseMsgSwapExactAmountIn();
     message.sender = object.sender ?? "";
@@ -128,6 +137,11 @@ export const MsgSwapExactAmountInResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSwapExactAmountInResponse {
+    return {
+      tokenOutAmount: isSet(object.tokenOutAmount) ? String(object.tokenOutAmount) : ""
+    };
   },
   fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse {
     const message = createBaseMsgSwapExactAmountInResponse();
@@ -185,6 +199,14 @@ export const MsgSwapExactAmountOut = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSwapExactAmountOut {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountOutRoute.fromJSON(e)) : [],
+      tokenInMaxAmount: isSet(object.tokenInMaxAmount) ? String(object.tokenInMaxAmount) : "",
+      tokenOut: isSet(object.tokenOut) ? Coin.fromJSON(object.tokenOut) : undefined
+    };
+  },
   fromPartial(object: Partial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut {
     const message = createBaseMsgSwapExactAmountOut();
     message.sender = object.sender ?? "";
@@ -222,6 +244,11 @@ export const MsgSwapExactAmountOutResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgSwapExactAmountOutResponse {
+    return {
+      tokenInAmount: isSet(object.tokenInAmount) ? String(object.tokenInAmount) : ""
+    };
   },
   fromPartial(object: Partial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse {
     const message = createBaseMsgSwapExactAmountOutResponse();

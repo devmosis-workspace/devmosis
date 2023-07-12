@@ -26,10 +26,12 @@ export interface RecoveredSinceDowntimeOfLengthResponseSDKType {
 export declare const RecoveredSinceDowntimeOfLengthRequest: {
     encode(message: RecoveredSinceDowntimeOfLengthRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RecoveredSinceDowntimeOfLengthRequest;
+    fromJSON(object: any): RecoveredSinceDowntimeOfLengthRequest;
     fromPartial(object: Partial<RecoveredSinceDowntimeOfLengthRequest>): RecoveredSinceDowntimeOfLengthRequest;
 };
 export declare const RecoveredSinceDowntimeOfLengthResponse: {
     encode(message: RecoveredSinceDowntimeOfLengthResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RecoveredSinceDowntimeOfLengthResponse;
+    fromJSON(object: any): RecoveredSinceDowntimeOfLengthResponse;
     fromPartial(object: Partial<RecoveredSinceDowntimeOfLengthResponse>): RecoveredSinceDowntimeOfLengthResponse;
 };

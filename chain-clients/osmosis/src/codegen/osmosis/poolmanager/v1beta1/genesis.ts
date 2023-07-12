@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { ModuleRoute, ModuleRouteSDKType } from "./module_route";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** Params holds parameters for the poolmanager module */
 export interface Params {
@@ -54,6 +54,11 @@ export const Params = {
     }
     return message;
   },
+  fromJSON(object: any): Params {
+    return {
+      poolCreationFee: Array.isArray(object?.poolCreationFee) ? object.poolCreationFee.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.poolCreationFee = object.poolCreationFee?.map(e => Coin.fromPartial(e)) || [];
@@ -102,6 +107,13 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      nextPoolId: isSet(object.nextPoolId) ? Long.fromValue(object.nextPoolId) : Long.UZERO,
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      poolRoutes: Array.isArray(object?.poolRoutes) ? object.poolRoutes.map((e: any) => ModuleRoute.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();

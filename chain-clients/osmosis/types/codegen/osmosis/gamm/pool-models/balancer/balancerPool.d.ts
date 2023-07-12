@@ -144,20 +144,24 @@ export interface PoolSDKType {
 export declare const SmoothWeightChangeParams: {
     encode(message: SmoothWeightChangeParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SmoothWeightChangeParams;
+    fromJSON(object: any): SmoothWeightChangeParams;
     fromPartial(object: Partial<SmoothWeightChangeParams>): SmoothWeightChangeParams;
 };
 export declare const PoolParams: {
     encode(message: PoolParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolParams;
+    fromJSON(object: any): PoolParams;
     fromPartial(object: Partial<PoolParams>): PoolParams;
 };
 export declare const PoolAsset: {
     encode(message: PoolAsset, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolAsset;
+    fromJSON(object: any): PoolAsset;
     fromPartial(object: Partial<PoolAsset>): PoolAsset;
 };
 export declare const Pool: {
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
+    fromJSON(object: any): Pool;
     fromPartial(object: Partial<Pool>): Pool;
 };

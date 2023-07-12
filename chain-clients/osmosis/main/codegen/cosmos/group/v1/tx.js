@@ -216,6 +216,15 @@ var MsgCreateGroup = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      members: Array.isArray(object === null || object === void 0 ? void 0 : object.members) ? object.members.map(function (e) {
+        return _types.MemberRequest.fromJSON(e);
+      }) : [],
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin, _object$members, _object$metadata;
     var message = createBaseMsgCreateGroup();
@@ -257,6 +266,11 @@ var MsgCreateGroupResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseMsgCreateGroupResponse();
@@ -318,6 +332,15 @@ var MsgUpdateGroupMembers = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO,
+      memberUpdates: Array.isArray(object === null || object === void 0 ? void 0 : object.memberUpdates) ? object.memberUpdates.map(function (e) {
+        return _types.MemberRequest.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin2, _object$memberUpdates;
     var message = createBaseMsgUpdateGroupMembers();
@@ -351,6 +374,9 @@ var MsgUpdateGroupMembersResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgUpdateGroupMembersResponse();
@@ -402,6 +428,13 @@ var MsgUpdateGroupAdmin = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO,
+      newAdmin: (0, _helpers.isSet)(object.newAdmin) ? String(object.newAdmin) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin3, _object$newAdmin;
     var message = createBaseMsgUpdateGroupAdmin();
@@ -433,6 +466,9 @@ var MsgUpdateGroupAdminResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgUpdateGroupAdminResponse();
@@ -484,6 +520,13 @@ var MsgUpdateGroupMetadata = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO,
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin4, _object$metadata2;
     var message = createBaseMsgUpdateGroupMetadata();
@@ -515,6 +558,9 @@ var MsgUpdateGroupMetadataResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgUpdateGroupMetadataResponse();
@@ -573,6 +619,14 @@ var MsgCreateGroupPolicy = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO,
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : "",
+      decisionPolicy: (0, _helpers.isSet)(object.decisionPolicy) ? _any.Any.fromJSON(object.decisionPolicy) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin5, _object$metadata3;
     var message = createBaseMsgCreateGroupPolicy();
@@ -613,6 +667,11 @@ var MsgCreateGroupPolicyResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address;
@@ -665,6 +724,13 @@ var MsgUpdateGroupPolicyAdmin = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      groupPolicyAddress: (0, _helpers.isSet)(object.groupPolicyAddress) ? String(object.groupPolicyAddress) : "",
+      newAdmin: (0, _helpers.isSet)(object.newAdmin) ? String(object.newAdmin) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$admin6, _object$groupPolicyAd, _object$newAdmin2;
@@ -750,6 +816,18 @@ var MsgCreateGroupWithPolicy = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      members: Array.isArray(object === null || object === void 0 ? void 0 : object.members) ? object.members.map(function (e) {
+        return _types.MemberRequest.fromJSON(e);
+      }) : [],
+      groupMetadata: (0, _helpers.isSet)(object.groupMetadata) ? String(object.groupMetadata) : "",
+      groupPolicyMetadata: (0, _helpers.isSet)(object.groupPolicyMetadata) ? String(object.groupPolicyMetadata) : "",
+      groupPolicyAsAdmin: (0, _helpers.isSet)(object.groupPolicyAsAdmin) ? Boolean(object.groupPolicyAsAdmin) : false,
+      decisionPolicy: (0, _helpers.isSet)(object.decisionPolicy) ? _any.Any.fromJSON(object.decisionPolicy) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin7, _object$members2, _object$groupMetadata, _object$groupPolicyMe, _object$groupPolicyAs;
     var message = createBaseMsgCreateGroupWithPolicy();
@@ -802,6 +880,12 @@ var MsgCreateGroupWithPolicyResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO,
+      groupPolicyAddress: (0, _helpers.isSet)(object.groupPolicyAddress) ? String(object.groupPolicyAddress) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$groupPolicyAd2;
     var message = createBaseMsgCreateGroupWithPolicyResponse();
@@ -832,6 +916,9 @@ var MsgUpdateGroupPolicyAdminResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgUpdateGroupPolicyAdminResponse();
@@ -883,6 +970,13 @@ var MsgUpdateGroupPolicyDecisionPolicy = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      groupPolicyAddress: (0, _helpers.isSet)(object.groupPolicyAddress) ? String(object.groupPolicyAddress) : "",
+      decisionPolicy: (0, _helpers.isSet)(object.decisionPolicy) ? _any.Any.fromJSON(object.decisionPolicy) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin8, _object$groupPolicyAd3;
     var message = createBaseMsgUpdateGroupPolicyDecisionPolicy();
@@ -914,6 +1008,9 @@ var MsgUpdateGroupPolicyDecisionPolicyResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgUpdateGroupPolicyDecisionPolicyResponse();
@@ -965,6 +1062,13 @@ var MsgUpdateGroupPolicyMetadata = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      groupPolicyAddress: (0, _helpers.isSet)(object.groupPolicyAddress) ? String(object.groupPolicyAddress) : "",
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin9, _object$groupPolicyAd4, _object$metadata4;
     var message = createBaseMsgUpdateGroupPolicyMetadata();
@@ -996,6 +1100,9 @@ var MsgUpdateGroupPolicyMetadataResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgUpdateGroupPolicyMetadataResponse();
@@ -1079,6 +1186,19 @@ var MsgSubmitProposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      groupPolicyAddress: (0, _helpers.isSet)(object.groupPolicyAddress) ? String(object.groupPolicyAddress) : "",
+      proposers: Array.isArray(object === null || object === void 0 ? void 0 : object.proposers) ? object.proposers.map(function (e) {
+        return String(e);
+      }) : [],
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : "",
+      messages: Array.isArray(object === null || object === void 0 ? void 0 : object.messages) ? object.messages.map(function (e) {
+        return _any.Any.fromJSON(e);
+      }) : [],
+      exec: (0, _helpers.isSet)(object.exec) ? execFromJSON(object.exec) : 0
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$groupPolicyAd5, _object$proposers, _object$metadata5, _object$messages, _object$exec;
     var message = createBaseMsgSubmitProposal();
@@ -1125,6 +1245,11 @@ var MsgSubmitProposalResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseMsgSubmitProposalResponse();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO;
@@ -1169,6 +1294,12 @@ var MsgWithdrawProposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address2;
     var message = createBaseMsgWithdrawProposal();
@@ -1199,6 +1330,9 @@ var MsgWithdrawProposalResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgWithdrawProposalResponse();
@@ -1264,6 +1398,15 @@ var MsgVote = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      voter: (0, _helpers.isSet)(object.voter) ? String(object.voter) : "",
+      option: (0, _helpers.isSet)(object.option) ? (0, _types.voteOptionFromJSON)(object.option) : 0,
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : "",
+      exec: (0, _helpers.isSet)(object.exec) ? execFromJSON(object.exec) : 0
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$voter, _object$option, _object$metadata6, _object$exec2;
     var message = createBaseMsgVote();
@@ -1297,6 +1440,9 @@ var MsgVoteResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgVoteResponse();
@@ -1341,6 +1487,12 @@ var MsgExec = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      executor: (0, _helpers.isSet)(object.executor) ? String(object.executor) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$executor;
     var message = createBaseMsgExec();
@@ -1379,6 +1531,11 @@ var MsgExecResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      result: (0, _helpers.isSet)(object.result) ? (0, _types.proposalExecutorResultFromJSON)(object.result) : 0
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$result;
@@ -1425,6 +1582,12 @@ var MsgLeaveGroup = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address3;
     var message = createBaseMsgLeaveGroup();
@@ -1455,6 +1618,9 @@ var MsgLeaveGroupResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgLeaveGroupResponse();

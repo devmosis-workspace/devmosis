@@ -15,6 +15,12 @@ export declare const MessageComposer: {
             value: MsgCreateBalancerPool;
         };
     };
+    fromJSON: {
+        createBalancerPool(value: any): {
+            typeUrl: string;
+            value: MsgCreateBalancerPool;
+        };
+    };
     fromPartial: {
         createBalancerPool(value: MsgCreateBalancerPool): {
             typeUrl: string;

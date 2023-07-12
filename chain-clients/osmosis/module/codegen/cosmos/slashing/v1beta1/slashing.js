@@ -1,6 +1,6 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration } from "../../../google/protobuf/duration";
-import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp, bytesFromBase64 } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * ValidatorSigningInfo defines a validator's signing info for monitoring their
@@ -80,6 +80,16 @@ export const ValidatorSigningInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      startHeight: isSet(object.startHeight) ? Long.fromValue(object.startHeight) : Long.ZERO,
+      indexOffset: isSet(object.indexOffset) ? Long.fromValue(object.indexOffset) : Long.ZERO,
+      jailedUntil: isSet(object.jailedUntil) ? fromJsonTimestamp(object.jailedUntil) : undefined,
+      tombstoned: isSet(object.tombstoned) ? Boolean(object.tombstoned) : false,
+      missedBlocksCounter: isSet(object.missedBlocksCounter) ? Long.fromValue(object.missedBlocksCounter) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     var _object$address, _object$jailedUntil, _object$tombstoned;
     const message = createBaseValidatorSigningInfo();
@@ -148,6 +158,15 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      signedBlocksWindow: isSet(object.signedBlocksWindow) ? Long.fromValue(object.signedBlocksWindow) : Long.ZERO,
+      minSignedPerWindow: isSet(object.minSignedPerWindow) ? bytesFromBase64(object.minSignedPerWindow) : new Uint8Array(),
+      downtimeJailDuration: isSet(object.downtimeJailDuration) ? Duration.fromJSON(object.downtimeJailDuration) : undefined,
+      slashFractionDoubleSign: isSet(object.slashFractionDoubleSign) ? bytesFromBase64(object.slashFractionDoubleSign) : new Uint8Array(),
+      slashFractionDowntime: isSet(object.slashFractionDowntime) ? bytesFromBase64(object.slashFractionDowntime) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$minSignedPerW, _object$slashFraction, _object$slashFraction2;

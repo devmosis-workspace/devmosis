@@ -222,60 +222,72 @@ export interface CommunityPoolSpendProposalWithDepositSDKType {
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
     fromPartial(object: Partial<Params>): Params;
 };
 export declare const ValidatorHistoricalRewards: {
     encode(message: ValidatorHistoricalRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorHistoricalRewards;
+    fromJSON(object: any): ValidatorHistoricalRewards;
     fromPartial(object: Partial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards;
 };
 export declare const ValidatorCurrentRewards: {
     encode(message: ValidatorCurrentRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorCurrentRewards;
+    fromJSON(object: any): ValidatorCurrentRewards;
     fromPartial(object: Partial<ValidatorCurrentRewards>): ValidatorCurrentRewards;
 };
 export declare const ValidatorAccumulatedCommission: {
     encode(message: ValidatorAccumulatedCommission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorAccumulatedCommission;
+    fromJSON(object: any): ValidatorAccumulatedCommission;
     fromPartial(object: Partial<ValidatorAccumulatedCommission>): ValidatorAccumulatedCommission;
 };
 export declare const ValidatorOutstandingRewards: {
     encode(message: ValidatorOutstandingRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorOutstandingRewards;
+    fromJSON(object: any): ValidatorOutstandingRewards;
     fromPartial(object: Partial<ValidatorOutstandingRewards>): ValidatorOutstandingRewards;
 };
 export declare const ValidatorSlashEvent: {
     encode(message: ValidatorSlashEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEvent;
+    fromJSON(object: any): ValidatorSlashEvent;
     fromPartial(object: Partial<ValidatorSlashEvent>): ValidatorSlashEvent;
 };
 export declare const ValidatorSlashEvents: {
     encode(message: ValidatorSlashEvents, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSlashEvents;
+    fromJSON(object: any): ValidatorSlashEvents;
     fromPartial(object: Partial<ValidatorSlashEvents>): ValidatorSlashEvents;
 };
 export declare const FeePool: {
     encode(message: FeePool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FeePool;
+    fromJSON(object: any): FeePool;
     fromPartial(object: Partial<FeePool>): FeePool;
 };
 export declare const CommunityPoolSpendProposal: {
     encode(message: CommunityPoolSpendProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommunityPoolSpendProposal;
+    fromJSON(object: any): CommunityPoolSpendProposal;
     fromPartial(object: Partial<CommunityPoolSpendProposal>): CommunityPoolSpendProposal;
 };
 export declare const DelegatorStartingInfo: {
     encode(message: DelegatorStartingInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegatorStartingInfo;
+    fromJSON(object: any): DelegatorStartingInfo;
     fromPartial(object: Partial<DelegatorStartingInfo>): DelegatorStartingInfo;
 };
 export declare const DelegationDelegatorReward: {
     encode(message: DelegationDelegatorReward, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegationDelegatorReward;
+    fromJSON(object: any): DelegationDelegatorReward;
     fromPartial(object: Partial<DelegationDelegatorReward>): DelegationDelegatorReward;
 };
 export declare const CommunityPoolSpendProposalWithDeposit: {
     encode(message: CommunityPoolSpendProposalWithDeposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommunityPoolSpendProposalWithDeposit;
+    fromJSON(object: any): CommunityPoolSpendProposalWithDeposit;
     fromPartial(object: Partial<CommunityPoolSpendProposalWithDeposit>): CommunityPoolSpendProposalWithDeposit;
 };

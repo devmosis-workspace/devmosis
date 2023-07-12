@@ -1,6 +1,7 @@
 import { Duration } from "../../../google/protobuf/duration";
 import { TwapRecord } from "./twap_record";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** Params holds parameters for the twap module */
 
 /** Params holds parameters for the twap module */
@@ -45,6 +46,12 @@ export const Params = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      pruneEpochIdentifier: isSet(object.pruneEpochIdentifier) ? String(object.pruneEpochIdentifier) : "",
+      recordHistoryKeepPeriod: isSet(object.recordHistoryKeepPeriod) ? Duration.fromJSON(object.recordHistoryKeepPeriod) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$pruneEpochIde;
     const message = createBaseParams();
@@ -88,6 +95,12 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      twaps: Array.isArray(object === null || object === void 0 ? void 0 : object.twaps) ? object.twaps.map(e => TwapRecord.fromJSON(e)) : [],
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object) {
     var _object$twaps;

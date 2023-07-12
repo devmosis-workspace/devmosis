@@ -36,6 +36,20 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    swapExactAmountIn(value: any) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn",
+        value: MsgSwapExactAmountIn.fromJSON(value)
+      };
+    },
+    swapExactAmountOut(value: any) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
+        value: MsgSwapExactAmountOut.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     swapExactAmountIn(value: MsgSwapExactAmountIn) {
       return {

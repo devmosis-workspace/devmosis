@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../helpers";
 /** Params holds parameters for the superfluid module */
 
 /** Params holds parameters for the superfluid module */
@@ -31,6 +32,11 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      minimumRiskFactor: isSet(object.minimumRiskFactor) ? String(object.minimumRiskFactor) : ""
+    };
   },
   fromPartial(object) {
     var _object$minimumRiskFa;

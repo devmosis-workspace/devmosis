@@ -253,90 +253,108 @@ export interface QueryAccountAddressByIDResponseSDKType {
 export declare const QueryAccountsRequest: {
     encode(message: QueryAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountsRequest;
+    fromJSON(object: any): QueryAccountsRequest;
     fromPartial(object: Partial<QueryAccountsRequest>): QueryAccountsRequest;
 };
 export declare const QueryAccountsResponse: {
     encode(message: QueryAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountsResponse;
+    fromJSON(object: any): QueryAccountsResponse;
     fromPartial(object: Partial<QueryAccountsResponse>): QueryAccountsResponse;
 };
 export declare const QueryAccountRequest: {
     encode(message: QueryAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountRequest;
+    fromJSON(object: any): QueryAccountRequest;
     fromPartial(object: Partial<QueryAccountRequest>): QueryAccountRequest;
 };
 export declare const QueryAccountResponse: {
     encode(message: QueryAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountResponse;
+    fromJSON(object: any): QueryAccountResponse;
     fromPartial(object: Partial<QueryAccountResponse>): QueryAccountResponse;
 };
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    fromJSON(_: any): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryModuleAccountsRequest: {
     encode(_: QueryModuleAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountsRequest;
+    fromJSON(_: any): QueryModuleAccountsRequest;
     fromPartial(_: Partial<QueryModuleAccountsRequest>): QueryModuleAccountsRequest;
 };
 export declare const QueryModuleAccountsResponse: {
     encode(message: QueryModuleAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountsResponse;
+    fromJSON(object: any): QueryModuleAccountsResponse;
     fromPartial(object: Partial<QueryModuleAccountsResponse>): QueryModuleAccountsResponse;
 };
 export declare const QueryModuleAccountByNameRequest: {
     encode(message: QueryModuleAccountByNameRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountByNameRequest;
+    fromJSON(object: any): QueryModuleAccountByNameRequest;
     fromPartial(object: Partial<QueryModuleAccountByNameRequest>): QueryModuleAccountByNameRequest;
 };
 export declare const QueryModuleAccountByNameResponse: {
     encode(message: QueryModuleAccountByNameResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryModuleAccountByNameResponse;
+    fromJSON(object: any): QueryModuleAccountByNameResponse;
     fromPartial(object: Partial<QueryModuleAccountByNameResponse>): QueryModuleAccountByNameResponse;
 };
 export declare const Bech32PrefixRequest: {
     encode(_: Bech32PrefixRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Bech32PrefixRequest;
+    fromJSON(_: any): Bech32PrefixRequest;
     fromPartial(_: Partial<Bech32PrefixRequest>): Bech32PrefixRequest;
 };
 export declare const Bech32PrefixResponse: {
     encode(message: Bech32PrefixResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Bech32PrefixResponse;
+    fromJSON(object: any): Bech32PrefixResponse;
     fromPartial(object: Partial<Bech32PrefixResponse>): Bech32PrefixResponse;
 };
 export declare const AddressBytesToStringRequest: {
     encode(message: AddressBytesToStringRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AddressBytesToStringRequest;
+    fromJSON(object: any): AddressBytesToStringRequest;
     fromPartial(object: Partial<AddressBytesToStringRequest>): AddressBytesToStringRequest;
 };
 export declare const AddressBytesToStringResponse: {
     encode(message: AddressBytesToStringResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AddressBytesToStringResponse;
+    fromJSON(object: any): AddressBytesToStringResponse;
     fromPartial(object: Partial<AddressBytesToStringResponse>): AddressBytesToStringResponse;
 };
 export declare const AddressStringToBytesRequest: {
     encode(message: AddressStringToBytesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AddressStringToBytesRequest;
+    fromJSON(object: any): AddressStringToBytesRequest;
     fromPartial(object: Partial<AddressStringToBytesRequest>): AddressStringToBytesRequest;
 };
 export declare const AddressStringToBytesResponse: {
     encode(message: AddressStringToBytesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AddressStringToBytesResponse;
+    fromJSON(object: any): AddressStringToBytesResponse;
     fromPartial(object: Partial<AddressStringToBytesResponse>): AddressStringToBytesResponse;
 };
 export declare const QueryAccountAddressByIDRequest: {
     encode(message: QueryAccountAddressByIDRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountAddressByIDRequest;
+    fromJSON(object: any): QueryAccountAddressByIDRequest;
     fromPartial(object: Partial<QueryAccountAddressByIDRequest>): QueryAccountAddressByIDRequest;
 };
 export declare const QueryAccountAddressByIDResponse: {
     encode(message: QueryAccountAddressByIDResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAccountAddressByIDResponse;
+    fromJSON(object: any): QueryAccountAddressByIDResponse;
     fromPartial(object: Partial<QueryAccountAddressByIDResponse>): QueryAccountAddressByIDResponse;
 };

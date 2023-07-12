@@ -1,4 +1,4 @@
-import { Long } from "../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface Proof {
   total: Long;
@@ -110,6 +110,14 @@ export const Proof = {
     }
     return message;
   },
+  fromJSON(object: any): Proof {
+    return {
+      total: isSet(object.total) ? Long.fromValue(object.total) : Long.ZERO,
+      index: isSet(object.index) ? Long.fromValue(object.index) : Long.ZERO,
+      leafHash: isSet(object.leafHash) ? bytesFromBase64(object.leafHash) : new Uint8Array(),
+      aunts: Array.isArray(object?.aunts) ? object.aunts.map((e: any) => bytesFromBase64(e)) : []
+    };
+  },
   fromPartial(object: Partial<Proof>): Proof {
     const message = createBaseProof();
     message.total = object.total !== undefined && object.total !== null ? Long.fromValue(object.total) : Long.ZERO;
@@ -154,6 +162,12 @@ export const ValueOp = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ValueOp {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      proof: isSet(object.proof) ? Proof.fromJSON(object.proof) : undefined
+    };
   },
   fromPartial(object: Partial<ValueOp>): ValueOp {
     const message = createBaseValueOp();
@@ -204,6 +218,13 @@ export const DominoOp = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DominoOp {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      input: isSet(object.input) ? String(object.input) : "",
+      output: isSet(object.output) ? String(object.output) : ""
+    };
   },
   fromPartial(object: Partial<DominoOp>): DominoOp {
     const message = createBaseDominoOp();
@@ -256,6 +277,13 @@ export const ProofOp = {
     }
     return message;
   },
+  fromJSON(object: any): ProofOp {
+    return {
+      type: isSet(object.type) ? String(object.type) : "",
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<ProofOp>): ProofOp {
     const message = createBaseProofOp();
     message.type = object.type ?? "";
@@ -292,6 +320,11 @@ export const ProofOps = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ProofOps {
+    return {
+      ops: Array.isArray(object?.ops) ? object.ops.map((e: any) => ProofOp.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<ProofOps>): ProofOps {
     const message = createBaseProofOps();

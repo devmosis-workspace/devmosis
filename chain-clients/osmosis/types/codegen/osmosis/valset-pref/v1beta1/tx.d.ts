@@ -125,60 +125,72 @@ export interface MsgDelegateBondedTokensResponseSDKType {
 export declare const MsgSetValidatorSetPreference: {
     encode(message: MsgSetValidatorSetPreference, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetValidatorSetPreference;
+    fromJSON(object: any): MsgSetValidatorSetPreference;
     fromPartial(object: Partial<MsgSetValidatorSetPreference>): MsgSetValidatorSetPreference;
 };
 export declare const MsgSetValidatorSetPreferenceResponse: {
     encode(_: MsgSetValidatorSetPreferenceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetValidatorSetPreferenceResponse;
+    fromJSON(_: any): MsgSetValidatorSetPreferenceResponse;
     fromPartial(_: Partial<MsgSetValidatorSetPreferenceResponse>): MsgSetValidatorSetPreferenceResponse;
 };
 export declare const MsgDelegateToValidatorSet: {
     encode(message: MsgDelegateToValidatorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateToValidatorSet;
+    fromJSON(object: any): MsgDelegateToValidatorSet;
     fromPartial(object: Partial<MsgDelegateToValidatorSet>): MsgDelegateToValidatorSet;
 };
 export declare const MsgDelegateToValidatorSetResponse: {
     encode(_: MsgDelegateToValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateToValidatorSetResponse;
+    fromJSON(_: any): MsgDelegateToValidatorSetResponse;
     fromPartial(_: Partial<MsgDelegateToValidatorSetResponse>): MsgDelegateToValidatorSetResponse;
 };
 export declare const MsgUndelegateFromValidatorSet: {
     encode(message: MsgUndelegateFromValidatorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateFromValidatorSet;
+    fromJSON(object: any): MsgUndelegateFromValidatorSet;
     fromPartial(object: Partial<MsgUndelegateFromValidatorSet>): MsgUndelegateFromValidatorSet;
 };
 export declare const MsgUndelegateFromValidatorSetResponse: {
     encode(_: MsgUndelegateFromValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUndelegateFromValidatorSetResponse;
+    fromJSON(_: any): MsgUndelegateFromValidatorSetResponse;
     fromPartial(_: Partial<MsgUndelegateFromValidatorSetResponse>): MsgUndelegateFromValidatorSetResponse;
 };
 export declare const MsgRedelegateValidatorSet: {
     encode(message: MsgRedelegateValidatorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRedelegateValidatorSet;
+    fromJSON(object: any): MsgRedelegateValidatorSet;
     fromPartial(object: Partial<MsgRedelegateValidatorSet>): MsgRedelegateValidatorSet;
 };
 export declare const MsgRedelegateValidatorSetResponse: {
     encode(_: MsgRedelegateValidatorSetResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgRedelegateValidatorSetResponse;
+    fromJSON(_: any): MsgRedelegateValidatorSetResponse;
     fromPartial(_: Partial<MsgRedelegateValidatorSetResponse>): MsgRedelegateValidatorSetResponse;
 };
 export declare const MsgWithdrawDelegationRewards: {
     encode(message: MsgWithdrawDelegationRewards, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegationRewards;
+    fromJSON(object: any): MsgWithdrawDelegationRewards;
     fromPartial(object: Partial<MsgWithdrawDelegationRewards>): MsgWithdrawDelegationRewards;
 };
 export declare const MsgWithdrawDelegationRewardsResponse: {
     encode(_: MsgWithdrawDelegationRewardsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawDelegationRewardsResponse;
+    fromJSON(_: any): MsgWithdrawDelegationRewardsResponse;
     fromPartial(_: Partial<MsgWithdrawDelegationRewardsResponse>): MsgWithdrawDelegationRewardsResponse;
 };
 export declare const MsgDelegateBondedTokens: {
     encode(message: MsgDelegateBondedTokens, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateBondedTokens;
+    fromJSON(object: any): MsgDelegateBondedTokens;
     fromPartial(object: Partial<MsgDelegateBondedTokens>): MsgDelegateBondedTokens;
 };
 export declare const MsgDelegateBondedTokensResponse: {
     encode(_: MsgDelegateBondedTokensResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDelegateBondedTokensResponse;
+    fromJSON(_: any): MsgDelegateBondedTokensResponse;
     fromPartial(_: Partial<MsgDelegateBondedTokensResponse>): MsgDelegateBondedTokensResponse;
 };

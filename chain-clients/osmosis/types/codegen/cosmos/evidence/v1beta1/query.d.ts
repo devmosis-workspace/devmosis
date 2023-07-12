@@ -55,20 +55,24 @@ export interface QueryAllEvidenceResponseSDKType {
 export declare const QueryEvidenceRequest: {
     encode(message: QueryEvidenceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEvidenceRequest;
+    fromJSON(object: any): QueryEvidenceRequest;
     fromPartial(object: Partial<QueryEvidenceRequest>): QueryEvidenceRequest;
 };
 export declare const QueryEvidenceResponse: {
     encode(message: QueryEvidenceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEvidenceResponse;
+    fromJSON(object: any): QueryEvidenceResponse;
     fromPartial(object: Partial<QueryEvidenceResponse>): QueryEvidenceResponse;
 };
 export declare const QueryAllEvidenceRequest: {
     encode(message: QueryAllEvidenceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllEvidenceRequest;
+    fromJSON(object: any): QueryAllEvidenceRequest;
     fromPartial(object: Partial<QueryAllEvidenceRequest>): QueryAllEvidenceRequest;
 };
 export declare const QueryAllEvidenceResponse: {
     encode(message: QueryAllEvidenceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllEvidenceResponse;
+    fromJSON(object: any): QueryAllEvidenceResponse;
     fromPartial(object: Partial<QueryAllEvidenceResponse>): QueryAllEvidenceResponse;
 };

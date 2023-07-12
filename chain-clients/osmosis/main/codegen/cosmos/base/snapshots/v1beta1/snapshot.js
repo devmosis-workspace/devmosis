@@ -162,6 +162,15 @@ var Snapshot = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.UZERO,
+      format: (0, _helpers.isSet)(object.format) ? Number(object.format) : 0,
+      chunks: (0, _helpers.isSet)(object.chunks) ? Number(object.chunks) : 0,
+      hash: (0, _helpers.isSet)(object.hash) ? (0, _helpers.bytesFromBase64)(object.hash) : new Uint8Array(),
+      metadata: (0, _helpers.isSet)(object.metadata) ? Metadata.fromJSON(object.metadata) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$format, _object$chunks, _object$hash;
     var message = createBaseSnapshot();
@@ -212,6 +221,13 @@ var Metadata = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      chunkHashes: Array.isArray(object === null || object === void 0 ? void 0 : object.chunkHashes) ? object.chunkHashes.map(function (e) {
+        return (0, _helpers.bytesFromBase64)(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$chunkHashes;
@@ -288,6 +304,16 @@ var SnapshotItem = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      store: (0, _helpers.isSet)(object.store) ? SnapshotStoreItem.fromJSON(object.store) : undefined,
+      iavl: (0, _helpers.isSet)(object.iavl) ? SnapshotIAVLItem.fromJSON(object.iavl) : undefined,
+      extension: (0, _helpers.isSet)(object.extension) ? SnapshotExtensionMeta.fromJSON(object.extension) : undefined,
+      extensionPayload: (0, _helpers.isSet)(object.extensionPayload) ? SnapshotExtensionPayload.fromJSON(object.extensionPayload) : undefined,
+      kv: (0, _helpers.isSet)(object.kv) ? SnapshotKVItem.fromJSON(object.kv) : undefined,
+      schema: (0, _helpers.isSet)(object.schema) ? SnapshotSchema.fromJSON(object.schema) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseSnapshotItem();
     message.store = object.store !== undefined && object.store !== null ? SnapshotStoreItem.fromPartial(object.store) : undefined;
@@ -329,6 +355,11 @@ var SnapshotStoreItem = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      name: (0, _helpers.isSet)(object.name) ? String(object.name) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$name;
@@ -389,6 +420,14 @@ var SnapshotIAVLItem = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
+      value: (0, _helpers.isSet)(object.value) ? (0, _helpers.bytesFromBase64)(object.value) : new Uint8Array(),
+      version: (0, _helpers.isSet)(object.version) ? _helpers.Long.fromValue(object.version) : _helpers.Long.ZERO,
+      height: (0, _helpers.isSet)(object.height) ? Number(object.height) : 0
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$key, _object$value, _object$height;
     var message = createBaseSnapshotIAVLItem();
@@ -437,6 +476,12 @@ var SnapshotExtensionMeta = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      name: (0, _helpers.isSet)(object.name) ? String(object.name) : "",
+      format: (0, _helpers.isSet)(object.format) ? Number(object.format) : 0
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$name2, _object$format2;
     var message = createBaseSnapshotExtensionMeta();
@@ -475,6 +520,11 @@ var SnapshotExtensionPayload = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      payload: (0, _helpers.isSet)(object.payload) ? (0, _helpers.bytesFromBase64)(object.payload) : new Uint8Array()
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$payload;
@@ -520,6 +570,12 @@ var SnapshotKVItem = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
+      value: (0, _helpers.isSet)(object.value) ? (0, _helpers.bytesFromBase64)(object.value) : new Uint8Array()
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$key2, _object$value2;
@@ -568,6 +624,13 @@ var SnapshotSchema = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      keys: Array.isArray(object === null || object === void 0 ? void 0 : object.keys) ? object.keys.map(function (e) {
+        return (0, _helpers.bytesFromBase64)(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$keys;

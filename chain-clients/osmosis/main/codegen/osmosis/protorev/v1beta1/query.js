@@ -325,6 +325,9 @@ var QueryParamsRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(_) {
+    return {};
+  },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryParamsRequest();
     return message;
@@ -361,6 +364,11 @@ var QueryParamsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _params.Params.fromJSON(object.params) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? _params.Params.fromPartial(object.params) : undefined;
@@ -389,6 +397,9 @@ var QueryGetProtoRevNumberOfTradesRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevNumberOfTradesRequest();
@@ -425,6 +436,11 @@ var QueryGetProtoRevNumberOfTradesResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      numberOfTrades: (0, _helpers.isSet)(object.numberOfTrades) ? String(object.numberOfTrades) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$numberOfTrade;
@@ -464,6 +480,11 @@ var QueryGetProtoRevProfitsByDenomRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$denom;
     var message = createBaseQueryGetProtoRevProfitsByDenomRequest();
@@ -502,6 +523,11 @@ var QueryGetProtoRevProfitsByDenomResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      profit: (0, _helpers.isSet)(object.profit) ? _coin.Coin.fromJSON(object.profit) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryGetProtoRevProfitsByDenomResponse();
     message.profit = object.profit !== undefined && object.profit !== null ? _coin.Coin.fromPartial(object.profit) : undefined;
@@ -530,6 +556,9 @@ var QueryGetProtoRevAllProfitsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevAllProfitsRequest();
@@ -575,6 +604,13 @@ var QueryGetProtoRevAllProfitsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      profits: Array.isArray(object === null || object === void 0 ? void 0 : object.profits) ? object.profits.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$profits;
@@ -634,6 +670,13 @@ var QueryGetProtoRevStatisticsByRouteRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      route: Array.isArray(object === null || object === void 0 ? void 0 : object.route) ? object.route.map(function (e) {
+        return _helpers.Long.fromValue(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$route;
     var message = createBaseQueryGetProtoRevStatisticsByRouteRequest();
@@ -674,6 +717,11 @@ var QueryGetProtoRevStatisticsByRouteResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      statistics: (0, _helpers.isSet)(object.statistics) ? _protorev.RouteStatistics.fromJSON(object.statistics) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryGetProtoRevStatisticsByRouteResponse();
     message.statistics = object.statistics !== undefined && object.statistics !== null ? _protorev.RouteStatistics.fromPartial(object.statistics) : undefined;
@@ -702,6 +750,9 @@ var QueryGetProtoRevAllRouteStatisticsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevAllRouteStatisticsRequest();
@@ -748,6 +799,13 @@ var QueryGetProtoRevAllRouteStatisticsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      statistics: Array.isArray(object === null || object === void 0 ? void 0 : object.statistics) ? object.statistics.map(function (e) {
+        return _protorev.RouteStatistics.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$statistics;
     var message = createBaseQueryGetProtoRevAllRouteStatisticsResponse();
@@ -779,6 +837,9 @@ var QueryGetProtoRevTokenPairArbRoutesRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevTokenPairArbRoutesRequest();
@@ -825,6 +886,13 @@ var QueryGetProtoRevTokenPairArbRoutesResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      routes: Array.isArray(object === null || object === void 0 ? void 0 : object.routes) ? object.routes.map(function (e) {
+        return _protorev.TokenPairArbRoutes.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$routes;
     var message = createBaseQueryGetProtoRevTokenPairArbRoutesResponse();
@@ -856,6 +924,9 @@ var QueryGetProtoRevAdminAccountRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevAdminAccountRequest();
@@ -893,6 +964,11 @@ var QueryGetProtoRevAdminAccountResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      adminAccount: (0, _helpers.isSet)(object.adminAccount) ? String(object.adminAccount) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$adminAccount;
     var message = createBaseQueryGetProtoRevAdminAccountResponse();
@@ -922,6 +998,9 @@ var QueryGetProtoRevDeveloperAccountRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevDeveloperAccountRequest();
@@ -959,6 +1038,11 @@ var QueryGetProtoRevDeveloperAccountResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      developerAccount: (0, _helpers.isSet)(object.developerAccount) ? String(object.developerAccount) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$developerAcco;
     var message = createBaseQueryGetProtoRevDeveloperAccountResponse();
@@ -988,6 +1072,9 @@ var QueryGetProtoRevPoolWeightsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevPoolWeightsRequest();
@@ -1025,6 +1112,11 @@ var QueryGetProtoRevPoolWeightsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolWeights: (0, _helpers.isSet)(object.poolWeights) ? _protorev.PoolWeights.fromJSON(object.poolWeights) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryGetProtoRevPoolWeightsResponse();
     message.poolWeights = object.poolWeights !== undefined && object.poolWeights !== null ? _protorev.PoolWeights.fromPartial(object.poolWeights) : undefined;
@@ -1053,6 +1145,9 @@ var QueryGetProtoRevMaxPoolPointsPerBlockRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevMaxPoolPointsPerBlockRequest();
@@ -1090,6 +1185,11 @@ var QueryGetProtoRevMaxPoolPointsPerBlockResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      maxPoolPointsPerBlock: (0, _helpers.isSet)(object.maxPoolPointsPerBlock) ? _helpers.Long.fromValue(object.maxPoolPointsPerBlock) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryGetProtoRevMaxPoolPointsPerBlockResponse();
     message.maxPoolPointsPerBlock = object.maxPoolPointsPerBlock !== undefined && object.maxPoolPointsPerBlock !== null ? _helpers.Long.fromValue(object.maxPoolPointsPerBlock) : _helpers.Long.UZERO;
@@ -1118,6 +1218,9 @@ var QueryGetProtoRevMaxPoolPointsPerTxRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevMaxPoolPointsPerTxRequest();
@@ -1155,6 +1258,11 @@ var QueryGetProtoRevMaxPoolPointsPerTxResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      maxPoolPointsPerTx: (0, _helpers.isSet)(object.maxPoolPointsPerTx) ? _helpers.Long.fromValue(object.maxPoolPointsPerTx) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryGetProtoRevMaxPoolPointsPerTxResponse();
     message.maxPoolPointsPerTx = object.maxPoolPointsPerTx !== undefined && object.maxPoolPointsPerTx !== null ? _helpers.Long.fromValue(object.maxPoolPointsPerTx) : _helpers.Long.UZERO;
@@ -1183,6 +1291,9 @@ var QueryGetProtoRevBaseDenomsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevBaseDenomsRequest();
@@ -1229,6 +1340,13 @@ var QueryGetProtoRevBaseDenomsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      baseDenoms: Array.isArray(object === null || object === void 0 ? void 0 : object.baseDenoms) ? object.baseDenoms.map(function (e) {
+        return _protorev.BaseDenom.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$baseDenoms;
     var message = createBaseQueryGetProtoRevBaseDenomsResponse();
@@ -1260,6 +1378,9 @@ var QueryGetProtoRevEnabledRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryGetProtoRevEnabledRequest();
@@ -1296,6 +1417,11 @@ var QueryGetProtoRevEnabledResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      enabled: (0, _helpers.isSet)(object.enabled) ? Boolean(object.enabled) : false
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$enabled;
@@ -1342,6 +1468,12 @@ var QueryGetProtoRevPoolRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      baseDenom: (0, _helpers.isSet)(object.baseDenom) ? String(object.baseDenom) : "",
+      otherDenom: (0, _helpers.isSet)(object.otherDenom) ? String(object.otherDenom) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$baseDenom, _object$otherDenom;
     var message = createBaseQueryGetProtoRevPoolRequest();
@@ -1380,6 +1512,11 @@ var QueryGetProtoRevPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryGetProtoRevPoolResponse();

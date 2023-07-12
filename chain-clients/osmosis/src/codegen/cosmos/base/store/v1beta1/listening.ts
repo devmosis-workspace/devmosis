@@ -1,5 +1,6 @@
 import { RequestDeliverTx, RequestDeliverTxSDKType, ResponseDeliverTx, ResponseDeliverTxSDKType, RequestBeginBlock, RequestBeginBlockSDKType, ResponseBeginBlock, ResponseBeginBlockSDKType, RequestEndBlock, RequestEndBlockSDKType, ResponseEndBlock, ResponseEndBlockSDKType, ResponseCommit, ResponseCommitSDKType } from "../../../../tendermint/abci/types";
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../../helpers";
 /**
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
@@ -112,6 +113,14 @@ export const StoreKVPair = {
     }
     return message;
   },
+  fromJSON(object: any): StoreKVPair {
+    return {
+      storeKey: isSet(object.storeKey) ? String(object.storeKey) : "",
+      delete: isSet(object.delete) ? Boolean(object.delete) : false,
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<StoreKVPair>): StoreKVPair {
     const message = createBaseStoreKVPair();
     message.storeKey = object.storeKey ?? "";
@@ -185,6 +194,16 @@ export const BlockMetadata = {
     }
     return message;
   },
+  fromJSON(object: any): BlockMetadata {
+    return {
+      requestBeginBlock: isSet(object.requestBeginBlock) ? RequestBeginBlock.fromJSON(object.requestBeginBlock) : undefined,
+      responseBeginBlock: isSet(object.responseBeginBlock) ? ResponseBeginBlock.fromJSON(object.responseBeginBlock) : undefined,
+      deliverTxs: Array.isArray(object?.deliverTxs) ? object.deliverTxs.map((e: any) => BlockMetadata_DeliverTx.fromJSON(e)) : [],
+      requestEndBlock: isSet(object.requestEndBlock) ? RequestEndBlock.fromJSON(object.requestEndBlock) : undefined,
+      responseEndBlock: isSet(object.responseEndBlock) ? ResponseEndBlock.fromJSON(object.responseEndBlock) : undefined,
+      responseCommit: isSet(object.responseCommit) ? ResponseCommit.fromJSON(object.responseCommit) : undefined
+    };
+  },
   fromPartial(object: Partial<BlockMetadata>): BlockMetadata {
     const message = createBaseBlockMetadata();
     message.requestBeginBlock = object.requestBeginBlock !== undefined && object.requestBeginBlock !== null ? RequestBeginBlock.fromPartial(object.requestBeginBlock) : undefined;
@@ -231,6 +250,12 @@ export const BlockMetadata_DeliverTx = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): BlockMetadata_DeliverTx {
+    return {
+      request: isSet(object.request) ? RequestDeliverTx.fromJSON(object.request) : undefined,
+      response: isSet(object.response) ? ResponseDeliverTx.fromJSON(object.response) : undefined
+    };
   },
   fromPartial(object: Partial<BlockMetadata_DeliverTx>): BlockMetadata_DeliverTx {
     const message = createBaseBlockMetadata_DeliverTx();

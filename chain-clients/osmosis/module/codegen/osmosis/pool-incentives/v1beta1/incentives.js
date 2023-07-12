@@ -1,5 +1,5 @@
 import { Duration } from "../../../google/protobuf/duration";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 function createBaseParams() {
   return {
@@ -29,6 +29,11 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      mintedDenom: isSet(object.mintedDenom) ? String(object.mintedDenom) : ""
+    };
   },
   fromPartial(object) {
     var _object$mintedDenom;
@@ -65,6 +70,11 @@ export const LockableDurationsInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      lockableDurations: Array.isArray(object === null || object === void 0 ? void 0 : object.lockableDurations) ? object.lockableDurations.map(e => Duration.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$lockableDurat;
@@ -109,6 +119,12 @@ export const DistrInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      totalWeight: isSet(object.totalWeight) ? String(object.totalWeight) : "",
+      records: Array.isArray(object === null || object === void 0 ? void 0 : object.records) ? object.records.map(e => DistrRecord.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$totalWeight, _object$records;
     const message = createBaseDistrInfo();
@@ -152,6 +168,12 @@ export const DistrRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      gaugeId: isSet(object.gaugeId) ? Long.fromValue(object.gaugeId) : Long.UZERO,
+      weight: isSet(object.weight) ? String(object.weight) : ""
+    };
   },
   fromPartial(object) {
     var _object$weight;
@@ -204,6 +226,13 @@ export const PoolToGauge = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      gaugeId: isSet(object.gaugeId) ? Long.fromValue(object.gaugeId) : Long.UZERO,
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBasePoolToGauge();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -240,6 +269,11 @@ export const PoolToGauges = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      poolToGauge: Array.isArray(object === null || object === void 0 ? void 0 : object.poolToGauge) ? object.poolToGauge.map(e => PoolToGauge.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$poolToGauge;

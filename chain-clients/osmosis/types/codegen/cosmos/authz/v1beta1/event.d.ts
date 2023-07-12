@@ -32,10 +32,12 @@ export interface EventRevokeSDKType {
 export declare const EventGrant: {
     encode(message: EventGrant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventGrant;
+    fromJSON(object: any): EventGrant;
     fromPartial(object: Partial<EventGrant>): EventGrant;
 };
 export declare const EventRevoke: {
     encode(message: EventRevoke, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventRevoke;
+    fromJSON(object: any): EventRevoke;
     fromPartial(object: Partial<EventRevoke>): EventRevoke;
 };

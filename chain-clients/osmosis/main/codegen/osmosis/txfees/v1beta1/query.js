@@ -55,6 +55,9 @@ var QueryFeeTokensRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(_) {
+    return {};
+  },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryFeeTokensRequest();
     return message;
@@ -100,6 +103,13 @@ var QueryFeeTokensResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      feeTokens: Array.isArray(object === null || object === void 0 ? void 0 : object.feeTokens) ? object.feeTokens.map(function (e) {
+        return _feetoken.FeeToken.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$feeTokens;
     var message = createBaseQueryFeeTokensResponse();
@@ -139,6 +149,11 @@ var QueryDenomSpotPriceRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$denom;
@@ -185,6 +200,12 @@ var QueryDenomSpotPriceResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolID: (0, _helpers.isSet)(object.poolID) ? _helpers.Long.fromValue(object.poolID) : _helpers.Long.UZERO,
+      spotPrice: (0, _helpers.isSet)(object.spotPrice) ? String(object.spotPrice) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$spotPrice;
     var message = createBaseQueryDenomSpotPriceResponse();
@@ -224,6 +245,11 @@ var QueryDenomPoolIdRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$denom2;
     var message = createBaseQueryDenomPoolIdRequest();
@@ -262,6 +288,11 @@ var QueryDenomPoolIdResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolID: (0, _helpers.isSet)(object.poolID) ? _helpers.Long.fromValue(object.poolID) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryDenomPoolIdResponse();
     message.poolID = object.poolID !== undefined && object.poolID !== null ? _helpers.Long.fromValue(object.poolID) : _helpers.Long.UZERO;
@@ -290,6 +321,9 @@ var QueryBaseDenomRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryBaseDenomRequest();
@@ -326,6 +360,11 @@ var QueryBaseDenomResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      baseDenom: (0, _helpers.isSet)(object.baseDenom) ? String(object.baseDenom) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$baseDenom;

@@ -202,5 +202,6 @@ export interface AnySDKType {
 export declare const Any: {
     encode(message: Any, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Any;
+    fromJSON(object: any): Any;
     fromPartial(object: Partial<Any>): Any;
 };

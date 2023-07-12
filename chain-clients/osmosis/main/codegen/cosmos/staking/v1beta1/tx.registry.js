@@ -97,6 +97,44 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createValidator: function createValidator(value) {
+      return {
+        typeUrl: "/cosmos.staking.v1beta1.MsgCreateValidator",
+        value: _tx.MsgCreateValidator.fromJSON(value)
+      };
+    },
+    editValidator: function editValidator(value) {
+      return {
+        typeUrl: "/cosmos.staking.v1beta1.MsgEditValidator",
+        value: _tx.MsgEditValidator.fromJSON(value)
+      };
+    },
+    delegate: function delegate(value) {
+      return {
+        typeUrl: "/cosmos.staking.v1beta1.MsgDelegate",
+        value: _tx.MsgDelegate.fromJSON(value)
+      };
+    },
+    beginRedelegate: function beginRedelegate(value) {
+      return {
+        typeUrl: "/cosmos.staking.v1beta1.MsgBeginRedelegate",
+        value: _tx.MsgBeginRedelegate.fromJSON(value)
+      };
+    },
+    undelegate: function undelegate(value) {
+      return {
+        typeUrl: "/cosmos.staking.v1beta1.MsgUndelegate",
+        value: _tx.MsgUndelegate.fromJSON(value)
+      };
+    },
+    cancelUnbondingDelegation: function cancelUnbondingDelegation(value) {
+      return {
+        typeUrl: "/cosmos.staking.v1beta1.MsgCancelUnbondingDelegation",
+        value: _tx.MsgCancelUnbondingDelegation.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createValidator: function createValidator(value) {
       return {

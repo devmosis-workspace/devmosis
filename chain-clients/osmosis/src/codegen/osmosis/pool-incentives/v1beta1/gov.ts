@@ -1,5 +1,6 @@
 import { DistrRecord, DistrRecordSDKType } from "./incentives";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * ReplacePoolIncentivesProposal is a gov Content type for updating the pool
  * incentives. If a ReplacePoolIncentivesProposal passes, the proposal’s records
@@ -99,6 +100,13 @@ export const ReplacePoolIncentivesProposal = {
     }
     return message;
   },
+  fromJSON(object: any): ReplacePoolIncentivesProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => DistrRecord.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<ReplacePoolIncentivesProposal>): ReplacePoolIncentivesProposal {
     const message = createBaseReplacePoolIncentivesProposal();
     message.title = object.title ?? "";
@@ -149,6 +157,13 @@ export const UpdatePoolIncentivesProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): UpdatePoolIncentivesProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      records: Array.isArray(object?.records) ? object.records.map((e: any) => DistrRecord.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<UpdatePoolIncentivesProposal>): UpdatePoolIncentivesProposal {
     const message = createBaseUpdatePoolIncentivesProposal();

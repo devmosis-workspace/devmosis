@@ -37,6 +37,11 @@ export const Params = {
     }
     return message;
   },
+  fromJSON(object: any): Params {
+    return {
+      denomCreationFee: Array.isArray(object?.denomCreationFee) ? object.denomCreationFee.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.denomCreationFee = object.denomCreationFee?.map(e => Coin.fromPartial(e)) || [];

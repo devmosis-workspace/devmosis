@@ -26,10 +26,12 @@ export interface MsgSendResponseSDKType {
 export declare const MsgSend: {
     encode(message: MsgSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSend;
+    fromJSON(object: any): MsgSend;
     fromPartial(object: Partial<MsgSend>): MsgSend;
 };
 export declare const MsgSendResponse: {
     encode(_: MsgSendResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSendResponse;
+    fromJSON(_: any): MsgSendResponse;
     fromPartial(_: Partial<MsgSendResponse>): MsgSendResponse;
 };

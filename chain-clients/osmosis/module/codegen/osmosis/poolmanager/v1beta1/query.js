@@ -1,6 +1,6 @@
 import { SwapAmountInRoute, SwapAmountOutRoute } from "./swap_route";
 import { Params } from "./genesis";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** =============================== Params */
 
@@ -39,6 +39,9 @@ export const ParamsRequest = {
     }
     return message;
   },
+  fromJSON(_) {
+    return {};
+  },
   fromPartial(_) {
     const message = createBaseParamsRequest();
     return message;
@@ -72,6 +75,11 @@ export const ParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseParamsResponse();
@@ -129,6 +137,14 @@ export const EstimateSwapExactAmountInRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      routes: Array.isArray(object === null || object === void 0 ? void 0 : object.routes) ? object.routes.map(e => SwapAmountInRoute.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$sender, _object$tokenIn, _object$routes;
     const message = createBaseEstimateSwapExactAmountInRequest();
@@ -167,6 +183,11 @@ export const EstimateSwapExactAmountInResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      tokenOutAmount: isSet(object.tokenOutAmount) ? String(object.tokenOutAmount) : ""
+    };
   },
   fromPartial(object) {
     var _object$tokenOutAmoun;
@@ -225,6 +246,14 @@ export const EstimateSwapExactAmountOutRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      routes: Array.isArray(object === null || object === void 0 ? void 0 : object.routes) ? object.routes.map(e => SwapAmountOutRoute.fromJSON(e)) : [],
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : ""
+    };
+  },
   fromPartial(object) {
     var _object$sender2, _object$routes2, _object$tokenOut;
     const message = createBaseEstimateSwapExactAmountOutRequest();
@@ -264,6 +293,11 @@ export const EstimateSwapExactAmountOutResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      tokenInAmount: isSet(object.tokenInAmount) ? String(object.tokenInAmount) : ""
+    };
+  },
   fromPartial(object) {
     var _object$tokenInAmount;
     const message = createBaseEstimateSwapExactAmountOutResponse();
@@ -291,6 +325,9 @@ export const NumPoolsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseNumPoolsRequest();
@@ -325,6 +362,11 @@ export const NumPoolsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      numPools: isSet(object.numPools) ? Long.fromValue(object.numPools) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseNumPoolsResponse();

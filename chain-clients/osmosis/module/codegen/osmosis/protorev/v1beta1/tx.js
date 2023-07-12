@@ -1,5 +1,5 @@
 import { TokenPairArbRoutes, PoolWeights, BaseDenom } from "./protorev";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** MsgSetHotRoutes defines the Msg/SetHotRoutes request type. */
 
@@ -109,6 +109,12 @@ export const MsgSetHotRoutes = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      hotRoutes: Array.isArray(object === null || object === void 0 ? void 0 : object.hotRoutes) ? object.hotRoutes.map(e => TokenPairArbRoutes.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$admin, _object$hotRoutes;
     const message = createBaseMsgSetHotRoutes();
@@ -137,6 +143,9 @@ export const MsgSetHotRoutesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSetHotRoutesResponse();
@@ -179,6 +188,12 @@ export const MsgSetDeveloperAccount = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      developerAccount: isSet(object.developerAccount) ? String(object.developerAccount) : ""
+    };
+  },
   fromPartial(object) {
     var _object$admin2, _object$developerAcco;
     const message = createBaseMsgSetDeveloperAccount();
@@ -207,6 +222,9 @@ export const MsgSetDeveloperAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSetDeveloperAccountResponse();
@@ -249,6 +267,12 @@ export const MsgSetPoolWeights = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      poolWeights: isSet(object.poolWeights) ? PoolWeights.fromJSON(object.poolWeights) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$admin3;
     const message = createBaseMsgSetPoolWeights();
@@ -277,6 +301,9 @@ export const MsgSetPoolWeightsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSetPoolWeightsResponse();
@@ -319,6 +346,12 @@ export const MsgSetMaxPoolPointsPerTx = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      maxPoolPointsPerTx: isSet(object.maxPoolPointsPerTx) ? Long.fromValue(object.maxPoolPointsPerTx) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     var _object$admin4;
     const message = createBaseMsgSetMaxPoolPointsPerTx();
@@ -347,6 +380,9 @@ export const MsgSetMaxPoolPointsPerTxResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSetMaxPoolPointsPerTxResponse();
@@ -389,6 +425,12 @@ export const MsgSetMaxPoolPointsPerBlock = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      maxPoolPointsPerBlock: isSet(object.maxPoolPointsPerBlock) ? Long.fromValue(object.maxPoolPointsPerBlock) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     var _object$admin5;
     const message = createBaseMsgSetMaxPoolPointsPerBlock();
@@ -417,6 +459,9 @@ export const MsgSetMaxPoolPointsPerBlockResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSetMaxPoolPointsPerBlockResponse();
@@ -459,6 +504,12 @@ export const MsgSetBaseDenoms = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      baseDenoms: Array.isArray(object === null || object === void 0 ? void 0 : object.baseDenoms) ? object.baseDenoms.map(e => BaseDenom.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$admin6, _object$baseDenoms;
     const message = createBaseMsgSetBaseDenoms();
@@ -487,6 +538,9 @@ export const MsgSetBaseDenomsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSetBaseDenomsResponse();

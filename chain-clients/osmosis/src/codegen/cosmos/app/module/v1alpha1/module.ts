@@ -24,6 +24,9 @@ export const Module = {
     }
     return message;
   },
+  fromJSON(_: any): Module {
+    return {};
+  },
   fromPartial(_: Partial<Module>): Module {
     const message = createBaseModule();
     return message;

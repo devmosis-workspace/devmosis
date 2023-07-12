@@ -91,6 +91,13 @@ var MsgSuperfluidDelegate = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      lockId: (0, _helpers.isSet)(object.lockId) ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO,
+      valAddr: (0, _helpers.isSet)(object.valAddr) ? String(object.valAddr) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender, _object$valAddr;
     var message = createBaseMsgSuperfluidDelegate();
@@ -122,6 +129,9 @@ var MsgSuperfluidDelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSuperfluidDelegateResponse();
@@ -166,6 +176,12 @@ var MsgSuperfluidUndelegate = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      lockId: (0, _helpers.isSet)(object.lockId) ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender2;
     var message = createBaseMsgSuperfluidUndelegate();
@@ -196,6 +212,9 @@ var MsgSuperfluidUndelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSuperfluidUndelegateResponse();
@@ -240,6 +259,12 @@ var MsgSuperfluidUnbondLock = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      lockId: (0, _helpers.isSet)(object.lockId) ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender3;
     var message = createBaseMsgSuperfluidUnbondLock();
@@ -270,6 +295,9 @@ var MsgSuperfluidUnbondLockResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSuperfluidUnbondLockResponse();
@@ -321,6 +349,13 @@ var MsgSuperfluidUndelegateAndUnbondLock = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      lockId: (0, _helpers.isSet)(object.lockId) ? _helpers.Long.fromValue(object.lockId) : _helpers.Long.UZERO,
+      coin: (0, _helpers.isSet)(object.coin) ? _coin.Coin.fromJSON(object.coin) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender4;
     var message = createBaseMsgSuperfluidUndelegateAndUnbondLock();
@@ -352,6 +387,9 @@ var MsgSuperfluidUndelegateAndUnbondLockResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSuperfluidUndelegateAndUnbondLockResponse();
@@ -412,6 +450,15 @@ var MsgLockAndSuperfluidDelegate = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      valAddr: (0, _helpers.isSet)(object.valAddr) ? String(object.valAddr) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender5, _object$coins, _object$valAddr2;
     var message = createBaseMsgLockAndSuperfluidDelegate();
@@ -453,6 +500,11 @@ var MsgLockAndSuperfluidDelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      ID: (0, _helpers.isSet)(object.ID) ? _helpers.Long.fromValue(object.ID) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseMsgLockAndSuperfluidDelegateResponse();
@@ -497,6 +549,12 @@ var MsgUnPoolWhitelistedPool = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$sender6;
@@ -554,6 +612,13 @@ var MsgUnPoolWhitelistedPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      exitedLockIds: Array.isArray(object === null || object === void 0 ? void 0 : object.exitedLockIds) ? object.exitedLockIds.map(function (e) {
+        return _helpers.Long.fromValue(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$exitedLockIds;

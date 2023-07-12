@@ -3,7 +3,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration, DurationSDKType } from "../../../google/protobuf/duration";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 /**
  * BasicAllowance implements Allowance with a one-time grant of coins
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
@@ -126,6 +126,12 @@ export const BasicAllowance = {
     }
     return message;
   },
+  fromJSON(object: any): BasicAllowance {
+    return {
+      spendLimit: Array.isArray(object?.spendLimit) ? object.spendLimit.map((e: any) => Coin.fromJSON(e)) : [],
+      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
+    };
+  },
   fromPartial(object: Partial<BasicAllowance>): BasicAllowance {
     const message = createBaseBasicAllowance();
     message.spendLimit = object.spendLimit?.map(e => Coin.fromPartial(e)) || [];
@@ -190,6 +196,15 @@ export const PeriodicAllowance = {
     }
     return message;
   },
+  fromJSON(object: any): PeriodicAllowance {
+    return {
+      basic: isSet(object.basic) ? BasicAllowance.fromJSON(object.basic) : undefined,
+      period: isSet(object.period) ? Duration.fromJSON(object.period) : undefined,
+      periodSpendLimit: Array.isArray(object?.periodSpendLimit) ? object.periodSpendLimit.map((e: any) => Coin.fromJSON(e)) : [],
+      periodCanSpend: Array.isArray(object?.periodCanSpend) ? object.periodCanSpend.map((e: any) => Coin.fromJSON(e)) : [],
+      periodReset: isSet(object.periodReset) ? fromJsonTimestamp(object.periodReset) : undefined
+    };
+  },
   fromPartial(object: Partial<PeriodicAllowance>): PeriodicAllowance {
     const message = createBasePeriodicAllowance();
     message.basic = object.basic !== undefined && object.basic !== null ? BasicAllowance.fromPartial(object.basic) : undefined;
@@ -235,6 +250,12 @@ export const AllowedMsgAllowance = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): AllowedMsgAllowance {
+    return {
+      allowance: isSet(object.allowance) ? Any.fromJSON(object.allowance) : undefined,
+      allowedMessages: Array.isArray(object?.allowedMessages) ? object.allowedMessages.map((e: any) => String(e)) : []
+    };
   },
   fromPartial(object: Partial<AllowedMsgAllowance>): AllowedMsgAllowance {
     const message = createBaseAllowedMsgAllowance();
@@ -285,6 +306,13 @@ export const Grant = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Grant {
+    return {
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      allowance: isSet(object.allowance) ? Any.fromJSON(object.allowance) : undefined
+    };
   },
   fromPartial(object: Partial<Grant>): Grant {
     const message = createBaseGrant();

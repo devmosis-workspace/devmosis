@@ -1,4 +1,4 @@
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * App includes the protocol and software version for the application.
@@ -60,6 +60,12 @@ export const App = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      protocol: isSet(object.protocol) ? Long.fromValue(object.protocol) : Long.UZERO,
+      software: isSet(object.software) ? String(object.software) : ""
+    };
+  },
   fromPartial(object) {
     var _object$software;
     const message = createBaseApp();
@@ -103,6 +109,12 @@ export const Consensus = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      block: isSet(object.block) ? Long.fromValue(object.block) : Long.UZERO,
+      app: isSet(object.app) ? Long.fromValue(object.app) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseConsensus();

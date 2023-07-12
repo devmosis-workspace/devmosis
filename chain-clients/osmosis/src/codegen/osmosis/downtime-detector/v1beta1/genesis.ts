@@ -1,7 +1,7 @@
-import { Downtime } from "./downtime_duration";
+import { Downtime, downtimeFromJSON } from "./downtime_duration";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 export interface GenesisDowntimeEntry {
   duration: Downtime;
   lastDowntime?: Date;
@@ -56,6 +56,12 @@ export const GenesisDowntimeEntry = {
     }
     return message;
   },
+  fromJSON(object: any): GenesisDowntimeEntry {
+    return {
+      duration: isSet(object.duration) ? downtimeFromJSON(object.duration) : 0,
+      lastDowntime: isSet(object.lastDowntime) ? fromJsonTimestamp(object.lastDowntime) : undefined
+    };
+  },
   fromPartial(object: Partial<GenesisDowntimeEntry>): GenesisDowntimeEntry {
     const message = createBaseGenesisDowntimeEntry();
     message.duration = object.duration ?? 0;
@@ -98,6 +104,12 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      downtimes: Array.isArray(object?.downtimes) ? object.downtimes.map((e: any) => GenesisDowntimeEntry.fromJSON(e)) : [],
+      lastBlockTime: isSet(object.lastBlockTime) ? fromJsonTimestamp(object.lastBlockTime) : undefined
+    };
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();

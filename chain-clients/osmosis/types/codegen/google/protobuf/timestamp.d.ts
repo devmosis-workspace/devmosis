@@ -190,5 +190,6 @@ export interface TimestampSDKType {
 export declare const Timestamp: {
     encode(message: Timestamp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Timestamp;
+    fromJSON(object: any): Timestamp;
     fromPartial(object: Partial<Timestamp>): Timestamp;
 };

@@ -73,6 +73,13 @@ var QuerySpotPriceRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      baseAssetDenom: (0, _helpers.isSet)(object.baseAssetDenom) ? String(object.baseAssetDenom) : "",
+      quoteAssetDenom: (0, _helpers.isSet)(object.quoteAssetDenom) ? String(object.quoteAssetDenom) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$baseAssetDeno, _object$quoteAssetDen;
     var message = createBaseQuerySpotPriceRequest();
@@ -112,6 +119,11 @@ var QuerySpotPriceResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      spotPrice: (0, _helpers.isSet)(object.spotPrice) ? String(object.spotPrice) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$spotPrice;

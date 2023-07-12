@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /**
  * PubKey is an ed25519 public key for handling Tendermint keys in SDK.
  * It's needed for Any serialization and SDK compatibility.
@@ -62,6 +63,11 @@ export const PubKey = {
     }
     return message;
   },
+  fromJSON(object: any): PubKey {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<PubKey>): PubKey {
     const message = createBasePubKey();
     message.key = object.key ?? new Uint8Array();
@@ -96,6 +102,11 @@ export const PrivKey = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PrivKey {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array()
+    };
   },
   fromPartial(object: Partial<PrivKey>): PrivKey {
     const message = createBasePrivKey();

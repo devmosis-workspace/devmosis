@@ -189,6 +189,12 @@ var PartSetHeader = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      total: (0, _helpers.isSet)(object.total) ? Number(object.total) : 0,
+      hash: (0, _helpers.isSet)(object.hash) ? (0, _helpers.bytesFromBase64)(object.hash) : new Uint8Array()
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$total, _object$hash;
     var message = createBasePartSetHeader();
@@ -242,6 +248,13 @@ var Part = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      index: (0, _helpers.isSet)(object.index) ? Number(object.index) : 0,
+      bytes: (0, _helpers.isSet)(object.bytes) ? (0, _helpers.bytesFromBase64)(object.bytes) : new Uint8Array(),
+      proof: (0, _helpers.isSet)(object.proof) ? _proof.Proof.fromJSON(object.proof) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$index, _object$bytes;
     var message = createBasePart();
@@ -288,6 +301,12 @@ var BlockID = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      hash: (0, _helpers.isSet)(object.hash) ? (0, _helpers.bytesFromBase64)(object.hash) : new Uint8Array(),
+      partSetHeader: (0, _helpers.isSet)(object.partSetHeader) ? PartSetHeader.fromJSON(object.partSetHeader) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$hash2;
@@ -419,6 +438,24 @@ var Header = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      version: (0, _helpers.isSet)(object.version) ? _types.Consensus.fromJSON(object.version) : undefined,
+      chainId: (0, _helpers.isSet)(object.chainId) ? String(object.chainId) : "",
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
+      time: (0, _helpers.isSet)(object.time) ? (0, _helpers.fromJsonTimestamp)(object.time) : undefined,
+      lastBlockId: (0, _helpers.isSet)(object.lastBlockId) ? BlockID.fromJSON(object.lastBlockId) : undefined,
+      lastCommitHash: (0, _helpers.isSet)(object.lastCommitHash) ? (0, _helpers.bytesFromBase64)(object.lastCommitHash) : new Uint8Array(),
+      dataHash: (0, _helpers.isSet)(object.dataHash) ? (0, _helpers.bytesFromBase64)(object.dataHash) : new Uint8Array(),
+      validatorsHash: (0, _helpers.isSet)(object.validatorsHash) ? (0, _helpers.bytesFromBase64)(object.validatorsHash) : new Uint8Array(),
+      nextValidatorsHash: (0, _helpers.isSet)(object.nextValidatorsHash) ? (0, _helpers.bytesFromBase64)(object.nextValidatorsHash) : new Uint8Array(),
+      consensusHash: (0, _helpers.isSet)(object.consensusHash) ? (0, _helpers.bytesFromBase64)(object.consensusHash) : new Uint8Array(),
+      appHash: (0, _helpers.isSet)(object.appHash) ? (0, _helpers.bytesFromBase64)(object.appHash) : new Uint8Array(),
+      lastResultsHash: (0, _helpers.isSet)(object.lastResultsHash) ? (0, _helpers.bytesFromBase64)(object.lastResultsHash) : new Uint8Array(),
+      evidenceHash: (0, _helpers.isSet)(object.evidenceHash) ? (0, _helpers.bytesFromBase64)(object.evidenceHash) : new Uint8Array(),
+      proposerAddress: (0, _helpers.isSet)(object.proposerAddress) ? (0, _helpers.bytesFromBase64)(object.proposerAddress) : new Uint8Array()
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$chainId, _object$time, _object$lastCommitHas, _object$dataHash, _object$validatorsHas, _object$nextValidator, _object$consensusHash, _object$appHash, _object$lastResultsHa, _object$evidenceHash, _object$proposerAddre;
     var message = createBaseHeader();
@@ -478,6 +515,13 @@ var Data = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      txs: Array.isArray(object === null || object === void 0 ? void 0 : object.txs) ? object.txs.map(function (e) {
+        return (0, _helpers.bytesFromBase64)(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$txs;
@@ -568,6 +612,18 @@ var Vote = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      type: (0, _helpers.isSet)(object.type) ? signedMsgTypeFromJSON(object.type) : 0,
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
+      round: (0, _helpers.isSet)(object.round) ? Number(object.round) : 0,
+      blockId: (0, _helpers.isSet)(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined,
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? (0, _helpers.bytesFromBase64)(object.validatorAddress) : new Uint8Array(),
+      validatorIndex: (0, _helpers.isSet)(object.validatorIndex) ? Number(object.validatorIndex) : 0,
+      signature: (0, _helpers.isSet)(object.signature) ? (0, _helpers.bytesFromBase64)(object.signature) : new Uint8Array()
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$type, _object$round, _object$timestamp, _object$validatorAddr, _object$validatorInde, _object$signature;
     var message = createBaseVote();
@@ -643,6 +699,16 @@ var Commit = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
+      round: (0, _helpers.isSet)(object.round) ? Number(object.round) : 0,
+      blockId: (0, _helpers.isSet)(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
+      signatures: Array.isArray(object === null || object === void 0 ? void 0 : object.signatures) ? object.signatures.map(function (e) {
+        return CommitSig.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$round2, _object$signatures;
     var message = createBaseCommit();
@@ -706,6 +772,14 @@ var CommitSig = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      blockIdFlag: (0, _helpers.isSet)(object.blockIdFlag) ? blockIDFlagFromJSON(object.blockIdFlag) : 0,
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? (0, _helpers.bytesFromBase64)(object.validatorAddress) : new Uint8Array(),
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined,
+      signature: (0, _helpers.isSet)(object.signature) ? (0, _helpers.bytesFromBase64)(object.signature) : new Uint8Array()
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$blockIdFlag, _object$validatorAddr2, _object$timestamp2, _object$signature2;
@@ -790,6 +864,17 @@ var Proposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      type: (0, _helpers.isSet)(object.type) ? signedMsgTypeFromJSON(object.type) : 0,
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
+      round: (0, _helpers.isSet)(object.round) ? Number(object.round) : 0,
+      polRound: (0, _helpers.isSet)(object.polRound) ? Number(object.polRound) : 0,
+      blockId: (0, _helpers.isSet)(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined,
+      signature: (0, _helpers.isSet)(object.signature) ? (0, _helpers.bytesFromBase64)(object.signature) : new Uint8Array()
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$type2, _object$round3, _object$polRound, _object$timestamp3, _object$signature3;
     var message = createBaseProposal();
@@ -841,6 +926,12 @@ var SignedHeader = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      header: (0, _helpers.isSet)(object.header) ? Header.fromJSON(object.header) : undefined,
+      commit: (0, _helpers.isSet)(object.commit) ? Commit.fromJSON(object.commit) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseSignedHeader();
     message.header = object.header !== undefined && object.header !== null ? Header.fromPartial(object.header) : undefined;
@@ -885,6 +976,12 @@ var LightBlock = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      signedHeader: (0, _helpers.isSet)(object.signedHeader) ? SignedHeader.fromJSON(object.signedHeader) : undefined,
+      validatorSet: (0, _helpers.isSet)(object.validatorSet) ? _validator.ValidatorSet.fromJSON(object.validatorSet) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseLightBlock();
@@ -945,6 +1042,14 @@ var BlockMeta = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      blockId: (0, _helpers.isSet)(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
+      blockSize: (0, _helpers.isSet)(object.blockSize) ? _helpers.Long.fromValue(object.blockSize) : _helpers.Long.ZERO,
+      header: (0, _helpers.isSet)(object.header) ? Header.fromJSON(object.header) : undefined,
+      numTxs: (0, _helpers.isSet)(object.numTxs) ? _helpers.Long.fromValue(object.numTxs) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseBlockMeta();
     message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
@@ -998,6 +1103,13 @@ var TxProof = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      rootHash: (0, _helpers.isSet)(object.rootHash) ? (0, _helpers.bytesFromBase64)(object.rootHash) : new Uint8Array(),
+      data: (0, _helpers.isSet)(object.data) ? (0, _helpers.bytesFromBase64)(object.data) : new Uint8Array(),
+      proof: (0, _helpers.isSet)(object.proof) ? _proof.Proof.fromJSON(object.proof) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$rootHash, _object$data;

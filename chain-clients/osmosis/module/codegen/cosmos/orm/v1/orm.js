@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** TableDescriptor describes an ORM table. */
 
 /** TableDescriptor describes an ORM table. */
@@ -58,6 +59,13 @@ export const TableDescriptor = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      primaryKey: isSet(object.primaryKey) ? PrimaryKeyDescriptor.fromJSON(object.primaryKey) : undefined,
+      index: Array.isArray(object === null || object === void 0 ? void 0 : object.index) ? object.index.map(e => SecondaryIndexDescriptor.fromJSON(e)) : [],
+      id: isSet(object.id) ? Number(object.id) : 0
+    };
+  },
   fromPartial(object) {
     var _object$index, _object$id;
     const message = createBaseTableDescriptor();
@@ -102,6 +110,12 @@ export const PrimaryKeyDescriptor = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      fields: isSet(object.fields) ? String(object.fields) : "",
+      autoIncrement: isSet(object.autoIncrement) ? Boolean(object.autoIncrement) : false
+    };
   },
   fromPartial(object) {
     var _object$fields, _object$autoIncrement;
@@ -154,6 +168,13 @@ export const SecondaryIndexDescriptor = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      fields: isSet(object.fields) ? String(object.fields) : "",
+      id: isSet(object.id) ? Number(object.id) : 0,
+      unique: isSet(object.unique) ? Boolean(object.unique) : false
+    };
+  },
   fromPartial(object) {
     var _object$fields2, _object$id2, _object$unique;
     const message = createBaseSecondaryIndexDescriptor();
@@ -191,6 +212,11 @@ export const SingletonDescriptor = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0
+    };
   },
   fromPartial(object) {
     var _object$id3;

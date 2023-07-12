@@ -124,6 +124,20 @@ var MsgCreateStableswapPool = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      poolParams: (0, _helpers.isSet)(object.poolParams) ? _stableswap_pool.PoolParams.fromJSON(object.poolParams) : undefined,
+      initialPoolLiquidity: Array.isArray(object === null || object === void 0 ? void 0 : object.initialPoolLiquidity) ? object.initialPoolLiquidity.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      scalingFactors: Array.isArray(object === null || object === void 0 ? void 0 : object.scalingFactors) ? object.scalingFactors.map(function (e) {
+        return _helpers.Long.fromValue(e);
+      }) : [],
+      futurePoolGovernor: (0, _helpers.isSet)(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      scalingFactorController: (0, _helpers.isSet)(object.scalingFactorController) ? String(object.scalingFactorController) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender, _object$initialPoolLi, _object$scalingFactor, _object$futurePoolGov, _object$scalingFactor2;
     var message = createBaseMsgCreateStableswapPool();
@@ -170,6 +184,11 @@ var MsgCreateStableswapPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseMsgCreateStableswapPoolResponse();
@@ -240,6 +259,15 @@ var MsgStableSwapAdjustScalingFactors = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      scalingFactors: Array.isArray(object === null || object === void 0 ? void 0 : object.scalingFactors) ? object.scalingFactors.map(function (e) {
+        return _helpers.Long.fromValue(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender2, _object$scalingFactor3;
     var message = createBaseMsgStableSwapAdjustScalingFactors();
@@ -273,6 +301,9 @@ var MsgStableSwapAdjustScalingFactorsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgStableSwapAdjustScalingFactorsResponse();

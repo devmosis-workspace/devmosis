@@ -367,140 +367,168 @@ export interface MsgLeaveGroupResponseSDKType {
 export declare const MsgCreateGroup: {
     encode(message: MsgCreateGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroup;
+    fromJSON(object: any): MsgCreateGroup;
     fromPartial(object: Partial<MsgCreateGroup>): MsgCreateGroup;
 };
 export declare const MsgCreateGroupResponse: {
     encode(message: MsgCreateGroupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupResponse;
+    fromJSON(object: any): MsgCreateGroupResponse;
     fromPartial(object: Partial<MsgCreateGroupResponse>): MsgCreateGroupResponse;
 };
 export declare const MsgUpdateGroupMembers: {
     encode(message: MsgUpdateGroupMembers, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupMembers;
+    fromJSON(object: any): MsgUpdateGroupMembers;
     fromPartial(object: Partial<MsgUpdateGroupMembers>): MsgUpdateGroupMembers;
 };
 export declare const MsgUpdateGroupMembersResponse: {
     encode(_: MsgUpdateGroupMembersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupMembersResponse;
+    fromJSON(_: any): MsgUpdateGroupMembersResponse;
     fromPartial(_: Partial<MsgUpdateGroupMembersResponse>): MsgUpdateGroupMembersResponse;
 };
 export declare const MsgUpdateGroupAdmin: {
     encode(message: MsgUpdateGroupAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupAdmin;
+    fromJSON(object: any): MsgUpdateGroupAdmin;
     fromPartial(object: Partial<MsgUpdateGroupAdmin>): MsgUpdateGroupAdmin;
 };
 export declare const MsgUpdateGroupAdminResponse: {
     encode(_: MsgUpdateGroupAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupAdminResponse;
+    fromJSON(_: any): MsgUpdateGroupAdminResponse;
     fromPartial(_: Partial<MsgUpdateGroupAdminResponse>): MsgUpdateGroupAdminResponse;
 };
 export declare const MsgUpdateGroupMetadata: {
     encode(message: MsgUpdateGroupMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupMetadata;
+    fromJSON(object: any): MsgUpdateGroupMetadata;
     fromPartial(object: Partial<MsgUpdateGroupMetadata>): MsgUpdateGroupMetadata;
 };
 export declare const MsgUpdateGroupMetadataResponse: {
     encode(_: MsgUpdateGroupMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupMetadataResponse;
+    fromJSON(_: any): MsgUpdateGroupMetadataResponse;
     fromPartial(_: Partial<MsgUpdateGroupMetadataResponse>): MsgUpdateGroupMetadataResponse;
 };
 export declare const MsgCreateGroupPolicy: {
     encode(message: MsgCreateGroupPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupPolicy;
+    fromJSON(object: any): MsgCreateGroupPolicy;
     fromPartial(object: Partial<MsgCreateGroupPolicy>): MsgCreateGroupPolicy;
 };
 export declare const MsgCreateGroupPolicyResponse: {
     encode(message: MsgCreateGroupPolicyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupPolicyResponse;
+    fromJSON(object: any): MsgCreateGroupPolicyResponse;
     fromPartial(object: Partial<MsgCreateGroupPolicyResponse>): MsgCreateGroupPolicyResponse;
 };
 export declare const MsgUpdateGroupPolicyAdmin: {
     encode(message: MsgUpdateGroupPolicyAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdmin;
+    fromJSON(object: any): MsgUpdateGroupPolicyAdmin;
     fromPartial(object: Partial<MsgUpdateGroupPolicyAdmin>): MsgUpdateGroupPolicyAdmin;
 };
 export declare const MsgCreateGroupWithPolicy: {
     encode(message: MsgCreateGroupWithPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupWithPolicy;
+    fromJSON(object: any): MsgCreateGroupWithPolicy;
     fromPartial(object: Partial<MsgCreateGroupWithPolicy>): MsgCreateGroupWithPolicy;
 };
 export declare const MsgCreateGroupWithPolicyResponse: {
     encode(message: MsgCreateGroupWithPolicyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGroupWithPolicyResponse;
+    fromJSON(object: any): MsgCreateGroupWithPolicyResponse;
     fromPartial(object: Partial<MsgCreateGroupWithPolicyResponse>): MsgCreateGroupWithPolicyResponse;
 };
 export declare const MsgUpdateGroupPolicyAdminResponse: {
     encode(_: MsgUpdateGroupPolicyAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyAdminResponse;
+    fromJSON(_: any): MsgUpdateGroupPolicyAdminResponse;
     fromPartial(_: Partial<MsgUpdateGroupPolicyAdminResponse>): MsgUpdateGroupPolicyAdminResponse;
 };
 export declare const MsgUpdateGroupPolicyDecisionPolicy: {
     encode(message: MsgUpdateGroupPolicyDecisionPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyDecisionPolicy;
+    fromJSON(object: any): MsgUpdateGroupPolicyDecisionPolicy;
     fromPartial(object: Partial<MsgUpdateGroupPolicyDecisionPolicy>): MsgUpdateGroupPolicyDecisionPolicy;
 };
 export declare const MsgUpdateGroupPolicyDecisionPolicyResponse: {
     encode(_: MsgUpdateGroupPolicyDecisionPolicyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyDecisionPolicyResponse;
+    fromJSON(_: any): MsgUpdateGroupPolicyDecisionPolicyResponse;
     fromPartial(_: Partial<MsgUpdateGroupPolicyDecisionPolicyResponse>): MsgUpdateGroupPolicyDecisionPolicyResponse;
 };
 export declare const MsgUpdateGroupPolicyMetadata: {
     encode(message: MsgUpdateGroupPolicyMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyMetadata;
+    fromJSON(object: any): MsgUpdateGroupPolicyMetadata;
     fromPartial(object: Partial<MsgUpdateGroupPolicyMetadata>): MsgUpdateGroupPolicyMetadata;
 };
 export declare const MsgUpdateGroupPolicyMetadataResponse: {
     encode(_: MsgUpdateGroupPolicyMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUpdateGroupPolicyMetadataResponse;
+    fromJSON(_: any): MsgUpdateGroupPolicyMetadataResponse;
     fromPartial(_: Partial<MsgUpdateGroupPolicyMetadataResponse>): MsgUpdateGroupPolicyMetadataResponse;
 };
 export declare const MsgSubmitProposal: {
     encode(message: MsgSubmitProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposal;
+    fromJSON(object: any): MsgSubmitProposal;
     fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal;
 };
 export declare const MsgSubmitProposalResponse: {
     encode(message: MsgSubmitProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponse;
+    fromJSON(object: any): MsgSubmitProposalResponse;
     fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
 };
 export declare const MsgWithdrawProposal: {
     encode(message: MsgWithdrawProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawProposal;
+    fromJSON(object: any): MsgWithdrawProposal;
     fromPartial(object: Partial<MsgWithdrawProposal>): MsgWithdrawProposal;
 };
 export declare const MsgWithdrawProposalResponse: {
     encode(_: MsgWithdrawProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgWithdrawProposalResponse;
+    fromJSON(_: any): MsgWithdrawProposalResponse;
     fromPartial(_: Partial<MsgWithdrawProposalResponse>): MsgWithdrawProposalResponse;
 };
 export declare const MsgVote: {
     encode(message: MsgVote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVote;
+    fromJSON(object: any): MsgVote;
     fromPartial(object: Partial<MsgVote>): MsgVote;
 };
 export declare const MsgVoteResponse: {
     encode(_: MsgVoteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponse;
+    fromJSON(_: any): MsgVoteResponse;
     fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse;
 };
 export declare const MsgExec: {
     encode(message: MsgExec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExec;
+    fromJSON(object: any): MsgExec;
     fromPartial(object: Partial<MsgExec>): MsgExec;
 };
 export declare const MsgExecResponse: {
     encode(message: MsgExecResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgExecResponse;
+    fromJSON(object: any): MsgExecResponse;
     fromPartial(object: Partial<MsgExecResponse>): MsgExecResponse;
 };
 export declare const MsgLeaveGroup: {
     encode(message: MsgLeaveGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLeaveGroup;
+    fromJSON(object: any): MsgLeaveGroup;
     fromPartial(object: Partial<MsgLeaveGroup>): MsgLeaveGroup;
 };
 export declare const MsgLeaveGroupResponse: {
     encode(_: MsgLeaveGroupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgLeaveGroupResponse;
+    fromJSON(_: any): MsgLeaveGroupResponse;
     fromPartial(_: Partial<MsgLeaveGroupResponse>): MsgLeaveGroupResponse;
 };

@@ -55,6 +55,13 @@ var Params = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      denomCreationFee: Array.isArray(object === null || object === void 0 ? void 0 : object.denomCreationFee) ? object.denomCreationFee.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$denomCreation;
     var message = createBaseParams();

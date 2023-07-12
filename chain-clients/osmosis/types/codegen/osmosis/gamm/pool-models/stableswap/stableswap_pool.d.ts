@@ -60,10 +60,12 @@ export interface PoolSDKType {
 export declare const PoolParams: {
     encode(message: PoolParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolParams;
+    fromJSON(object: any): PoolParams;
     fromPartial(object: Partial<PoolParams>): PoolParams;
 };
 export declare const Pool: {
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
+    fromJSON(object: any): Pool;
     fromPartial(object: Partial<Pool>): Pool;
 };

@@ -1,7 +1,8 @@
 import { Any } from "../../../google/protobuf/any";
+import { signModeFromJSON } from "../signing/v1beta1/signing";
 import { CompactBitArray } from "../../crypto/multisig/v1beta1/multisig";
 import { Coin } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** Tx is the standard type used for broadcasting transactions. */
 
@@ -170,6 +171,13 @@ export const Tx = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      body: isSet(object.body) ? TxBody.fromJSON(object.body) : undefined,
+      authInfo: isSet(object.authInfo) ? AuthInfo.fromJSON(object.authInfo) : undefined,
+      signatures: Array.isArray(object === null || object === void 0 ? void 0 : object.signatures) ? object.signatures.map(e => bytesFromBase64(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$signatures;
     const message = createBaseTx();
@@ -221,6 +229,13 @@ export const TxRaw = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      bodyBytes: isSet(object.bodyBytes) ? bytesFromBase64(object.bodyBytes) : new Uint8Array(),
+      authInfoBytes: isSet(object.authInfoBytes) ? bytesFromBase64(object.authInfoBytes) : new Uint8Array(),
+      signatures: Array.isArray(object === null || object === void 0 ? void 0 : object.signatures) ? object.signatures.map(e => bytesFromBase64(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$bodyBytes, _object$authInfoBytes, _object$signatures2;
@@ -280,6 +295,14 @@ export const SignDoc = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      bodyBytes: isSet(object.bodyBytes) ? bytesFromBase64(object.bodyBytes) : new Uint8Array(),
+      authInfoBytes: isSet(object.authInfoBytes) ? bytesFromBase64(object.authInfoBytes) : new Uint8Array(),
+      chainId: isSet(object.chainId) ? String(object.chainId) : "",
+      accountNumber: isSet(object.accountNumber) ? Long.fromValue(object.accountNumber) : Long.UZERO
+    };
   },
   fromPartial(object) {
     var _object$bodyBytes2, _object$authInfoBytes2, _object$chainId;
@@ -355,6 +378,16 @@ export const SignDocDirectAux = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      bodyBytes: isSet(object.bodyBytes) ? bytesFromBase64(object.bodyBytes) : new Uint8Array(),
+      publicKey: isSet(object.publicKey) ? Any.fromJSON(object.publicKey) : undefined,
+      chainId: isSet(object.chainId) ? String(object.chainId) : "",
+      accountNumber: isSet(object.accountNumber) ? Long.fromValue(object.accountNumber) : Long.UZERO,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO,
+      tip: isSet(object.tip) ? Tip.fromJSON(object.tip) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$bodyBytes3, _object$chainId2;
     const message = createBaseSignDocDirectAux();
@@ -424,6 +457,15 @@ export const TxBody = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      messages: Array.isArray(object === null || object === void 0 ? void 0 : object.messages) ? object.messages.map(e => Any.fromJSON(e)) : [],
+      memo: isSet(object.memo) ? String(object.memo) : "",
+      timeoutHeight: isSet(object.timeoutHeight) ? Long.fromValue(object.timeoutHeight) : Long.UZERO,
+      extensionOptions: Array.isArray(object === null || object === void 0 ? void 0 : object.extensionOptions) ? object.extensionOptions.map(e => Any.fromJSON(e)) : [],
+      nonCriticalExtensionOptions: Array.isArray(object === null || object === void 0 ? void 0 : object.nonCriticalExtensionOptions) ? object.nonCriticalExtensionOptions.map(e => Any.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$messages, _object$memo, _object$extensionOpti, _object$nonCriticalEx;
     const message = createBaseTxBody();
@@ -478,6 +520,13 @@ export const AuthInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      signerInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.signerInfos) ? object.signerInfos.map(e => SignerInfo.fromJSON(e)) : [],
+      fee: isSet(object.fee) ? Fee.fromJSON(object.fee) : undefined,
+      tip: isSet(object.tip) ? Tip.fromJSON(object.tip) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$signerInfos;
     const message = createBaseAuthInfo();
@@ -530,6 +579,13 @@ export const SignerInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      publicKey: isSet(object.publicKey) ? Any.fromJSON(object.publicKey) : undefined,
+      modeInfo: isSet(object.modeInfo) ? ModeInfo.fromJSON(object.modeInfo) : undefined,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseSignerInfo();
     message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
@@ -574,6 +630,12 @@ export const ModeInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      single: isSet(object.single) ? ModeInfo_Single.fromJSON(object.single) : undefined,
+      multi: isSet(object.multi) ? ModeInfo_Multi.fromJSON(object.multi) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseModeInfo();
     message.single = object.single !== undefined && object.single !== null ? ModeInfo_Single.fromPartial(object.single) : undefined;
@@ -609,6 +671,11 @@ export const ModeInfo_Single = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      mode: isSet(object.mode) ? signModeFromJSON(object.mode) : 0
+    };
   },
   fromPartial(object) {
     var _object$mode;
@@ -652,6 +719,12 @@ export const ModeInfo_Multi = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      bitarray: isSet(object.bitarray) ? CompactBitArray.fromJSON(object.bitarray) : undefined,
+      modeInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.modeInfos) ? object.modeInfos.map(e => ModeInfo.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$modeInfos;
@@ -711,6 +784,14 @@ export const Fee = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(e => Coin.fromJSON(e)) : [],
+      gasLimit: isSet(object.gasLimit) ? Long.fromValue(object.gasLimit) : Long.UZERO,
+      payer: isSet(object.payer) ? String(object.payer) : "",
+      granter: isSet(object.granter) ? String(object.granter) : ""
+    };
+  },
   fromPartial(object) {
     var _object$amount, _object$payer, _object$granter;
     const message = createBaseFee();
@@ -756,6 +837,12 @@ export const Tip = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(e => Coin.fromJSON(e)) : [],
+      tipper: isSet(object.tipper) ? String(object.tipper) : ""
+    };
   },
   fromPartial(object) {
     var _object$amount2, _object$tipper;
@@ -814,6 +901,14 @@ export const AuxSignerData = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      signDoc: isSet(object.signDoc) ? SignDocDirectAux.fromJSON(object.signDoc) : undefined,
+      mode: isSet(object.mode) ? signModeFromJSON(object.mode) : 0,
+      sig: isSet(object.sig) ? bytesFromBase64(object.sig) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$address, _object$mode2, _object$sig;

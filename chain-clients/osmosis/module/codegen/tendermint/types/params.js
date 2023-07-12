@@ -1,5 +1,5 @@
 import { Duration } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * ConsensusParams contains consensus critical parameters that determine the
@@ -95,6 +95,14 @@ export const ConsensusParams = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      block: isSet(object.block) ? BlockParams.fromJSON(object.block) : undefined,
+      evidence: isSet(object.evidence) ? EvidenceParams.fromJSON(object.evidence) : undefined,
+      validator: isSet(object.validator) ? ValidatorParams.fromJSON(object.validator) : undefined,
+      version: isSet(object.version) ? VersionParams.fromJSON(object.version) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseConsensusParams();
     message.block = object.block !== undefined && object.block !== null ? BlockParams.fromPartial(object.block) : undefined;
@@ -147,6 +155,13 @@ export const BlockParams = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      maxBytes: isSet(object.maxBytes) ? Long.fromValue(object.maxBytes) : Long.ZERO,
+      maxGas: isSet(object.maxGas) ? Long.fromValue(object.maxGas) : Long.ZERO,
+      timeIotaMs: isSet(object.timeIotaMs) ? Long.fromValue(object.timeIotaMs) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseBlockParams();
     message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? Long.fromValue(object.maxBytes) : Long.ZERO;
@@ -198,6 +213,13 @@ export const EvidenceParams = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      maxAgeNumBlocks: isSet(object.maxAgeNumBlocks) ? Long.fromValue(object.maxAgeNumBlocks) : Long.ZERO,
+      maxAgeDuration: isSet(object.maxAgeDuration) ? Duration.fromJSON(object.maxAgeDuration) : undefined,
+      maxBytes: isSet(object.maxBytes) ? Long.fromValue(object.maxBytes) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseEvidenceParams();
     message.maxAgeNumBlocks = object.maxAgeNumBlocks !== undefined && object.maxAgeNumBlocks !== null ? Long.fromValue(object.maxAgeNumBlocks) : Long.ZERO;
@@ -235,6 +257,11 @@ export const ValidatorParams = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      pubKeyTypes: Array.isArray(object === null || object === void 0 ? void 0 : object.pubKeyTypes) ? object.pubKeyTypes.map(e => String(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$pubKeyTypes;
     const message = createBaseValidatorParams();
@@ -270,6 +297,11 @@ export const VersionParams = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      appVersion: isSet(object.appVersion) ? Long.fromValue(object.appVersion) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseVersionParams();
@@ -312,6 +344,12 @@ export const HashedParams = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      blockMaxBytes: isSet(object.blockMaxBytes) ? Long.fromValue(object.blockMaxBytes) : Long.ZERO,
+      blockMaxGas: isSet(object.blockMaxGas) ? Long.fromValue(object.blockMaxGas) : Long.ZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseHashedParams();

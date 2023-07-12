@@ -19,10 +19,12 @@ export interface SwapAmountOutRouteSDKType {
 export declare const SwapAmountInRoute: {
     encode(message: SwapAmountInRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountInRoute;
+    fromJSON(object: any): SwapAmountInRoute;
     fromPartial(object: Partial<SwapAmountInRoute>): SwapAmountInRoute;
 };
 export declare const SwapAmountOutRoute: {
     encode(message: SwapAmountOutRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SwapAmountOutRoute;
+    fromJSON(object: any): SwapAmountOutRoute;
     fromPartial(object: Partial<SwapAmountOutRoute>): SwapAmountOutRoute;
 };

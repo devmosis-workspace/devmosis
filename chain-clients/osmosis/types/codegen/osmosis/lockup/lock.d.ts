@@ -138,15 +138,18 @@ export interface SyntheticLockSDKType {
 export declare const PeriodLock: {
     encode(message: PeriodLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeriodLock;
+    fromJSON(object: any): PeriodLock;
     fromPartial(object: Partial<PeriodLock>): PeriodLock;
 };
 export declare const QueryCondition: {
     encode(message: QueryCondition, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCondition;
+    fromJSON(object: any): QueryCondition;
     fromPartial(object: Partial<QueryCondition>): QueryCondition;
 };
 export declare const SyntheticLock: {
     encode(message: SyntheticLock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SyntheticLock;
+    fromJSON(object: any): SyntheticLock;
     fromPartial(object: Partial<SyntheticLock>): SyntheticLock;
 };

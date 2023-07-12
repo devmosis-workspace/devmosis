@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { bytesFromBase64, isSet } from "../../../../helpers";
 /**
  * MultiSignature wraps the signatures from a multisig.LegacyAminoPubKey.
  * See cosmos.tx.v1betata1.ModeInfo.Multi for how to specify which signers
@@ -54,6 +55,11 @@ export const MultiSignature = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      signatures: Array.isArray(object === null || object === void 0 ? void 0 : object.signatures) ? object.signatures.map(e => bytesFromBase64(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$signatures;
     const message = createBaseMultiSignature();
@@ -96,6 +102,12 @@ export const CompactBitArray = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      extraBitsStored: isSet(object.extraBitsStored) ? Number(object.extraBitsStored) : 0,
+      elems: isSet(object.elems) ? bytesFromBase64(object.elems) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$extraBitsStor, _object$elems;

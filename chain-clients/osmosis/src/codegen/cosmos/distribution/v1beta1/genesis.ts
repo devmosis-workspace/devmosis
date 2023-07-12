@@ -1,6 +1,6 @@
 import { DecCoin, DecCoinSDKType } from "../../base/v1beta1/coin";
 import { ValidatorAccumulatedCommission, ValidatorAccumulatedCommissionSDKType, ValidatorHistoricalRewards, ValidatorHistoricalRewardsSDKType, ValidatorCurrentRewards, ValidatorCurrentRewardsSDKType, DelegatorStartingInfo, DelegatorStartingInfoSDKType, ValidatorSlashEvent, ValidatorSlashEventSDKType, Params, ParamsSDKType, FeePool, FeePoolSDKType } from "./distribution";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * DelegatorWithdrawInfo is the address for where distributions rewards are
@@ -190,6 +190,12 @@ export const DelegatorWithdrawInfo = {
     }
     return message;
   },
+  fromJSON(object: any): DelegatorWithdrawInfo {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      withdrawAddress: isSet(object.withdrawAddress) ? String(object.withdrawAddress) : ""
+    };
+  },
   fromPartial(object: Partial<DelegatorWithdrawInfo>): DelegatorWithdrawInfo {
     const message = createBaseDelegatorWithdrawInfo();
     message.delegatorAddress = object.delegatorAddress ?? "";
@@ -233,6 +239,12 @@ export const ValidatorOutstandingRewardsRecord = {
     }
     return message;
   },
+  fromJSON(object: any): ValidatorOutstandingRewardsRecord {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      outstandingRewards: Array.isArray(object?.outstandingRewards) ? object.outstandingRewards.map((e: any) => DecCoin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<ValidatorOutstandingRewardsRecord>): ValidatorOutstandingRewardsRecord {
     const message = createBaseValidatorOutstandingRewardsRecord();
     message.validatorAddress = object.validatorAddress ?? "";
@@ -275,6 +287,12 @@ export const ValidatorAccumulatedCommissionRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ValidatorAccumulatedCommissionRecord {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      accumulated: isSet(object.accumulated) ? ValidatorAccumulatedCommission.fromJSON(object.accumulated) : undefined
+    };
   },
   fromPartial(object: Partial<ValidatorAccumulatedCommissionRecord>): ValidatorAccumulatedCommissionRecord {
     const message = createBaseValidatorAccumulatedCommissionRecord();
@@ -326,6 +344,13 @@ export const ValidatorHistoricalRewardsRecord = {
     }
     return message;
   },
+  fromJSON(object: any): ValidatorHistoricalRewardsRecord {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      period: isSet(object.period) ? Long.fromValue(object.period) : Long.UZERO,
+      rewards: isSet(object.rewards) ? ValidatorHistoricalRewards.fromJSON(object.rewards) : undefined
+    };
+  },
   fromPartial(object: Partial<ValidatorHistoricalRewardsRecord>): ValidatorHistoricalRewardsRecord {
     const message = createBaseValidatorHistoricalRewardsRecord();
     message.validatorAddress = object.validatorAddress ?? "";
@@ -369,6 +394,12 @@ export const ValidatorCurrentRewardsRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ValidatorCurrentRewardsRecord {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      rewards: isSet(object.rewards) ? ValidatorCurrentRewards.fromJSON(object.rewards) : undefined
+    };
   },
   fromPartial(object: Partial<ValidatorCurrentRewardsRecord>): ValidatorCurrentRewardsRecord {
     const message = createBaseValidatorCurrentRewardsRecord();
@@ -419,6 +450,13 @@ export const DelegatorStartingInfoRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DelegatorStartingInfoRecord {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      startingInfo: isSet(object.startingInfo) ? DelegatorStartingInfo.fromJSON(object.startingInfo) : undefined
+    };
   },
   fromPartial(object: Partial<DelegatorStartingInfoRecord>): DelegatorStartingInfoRecord {
     const message = createBaseDelegatorStartingInfoRecord();
@@ -477,6 +515,14 @@ export const ValidatorSlashEventRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ValidatorSlashEventRecord {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
+      period: isSet(object.period) ? Long.fromValue(object.period) : Long.UZERO,
+      validatorSlashEvent: isSet(object.validatorSlashEvent) ? ValidatorSlashEvent.fromJSON(object.validatorSlashEvent) : undefined
+    };
   },
   fromPartial(object: Partial<ValidatorSlashEventRecord>): ValidatorSlashEventRecord {
     const message = createBaseValidatorSlashEventRecord();
@@ -578,6 +624,20 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisState {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      feePool: isSet(object.feePool) ? FeePool.fromJSON(object.feePool) : undefined,
+      delegatorWithdrawInfos: Array.isArray(object?.delegatorWithdrawInfos) ? object.delegatorWithdrawInfos.map((e: any) => DelegatorWithdrawInfo.fromJSON(e)) : [],
+      previousProposer: isSet(object.previousProposer) ? String(object.previousProposer) : "",
+      outstandingRewards: Array.isArray(object?.outstandingRewards) ? object.outstandingRewards.map((e: any) => ValidatorOutstandingRewardsRecord.fromJSON(e)) : [],
+      validatorAccumulatedCommissions: Array.isArray(object?.validatorAccumulatedCommissions) ? object.validatorAccumulatedCommissions.map((e: any) => ValidatorAccumulatedCommissionRecord.fromJSON(e)) : [],
+      validatorHistoricalRewards: Array.isArray(object?.validatorHistoricalRewards) ? object.validatorHistoricalRewards.map((e: any) => ValidatorHistoricalRewardsRecord.fromJSON(e)) : [],
+      validatorCurrentRewards: Array.isArray(object?.validatorCurrentRewards) ? object.validatorCurrentRewards.map((e: any) => ValidatorCurrentRewardsRecord.fromJSON(e)) : [],
+      delegatorStartingInfos: Array.isArray(object?.delegatorStartingInfos) ? object.delegatorStartingInfos.map((e: any) => DelegatorStartingInfoRecord.fromJSON(e)) : [],
+      validatorSlashEvents: Array.isArray(object?.validatorSlashEvents) ? object.validatorSlashEvents.map((e: any) => ValidatorSlashEventRecord.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();

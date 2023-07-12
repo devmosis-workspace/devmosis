@@ -1,5 +1,6 @@
 import { Coin } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * AuthorizationType defines the type of staking module authorization type
  * 
@@ -115,6 +116,14 @@ export const StakeAuthorization = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      maxTokens: isSet(object.maxTokens) ? Coin.fromJSON(object.maxTokens) : undefined,
+      allowList: isSet(object.allowList) ? StakeAuthorization_Validators.fromJSON(object.allowList) : undefined,
+      denyList: isSet(object.denyList) ? StakeAuthorization_Validators.fromJSON(object.denyList) : undefined,
+      authorizationType: isSet(object.authorizationType) ? authorizationTypeFromJSON(object.authorizationType) : 0
+    };
+  },
   fromPartial(object) {
     var _object$authorization;
     const message = createBaseStakeAuthorization();
@@ -153,6 +162,11 @@ export const StakeAuthorization_Validators = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      address: Array.isArray(object === null || object === void 0 ? void 0 : object.address) ? object.address.map(e => String(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$address;

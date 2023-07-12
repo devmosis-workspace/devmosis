@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /** StorageType */
 export let StorageType = /*#__PURE__*/function (StorageType) {
   StorageType[StorageType["STORAGE_TYPE_DEFAULT_UNSPECIFIED"] = 0] = "STORAGE_TYPE_DEFAULT_UNSPECIFIED";
@@ -94,6 +95,12 @@ export const ModuleSchemaDescriptor = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      schemaFile: Array.isArray(object === null || object === void 0 ? void 0 : object.schemaFile) ? object.schemaFile.map(e => ModuleSchemaDescriptor_FileEntry.fromJSON(e)) : [],
+      prefix: isSet(object.prefix) ? bytesFromBase64(object.prefix) : new Uint8Array()
+    };
+  },
   fromPartial(object) {
     var _object$schemaFile, _object$prefix;
     const message = createBaseModuleSchemaDescriptor();
@@ -144,6 +151,13 @@ export const ModuleSchemaDescriptor_FileEntry = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      protoFileName: isSet(object.protoFileName) ? String(object.protoFileName) : "",
+      storageType: isSet(object.storageType) ? storageTypeFromJSON(object.storageType) : 0
+    };
   },
   fromPartial(object) {
     var _object$id, _object$protoFileName, _object$storageType;

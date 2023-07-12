@@ -23,5 +23,6 @@ export interface FeeTokenSDKType {
 export declare const FeeToken: {
     encode(message: FeeToken, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FeeToken;
+    fromJSON(object: any): FeeToken;
     fromPartial(object: Partial<FeeToken>): FeeToken;
 };

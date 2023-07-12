@@ -66,40 +66,48 @@ export interface QueryBaseDenomResponseSDKType {
 export declare const QueryFeeTokensRequest: {
     encode(_: QueryFeeTokensRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensRequest;
+    fromJSON(_: any): QueryFeeTokensRequest;
     fromPartial(_: Partial<QueryFeeTokensRequest>): QueryFeeTokensRequest;
 };
 export declare const QueryFeeTokensResponse: {
     encode(message: QueryFeeTokensResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryFeeTokensResponse;
+    fromJSON(object: any): QueryFeeTokensResponse;
     fromPartial(object: Partial<QueryFeeTokensResponse>): QueryFeeTokensResponse;
 };
 export declare const QueryDenomSpotPriceRequest: {
     encode(message: QueryDenomSpotPriceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceRequest;
+    fromJSON(object: any): QueryDenomSpotPriceRequest;
     fromPartial(object: Partial<QueryDenomSpotPriceRequest>): QueryDenomSpotPriceRequest;
 };
 export declare const QueryDenomSpotPriceResponse: {
     encode(message: QueryDenomSpotPriceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomSpotPriceResponse;
+    fromJSON(object: any): QueryDenomSpotPriceResponse;
     fromPartial(object: Partial<QueryDenomSpotPriceResponse>): QueryDenomSpotPriceResponse;
 };
 export declare const QueryDenomPoolIdRequest: {
     encode(message: QueryDenomPoolIdRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdRequest;
+    fromJSON(object: any): QueryDenomPoolIdRequest;
     fromPartial(object: Partial<QueryDenomPoolIdRequest>): QueryDenomPoolIdRequest;
 };
 export declare const QueryDenomPoolIdResponse: {
     encode(message: QueryDenomPoolIdResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryDenomPoolIdResponse;
+    fromJSON(object: any): QueryDenomPoolIdResponse;
     fromPartial(object: Partial<QueryDenomPoolIdResponse>): QueryDenomPoolIdResponse;
 };
 export declare const QueryBaseDenomRequest: {
     encode(_: QueryBaseDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomRequest;
+    fromJSON(_: any): QueryBaseDenomRequest;
     fromPartial(_: Partial<QueryBaseDenomRequest>): QueryBaseDenomRequest;
 };
 export declare const QueryBaseDenomResponse: {
     encode(message: QueryBaseDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBaseDenomResponse;
+    fromJSON(object: any): QueryBaseDenomResponse;
     fromPartial(object: Partial<QueryBaseDenomResponse>): QueryBaseDenomResponse;
 };

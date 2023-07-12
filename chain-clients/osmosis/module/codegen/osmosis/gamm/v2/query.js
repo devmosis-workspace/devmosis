@@ -1,4 +1,4 @@
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * QuerySpotPriceRequest defines the gRPC request structure for a SpotPrice
@@ -63,6 +63,13 @@ export const QuerySpotPriceRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      baseAssetDenom: isSet(object.baseAssetDenom) ? String(object.baseAssetDenom) : "",
+      quoteAssetDenom: isSet(object.quoteAssetDenom) ? String(object.quoteAssetDenom) : ""
+    };
+  },
   fromPartial(object) {
     var _object$baseAssetDeno, _object$quoteAssetDen;
     const message = createBaseQuerySpotPriceRequest();
@@ -100,6 +107,11 @@ export const QuerySpotPriceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      spotPrice: isSet(object.spotPrice) ? String(object.spotPrice) : ""
+    };
   },
   fromPartial(object) {
     var _object$spotPrice;

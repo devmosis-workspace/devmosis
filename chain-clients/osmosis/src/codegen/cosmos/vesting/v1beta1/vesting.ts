@@ -1,6 +1,6 @@
 import { BaseAccount, BaseAccountSDKType } from "../../auth/v1beta1/auth";
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * BaseVestingAccount implements the VestingAccount interface. It contains all
@@ -161,6 +161,15 @@ export const BaseVestingAccount = {
     }
     return message;
   },
+  fromJSON(object: any): BaseVestingAccount {
+    return {
+      baseAccount: isSet(object.baseAccount) ? BaseAccount.fromJSON(object.baseAccount) : undefined,
+      originalVesting: Array.isArray(object?.originalVesting) ? object.originalVesting.map((e: any) => Coin.fromJSON(e)) : [],
+      delegatedFree: Array.isArray(object?.delegatedFree) ? object.delegatedFree.map((e: any) => Coin.fromJSON(e)) : [],
+      delegatedVesting: Array.isArray(object?.delegatedVesting) ? object.delegatedVesting.map((e: any) => Coin.fromJSON(e)) : [],
+      endTime: isSet(object.endTime) ? Long.fromValue(object.endTime) : Long.ZERO
+    };
+  },
   fromPartial(object: Partial<BaseVestingAccount>): BaseVestingAccount {
     const message = createBaseBaseVestingAccount();
     message.baseAccount = object.baseAccount !== undefined && object.baseAccount !== null ? BaseAccount.fromPartial(object.baseAccount) : undefined;
@@ -207,6 +216,12 @@ export const ContinuousVestingAccount = {
     }
     return message;
   },
+  fromJSON(object: any): ContinuousVestingAccount {
+    return {
+      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined,
+      startTime: isSet(object.startTime) ? Long.fromValue(object.startTime) : Long.ZERO
+    };
+  },
   fromPartial(object: Partial<ContinuousVestingAccount>): ContinuousVestingAccount {
     const message = createBaseContinuousVestingAccount();
     message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
@@ -242,6 +257,11 @@ export const DelayedVestingAccount = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DelayedVestingAccount {
+    return {
+      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined
+    };
   },
   fromPartial(object: Partial<DelayedVestingAccount>): DelayedVestingAccount {
     const message = createBaseDelayedVestingAccount();
@@ -284,6 +304,12 @@ export const Period = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Period {
+    return {
+      length: isSet(object.length) ? Long.fromValue(object.length) : Long.ZERO,
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<Period>): Period {
     const message = createBasePeriod();
@@ -335,6 +361,13 @@ export const PeriodicVestingAccount = {
     }
     return message;
   },
+  fromJSON(object: any): PeriodicVestingAccount {
+    return {
+      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined,
+      startTime: isSet(object.startTime) ? Long.fromValue(object.startTime) : Long.ZERO,
+      vestingPeriods: Array.isArray(object?.vestingPeriods) ? object.vestingPeriods.map((e: any) => Period.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<PeriodicVestingAccount>): PeriodicVestingAccount {
     const message = createBasePeriodicVestingAccount();
     message.baseVestingAccount = object.baseVestingAccount !== undefined && object.baseVestingAccount !== null ? BaseVestingAccount.fromPartial(object.baseVestingAccount) : undefined;
@@ -371,6 +404,11 @@ export const PermanentLockedAccount = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PermanentLockedAccount {
+    return {
+      baseVestingAccount: isSet(object.baseVestingAccount) ? BaseVestingAccount.fromJSON(object.baseVestingAccount) : undefined
+    };
   },
   fromPartial(object: Partial<PermanentLockedAccount>): PermanentLockedAccount {
     const message = createBasePermanentLockedAccount();

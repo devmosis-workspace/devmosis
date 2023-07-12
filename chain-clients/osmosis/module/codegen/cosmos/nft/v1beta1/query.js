@@ -1,6 +1,6 @@
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { NFT, Class } from "./nft";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** QueryBalanceRequest is the request type for the Query/Balance RPC method */
 
@@ -94,6 +94,12 @@ export const QueryBalanceRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : "",
+      owner: isSet(object.owner) ? String(object.owner) : ""
+    };
+  },
   fromPartial(object) {
     var _object$classId, _object$owner;
     const message = createBaseQueryBalanceRequest();
@@ -130,6 +136,11 @@ export const QueryBalanceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      amount: isSet(object.amount) ? Long.fromValue(object.amount) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryBalanceResponse();
@@ -173,6 +184,12 @@ export const QueryOwnerRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : "",
+      id: isSet(object.id) ? String(object.id) : ""
+    };
+  },
   fromPartial(object) {
     var _object$classId2, _object$id;
     const message = createBaseQueryOwnerRequest();
@@ -210,6 +227,11 @@ export const QueryOwnerResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : ""
+    };
+  },
   fromPartial(object) {
     var _object$owner2;
     const message = createBaseQueryOwnerResponse();
@@ -246,6 +268,11 @@ export const QuerySupplyRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : ""
+    };
+  },
   fromPartial(object) {
     var _object$classId3;
     const message = createBaseQuerySupplyRequest();
@@ -281,6 +308,11 @@ export const QuerySupplyResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      amount: isSet(object.amount) ? Long.fromValue(object.amount) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseQuerySupplyResponse();
@@ -331,6 +363,13 @@ export const QueryNFTsRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : "",
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$classId4, _object$owner3;
     const message = createBaseQueryNFTsRequest();
@@ -376,6 +415,12 @@ export const QueryNFTsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      nfts: Array.isArray(object === null || object === void 0 ? void 0 : object.nfts) ? object.nfts.map(e => NFT.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$nfts;
     const message = createBaseQueryNFTsResponse();
@@ -420,6 +465,12 @@ export const QueryNFTRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : "",
+      id: isSet(object.id) ? String(object.id) : ""
+    };
+  },
   fromPartial(object) {
     var _object$classId5, _object$id2;
     const message = createBaseQueryNFTRequest();
@@ -457,6 +508,11 @@ export const QueryNFTResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      nft: isSet(object.nft) ? NFT.fromJSON(object.nft) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryNFTResponse();
     message.nft = object.nft !== undefined && object.nft !== null ? NFT.fromPartial(object.nft) : undefined;
@@ -491,6 +547,11 @@ export const QueryClassRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : ""
+    };
   },
   fromPartial(object) {
     var _object$classId6;
@@ -528,6 +589,11 @@ export const QueryClassResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      class: isSet(object.class) ? Class.fromJSON(object.class) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryClassResponse();
     message.class = object.class !== undefined && object.class !== null ? Class.fromPartial(object.class) : undefined;
@@ -562,6 +628,11 @@ export const QueryClassesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryClassesRequest();
@@ -604,6 +675,12 @@ export const QueryClassesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      classes: Array.isArray(object === null || object === void 0 ? void 0 : object.classes) ? object.classes.map(e => Class.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$classes;

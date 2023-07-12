@@ -1,6 +1,6 @@
 import { DecCoin } from "../../base/v1beta1/coin";
 import { ValidatorAccumulatedCommission, ValidatorHistoricalRewards, ValidatorCurrentRewards, DelegatorStartingInfo, ValidatorSlashEvent, Params, FeePool } from "./distribution";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * DelegatorWithdrawInfo is the address for where distributions rewards are
@@ -90,6 +90,12 @@ export const DelegatorWithdrawInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      withdrawAddress: isSet(object.withdrawAddress) ? String(object.withdrawAddress) : ""
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr, _object$withdrawAddre;
     const message = createBaseDelegatorWithdrawInfo();
@@ -134,6 +140,12 @@ export const ValidatorOutstandingRewardsRecord = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      outstandingRewards: Array.isArray(object === null || object === void 0 ? void 0 : object.outstandingRewards) ? object.outstandingRewards.map(e => DecCoin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$validatorAddr, _object$outstandingRe;
     const message = createBaseValidatorOutstandingRewardsRecord();
@@ -177,6 +189,12 @@ export const ValidatorAccumulatedCommissionRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      accumulated: isSet(object.accumulated) ? ValidatorAccumulatedCommission.fromJSON(object.accumulated) : undefined
+    };
   },
   fromPartial(object) {
     var _object$validatorAddr2;
@@ -229,6 +247,13 @@ export const ValidatorHistoricalRewardsRecord = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      period: isSet(object.period) ? Long.fromValue(object.period) : Long.UZERO,
+      rewards: isSet(object.rewards) ? ValidatorHistoricalRewards.fromJSON(object.rewards) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$validatorAddr3;
     const message = createBaseValidatorHistoricalRewardsRecord();
@@ -273,6 +298,12 @@ export const ValidatorCurrentRewardsRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      rewards: isSet(object.rewards) ? ValidatorCurrentRewards.fromJSON(object.rewards) : undefined
+    };
   },
   fromPartial(object) {
     var _object$validatorAddr4;
@@ -324,6 +355,13 @@ export const DelegatorStartingInfoRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      startingInfo: isSet(object.startingInfo) ? DelegatorStartingInfo.fromJSON(object.startingInfo) : undefined
+    };
   },
   fromPartial(object) {
     var _object$delegatorAddr2, _object$validatorAddr5;
@@ -383,6 +421,14 @@ export const ValidatorSlashEventRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
+      period: isSet(object.period) ? Long.fromValue(object.period) : Long.UZERO,
+      validatorSlashEvent: isSet(object.validatorSlashEvent) ? ValidatorSlashEvent.fromJSON(object.validatorSlashEvent) : undefined
+    };
   },
   fromPartial(object) {
     var _object$validatorAddr6;
@@ -485,6 +531,20 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      feePool: isSet(object.feePool) ? FeePool.fromJSON(object.feePool) : undefined,
+      delegatorWithdrawInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.delegatorWithdrawInfos) ? object.delegatorWithdrawInfos.map(e => DelegatorWithdrawInfo.fromJSON(e)) : [],
+      previousProposer: isSet(object.previousProposer) ? String(object.previousProposer) : "",
+      outstandingRewards: Array.isArray(object === null || object === void 0 ? void 0 : object.outstandingRewards) ? object.outstandingRewards.map(e => ValidatorOutstandingRewardsRecord.fromJSON(e)) : [],
+      validatorAccumulatedCommissions: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorAccumulatedCommissions) ? object.validatorAccumulatedCommissions.map(e => ValidatorAccumulatedCommissionRecord.fromJSON(e)) : [],
+      validatorHistoricalRewards: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorHistoricalRewards) ? object.validatorHistoricalRewards.map(e => ValidatorHistoricalRewardsRecord.fromJSON(e)) : [],
+      validatorCurrentRewards: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorCurrentRewards) ? object.validatorCurrentRewards.map(e => ValidatorCurrentRewardsRecord.fromJSON(e)) : [],
+      delegatorStartingInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.delegatorStartingInfos) ? object.delegatorStartingInfos.map(e => DelegatorStartingInfoRecord.fromJSON(e)) : [],
+      validatorSlashEvents: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorSlashEvents) ? object.validatorSlashEvents.map(e => ValidatorSlashEventRecord.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$delegatorWith, _object$previousPropo, _object$outstandingRe2, _object$validatorAccu, _object$validatorHist, _object$validatorCurr, _object$delegatorStar, _object$validatorSlas;

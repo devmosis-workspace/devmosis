@@ -38,5 +38,6 @@ export interface ModuleRouteSDKType {
 export declare const ModuleRoute: {
     encode(message: ModuleRoute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleRoute;
+    fromJSON(object: any): ModuleRoute;
     fromPartial(object: Partial<ModuleRoute>): ModuleRoute;
 };

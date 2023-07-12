@@ -1,4 +1,4 @@
-import { Long } from "../../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * CommitInfo defines commit information used by the multi-store when committing
@@ -66,6 +66,12 @@ export const CommitInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      version: isSet(object.version) ? Long.fromValue(object.version) : Long.ZERO,
+      storeInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.storeInfos) ? object.storeInfos.map(e => StoreInfo.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$storeInfos;
     const message = createBaseCommitInfo();
@@ -110,6 +116,12 @@ export const StoreInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      commitId: isSet(object.commitId) ? CommitID.fromJSON(object.commitId) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$name;
     const message = createBaseStoreInfo();
@@ -153,6 +165,12 @@ export const CommitID = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      version: isSet(object.version) ? Long.fromValue(object.version) : Long.ZERO,
+      hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$hash;

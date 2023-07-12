@@ -1,5 +1,5 @@
 import { TokenPairArbRoutes, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsSDKType, BaseDenom, BaseDenomSDKType } from "./protorev";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** MsgSetHotRoutes defines the Msg/SetHotRoutes request type. */
 export interface MsgSetHotRoutes {
@@ -169,6 +169,12 @@ export const MsgSetHotRoutes = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSetHotRoutes {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      hotRoutes: Array.isArray(object?.hotRoutes) ? object.hotRoutes.map((e: any) => TokenPairArbRoutes.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgSetHotRoutes>): MsgSetHotRoutes {
     const message = createBaseMsgSetHotRoutes();
     message.admin = object.admin ?? "";
@@ -196,6 +202,9 @@ export const MsgSetHotRoutesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetHotRoutesResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgSetHotRoutesResponse>): MsgSetHotRoutesResponse {
     const message = createBaseMsgSetHotRoutesResponse();
@@ -238,6 +247,12 @@ export const MsgSetDeveloperAccount = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSetDeveloperAccount {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      developerAccount: isSet(object.developerAccount) ? String(object.developerAccount) : ""
+    };
+  },
   fromPartial(object: Partial<MsgSetDeveloperAccount>): MsgSetDeveloperAccount {
     const message = createBaseMsgSetDeveloperAccount();
     message.admin = object.admin ?? "";
@@ -265,6 +280,9 @@ export const MsgSetDeveloperAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetDeveloperAccountResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgSetDeveloperAccountResponse>): MsgSetDeveloperAccountResponse {
     const message = createBaseMsgSetDeveloperAccountResponse();
@@ -307,6 +325,12 @@ export const MsgSetPoolWeights = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSetPoolWeights {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      poolWeights: isSet(object.poolWeights) ? PoolWeights.fromJSON(object.poolWeights) : undefined
+    };
+  },
   fromPartial(object: Partial<MsgSetPoolWeights>): MsgSetPoolWeights {
     const message = createBaseMsgSetPoolWeights();
     message.admin = object.admin ?? "";
@@ -334,6 +358,9 @@ export const MsgSetPoolWeightsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetPoolWeightsResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgSetPoolWeightsResponse>): MsgSetPoolWeightsResponse {
     const message = createBaseMsgSetPoolWeightsResponse();
@@ -376,6 +403,12 @@ export const MsgSetMaxPoolPointsPerTx = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSetMaxPoolPointsPerTx {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      maxPoolPointsPerTx: isSet(object.maxPoolPointsPerTx) ? Long.fromValue(object.maxPoolPointsPerTx) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<MsgSetMaxPoolPointsPerTx>): MsgSetMaxPoolPointsPerTx {
     const message = createBaseMsgSetMaxPoolPointsPerTx();
     message.admin = object.admin ?? "";
@@ -403,6 +436,9 @@ export const MsgSetMaxPoolPointsPerTxResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetMaxPoolPointsPerTxResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgSetMaxPoolPointsPerTxResponse>): MsgSetMaxPoolPointsPerTxResponse {
     const message = createBaseMsgSetMaxPoolPointsPerTxResponse();
@@ -445,6 +481,12 @@ export const MsgSetMaxPoolPointsPerBlock = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSetMaxPoolPointsPerBlock {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      maxPoolPointsPerBlock: isSet(object.maxPoolPointsPerBlock) ? Long.fromValue(object.maxPoolPointsPerBlock) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<MsgSetMaxPoolPointsPerBlock>): MsgSetMaxPoolPointsPerBlock {
     const message = createBaseMsgSetMaxPoolPointsPerBlock();
     message.admin = object.admin ?? "";
@@ -472,6 +514,9 @@ export const MsgSetMaxPoolPointsPerBlockResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetMaxPoolPointsPerBlockResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgSetMaxPoolPointsPerBlockResponse>): MsgSetMaxPoolPointsPerBlockResponse {
     const message = createBaseMsgSetMaxPoolPointsPerBlockResponse();
@@ -514,6 +559,12 @@ export const MsgSetBaseDenoms = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSetBaseDenoms {
+    return {
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      baseDenoms: Array.isArray(object?.baseDenoms) ? object.baseDenoms.map((e: any) => BaseDenom.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgSetBaseDenoms>): MsgSetBaseDenoms {
     const message = createBaseMsgSetBaseDenoms();
     message.admin = object.admin ?? "";
@@ -541,6 +592,9 @@ export const MsgSetBaseDenomsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetBaseDenomsResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgSetBaseDenomsResponse>): MsgSetBaseDenomsResponse {
     const message = createBaseMsgSetBaseDenomsResponse();

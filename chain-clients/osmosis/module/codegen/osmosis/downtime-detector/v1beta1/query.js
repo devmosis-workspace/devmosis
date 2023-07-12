@@ -1,5 +1,7 @@
+import { downtimeFromJSON } from "./downtime_duration";
 import { Duration } from "../../../google/protobuf/duration";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * Query for has it been at least $RECOVERY_DURATION units of time,
  * since the chain has been down for $DOWNTIME_DURATION.
@@ -46,6 +48,12 @@ export const RecoveredSinceDowntimeOfLengthRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      downtime: isSet(object.downtime) ? downtimeFromJSON(object.downtime) : 0,
+      recovery: isSet(object.recovery) ? Duration.fromJSON(object.recovery) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$downtime;
     const message = createBaseRecoveredSinceDowntimeOfLengthRequest();
@@ -82,6 +90,11 @@ export const RecoveredSinceDowntimeOfLengthResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      succesfullyRecovered: isSet(object.succesfullyRecovered) ? Boolean(object.succesfullyRecovered) : false
+    };
   },
   fromPartial(object) {
     var _object$succesfullyRe;

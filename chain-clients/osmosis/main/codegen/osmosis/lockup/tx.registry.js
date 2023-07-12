@@ -85,6 +85,38 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    lockTokens: function lockTokens(value) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgLockTokens",
+        value: _tx.MsgLockTokens.fromJSON(value)
+      };
+    },
+    beginUnlockingAll: function beginUnlockingAll(value) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgBeginUnlockingAll",
+        value: _tx.MsgBeginUnlockingAll.fromJSON(value)
+      };
+    },
+    beginUnlocking: function beginUnlocking(value) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgBeginUnlocking",
+        value: _tx.MsgBeginUnlocking.fromJSON(value)
+      };
+    },
+    extendLockup: function extendLockup(value) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgExtendLockup",
+        value: _tx.MsgExtendLockup.fromJSON(value)
+      };
+    },
+    forceUnlock: function forceUnlock(value) {
+      return {
+        typeUrl: "/osmosis.lockup.MsgForceUnlock",
+        value: _tx.MsgForceUnlock.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     lockTokens: function lockTokens(value) {
       return {

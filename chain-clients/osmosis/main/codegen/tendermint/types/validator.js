@@ -66,6 +66,15 @@ var ValidatorSet = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      validators: Array.isArray(object === null || object === void 0 ? void 0 : object.validators) ? object.validators.map(function (e) {
+        return Validator.fromJSON(e);
+      }) : [],
+      proposer: (0, _helpers.isSet)(object.proposer) ? Validator.fromJSON(object.proposer) : undefined,
+      totalVotingPower: (0, _helpers.isSet)(object.totalVotingPower) ? _helpers.Long.fromValue(object.totalVotingPower) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$validators;
     var message = createBaseValidatorSet();
@@ -129,6 +138,14 @@ var Validator = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? (0, _helpers.bytesFromBase64)(object.address) : new Uint8Array(),
+      pubKey: (0, _helpers.isSet)(object.pubKey) ? _keys.PublicKey.fromJSON(object.pubKey) : undefined,
+      votingPower: (0, _helpers.isSet)(object.votingPower) ? _helpers.Long.fromValue(object.votingPower) : _helpers.Long.ZERO,
+      proposerPriority: (0, _helpers.isSet)(object.proposerPriority) ? _helpers.Long.fromValue(object.proposerPriority) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address;
     var message = createBaseValidator();
@@ -176,6 +193,12 @@ var SimpleValidator = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      pubKey: (0, _helpers.isSet)(object.pubKey) ? _keys.PublicKey.fromJSON(object.pubKey) : undefined,
+      votingPower: (0, _helpers.isSet)(object.votingPower) ? _helpers.Long.fromValue(object.votingPower) : _helpers.Long.ZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseSimpleValidator();

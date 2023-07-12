@@ -1,5 +1,5 @@
 import { DecCoin, DecCoinSDKType, Coin, CoinSDKType } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** Params defines the set of params for the distribution module. */
 export interface Params {
@@ -269,6 +269,14 @@ export const Params = {
     }
     return message;
   },
+  fromJSON(object: any): Params {
+    return {
+      communityTax: isSet(object.communityTax) ? String(object.communityTax) : "",
+      baseProposerReward: isSet(object.baseProposerReward) ? String(object.baseProposerReward) : "",
+      bonusProposerReward: isSet(object.bonusProposerReward) ? String(object.bonusProposerReward) : "",
+      withdrawAddrEnabled: isSet(object.withdrawAddrEnabled) ? Boolean(object.withdrawAddrEnabled) : false
+    };
+  },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.communityTax = object.communityTax ?? "";
@@ -314,6 +322,12 @@ export const ValidatorHistoricalRewards = {
     }
     return message;
   },
+  fromJSON(object: any): ValidatorHistoricalRewards {
+    return {
+      cumulativeRewardRatio: Array.isArray(object?.cumulativeRewardRatio) ? object.cumulativeRewardRatio.map((e: any) => DecCoin.fromJSON(e)) : [],
+      referenceCount: isSet(object.referenceCount) ? Number(object.referenceCount) : 0
+    };
+  },
   fromPartial(object: Partial<ValidatorHistoricalRewards>): ValidatorHistoricalRewards {
     const message = createBaseValidatorHistoricalRewards();
     message.cumulativeRewardRatio = object.cumulativeRewardRatio?.map(e => DecCoin.fromPartial(e)) || [];
@@ -357,6 +371,12 @@ export const ValidatorCurrentRewards = {
     }
     return message;
   },
+  fromJSON(object: any): ValidatorCurrentRewards {
+    return {
+      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DecCoin.fromJSON(e)) : [],
+      period: isSet(object.period) ? Long.fromValue(object.period) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<ValidatorCurrentRewards>): ValidatorCurrentRewards {
     const message = createBaseValidatorCurrentRewards();
     message.rewards = object.rewards?.map(e => DecCoin.fromPartial(e)) || [];
@@ -393,6 +413,11 @@ export const ValidatorAccumulatedCommission = {
     }
     return message;
   },
+  fromJSON(object: any): ValidatorAccumulatedCommission {
+    return {
+      commission: Array.isArray(object?.commission) ? object.commission.map((e: any) => DecCoin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<ValidatorAccumulatedCommission>): ValidatorAccumulatedCommission {
     const message = createBaseValidatorAccumulatedCommission();
     message.commission = object.commission?.map(e => DecCoin.fromPartial(e)) || [];
@@ -427,6 +452,11 @@ export const ValidatorOutstandingRewards = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ValidatorOutstandingRewards {
+    return {
+      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => DecCoin.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<ValidatorOutstandingRewards>): ValidatorOutstandingRewards {
     const message = createBaseValidatorOutstandingRewards();
@@ -470,6 +500,12 @@ export const ValidatorSlashEvent = {
     }
     return message;
   },
+  fromJSON(object: any): ValidatorSlashEvent {
+    return {
+      validatorPeriod: isSet(object.validatorPeriod) ? Long.fromValue(object.validatorPeriod) : Long.UZERO,
+      fraction: isSet(object.fraction) ? String(object.fraction) : ""
+    };
+  },
   fromPartial(object: Partial<ValidatorSlashEvent>): ValidatorSlashEvent {
     const message = createBaseValidatorSlashEvent();
     message.validatorPeriod = object.validatorPeriod !== undefined && object.validatorPeriod !== null ? Long.fromValue(object.validatorPeriod) : Long.UZERO;
@@ -506,6 +542,11 @@ export const ValidatorSlashEvents = {
     }
     return message;
   },
+  fromJSON(object: any): ValidatorSlashEvents {
+    return {
+      validatorSlashEvents: Array.isArray(object?.validatorSlashEvents) ? object.validatorSlashEvents.map((e: any) => ValidatorSlashEvent.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<ValidatorSlashEvents>): ValidatorSlashEvents {
     const message = createBaseValidatorSlashEvents();
     message.validatorSlashEvents = object.validatorSlashEvents?.map(e => ValidatorSlashEvent.fromPartial(e)) || [];
@@ -540,6 +581,11 @@ export const FeePool = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): FeePool {
+    return {
+      communityPool: Array.isArray(object?.communityPool) ? object.communityPool.map((e: any) => DecCoin.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<FeePool>): FeePool {
     const message = createBaseFeePool();
@@ -597,6 +643,14 @@ export const CommunityPoolSpendProposal = {
     }
     return message;
   },
+  fromJSON(object: any): CommunityPoolSpendProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      recipient: isSet(object.recipient) ? String(object.recipient) : "",
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<CommunityPoolSpendProposal>): CommunityPoolSpendProposal {
     const message = createBaseCommunityPoolSpendProposal();
     message.title = object.title ?? "";
@@ -649,6 +703,13 @@ export const DelegatorStartingInfo = {
     }
     return message;
   },
+  fromJSON(object: any): DelegatorStartingInfo {
+    return {
+      previousPeriod: isSet(object.previousPeriod) ? Long.fromValue(object.previousPeriod) : Long.UZERO,
+      stake: isSet(object.stake) ? String(object.stake) : "",
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<DelegatorStartingInfo>): DelegatorStartingInfo {
     const message = createBaseDelegatorStartingInfo();
     message.previousPeriod = object.previousPeriod !== undefined && object.previousPeriod !== null ? Long.fromValue(object.previousPeriod) : Long.UZERO;
@@ -692,6 +753,12 @@ export const DelegationDelegatorReward = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DelegationDelegatorReward {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      reward: Array.isArray(object?.reward) ? object.reward.map((e: any) => DecCoin.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<DelegationDelegatorReward>): DelegationDelegatorReward {
     const message = createBaseDelegationDelegatorReward();
@@ -756,6 +823,15 @@ export const CommunityPoolSpendProposalWithDeposit = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): CommunityPoolSpendProposalWithDeposit {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      recipient: isSet(object.recipient) ? String(object.recipient) : "",
+      amount: isSet(object.amount) ? String(object.amount) : "",
+      deposit: isSet(object.deposit) ? String(object.deposit) : ""
+    };
   },
   fromPartial(object: Partial<CommunityPoolSpendProposalWithDeposit>): CommunityPoolSpendProposalWithDeposit {
     const message = createBaseCommunityPoolSpendProposalWithDeposit();

@@ -36,6 +36,20 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    grantAllowance(value: any) {
+      return {
+        typeUrl: "/cosmos.feegrant.v1beta1.MsgGrantAllowance",
+        value: MsgGrantAllowance.fromJSON(value)
+      };
+    },
+    revokeAllowance(value: any) {
+      return {
+        typeUrl: "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
+        value: MsgRevokeAllowance.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     grantAllowance(value: MsgGrantAllowance) {
       return {

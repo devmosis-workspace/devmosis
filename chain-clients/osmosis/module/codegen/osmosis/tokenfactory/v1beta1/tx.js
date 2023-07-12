@@ -1,6 +1,7 @@
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
 import { Metadata } from "../../../cosmos/bank/v1beta1/bank";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
  * method. It allows an account to create a new denom. It requires a sender
@@ -131,6 +132,12 @@ export const MsgCreateDenom = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      subdenom: isSet(object.subdenom) ? String(object.subdenom) : ""
+    };
+  },
   fromPartial(object) {
     var _object$sender, _object$subdenom;
     const message = createBaseMsgCreateDenom();
@@ -167,6 +174,11 @@ export const MsgCreateDenomResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      newTokenDenom: isSet(object.newTokenDenom) ? String(object.newTokenDenom) : ""
+    };
   },
   fromPartial(object) {
     var _object$newTokenDenom;
@@ -211,6 +223,12 @@ export const MsgMint = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$sender2;
     const message = createBaseMsgMint();
@@ -239,6 +257,9 @@ export const MsgMintResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgMintResponse();
@@ -281,6 +302,12 @@ export const MsgBurn = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$sender3;
     const message = createBaseMsgBurn();
@@ -309,6 +336,9 @@ export const MsgBurnResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgBurnResponse();
@@ -358,6 +388,13 @@ export const MsgChangeAdmin = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      newAdmin: isSet(object.newAdmin) ? String(object.newAdmin) : ""
+    };
+  },
   fromPartial(object) {
     var _object$sender4, _object$denom, _object$newAdmin;
     const message = createBaseMsgChangeAdmin();
@@ -387,6 +424,9 @@ export const MsgChangeAdminResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgChangeAdminResponse();
@@ -429,6 +469,12 @@ export const MsgSetDenomMetadata = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      metadata: isSet(object.metadata) ? Metadata.fromJSON(object.metadata) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$sender5;
     const message = createBaseMsgSetDenomMetadata();
@@ -457,6 +503,9 @@ export const MsgSetDenomMetadataResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSetDenomMetadataResponse();

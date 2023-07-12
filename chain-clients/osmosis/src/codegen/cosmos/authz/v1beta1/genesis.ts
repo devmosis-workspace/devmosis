@@ -37,6 +37,11 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object: any): GenesisState {
+    return {
+      authorization: Array.isArray(object?.authorization) ? object.authorization.map((e: any) => GrantAuthorization.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.authorization = object.authorization?.map(e => GrantAuthorization.fromPartial(e)) || [];

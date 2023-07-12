@@ -1,6 +1,7 @@
 import { Params, Metadata } from "./bank";
 import { Coin } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** GenesisState defines the bank module's genesis state. */
 
 /** GenesisState defines the bank module's genesis state. */
@@ -65,6 +66,14 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      balances: Array.isArray(object === null || object === void 0 ? void 0 : object.balances) ? object.balances.map(e => Balance.fromJSON(e)) : [],
+      supply: Array.isArray(object === null || object === void 0 ? void 0 : object.supply) ? object.supply.map(e => Coin.fromJSON(e)) : [],
+      denomMetadata: Array.isArray(object === null || object === void 0 ? void 0 : object.denomMetadata) ? object.denomMetadata.map(e => Metadata.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$balances, _object$supply, _object$denomMetadata;
     const message = createBaseGenesisState();
@@ -110,6 +119,12 @@ export const Balance = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(e => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$address, _object$coins;

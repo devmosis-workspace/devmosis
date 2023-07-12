@@ -49,6 +49,20 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    swapExactAmountIn: function swapExactAmountIn(value) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountIn",
+        value: _tx.MsgSwapExactAmountIn.fromJSON(value)
+      };
+    },
+    swapExactAmountOut: function swapExactAmountOut(value) {
+      return {
+        typeUrl: "/osmosis.poolmanager.v1beta1.MsgSwapExactAmountOut",
+        value: _tx.MsgSwapExactAmountOut.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     swapExactAmountIn: function swapExactAmountIn(value) {
       return {

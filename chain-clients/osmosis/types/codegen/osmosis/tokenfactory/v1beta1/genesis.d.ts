@@ -33,10 +33,12 @@ export interface GenesisDenomSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    fromJSON(object: any): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
 };
 export declare const GenesisDenom: {
     encode(message: GenesisDenom, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisDenom;
+    fromJSON(object: any): GenesisDenom;
     fromPartial(object: Partial<GenesisDenom>): GenesisDenom;
 };

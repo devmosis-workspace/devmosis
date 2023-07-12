@@ -39,10 +39,12 @@ export interface ConsensusSDKType {
 export declare const App: {
     encode(message: App, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): App;
+    fromJSON(object: any): App;
     fromPartial(object: Partial<App>): App;
 };
 export declare const Consensus: {
     encode(message: Consensus, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Consensus;
+    fromJSON(object: any): Consensus;
     fromPartial(object: Partial<Consensus>): Consensus;
 };

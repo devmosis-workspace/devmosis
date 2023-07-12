@@ -34,6 +34,11 @@ export const Params = {
     }
     return message;
   },
+  fromJSON(object: any): Params {
+    return {
+      forceUnlockAllowedAddresses: Array.isArray(object?.forceUnlockAllowedAddresses) ? object.forceUnlockAllowedAddresses.map((e: any) => String(e)) : []
+    };
+  },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.forceUnlockAllowedAddresses = object.forceUnlockAllowedAddresses?.map(e => e) || [];

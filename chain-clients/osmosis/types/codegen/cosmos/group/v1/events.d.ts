@@ -94,45 +94,54 @@ export interface EventLeaveGroupSDKType {
 export declare const EventCreateGroup: {
     encode(message: EventCreateGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventCreateGroup;
+    fromJSON(object: any): EventCreateGroup;
     fromPartial(object: Partial<EventCreateGroup>): EventCreateGroup;
 };
 export declare const EventUpdateGroup: {
     encode(message: EventUpdateGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventUpdateGroup;
+    fromJSON(object: any): EventUpdateGroup;
     fromPartial(object: Partial<EventUpdateGroup>): EventUpdateGroup;
 };
 export declare const EventCreateGroupPolicy: {
     encode(message: EventCreateGroupPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventCreateGroupPolicy;
+    fromJSON(object: any): EventCreateGroupPolicy;
     fromPartial(object: Partial<EventCreateGroupPolicy>): EventCreateGroupPolicy;
 };
 export declare const EventUpdateGroupPolicy: {
     encode(message: EventUpdateGroupPolicy, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventUpdateGroupPolicy;
+    fromJSON(object: any): EventUpdateGroupPolicy;
     fromPartial(object: Partial<EventUpdateGroupPolicy>): EventUpdateGroupPolicy;
 };
 export declare const EventSubmitProposal: {
     encode(message: EventSubmitProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventSubmitProposal;
+    fromJSON(object: any): EventSubmitProposal;
     fromPartial(object: Partial<EventSubmitProposal>): EventSubmitProposal;
 };
 export declare const EventWithdrawProposal: {
     encode(message: EventWithdrawProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventWithdrawProposal;
+    fromJSON(object: any): EventWithdrawProposal;
     fromPartial(object: Partial<EventWithdrawProposal>): EventWithdrawProposal;
 };
 export declare const EventVote: {
     encode(message: EventVote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventVote;
+    fromJSON(object: any): EventVote;
     fromPartial(object: Partial<EventVote>): EventVote;
 };
 export declare const EventExec: {
     encode(message: EventExec, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventExec;
+    fromJSON(object: any): EventExec;
     fromPartial(object: Partial<EventExec>): EventExec;
 };
 export declare const EventLeaveGroup: {
     encode(message: EventLeaveGroup, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventLeaveGroup;
+    fromJSON(object: any): EventLeaveGroup;
     fromPartial(object: Partial<EventLeaveGroup>): EventLeaveGroup;
 };

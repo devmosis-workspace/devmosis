@@ -1,6 +1,6 @@
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Duration } from "../../google/protobuf/duration";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * EpochInfo is a struct that describes the data going into
@@ -87,6 +87,17 @@ export const EpochInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      identifier: isSet(object.identifier) ? String(object.identifier) : "",
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
+      currentEpoch: isSet(object.currentEpoch) ? Long.fromValue(object.currentEpoch) : Long.ZERO,
+      currentEpochStartTime: isSet(object.currentEpochStartTime) ? fromJsonTimestamp(object.currentEpochStartTime) : undefined,
+      epochCountingStarted: isSet(object.epochCountingStarted) ? Boolean(object.epochCountingStarted) : false,
+      currentEpochStartHeight: isSet(object.currentEpochStartHeight) ? Long.fromValue(object.currentEpochStartHeight) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     var _object$identifier, _object$startTime, _object$currentEpochS, _object$epochCounting;
     const message = createBaseEpochInfo();
@@ -128,6 +139,11 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      epochs: Array.isArray(object === null || object === void 0 ? void 0 : object.epochs) ? object.epochs.map(e => EpochInfo.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$epochs;

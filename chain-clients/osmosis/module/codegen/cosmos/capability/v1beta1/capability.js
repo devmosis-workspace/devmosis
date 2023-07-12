@@ -1,4 +1,4 @@
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * Capability defines an implementation of an object capability. The index
@@ -59,6 +59,11 @@ export const Capability = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      index: isSet(object.index) ? Long.fromValue(object.index) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseCapability();
     message.index = object.index !== undefined && object.index !== null ? Long.fromValue(object.index) : Long.UZERO;
@@ -101,6 +106,12 @@ export const Owner = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      module: isSet(object.module) ? String(object.module) : "",
+      name: isSet(object.name) ? String(object.name) : ""
+    };
+  },
   fromPartial(object) {
     var _object$module, _object$name;
     const message = createBaseOwner();
@@ -137,6 +148,11 @@ export const CapabilityOwners = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      owners: Array.isArray(object === null || object === void 0 ? void 0 : object.owners) ? object.owners.map(e => Owner.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$owners;

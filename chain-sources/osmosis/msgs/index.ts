@@ -39,6 +39,9 @@ export const osmosisClient = osmosisClientList.flatMap((client) => {
     const encode: (args: Record<string, any>) => Any =
       messageComposer.encoded[key as keyof typeof messageComposer.encoded];
 
+    const fromJSON: (args: Record<string, any>) => Any =
+      messageComposer.fromJSON[key as keyof typeof messageComposer.fromJSON];
+
     const aminoConverter: {
       aminoType: string;
       toAmino: (args: Record<string, any>) => Record<string, any>;
@@ -53,6 +56,7 @@ export const osmosisClient = osmosisClientList.flatMap((client) => {
       proto: {
         typeUrl,
         encode,
+        fromJSON,
       },
       amino: {
         aminoType,

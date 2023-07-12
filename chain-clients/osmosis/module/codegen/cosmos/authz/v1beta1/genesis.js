@@ -33,6 +33,11 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      authorization: Array.isArray(object === null || object === void 0 ? void 0 : object.authorization) ? object.authorization.map(e => GrantAuthorization.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$authorization;
     const message = createBaseGenesisState();

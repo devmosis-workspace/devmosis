@@ -230,160 +230,192 @@ export interface QueryUnpoolWhitelistResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    fromJSON(_: any): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const AssetTypeRequest: {
     encode(message: AssetTypeRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeRequest;
+    fromJSON(object: any): AssetTypeRequest;
     fromPartial(object: Partial<AssetTypeRequest>): AssetTypeRequest;
 };
 export declare const AssetTypeResponse: {
     encode(message: AssetTypeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetTypeResponse;
+    fromJSON(object: any): AssetTypeResponse;
     fromPartial(object: Partial<AssetTypeResponse>): AssetTypeResponse;
 };
 export declare const AllAssetsRequest: {
     encode(_: AllAssetsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsRequest;
+    fromJSON(_: any): AllAssetsRequest;
     fromPartial(_: Partial<AllAssetsRequest>): AllAssetsRequest;
 };
 export declare const AllAssetsResponse: {
     encode(message: AllAssetsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllAssetsResponse;
+    fromJSON(object: any): AllAssetsResponse;
     fromPartial(object: Partial<AllAssetsResponse>): AllAssetsResponse;
 };
 export declare const AssetMultiplierRequest: {
     encode(message: AssetMultiplierRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierRequest;
+    fromJSON(object: any): AssetMultiplierRequest;
     fromPartial(object: Partial<AssetMultiplierRequest>): AssetMultiplierRequest;
 };
 export declare const AssetMultiplierResponse: {
     encode(message: AssetMultiplierResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AssetMultiplierResponse;
+    fromJSON(object: any): AssetMultiplierResponse;
     fromPartial(object: Partial<AssetMultiplierResponse>): AssetMultiplierResponse;
 };
 export declare const SuperfluidIntermediaryAccountInfo: {
     encode(message: SuperfluidIntermediaryAccountInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidIntermediaryAccountInfo;
+    fromJSON(object: any): SuperfluidIntermediaryAccountInfo;
     fromPartial(object: Partial<SuperfluidIntermediaryAccountInfo>): SuperfluidIntermediaryAccountInfo;
 };
 export declare const AllIntermediaryAccountsRequest: {
     encode(message: AllIntermediaryAccountsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsRequest;
+    fromJSON(object: any): AllIntermediaryAccountsRequest;
     fromPartial(object: Partial<AllIntermediaryAccountsRequest>): AllIntermediaryAccountsRequest;
 };
 export declare const AllIntermediaryAccountsResponse: {
     encode(message: AllIntermediaryAccountsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AllIntermediaryAccountsResponse;
+    fromJSON(object: any): AllIntermediaryAccountsResponse;
     fromPartial(object: Partial<AllIntermediaryAccountsResponse>): AllIntermediaryAccountsResponse;
 };
 export declare const ConnectedIntermediaryAccountRequest: {
     encode(message: ConnectedIntermediaryAccountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountRequest;
+    fromJSON(object: any): ConnectedIntermediaryAccountRequest;
     fromPartial(object: Partial<ConnectedIntermediaryAccountRequest>): ConnectedIntermediaryAccountRequest;
 };
 export declare const ConnectedIntermediaryAccountResponse: {
     encode(message: ConnectedIntermediaryAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConnectedIntermediaryAccountResponse;
+    fromJSON(object: any): ConnectedIntermediaryAccountResponse;
     fromPartial(object: Partial<ConnectedIntermediaryAccountResponse>): ConnectedIntermediaryAccountResponse;
 };
 export declare const QueryTotalDelegationByValidatorForDenomRequest: {
     encode(message: QueryTotalDelegationByValidatorForDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomRequest;
+    fromJSON(object: any): QueryTotalDelegationByValidatorForDenomRequest;
     fromPartial(object: Partial<QueryTotalDelegationByValidatorForDenomRequest>): QueryTotalDelegationByValidatorForDenomRequest;
 };
 export declare const QueryTotalDelegationByValidatorForDenomResponse: {
     encode(message: QueryTotalDelegationByValidatorForDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByValidatorForDenomResponse;
+    fromJSON(object: any): QueryTotalDelegationByValidatorForDenomResponse;
     fromPartial(object: Partial<QueryTotalDelegationByValidatorForDenomResponse>): QueryTotalDelegationByValidatorForDenomResponse;
 };
 export declare const Delegations: {
     encode(message: Delegations, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Delegations;
+    fromJSON(object: any): Delegations;
     fromPartial(object: Partial<Delegations>): Delegations;
 };
 export declare const TotalSuperfluidDelegationsRequest: {
     encode(_: TotalSuperfluidDelegationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsRequest;
+    fromJSON(_: any): TotalSuperfluidDelegationsRequest;
     fromPartial(_: Partial<TotalSuperfluidDelegationsRequest>): TotalSuperfluidDelegationsRequest;
 };
 export declare const TotalSuperfluidDelegationsResponse: {
     encode(message: TotalSuperfluidDelegationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TotalSuperfluidDelegationsResponse;
+    fromJSON(object: any): TotalSuperfluidDelegationsResponse;
     fromPartial(object: Partial<TotalSuperfluidDelegationsResponse>): TotalSuperfluidDelegationsResponse;
 };
 export declare const SuperfluidDelegationAmountRequest: {
     encode(message: SuperfluidDelegationAmountRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountRequest;
+    fromJSON(object: any): SuperfluidDelegationAmountRequest;
     fromPartial(object: Partial<SuperfluidDelegationAmountRequest>): SuperfluidDelegationAmountRequest;
 };
 export declare const SuperfluidDelegationAmountResponse: {
     encode(message: SuperfluidDelegationAmountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationAmountResponse;
+    fromJSON(object: any): SuperfluidDelegationAmountResponse;
     fromPartial(object: Partial<SuperfluidDelegationAmountResponse>): SuperfluidDelegationAmountResponse;
 };
 export declare const SuperfluidDelegationsByDelegatorRequest: {
     encode(message: SuperfluidDelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorRequest;
+    fromJSON(object: any): SuperfluidDelegationsByDelegatorRequest;
     fromPartial(object: Partial<SuperfluidDelegationsByDelegatorRequest>): SuperfluidDelegationsByDelegatorRequest;
 };
 export declare const SuperfluidDelegationsByDelegatorResponse: {
     encode(message: SuperfluidDelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByDelegatorResponse;
+    fromJSON(object: any): SuperfluidDelegationsByDelegatorResponse;
     fromPartial(object: Partial<SuperfluidDelegationsByDelegatorResponse>): SuperfluidDelegationsByDelegatorResponse;
 };
 export declare const SuperfluidUndelegationsByDelegatorRequest: {
     encode(message: SuperfluidUndelegationsByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorRequest;
+    fromJSON(object: any): SuperfluidUndelegationsByDelegatorRequest;
     fromPartial(object: Partial<SuperfluidUndelegationsByDelegatorRequest>): SuperfluidUndelegationsByDelegatorRequest;
 };
 export declare const SuperfluidUndelegationsByDelegatorResponse: {
     encode(message: SuperfluidUndelegationsByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidUndelegationsByDelegatorResponse;
+    fromJSON(object: any): SuperfluidUndelegationsByDelegatorResponse;
     fromPartial(object: Partial<SuperfluidUndelegationsByDelegatorResponse>): SuperfluidUndelegationsByDelegatorResponse;
 };
 export declare const SuperfluidDelegationsByValidatorDenomRequest: {
     encode(message: SuperfluidDelegationsByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomRequest;
+    fromJSON(object: any): SuperfluidDelegationsByValidatorDenomRequest;
     fromPartial(object: Partial<SuperfluidDelegationsByValidatorDenomRequest>): SuperfluidDelegationsByValidatorDenomRequest;
 };
 export declare const SuperfluidDelegationsByValidatorDenomResponse: {
     encode(message: SuperfluidDelegationsByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationsByValidatorDenomResponse;
+    fromJSON(object: any): SuperfluidDelegationsByValidatorDenomResponse;
     fromPartial(object: Partial<SuperfluidDelegationsByValidatorDenomResponse>): SuperfluidDelegationsByValidatorDenomResponse;
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest: {
     encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
+    fromJSON(object: any): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
     fromPartial(object: Partial<EstimateSuperfluidDelegatedAmountByValidatorDenomRequest>): EstimateSuperfluidDelegatedAmountByValidatorDenomRequest;
 };
 export declare const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse: {
     encode(message: EstimateSuperfluidDelegatedAmountByValidatorDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
+    fromJSON(object: any): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
     fromPartial(object: Partial<EstimateSuperfluidDelegatedAmountByValidatorDenomResponse>): EstimateSuperfluidDelegatedAmountByValidatorDenomResponse;
 };
 export declare const QueryTotalDelegationByDelegatorRequest: {
     encode(message: QueryTotalDelegationByDelegatorRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorRequest;
+    fromJSON(object: any): QueryTotalDelegationByDelegatorRequest;
     fromPartial(object: Partial<QueryTotalDelegationByDelegatorRequest>): QueryTotalDelegationByDelegatorRequest;
 };
 export declare const QueryTotalDelegationByDelegatorResponse: {
     encode(message: QueryTotalDelegationByDelegatorResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTotalDelegationByDelegatorResponse;
+    fromJSON(object: any): QueryTotalDelegationByDelegatorResponse;
     fromPartial(object: Partial<QueryTotalDelegationByDelegatorResponse>): QueryTotalDelegationByDelegatorResponse;
 };
 export declare const QueryUnpoolWhitelistRequest: {
     encode(_: QueryUnpoolWhitelistRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnpoolWhitelistRequest;
+    fromJSON(_: any): QueryUnpoolWhitelistRequest;
     fromPartial(_: Partial<QueryUnpoolWhitelistRequest>): QueryUnpoolWhitelistRequest;
 };
 export declare const QueryUnpoolWhitelistResponse: {
     encode(message: QueryUnpoolWhitelistResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryUnpoolWhitelistResponse;
+    fromJSON(object: any): QueryUnpoolWhitelistResponse;
     fromPartial(object: Partial<QueryUnpoolWhitelistResponse>): QueryUnpoolWhitelistResponse;
 };

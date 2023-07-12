@@ -90,6 +90,14 @@ var BasicAllowance = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      spendLimit: Array.isArray(object === null || object === void 0 ? void 0 : object.spendLimit) ? object.spendLimit.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      expiration: (0, _helpers.isSet)(object.expiration) ? (0, _helpers.fromJsonTimestamp)(object.expiration) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$spendLimit, _object$expiration;
     var message = createBaseBasicAllowance();
@@ -177,6 +185,19 @@ var PeriodicAllowance = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      basic: (0, _helpers.isSet)(object.basic) ? BasicAllowance.fromJSON(object.basic) : undefined,
+      period: (0, _helpers.isSet)(object.period) ? _duration.Duration.fromJSON(object.period) : undefined,
+      periodSpendLimit: Array.isArray(object === null || object === void 0 ? void 0 : object.periodSpendLimit) ? object.periodSpendLimit.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      periodCanSpend: Array.isArray(object === null || object === void 0 ? void 0 : object.periodCanSpend) ? object.periodCanSpend.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      periodReset: (0, _helpers.isSet)(object.periodReset) ? (0, _helpers.fromJsonTimestamp)(object.periodReset) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$periodSpendLi, _object$periodCanSpen, _object$periodReset;
     var message = createBasePeriodicAllowance();
@@ -239,6 +260,14 @@ var AllowedMsgAllowance = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      allowance: (0, _helpers.isSet)(object.allowance) ? _any.Any.fromJSON(object.allowance) : undefined,
+      allowedMessages: Array.isArray(object === null || object === void 0 ? void 0 : object.allowedMessages) ? object.allowedMessages.map(function (e) {
+        return String(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$allowedMessag;
     var message = createBaseAllowedMsgAllowance();
@@ -293,6 +322,13 @@ var Grant = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      granter: (0, _helpers.isSet)(object.granter) ? String(object.granter) : "",
+      grantee: (0, _helpers.isSet)(object.grantee) ? String(object.grantee) : "",
+      allowance: (0, _helpers.isSet)(object.allowance) ? _any.Any.fromJSON(object.allowance) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$granter, _object$grantee;

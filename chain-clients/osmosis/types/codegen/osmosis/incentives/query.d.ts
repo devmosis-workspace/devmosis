@@ -160,90 +160,108 @@ export interface QueryLockableDurationsResponseSDKType {
 export declare const ModuleToDistributeCoinsRequest: {
     encode(_: ModuleToDistributeCoinsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsRequest;
+    fromJSON(_: any): ModuleToDistributeCoinsRequest;
     fromPartial(_: Partial<ModuleToDistributeCoinsRequest>): ModuleToDistributeCoinsRequest;
 };
 export declare const ModuleToDistributeCoinsResponse: {
     encode(message: ModuleToDistributeCoinsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleToDistributeCoinsResponse;
+    fromJSON(object: any): ModuleToDistributeCoinsResponse;
     fromPartial(object: Partial<ModuleToDistributeCoinsResponse>): ModuleToDistributeCoinsResponse;
 };
 export declare const GaugeByIDRequest: {
     encode(message: GaugeByIDRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDRequest;
+    fromJSON(object: any): GaugeByIDRequest;
     fromPartial(object: Partial<GaugeByIDRequest>): GaugeByIDRequest;
 };
 export declare const GaugeByIDResponse: {
     encode(message: GaugeByIDResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugeByIDResponse;
+    fromJSON(object: any): GaugeByIDResponse;
     fromPartial(object: Partial<GaugeByIDResponse>): GaugeByIDResponse;
 };
 export declare const GaugesRequest: {
     encode(message: GaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugesRequest;
+    fromJSON(object: any): GaugesRequest;
     fromPartial(object: Partial<GaugesRequest>): GaugesRequest;
 };
 export declare const GaugesResponse: {
     encode(message: GaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GaugesResponse;
+    fromJSON(object: any): GaugesResponse;
     fromPartial(object: Partial<GaugesResponse>): GaugesResponse;
 };
 export declare const ActiveGaugesRequest: {
     encode(message: ActiveGaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesRequest;
+    fromJSON(object: any): ActiveGaugesRequest;
     fromPartial(object: Partial<ActiveGaugesRequest>): ActiveGaugesRequest;
 };
 export declare const ActiveGaugesResponse: {
     encode(message: ActiveGaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesResponse;
+    fromJSON(object: any): ActiveGaugesResponse;
     fromPartial(object: Partial<ActiveGaugesResponse>): ActiveGaugesResponse;
 };
 export declare const ActiveGaugesPerDenomRequest: {
     encode(message: ActiveGaugesPerDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomRequest;
+    fromJSON(object: any): ActiveGaugesPerDenomRequest;
     fromPartial(object: Partial<ActiveGaugesPerDenomRequest>): ActiveGaugesPerDenomRequest;
 };
 export declare const ActiveGaugesPerDenomResponse: {
     encode(message: ActiveGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ActiveGaugesPerDenomResponse;
+    fromJSON(object: any): ActiveGaugesPerDenomResponse;
     fromPartial(object: Partial<ActiveGaugesPerDenomResponse>): ActiveGaugesPerDenomResponse;
 };
 export declare const UpcomingGaugesRequest: {
     encode(message: UpcomingGaugesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesRequest;
+    fromJSON(object: any): UpcomingGaugesRequest;
     fromPartial(object: Partial<UpcomingGaugesRequest>): UpcomingGaugesRequest;
 };
 export declare const UpcomingGaugesResponse: {
     encode(message: UpcomingGaugesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesResponse;
+    fromJSON(object: any): UpcomingGaugesResponse;
     fromPartial(object: Partial<UpcomingGaugesResponse>): UpcomingGaugesResponse;
 };
 export declare const UpcomingGaugesPerDenomRequest: {
     encode(message: UpcomingGaugesPerDenomRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomRequest;
+    fromJSON(object: any): UpcomingGaugesPerDenomRequest;
     fromPartial(object: Partial<UpcomingGaugesPerDenomRequest>): UpcomingGaugesPerDenomRequest;
 };
 export declare const UpcomingGaugesPerDenomResponse: {
     encode(message: UpcomingGaugesPerDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpcomingGaugesPerDenomResponse;
+    fromJSON(object: any): UpcomingGaugesPerDenomResponse;
     fromPartial(object: Partial<UpcomingGaugesPerDenomResponse>): UpcomingGaugesPerDenomResponse;
 };
 export declare const RewardsEstRequest: {
     encode(message: RewardsEstRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstRequest;
+    fromJSON(object: any): RewardsEstRequest;
     fromPartial(object: Partial<RewardsEstRequest>): RewardsEstRequest;
 };
 export declare const RewardsEstResponse: {
     encode(message: RewardsEstResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RewardsEstResponse;
+    fromJSON(object: any): RewardsEstResponse;
     fromPartial(object: Partial<RewardsEstResponse>): RewardsEstResponse;
 };
 export declare const QueryLockableDurationsRequest: {
     encode(_: QueryLockableDurationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsRequest;
+    fromJSON(_: any): QueryLockableDurationsRequest;
     fromPartial(_: Partial<QueryLockableDurationsRequest>): QueryLockableDurationsRequest;
 };
 export declare const QueryLockableDurationsResponse: {
     encode(message: QueryLockableDurationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryLockableDurationsResponse;
+    fromJSON(object: any): QueryLockableDurationsResponse;
     fromPartial(object: Partial<QueryLockableDurationsResponse>): QueryLockableDurationsResponse;
 };

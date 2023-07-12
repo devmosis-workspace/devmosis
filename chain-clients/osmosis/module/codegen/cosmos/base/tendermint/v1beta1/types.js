@@ -2,7 +2,7 @@ import { Data, Commit, BlockID } from "../../../../tendermint/types/types";
 import { EvidenceList } from "../../../../tendermint/types/evidence";
 import { Consensus } from "../../../../tendermint/version/types";
 import { Timestamp } from "../../../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../../../helpers";
+import { Long, isSet, toTimestamp, fromTimestamp, fromJsonTimestamp, bytesFromBase64 } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * Block is tendermint type Block, with the Header proposer address
@@ -67,6 +67,14 @@ export const Block = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      header: isSet(object.header) ? Header.fromJSON(object.header) : undefined,
+      data: isSet(object.data) ? Data.fromJSON(object.data) : undefined,
+      evidence: isSet(object.evidence) ? EvidenceList.fromJSON(object.evidence) : undefined,
+      lastCommit: isSet(object.lastCommit) ? Commit.fromJSON(object.lastCommit) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseBlock();
@@ -196,6 +204,24 @@ export const Header = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      version: isSet(object.version) ? Consensus.fromJSON(object.version) : undefined,
+      chainId: isSet(object.chainId) ? String(object.chainId) : "",
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
+      lastBlockId: isSet(object.lastBlockId) ? BlockID.fromJSON(object.lastBlockId) : undefined,
+      lastCommitHash: isSet(object.lastCommitHash) ? bytesFromBase64(object.lastCommitHash) : new Uint8Array(),
+      dataHash: isSet(object.dataHash) ? bytesFromBase64(object.dataHash) : new Uint8Array(),
+      validatorsHash: isSet(object.validatorsHash) ? bytesFromBase64(object.validatorsHash) : new Uint8Array(),
+      nextValidatorsHash: isSet(object.nextValidatorsHash) ? bytesFromBase64(object.nextValidatorsHash) : new Uint8Array(),
+      consensusHash: isSet(object.consensusHash) ? bytesFromBase64(object.consensusHash) : new Uint8Array(),
+      appHash: isSet(object.appHash) ? bytesFromBase64(object.appHash) : new Uint8Array(),
+      lastResultsHash: isSet(object.lastResultsHash) ? bytesFromBase64(object.lastResultsHash) : new Uint8Array(),
+      evidenceHash: isSet(object.evidenceHash) ? bytesFromBase64(object.evidenceHash) : new Uint8Array(),
+      proposerAddress: isSet(object.proposerAddress) ? String(object.proposerAddress) : ""
+    };
   },
   fromPartial(object) {
     var _object$chainId, _object$time, _object$lastCommitHas, _object$dataHash, _object$validatorsHas, _object$nextValidator, _object$consensusHash, _object$appHash, _object$lastResultsHa, _object$evidenceHash, _object$proposerAddre;

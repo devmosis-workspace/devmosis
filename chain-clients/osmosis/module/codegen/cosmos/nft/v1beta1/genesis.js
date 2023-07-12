@@ -1,5 +1,6 @@
 import { Class, NFT } from "./nft";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** GenesisState defines the nft module's genesis state. */
 
 /** GenesisState defines the nft module's genesis state. */
@@ -44,6 +45,12 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      classes: Array.isArray(object === null || object === void 0 ? void 0 : object.classes) ? object.classes.map(e => Class.fromJSON(e)) : [],
+      entries: Array.isArray(object === null || object === void 0 ? void 0 : object.entries) ? object.entries.map(e => Entry.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$classes, _object$entries;
     const message = createBaseGenesisState();
@@ -87,6 +94,12 @@ export const Entry = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      nfts: Array.isArray(object === null || object === void 0 ? void 0 : object.nfts) ? object.nfts.map(e => NFT.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$owner, _object$nfts;

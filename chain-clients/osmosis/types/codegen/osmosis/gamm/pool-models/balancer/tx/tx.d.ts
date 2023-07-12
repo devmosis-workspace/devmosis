@@ -26,10 +26,12 @@ export interface MsgCreateBalancerPoolResponseSDKType {
 export declare const MsgCreateBalancerPool: {
     encode(message: MsgCreateBalancerPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPool;
+    fromJSON(object: any): MsgCreateBalancerPool;
     fromPartial(object: Partial<MsgCreateBalancerPool>): MsgCreateBalancerPool;
 };
 export declare const MsgCreateBalancerPoolResponse: {
     encode(message: MsgCreateBalancerPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateBalancerPoolResponse;
+    fromJSON(object: any): MsgCreateBalancerPoolResponse;
     fromPartial(object: Partial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse;
 };

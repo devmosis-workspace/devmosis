@@ -68,20 +68,24 @@ export interface GrantQueueItemSDKType {
 export declare const GenericAuthorization: {
     encode(message: GenericAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenericAuthorization;
+    fromJSON(object: any): GenericAuthorization;
     fromPartial(object: Partial<GenericAuthorization>): GenericAuthorization;
 };
 export declare const Grant: {
     encode(message: Grant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Grant;
+    fromJSON(object: any): Grant;
     fromPartial(object: Partial<Grant>): Grant;
 };
 export declare const GrantAuthorization: {
     encode(message: GrantAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GrantAuthorization;
+    fromJSON(object: any): GrantAuthorization;
     fromPartial(object: Partial<GrantAuthorization>): GrantAuthorization;
 };
 export declare const GrantQueueItem: {
     encode(message: GrantQueueItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GrantQueueItem;
+    fromJSON(object: any): GrantQueueItem;
     fromPartial(object: Partial<GrantQueueItem>): GrantQueueItem;
 };

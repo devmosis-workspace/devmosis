@@ -111,6 +111,15 @@ var Plan = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      name: (0, _helpers.isSet)(object.name) ? String(object.name) : "",
+      time: (0, _helpers.isSet)(object.time) ? (0, _helpers.fromJsonTimestamp)(object.time) : undefined,
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
+      info: (0, _helpers.isSet)(object.info) ? String(object.info) : "",
+      upgradedClientState: (0, _helpers.isSet)(object.upgradedClientState) ? _any.Any.fromJSON(object.upgradedClientState) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$name, _object$time, _object$info;
     var message = createBasePlan();
@@ -167,6 +176,13 @@ var SoftwareUpgradeProposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      title: (0, _helpers.isSet)(object.title) ? String(object.title) : "",
+      description: (0, _helpers.isSet)(object.description) ? String(object.description) : "",
+      plan: (0, _helpers.isSet)(object.plan) ? Plan.fromJSON(object.plan) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$title, _object$description;
     var message = createBaseSoftwareUpgradeProposal();
@@ -214,6 +230,12 @@ var CancelSoftwareUpgradeProposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      title: (0, _helpers.isSet)(object.title) ? String(object.title) : "",
+      description: (0, _helpers.isSet)(object.description) ? String(object.description) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$title2, _object$description2;
     var message = createBaseCancelSoftwareUpgradeProposal();
@@ -259,6 +281,12 @@ var ModuleVersion = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      name: (0, _helpers.isSet)(object.name) ? String(object.name) : "",
+      version: (0, _helpers.isSet)(object.version) ? _helpers.Long.fromValue(object.version) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$name2;

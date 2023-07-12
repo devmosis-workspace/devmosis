@@ -8,6 +8,7 @@ exports.MsgSetDenomMetadataResponse = exports.MsgSetDenomMetadata = exports.MsgM
 var _coin = require("../../../cosmos/base/v1beta1/coin");
 var _bank = require("../../../cosmos/bank/v1beta1/bank");
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
+var _helpers = require("../../../helpers");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 /**
@@ -141,6 +142,12 @@ var MsgCreateDenom = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      subdenom: (0, _helpers.isSet)(object.subdenom) ? String(object.subdenom) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender, _object$subdenom;
     var message = createBaseMsgCreateDenom();
@@ -179,6 +186,11 @@ var MsgCreateDenomResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      newTokenDenom: (0, _helpers.isSet)(object.newTokenDenom) ? String(object.newTokenDenom) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$newTokenDenom;
@@ -225,6 +237,12 @@ var MsgMint = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      amount: (0, _helpers.isSet)(object.amount) ? _coin.Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender2;
     var message = createBaseMsgMint();
@@ -255,6 +273,9 @@ var MsgMintResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgMintResponse();
@@ -299,6 +320,12 @@ var MsgBurn = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      amount: (0, _helpers.isSet)(object.amount) ? _coin.Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender3;
     var message = createBaseMsgBurn();
@@ -329,6 +356,9 @@ var MsgBurnResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgBurnResponse();
@@ -380,6 +410,13 @@ var MsgChangeAdmin = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : "",
+      newAdmin: (0, _helpers.isSet)(object.newAdmin) ? String(object.newAdmin) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender4, _object$denom, _object$newAdmin;
     var message = createBaseMsgChangeAdmin();
@@ -411,6 +448,9 @@ var MsgChangeAdminResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgChangeAdminResponse();
@@ -455,6 +495,12 @@ var MsgSetDenomMetadata = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      metadata: (0, _helpers.isSet)(object.metadata) ? _bank.Metadata.fromJSON(object.metadata) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender5;
     var message = createBaseMsgSetDenomMetadata();
@@ -485,6 +531,9 @@ var MsgSetDenomMetadataResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSetDenomMetadataResponse();

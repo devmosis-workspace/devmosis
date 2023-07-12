@@ -27,15 +27,18 @@ export interface RecordSDKType {
 export declare const AccumulatorContent: {
     encode(message: AccumulatorContent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AccumulatorContent;
+    fromJSON(object: any): AccumulatorContent;
     fromPartial(object: Partial<AccumulatorContent>): AccumulatorContent;
 };
 export declare const Options: {
     encode(_: Options, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Options;
+    fromJSON(_: any): Options;
     fromPartial(_: Partial<Options>): Options;
 };
 export declare const Record: {
     encode(message: Record, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Record;
+    fromJSON(object: any): Record;
     fromPartial(object: Partial<Record>): Record;
 };

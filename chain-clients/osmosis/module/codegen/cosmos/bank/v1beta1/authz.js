@@ -43,6 +43,11 @@ export const SendAuthorization = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      spendLimit: Array.isArray(object === null || object === void 0 ? void 0 : object.spendLimit) ? object.spendLimit.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$spendLimit;
     const message = createBaseSendAuthorization();

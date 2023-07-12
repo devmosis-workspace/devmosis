@@ -125,30 +125,36 @@ export interface UnpoolWhitelistedPoolsSDKType {
 export declare const SuperfluidAsset: {
     encode(message: SuperfluidAsset, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidAsset;
+    fromJSON(object: any): SuperfluidAsset;
     fromPartial(object: Partial<SuperfluidAsset>): SuperfluidAsset;
 };
 export declare const SuperfluidIntermediaryAccount: {
     encode(message: SuperfluidIntermediaryAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidIntermediaryAccount;
+    fromJSON(object: any): SuperfluidIntermediaryAccount;
     fromPartial(object: Partial<SuperfluidIntermediaryAccount>): SuperfluidIntermediaryAccount;
 };
 export declare const OsmoEquivalentMultiplierRecord: {
     encode(message: OsmoEquivalentMultiplierRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): OsmoEquivalentMultiplierRecord;
+    fromJSON(object: any): OsmoEquivalentMultiplierRecord;
     fromPartial(object: Partial<OsmoEquivalentMultiplierRecord>): OsmoEquivalentMultiplierRecord;
 };
 export declare const SuperfluidDelegationRecord: {
     encode(message: SuperfluidDelegationRecord, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SuperfluidDelegationRecord;
+    fromJSON(object: any): SuperfluidDelegationRecord;
     fromPartial(object: Partial<SuperfluidDelegationRecord>): SuperfluidDelegationRecord;
 };
 export declare const LockIdIntermediaryAccountConnection: {
     encode(message: LockIdIntermediaryAccountConnection, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LockIdIntermediaryAccountConnection;
+    fromJSON(object: any): LockIdIntermediaryAccountConnection;
     fromPartial(object: Partial<LockIdIntermediaryAccountConnection>): LockIdIntermediaryAccountConnection;
 };
 export declare const UnpoolWhitelistedPools: {
     encode(message: UnpoolWhitelistedPools, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnpoolWhitelistedPools;
+    fromJSON(object: any): UnpoolWhitelistedPools;
     fromPartial(object: Partial<UnpoolWhitelistedPools>): UnpoolWhitelistedPools;
 };

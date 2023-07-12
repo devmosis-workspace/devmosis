@@ -1,5 +1,5 @@
 import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 
 /**
@@ -79,6 +79,13 @@ export const MsgSuperfluidDelegate = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lockId: isSet(object.lockId) ? Long.fromValue(object.lockId) : Long.UZERO,
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : ""
+    };
+  },
   fromPartial(object) {
     var _object$sender, _object$valAddr;
     const message = createBaseMsgSuperfluidDelegate();
@@ -108,6 +115,9 @@ export const MsgSuperfluidDelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSuperfluidDelegateResponse();
@@ -150,6 +160,12 @@ export const MsgSuperfluidUndelegate = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lockId: isSet(object.lockId) ? Long.fromValue(object.lockId) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     var _object$sender2;
     const message = createBaseMsgSuperfluidUndelegate();
@@ -178,6 +194,9 @@ export const MsgSuperfluidUndelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSuperfluidUndelegateResponse();
@@ -220,6 +239,12 @@ export const MsgSuperfluidUnbondLock = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lockId: isSet(object.lockId) ? Long.fromValue(object.lockId) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     var _object$sender3;
     const message = createBaseMsgSuperfluidUnbondLock();
@@ -248,6 +273,9 @@ export const MsgSuperfluidUnbondLockResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSuperfluidUnbondLockResponse();
@@ -297,6 +325,13 @@ export const MsgSuperfluidUndelegateAndUnbondLock = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      lockId: isSet(object.lockId) ? Long.fromValue(object.lockId) : Long.UZERO,
+      coin: isSet(object.coin) ? Coin.fromJSON(object.coin) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$sender4;
     const message = createBaseMsgSuperfluidUndelegateAndUnbondLock();
@@ -326,6 +361,9 @@ export const MsgSuperfluidUndelegateAndUnbondLockResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgSuperfluidUndelegateAndUnbondLockResponse();
@@ -375,6 +413,13 @@ export const MsgLockAndSuperfluidDelegate = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(e => Coin.fromJSON(e)) : [],
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : ""
+    };
+  },
   fromPartial(object) {
     var _object$sender5, _object$coins, _object$valAddr2;
     const message = createBaseMsgLockAndSuperfluidDelegate();
@@ -412,6 +457,11 @@ export const MsgLockAndSuperfluidDelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseMsgLockAndSuperfluidDelegateResponse();
@@ -454,6 +504,12 @@ export const MsgUnPoolWhitelistedPool = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
   },
   fromPartial(object) {
     var _object$sender6;
@@ -500,6 +556,11 @@ export const MsgUnPoolWhitelistedPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      exitedLockIds: Array.isArray(object === null || object === void 0 ? void 0 : object.exitedLockIds) ? object.exitedLockIds.map(e => Long.fromValue(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$exitedLockIds;

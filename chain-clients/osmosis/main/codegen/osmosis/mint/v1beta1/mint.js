@@ -74,6 +74,11 @@ var Minter = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      epochProvisions: (0, _helpers.isSet)(object.epochProvisions) ? String(object.epochProvisions) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$epochProvisio;
     var message = createBaseMinter();
@@ -118,6 +123,12 @@ var WeightedAddress = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      weight: (0, _helpers.isSet)(object.weight) ? String(object.weight) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address, _object$weight;
@@ -178,6 +189,14 @@ var DistributionProportions = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      staking: (0, _helpers.isSet)(object.staking) ? String(object.staking) : "",
+      poolIncentives: (0, _helpers.isSet)(object.poolIncentives) ? String(object.poolIncentives) : "",
+      developerRewards: (0, _helpers.isSet)(object.developerRewards) ? String(object.developerRewards) : "",
+      communityPool: (0, _helpers.isSet)(object.communityPool) ? String(object.communityPool) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$staking, _object$poolIncentive, _object$developerRewa, _object$communityPool;
@@ -277,6 +296,20 @@ var Params = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      mintDenom: (0, _helpers.isSet)(object.mintDenom) ? String(object.mintDenom) : "",
+      genesisEpochProvisions: (0, _helpers.isSet)(object.genesisEpochProvisions) ? String(object.genesisEpochProvisions) : "",
+      epochIdentifier: (0, _helpers.isSet)(object.epochIdentifier) ? String(object.epochIdentifier) : "",
+      reductionPeriodInEpochs: (0, _helpers.isSet)(object.reductionPeriodInEpochs) ? _helpers.Long.fromValue(object.reductionPeriodInEpochs) : _helpers.Long.ZERO,
+      reductionFactor: (0, _helpers.isSet)(object.reductionFactor) ? String(object.reductionFactor) : "",
+      distributionProportions: (0, _helpers.isSet)(object.distributionProportions) ? DistributionProportions.fromJSON(object.distributionProportions) : undefined,
+      weightedDeveloperRewardsReceivers: Array.isArray(object === null || object === void 0 ? void 0 : object.weightedDeveloperRewardsReceivers) ? object.weightedDeveloperRewardsReceivers.map(function (e) {
+        return WeightedAddress.fromJSON(e);
+      }) : [],
+      mintingRewardsDistributionStartEpoch: (0, _helpers.isSet)(object.mintingRewardsDistributionStartEpoch) ? _helpers.Long.fromValue(object.mintingRewardsDistributionStartEpoch) : _helpers.Long.ZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$mintDenom, _object$genesisEpochP, _object$epochIdentifi, _object$reductionFact, _object$weightedDevel;

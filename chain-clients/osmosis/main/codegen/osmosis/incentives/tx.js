@@ -97,6 +97,18 @@ var MsgCreateGauge = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      isPerpetual: (0, _helpers.isSet)(object.isPerpetual) ? Boolean(object.isPerpetual) : false,
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      distributeTo: (0, _helpers.isSet)(object.distributeTo) ? _lock.QueryCondition.fromJSON(object.distributeTo) : undefined,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      startTime: (0, _helpers.isSet)(object.startTime) ? (0, _helpers.fromJsonTimestamp)(object.startTime) : undefined,
+      numEpochsPaidOver: (0, _helpers.isSet)(object.numEpochsPaidOver) ? _helpers.Long.fromValue(object.numEpochsPaidOver) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$isPerpetual, _object$owner, _object$coins, _object$startTime;
     var message = createBaseMsgCreateGauge();
@@ -133,6 +145,9 @@ var MsgCreateGaugeResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgCreateGaugeResponse();
@@ -193,6 +208,15 @@ var MsgAddToGauge = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      gaugeId: (0, _helpers.isSet)(object.gaugeId) ? _helpers.Long.fromValue(object.gaugeId) : _helpers.Long.UZERO,
+      rewards: Array.isArray(object === null || object === void 0 ? void 0 : object.rewards) ? object.rewards.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$owner2, _object$rewards;
     var message = createBaseMsgAddToGauge();
@@ -226,6 +250,9 @@ var MsgAddToGaugeResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgAddToGaugeResponse();

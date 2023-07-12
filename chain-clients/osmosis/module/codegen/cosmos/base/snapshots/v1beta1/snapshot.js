@@ -1,4 +1,4 @@
-import { Long } from "../../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** Snapshot contains Tendermint state sync snapshot info. */
 
@@ -149,6 +149,15 @@ export const Snapshot = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO,
+      format: isSet(object.format) ? Number(object.format) : 0,
+      chunks: isSet(object.chunks) ? Number(object.chunks) : 0,
+      hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array(),
+      metadata: isSet(object.metadata) ? Metadata.fromJSON(object.metadata) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$format, _object$chunks, _object$hash;
     const message = createBaseSnapshot();
@@ -188,6 +197,11 @@ export const Metadata = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      chunkHashes: Array.isArray(object === null || object === void 0 ? void 0 : object.chunkHashes) ? object.chunkHashes.map(e => bytesFromBase64(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$chunkHashes;
@@ -260,6 +274,16 @@ export const SnapshotItem = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      store: isSet(object.store) ? SnapshotStoreItem.fromJSON(object.store) : undefined,
+      iavl: isSet(object.iavl) ? SnapshotIAVLItem.fromJSON(object.iavl) : undefined,
+      extension: isSet(object.extension) ? SnapshotExtensionMeta.fromJSON(object.extension) : undefined,
+      extensionPayload: isSet(object.extensionPayload) ? SnapshotExtensionPayload.fromJSON(object.extensionPayload) : undefined,
+      kv: isSet(object.kv) ? SnapshotKVItem.fromJSON(object.kv) : undefined,
+      schema: isSet(object.schema) ? SnapshotSchema.fromJSON(object.schema) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseSnapshotItem();
     message.store = object.store !== undefined && object.store !== null ? SnapshotStoreItem.fromPartial(object.store) : undefined;
@@ -299,6 +323,11 @@ export const SnapshotStoreItem = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      name: isSet(object.name) ? String(object.name) : ""
+    };
   },
   fromPartial(object) {
     var _object$name;
@@ -357,6 +386,14 @@ export const SnapshotIAVLItem = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(),
+      version: isSet(object.version) ? Long.fromValue(object.version) : Long.ZERO,
+      height: isSet(object.height) ? Number(object.height) : 0
+    };
+  },
   fromPartial(object) {
     var _object$key, _object$value, _object$height;
     const message = createBaseSnapshotIAVLItem();
@@ -403,6 +440,12 @@ export const SnapshotExtensionMeta = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      format: isSet(object.format) ? Number(object.format) : 0
+    };
+  },
   fromPartial(object) {
     var _object$name2, _object$format2;
     const message = createBaseSnapshotExtensionMeta();
@@ -439,6 +482,11 @@ export const SnapshotExtensionPayload = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      payload: isSet(object.payload) ? bytesFromBase64(object.payload) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$payload;
@@ -483,6 +531,12 @@ export const SnapshotKVItem = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
+    };
+  },
   fromPartial(object) {
     var _object$key2, _object$value2;
     const message = createBaseSnapshotKVItem();
@@ -519,6 +573,11 @@ export const SnapshotSchema = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      keys: Array.isArray(object === null || object === void 0 ? void 0 : object.keys) ? object.keys.map(e => bytesFromBase64(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$keys;

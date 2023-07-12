@@ -1,6 +1,6 @@
 import { PoolParams, PoolParamsSDKType } from "./stableswap_pool";
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../../helpers";
+import { Long, isSet } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** ===================== MsgCreatePool */
 export interface MsgCreateStableswapPool {
@@ -121,6 +121,16 @@ export const MsgCreateStableswapPool = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCreateStableswapPool {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      initialPoolLiquidity: Array.isArray(object?.initialPoolLiquidity) ? object.initialPoolLiquidity.map((e: any) => Coin.fromJSON(e)) : [],
+      scalingFactors: Array.isArray(object?.scalingFactors) ? object.scalingFactors.map((e: any) => Long.fromValue(e)) : [],
+      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      scalingFactorController: isSet(object.scalingFactorController) ? String(object.scalingFactorController) : ""
+    };
+  },
   fromPartial(object: Partial<MsgCreateStableswapPool>): MsgCreateStableswapPool {
     const message = createBaseMsgCreateStableswapPool();
     message.sender = object.sender ?? "";
@@ -160,6 +170,11 @@ export const MsgCreateStableswapPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateStableswapPoolResponse {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<MsgCreateStableswapPoolResponse>): MsgCreateStableswapPoolResponse {
     const message = createBaseMsgCreateStableswapPoolResponse();
@@ -219,6 +234,13 @@ export const MsgStableSwapAdjustScalingFactors = {
     }
     return message;
   },
+  fromJSON(object: any): MsgStableSwapAdjustScalingFactors {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      scalingFactors: Array.isArray(object?.scalingFactors) ? object.scalingFactors.map((e: any) => Long.fromValue(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgStableSwapAdjustScalingFactors>): MsgStableSwapAdjustScalingFactors {
     const message = createBaseMsgStableSwapAdjustScalingFactors();
     message.sender = object.sender ?? "";
@@ -247,6 +269,9 @@ export const MsgStableSwapAdjustScalingFactorsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgStableSwapAdjustScalingFactorsResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgStableSwapAdjustScalingFactorsResponse>): MsgStableSwapAdjustScalingFactorsResponse {
     const message = createBaseMsgStableSwapAdjustScalingFactorsResponse();

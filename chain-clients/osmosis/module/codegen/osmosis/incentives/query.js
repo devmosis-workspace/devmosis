@@ -2,7 +2,7 @@ import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagin
 import { Coin } from "../../cosmos/base/v1beta1/coin";
 import { Gauge } from "./gauge";
 import { Duration } from "../../google/protobuf/duration";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 function createBaseModuleToDistributeCoinsRequest() {
   return {};
@@ -24,6 +24,9 @@ export const ModuleToDistributeCoinsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseModuleToDistributeCoinsRequest();
@@ -58,6 +61,11 @@ export const ModuleToDistributeCoinsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(e => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$coins;
@@ -95,6 +103,11 @@ export const GaugeByIDRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseGaugeByIDRequest();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
@@ -130,6 +143,11 @@ export const GaugeByIDResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      gauge: isSet(object.gauge) ? Gauge.fromJSON(object.gauge) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseGaugeByIDResponse();
     message.gauge = object.gauge !== undefined && object.gauge !== null ? Gauge.fromPartial(object.gauge) : undefined;
@@ -164,6 +182,11 @@ export const GaugesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseGaugesRequest();
@@ -207,6 +230,12 @@ export const GaugesResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      data: Array.isArray(object === null || object === void 0 ? void 0 : object.data) ? object.data.map(e => Gauge.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$data;
     const message = createBaseGaugesResponse();
@@ -243,6 +272,11 @@ export const ActiveGaugesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseActiveGaugesRequest();
@@ -285,6 +319,12 @@ export const ActiveGaugesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      data: Array.isArray(object === null || object === void 0 ? void 0 : object.data) ? object.data.map(e => Gauge.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$data2;
@@ -330,6 +370,12 @@ export const ActiveGaugesPerDenomRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$denom;
     const message = createBaseActiveGaugesPerDenomRequest();
@@ -374,6 +420,12 @@ export const ActiveGaugesPerDenomResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      data: Array.isArray(object === null || object === void 0 ? void 0 : object.data) ? object.data.map(e => Gauge.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$data3;
     const message = createBaseActiveGaugesPerDenomResponse();
@@ -410,6 +462,11 @@ export const UpcomingGaugesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseUpcomingGaugesRequest();
@@ -452,6 +509,12 @@ export const UpcomingGaugesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      data: Array.isArray(object === null || object === void 0 ? void 0 : object.data) ? object.data.map(e => Gauge.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$data4;
@@ -497,6 +560,12 @@ export const UpcomingGaugesPerDenomRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$denom2;
     const message = createBaseUpcomingGaugesPerDenomRequest();
@@ -540,6 +609,12 @@ export const UpcomingGaugesPerDenomResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      upcomingGauges: Array.isArray(object === null || object === void 0 ? void 0 : object.upcomingGauges) ? object.upcomingGauges.map(e => Gauge.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$upcomingGauge;
@@ -601,6 +676,13 @@ export const RewardsEstRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      lockIds: Array.isArray(object === null || object === void 0 ? void 0 : object.lockIds) ? object.lockIds.map(e => Long.fromValue(e)) : [],
+      endEpoch: isSet(object.endEpoch) ? Long.fromValue(object.endEpoch) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     var _object$owner, _object$lockIds;
     const message = createBaseRewardsEstRequest();
@@ -639,6 +721,11 @@ export const RewardsEstResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$coins2;
     const message = createBaseRewardsEstResponse();
@@ -666,6 +753,9 @@ export const QueryLockableDurationsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryLockableDurationsRequest();
@@ -700,6 +790,11 @@ export const QueryLockableDurationsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      lockableDurations: Array.isArray(object === null || object === void 0 ? void 0 : object.lockableDurations) ? object.lockableDurations.map(e => Duration.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$lockableDurat;

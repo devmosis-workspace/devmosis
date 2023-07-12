@@ -55,6 +55,32 @@ export declare const MessageComposer: {
             value: MsgDelegateBondedTokens;
         };
     };
+    fromJSON: {
+        setValidatorSetPreference(value: any): {
+            typeUrl: string;
+            value: MsgSetValidatorSetPreference;
+        };
+        delegateToValidatorSet(value: any): {
+            typeUrl: string;
+            value: MsgDelegateToValidatorSet;
+        };
+        undelegateFromValidatorSet(value: any): {
+            typeUrl: string;
+            value: MsgUndelegateFromValidatorSet;
+        };
+        redelegateValidatorSet(value: any): {
+            typeUrl: string;
+            value: MsgRedelegateValidatorSet;
+        };
+        withdrawDelegationRewards(value: any): {
+            typeUrl: string;
+            value: MsgWithdrawDelegationRewards;
+        };
+        delegateBondedTokens(value: any): {
+            typeUrl: string;
+            value: MsgDelegateBondedTokens;
+        };
+    };
     fromPartial: {
         setValidatorSetPreference(value: MsgSetValidatorSetPreference): {
             typeUrl: string;

@@ -1,6 +1,7 @@
 import { Params, ParamsSDKType } from "./params";
 import { DenomAuthorityMetadata, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** GenesisState defines the tokenfactory module's genesis state. */
 export interface GenesisState {
   /** params defines the paramaters of the module. */
@@ -66,6 +67,12 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object: any): GenesisState {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      factoryDenoms: Array.isArray(object?.factoryDenoms) ? object.factoryDenoms.map((e: any) => GenesisDenom.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -108,6 +115,12 @@ export const GenesisDenom = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GenesisDenom {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      authorityMetadata: isSet(object.authorityMetadata) ? DenomAuthorityMetadata.fromJSON(object.authorityMetadata) : undefined
+    };
   },
   fromPartial(object: Partial<GenesisDenom>): GenesisDenom {
     const message = createBaseGenesisDenom();

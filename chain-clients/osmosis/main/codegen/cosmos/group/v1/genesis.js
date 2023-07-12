@@ -141,6 +141,28 @@ var GenesisState = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      groupSeq: (0, _helpers.isSet)(object.groupSeq) ? _helpers.Long.fromValue(object.groupSeq) : _helpers.Long.UZERO,
+      groups: Array.isArray(object === null || object === void 0 ? void 0 : object.groups) ? object.groups.map(function (e) {
+        return _types.GroupInfo.fromJSON(e);
+      }) : [],
+      groupMembers: Array.isArray(object === null || object === void 0 ? void 0 : object.groupMembers) ? object.groupMembers.map(function (e) {
+        return _types.GroupMember.fromJSON(e);
+      }) : [],
+      groupPolicySeq: (0, _helpers.isSet)(object.groupPolicySeq) ? _helpers.Long.fromValue(object.groupPolicySeq) : _helpers.Long.UZERO,
+      groupPolicies: Array.isArray(object === null || object === void 0 ? void 0 : object.groupPolicies) ? object.groupPolicies.map(function (e) {
+        return _types.GroupPolicyInfo.fromJSON(e);
+      }) : [],
+      proposalSeq: (0, _helpers.isSet)(object.proposalSeq) ? _helpers.Long.fromValue(object.proposalSeq) : _helpers.Long.UZERO,
+      proposals: Array.isArray(object === null || object === void 0 ? void 0 : object.proposals) ? object.proposals.map(function (e) {
+        return _types.Proposal.fromJSON(e);
+      }) : [],
+      votes: Array.isArray(object === null || object === void 0 ? void 0 : object.votes) ? object.votes.map(function (e) {
+        return _types.Vote.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$groups, _object$groupMembers, _object$groupPolicies, _object$proposals, _object$votes;
     var message = createBaseGenesisState();

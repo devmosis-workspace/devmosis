@@ -162,6 +162,30 @@ var GenesisState = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _params.Params.fromJSON(object.params) : undefined,
+      tokenPairArbRoutes: Array.isArray(object === null || object === void 0 ? void 0 : object.tokenPairArbRoutes) ? object.tokenPairArbRoutes.map(function (e) {
+        return _protorev.TokenPairArbRoutes.fromJSON(e);
+      }) : [],
+      baseDenoms: Array.isArray(object === null || object === void 0 ? void 0 : object.baseDenoms) ? object.baseDenoms.map(function (e) {
+        return _protorev.BaseDenom.fromJSON(e);
+      }) : [],
+      poolWeights: (0, _helpers.isSet)(object.poolWeights) ? _protorev.PoolWeights.fromJSON(object.poolWeights) : undefined,
+      daysSinceModuleGenesis: (0, _helpers.isSet)(object.daysSinceModuleGenesis) ? _helpers.Long.fromValue(object.daysSinceModuleGenesis) : _helpers.Long.UZERO,
+      developerFees: Array.isArray(object === null || object === void 0 ? void 0 : object.developerFees) ? object.developerFees.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      latestBlockHeight: (0, _helpers.isSet)(object.latestBlockHeight) ? _helpers.Long.fromValue(object.latestBlockHeight) : _helpers.Long.UZERO,
+      developerAddress: (0, _helpers.isSet)(object.developerAddress) ? String(object.developerAddress) : "",
+      maxPoolPointsPerBlock: (0, _helpers.isSet)(object.maxPoolPointsPerBlock) ? _helpers.Long.fromValue(object.maxPoolPointsPerBlock) : _helpers.Long.UZERO,
+      maxPoolPointsPerTx: (0, _helpers.isSet)(object.maxPoolPointsPerTx) ? _helpers.Long.fromValue(object.maxPoolPointsPerTx) : _helpers.Long.UZERO,
+      pointCountForBlock: (0, _helpers.isSet)(object.pointCountForBlock) ? _helpers.Long.fromValue(object.pointCountForBlock) : _helpers.Long.UZERO,
+      profits: Array.isArray(object === null || object === void 0 ? void 0 : object.profits) ? object.profits.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$tokenPairArbR, _object$baseDenoms, _object$developerFees, _object$developerAddr, _object$profits;
     var message = createBaseGenesisState();

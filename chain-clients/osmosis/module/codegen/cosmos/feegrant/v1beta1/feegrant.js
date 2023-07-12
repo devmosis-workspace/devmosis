@@ -3,7 +3,7 @@ import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration } from "../../../google/protobuf/duration";
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 /**
  * BasicAllowance implements Allowance with a one-time grant of coins
  * that optionally expires. The grantee can use up to SpendLimit to cover fees.
@@ -67,6 +67,12 @@ export const BasicAllowance = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      spendLimit: Array.isArray(object === null || object === void 0 ? void 0 : object.spendLimit) ? object.spendLimit.map(e => Coin.fromJSON(e)) : [],
+      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
+    };
   },
   fromPartial(object) {
     var _object$spendLimit, _object$expiration;
@@ -133,6 +139,15 @@ export const PeriodicAllowance = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      basic: isSet(object.basic) ? BasicAllowance.fromJSON(object.basic) : undefined,
+      period: isSet(object.period) ? Duration.fromJSON(object.period) : undefined,
+      periodSpendLimit: Array.isArray(object === null || object === void 0 ? void 0 : object.periodSpendLimit) ? object.periodSpendLimit.map(e => Coin.fromJSON(e)) : [],
+      periodCanSpend: Array.isArray(object === null || object === void 0 ? void 0 : object.periodCanSpend) ? object.periodCanSpend.map(e => Coin.fromJSON(e)) : [],
+      periodReset: isSet(object.periodReset) ? fromJsonTimestamp(object.periodReset) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$periodSpendLi, _object$periodCanSpen, _object$periodReset;
     const message = createBasePeriodicAllowance();
@@ -179,6 +194,12 @@ export const AllowedMsgAllowance = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      allowance: isSet(object.allowance) ? Any.fromJSON(object.allowance) : undefined,
+      allowedMessages: Array.isArray(object === null || object === void 0 ? void 0 : object.allowedMessages) ? object.allowedMessages.map(e => String(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$allowedMessag;
@@ -230,6 +251,13 @@ export const Grant = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      allowance: isSet(object.allowance) ? Any.fromJSON(object.allowance) : undefined
+    };
   },
   fromPartial(object) {
     var _object$granter, _object$grantee;

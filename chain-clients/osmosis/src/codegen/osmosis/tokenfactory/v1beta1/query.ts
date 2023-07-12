@@ -1,6 +1,7 @@
 import { Params, ParamsSDKType } from "./params";
 import { DenomAuthorityMetadata, DenomAuthorityMetadataSDKType } from "./authorityMetadata";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -91,6 +92,9 @@ export const QueryParamsRequest = {
     }
     return message;
   },
+  fromJSON(_: any): QueryParamsRequest {
+    return {};
+  },
   fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -124,6 +128,11 @@ export const QueryParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
@@ -160,6 +169,11 @@ export const QueryDenomAuthorityMetadataRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryDenomAuthorityMetadataRequest {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial(object: Partial<QueryDenomAuthorityMetadataRequest>): QueryDenomAuthorityMetadataRequest {
     const message = createBaseQueryDenomAuthorityMetadataRequest();
     message.denom = object.denom ?? "";
@@ -194,6 +208,11 @@ export const QueryDenomAuthorityMetadataResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryDenomAuthorityMetadataResponse {
+    return {
+      authorityMetadata: isSet(object.authorityMetadata) ? DenomAuthorityMetadata.fromJSON(object.authorityMetadata) : undefined
+    };
   },
   fromPartial(object: Partial<QueryDenomAuthorityMetadataResponse>): QueryDenomAuthorityMetadataResponse {
     const message = createBaseQueryDenomAuthorityMetadataResponse();
@@ -230,6 +249,11 @@ export const QueryDenomsFromCreatorRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryDenomsFromCreatorRequest {
+    return {
+      creator: isSet(object.creator) ? String(object.creator) : ""
+    };
+  },
   fromPartial(object: Partial<QueryDenomsFromCreatorRequest>): QueryDenomsFromCreatorRequest {
     const message = createBaseQueryDenomsFromCreatorRequest();
     message.creator = object.creator ?? "";
@@ -264,6 +288,11 @@ export const QueryDenomsFromCreatorResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryDenomsFromCreatorResponse {
+    return {
+      denoms: Array.isArray(object?.denoms) ? object.denoms.map((e: any) => String(e)) : []
+    };
   },
   fromPartial(object: Partial<QueryDenomsFromCreatorResponse>): QueryDenomsFromCreatorResponse {
     const message = createBaseQueryDenomsFromCreatorResponse();

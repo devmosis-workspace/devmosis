@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.TxRaw = exports.TxBody = exports.Tx = exports.Tip = exports.SignerInfo = exports.SignDocDirectAux = exports.SignDoc = exports.ModeInfo_Single = exports.ModeInfo_Multi = exports.ModeInfo = exports.Fee = exports.AuxSignerData = exports.AuthInfo = void 0;
 var _any = require("../../../google/protobuf/any");
+var _signing = require("../signing/v1beta1/signing");
 var _multisig = require("../../crypto/multisig/v1beta1/multisig");
 var _coin = require("../../base/v1beta1/coin");
 var _helpers = require("../../../helpers");
@@ -192,6 +193,15 @@ var Tx = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      body: (0, _helpers.isSet)(object.body) ? TxBody.fromJSON(object.body) : undefined,
+      authInfo: (0, _helpers.isSet)(object.authInfo) ? AuthInfo.fromJSON(object.authInfo) : undefined,
+      signatures: Array.isArray(object === null || object === void 0 ? void 0 : object.signatures) ? object.signatures.map(function (e) {
+        return (0, _helpers.bytesFromBase64)(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$signatures;
     var message = createBaseTx();
@@ -257,6 +267,15 @@ var TxRaw = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      bodyBytes: (0, _helpers.isSet)(object.bodyBytes) ? (0, _helpers.bytesFromBase64)(object.bodyBytes) : new Uint8Array(),
+      authInfoBytes: (0, _helpers.isSet)(object.authInfoBytes) ? (0, _helpers.bytesFromBase64)(object.authInfoBytes) : new Uint8Array(),
+      signatures: Array.isArray(object === null || object === void 0 ? void 0 : object.signatures) ? object.signatures.map(function (e) {
+        return (0, _helpers.bytesFromBase64)(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$bodyBytes, _object$authInfoBytes, _object$signatures2;
     var message = createBaseTxRaw();
@@ -319,6 +338,14 @@ var SignDoc = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      bodyBytes: (0, _helpers.isSet)(object.bodyBytes) ? (0, _helpers.bytesFromBase64)(object.bodyBytes) : new Uint8Array(),
+      authInfoBytes: (0, _helpers.isSet)(object.authInfoBytes) ? (0, _helpers.bytesFromBase64)(object.authInfoBytes) : new Uint8Array(),
+      chainId: (0, _helpers.isSet)(object.chainId) ? String(object.chainId) : "",
+      accountNumber: (0, _helpers.isSet)(object.accountNumber) ? _helpers.Long.fromValue(object.accountNumber) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$bodyBytes2, _object$authInfoBytes2, _object$chainId;
@@ -395,6 +422,16 @@ var SignDocDirectAux = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      bodyBytes: (0, _helpers.isSet)(object.bodyBytes) ? (0, _helpers.bytesFromBase64)(object.bodyBytes) : new Uint8Array(),
+      publicKey: (0, _helpers.isSet)(object.publicKey) ? _any.Any.fromJSON(object.publicKey) : undefined,
+      chainId: (0, _helpers.isSet)(object.chainId) ? String(object.chainId) : "",
+      accountNumber: (0, _helpers.isSet)(object.accountNumber) ? _helpers.Long.fromValue(object.accountNumber) : _helpers.Long.UZERO,
+      sequence: (0, _helpers.isSet)(object.sequence) ? _helpers.Long.fromValue(object.sequence) : _helpers.Long.UZERO,
+      tip: (0, _helpers.isSet)(object.tip) ? Tip.fromJSON(object.tip) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$bodyBytes3, _object$chainId2;
@@ -494,6 +531,21 @@ var TxBody = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      messages: Array.isArray(object === null || object === void 0 ? void 0 : object.messages) ? object.messages.map(function (e) {
+        return _any.Any.fromJSON(e);
+      }) : [],
+      memo: (0, _helpers.isSet)(object.memo) ? String(object.memo) : "",
+      timeoutHeight: (0, _helpers.isSet)(object.timeoutHeight) ? _helpers.Long.fromValue(object.timeoutHeight) : _helpers.Long.UZERO,
+      extensionOptions: Array.isArray(object === null || object === void 0 ? void 0 : object.extensionOptions) ? object.extensionOptions.map(function (e) {
+        return _any.Any.fromJSON(e);
+      }) : [],
+      nonCriticalExtensionOptions: Array.isArray(object === null || object === void 0 ? void 0 : object.nonCriticalExtensionOptions) ? object.nonCriticalExtensionOptions.map(function (e) {
+        return _any.Any.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$messages, _object$memo, _object$extensionOpti, _object$nonCriticalEx;
     var message = createBaseTxBody();
@@ -565,6 +617,15 @@ var AuthInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      signerInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.signerInfos) ? object.signerInfos.map(function (e) {
+        return SignerInfo.fromJSON(e);
+      }) : [],
+      fee: (0, _helpers.isSet)(object.fee) ? Fee.fromJSON(object.fee) : undefined,
+      tip: (0, _helpers.isSet)(object.tip) ? Tip.fromJSON(object.tip) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$signerInfos;
     var message = createBaseAuthInfo();
@@ -621,6 +682,13 @@ var SignerInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      publicKey: (0, _helpers.isSet)(object.publicKey) ? _any.Any.fromJSON(object.publicKey) : undefined,
+      modeInfo: (0, _helpers.isSet)(object.modeInfo) ? ModeInfo.fromJSON(object.modeInfo) : undefined,
+      sequence: (0, _helpers.isSet)(object.sequence) ? _helpers.Long.fromValue(object.sequence) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseSignerInfo();
     message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? _any.Any.fromPartial(object.publicKey) : undefined;
@@ -667,6 +735,12 @@ var ModeInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      single: (0, _helpers.isSet)(object.single) ? ModeInfo_Single.fromJSON(object.single) : undefined,
+      multi: (0, _helpers.isSet)(object.multi) ? ModeInfo_Multi.fromJSON(object.multi) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseModeInfo();
     message.single = object.single !== undefined && object.single !== null ? ModeInfo_Single.fromPartial(object.single) : undefined;
@@ -704,6 +778,11 @@ var ModeInfo_Single = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      mode: (0, _helpers.isSet)(object.mode) ? (0, _signing.signModeFromJSON)(object.mode) : 0
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$mode;
@@ -758,6 +837,14 @@ var ModeInfo_Multi = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      bitarray: (0, _helpers.isSet)(object.bitarray) ? _multisig.CompactBitArray.fromJSON(object.bitarray) : undefined,
+      modeInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.modeInfos) ? object.modeInfos.map(function (e) {
+        return ModeInfo.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$modeInfos;
@@ -830,6 +917,16 @@ var Fee = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      gasLimit: (0, _helpers.isSet)(object.gasLimit) ? _helpers.Long.fromValue(object.gasLimit) : _helpers.Long.UZERO,
+      payer: (0, _helpers.isSet)(object.payer) ? String(object.payer) : "",
+      granter: (0, _helpers.isSet)(object.granter) ? String(object.granter) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$amount, _object$payer, _object$granter;
     var message = createBaseFee();
@@ -888,6 +985,14 @@ var Tip = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      tipper: (0, _helpers.isSet)(object.tipper) ? String(object.tipper) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$amount2, _object$tipper;
@@ -950,6 +1055,14 @@ var AuxSignerData = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      signDoc: (0, _helpers.isSet)(object.signDoc) ? SignDocDirectAux.fromJSON(object.signDoc) : undefined,
+      mode: (0, _helpers.isSet)(object.mode) ? (0, _signing.signModeFromJSON)(object.mode) : 0,
+      sig: (0, _helpers.isSet)(object.sig) ? (0, _helpers.bytesFromBase64)(object.sig) : new Uint8Array()
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address, _object$mode2, _object$sig;

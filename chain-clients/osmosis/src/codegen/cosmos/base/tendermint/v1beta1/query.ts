@@ -6,7 +6,7 @@ import { BlockSDKType as Block1SDKType } from "../../../../tendermint/types/bloc
 import { Block as Block2 } from "./types";
 import { BlockSDKType as Block2SDKType } from "./types";
 import { DefaultNodeInfo, DefaultNodeInfoSDKType } from "../../../../tendermint/p2p/types";
-import { Long } from "../../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * GetValidatorSetByHeightRequest is the request type for the
@@ -358,6 +358,12 @@ export const GetValidatorSetByHeightRequest = {
     }
     return message;
   },
+  fromJSON(object: any): GetValidatorSetByHeightRequest {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object: Partial<GetValidatorSetByHeightRequest>): GetValidatorSetByHeightRequest {
     const message = createBaseGetValidatorSetByHeightRequest();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
@@ -408,6 +414,13 @@ export const GetValidatorSetByHeightResponse = {
     }
     return message;
   },
+  fromJSON(object: any): GetValidatorSetByHeightResponse {
+    return {
+      blockHeight: isSet(object.blockHeight) ? Long.fromValue(object.blockHeight) : Long.ZERO,
+      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object: Partial<GetValidatorSetByHeightResponse>): GetValidatorSetByHeightResponse {
     const message = createBaseGetValidatorSetByHeightResponse();
     message.blockHeight = object.blockHeight !== undefined && object.blockHeight !== null ? Long.fromValue(object.blockHeight) : Long.ZERO;
@@ -444,6 +457,11 @@ export const GetLatestValidatorSetRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GetLatestValidatorSetRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object: Partial<GetLatestValidatorSetRequest>): GetLatestValidatorSetRequest {
     const message = createBaseGetLatestValidatorSetRequest();
@@ -493,6 +511,13 @@ export const GetLatestValidatorSetResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GetLatestValidatorSetResponse {
+    return {
+      blockHeight: isSet(object.blockHeight) ? Long.fromValue(object.blockHeight) : Long.ZERO,
+      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object: Partial<GetLatestValidatorSetResponse>): GetLatestValidatorSetResponse {
     const message = createBaseGetLatestValidatorSetResponse();
@@ -552,6 +577,14 @@ export const Validator = {
     }
     return message;
   },
+  fromJSON(object: any): Validator {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      pubKey: isSet(object.pubKey) ? Any.fromJSON(object.pubKey) : undefined,
+      votingPower: isSet(object.votingPower) ? Long.fromValue(object.votingPower) : Long.ZERO,
+      proposerPriority: isSet(object.proposerPriority) ? Long.fromValue(object.proposerPriority) : Long.ZERO
+    };
+  },
   fromPartial(object: Partial<Validator>): Validator {
     const message = createBaseValidator();
     message.address = object.address ?? "";
@@ -589,6 +622,11 @@ export const GetBlockByHeightRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GetBlockByHeightRequest {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO
+    };
   },
   fromPartial(object: Partial<GetBlockByHeightRequest>): GetBlockByHeightRequest {
     const message = createBaseGetBlockByHeightRequest();
@@ -639,6 +677,13 @@ export const GetBlockByHeightResponse = {
     }
     return message;
   },
+  fromJSON(object: any): GetBlockByHeightResponse {
+    return {
+      blockId: isSet(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
+      block: isSet(object.block) ? Block1.fromJSON(object.block) : undefined,
+      sdkBlock: isSet(object.sdkBlock) ? Block2.fromJSON(object.sdkBlock) : undefined
+    };
+  },
   fromPartial(object: Partial<GetBlockByHeightResponse>): GetBlockByHeightResponse {
     const message = createBaseGetBlockByHeightResponse();
     message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
@@ -667,6 +712,9 @@ export const GetLatestBlockRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): GetLatestBlockRequest {
+    return {};
   },
   fromPartial(_: Partial<GetLatestBlockRequest>): GetLatestBlockRequest {
     const message = createBaseGetLatestBlockRequest();
@@ -716,6 +764,13 @@ export const GetLatestBlockResponse = {
     }
     return message;
   },
+  fromJSON(object: any): GetLatestBlockResponse {
+    return {
+      blockId: isSet(object.blockId) ? BlockID.fromJSON(object.blockId) : undefined,
+      block: isSet(object.block) ? Block1.fromJSON(object.block) : undefined,
+      sdkBlock: isSet(object.sdkBlock) ? Block2.fromJSON(object.sdkBlock) : undefined
+    };
+  },
   fromPartial(object: Partial<GetLatestBlockResponse>): GetLatestBlockResponse {
     const message = createBaseGetLatestBlockResponse();
     message.blockId = object.blockId !== undefined && object.blockId !== null ? BlockID.fromPartial(object.blockId) : undefined;
@@ -744,6 +799,9 @@ export const GetSyncingRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): GetSyncingRequest {
+    return {};
   },
   fromPartial(_: Partial<GetSyncingRequest>): GetSyncingRequest {
     const message = createBaseGetSyncingRequest();
@@ -779,6 +837,11 @@ export const GetSyncingResponse = {
     }
     return message;
   },
+  fromJSON(object: any): GetSyncingResponse {
+    return {
+      syncing: isSet(object.syncing) ? Boolean(object.syncing) : false
+    };
+  },
   fromPartial(object: Partial<GetSyncingResponse>): GetSyncingResponse {
     const message = createBaseGetSyncingResponse();
     message.syncing = object.syncing ?? false;
@@ -805,6 +868,9 @@ export const GetNodeInfoRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): GetNodeInfoRequest {
+    return {};
   },
   fromPartial(_: Partial<GetNodeInfoRequest>): GetNodeInfoRequest {
     const message = createBaseGetNodeInfoRequest();
@@ -846,6 +912,12 @@ export const GetNodeInfoResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GetNodeInfoResponse {
+    return {
+      defaultNodeInfo: isSet(object.defaultNodeInfo) ? DefaultNodeInfo.fromJSON(object.defaultNodeInfo) : undefined,
+      applicationVersion: isSet(object.applicationVersion) ? VersionInfo.fromJSON(object.applicationVersion) : undefined
+    };
   },
   fromPartial(object: Partial<GetNodeInfoResponse>): GetNodeInfoResponse {
     const message = createBaseGetNodeInfoResponse();
@@ -932,6 +1004,18 @@ export const VersionInfo = {
     }
     return message;
   },
+  fromJSON(object: any): VersionInfo {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      appName: isSet(object.appName) ? String(object.appName) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      gitCommit: isSet(object.gitCommit) ? String(object.gitCommit) : "",
+      buildTags: isSet(object.buildTags) ? String(object.buildTags) : "",
+      goVersion: isSet(object.goVersion) ? String(object.goVersion) : "",
+      buildDeps: Array.isArray(object?.buildDeps) ? object.buildDeps.map((e: any) => Module.fromJSON(e)) : [],
+      cosmosSdkVersion: isSet(object.cosmosSdkVersion) ? String(object.cosmosSdkVersion) : ""
+    };
+  },
   fromPartial(object: Partial<VersionInfo>): VersionInfo {
     const message = createBaseVersionInfo();
     message.name = object.name ?? "";
@@ -987,6 +1071,13 @@ export const Module = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Module {
+    return {
+      path: isSet(object.path) ? String(object.path) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      sum: isSet(object.sum) ? String(object.sum) : ""
+    };
   },
   fromPartial(object: Partial<Module>): Module {
     const message = createBaseModule();
@@ -1045,6 +1136,14 @@ export const ABCIQueryRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ABCIQueryRequest {
+    return {
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      path: isSet(object.path) ? String(object.path) : "",
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      prove: isSet(object.prove) ? Boolean(object.prove) : false
+    };
   },
   fromPartial(object: Partial<ABCIQueryRequest>): ABCIQueryRequest {
     const message = createBaseABCIQueryRequest();
@@ -1140,6 +1239,19 @@ export const ABCIQueryResponse = {
     }
     return message;
   },
+  fromJSON(object: any): ABCIQueryResponse {
+    return {
+      code: isSet(object.code) ? Number(object.code) : 0,
+      log: isSet(object.log) ? String(object.log) : "",
+      info: isSet(object.info) ? String(object.info) : "",
+      index: isSet(object.index) ? Long.fromValue(object.index) : Long.ZERO,
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array(),
+      proofOps: isSet(object.proofOps) ? ProofOps.fromJSON(object.proofOps) : undefined,
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      codespace: isSet(object.codespace) ? String(object.codespace) : ""
+    };
+  },
   fromPartial(object: Partial<ABCIQueryResponse>): ABCIQueryResponse {
     const message = createBaseABCIQueryResponse();
     message.code = object.code ?? 0;
@@ -1197,6 +1309,13 @@ export const ProofOp = {
     }
     return message;
   },
+  fromJSON(object: any): ProofOp {
+    return {
+      type: isSet(object.type) ? String(object.type) : "",
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<ProofOp>): ProofOp {
     const message = createBaseProofOp();
     message.type = object.type ?? "";
@@ -1233,6 +1352,11 @@ export const ProofOps = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ProofOps {
+    return {
+      ops: Array.isArray(object?.ops) ? object.ops.map((e: any) => ProofOp.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<ProofOps>): ProofOps {
     const message = createBaseProofOps();

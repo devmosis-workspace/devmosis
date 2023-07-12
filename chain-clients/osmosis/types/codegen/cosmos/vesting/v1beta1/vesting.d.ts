@@ -107,30 +107,36 @@ export interface PermanentLockedAccountSDKType {
 export declare const BaseVestingAccount: {
     encode(message: BaseVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BaseVestingAccount;
+    fromJSON(object: any): BaseVestingAccount;
     fromPartial(object: Partial<BaseVestingAccount>): BaseVestingAccount;
 };
 export declare const ContinuousVestingAccount: {
     encode(message: ContinuousVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ContinuousVestingAccount;
+    fromJSON(object: any): ContinuousVestingAccount;
     fromPartial(object: Partial<ContinuousVestingAccount>): ContinuousVestingAccount;
 };
 export declare const DelayedVestingAccount: {
     encode(message: DelayedVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelayedVestingAccount;
+    fromJSON(object: any): DelayedVestingAccount;
     fromPartial(object: Partial<DelayedVestingAccount>): DelayedVestingAccount;
 };
 export declare const Period: {
     encode(message: Period, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Period;
+    fromJSON(object: any): Period;
     fromPartial(object: Partial<Period>): Period;
 };
 export declare const PeriodicVestingAccount: {
     encode(message: PeriodicVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PeriodicVestingAccount;
+    fromJSON(object: any): PeriodicVestingAccount;
     fromPartial(object: Partial<PeriodicVestingAccount>): PeriodicVestingAccount;
 };
 export declare const PermanentLockedAccount: {
     encode(message: PermanentLockedAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PermanentLockedAccount;
+    fromJSON(object: any): PermanentLockedAccount;
     fromPartial(object: Partial<PermanentLockedAccount>): PermanentLockedAccount;
 };

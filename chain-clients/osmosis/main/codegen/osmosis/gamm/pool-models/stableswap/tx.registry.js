@@ -49,6 +49,20 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createStableswapPool: function createStableswapPool(value) {
+      return {
+        typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgCreateStableswapPool",
+        value: _tx.MsgCreateStableswapPool.fromJSON(value)
+      };
+    },
+    stableSwapAdjustScalingFactors: function stableSwapAdjustScalingFactors(value) {
+      return {
+        typeUrl: "/osmosis.gamm.poolmodels.stableswap.v1beta1.MsgStableSwapAdjustScalingFactors",
+        value: _tx.MsgStableSwapAdjustScalingFactors.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createStableswapPool: function createStableswapPool(value) {
       return {

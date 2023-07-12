@@ -1,5 +1,6 @@
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * MsgGrantAllowance adds permission for Grantee to spend up to Allowance
  * of fees from the account of Granter.
@@ -65,6 +66,13 @@ export const MsgGrantAllowance = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      allowance: isSet(object.allowance) ? Any.fromJSON(object.allowance) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$granter, _object$grantee;
     const message = createBaseMsgGrantAllowance();
@@ -94,6 +102,9 @@ export const MsgGrantAllowanceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgGrantAllowanceResponse();
@@ -136,6 +147,12 @@ export const MsgRevokeAllowance = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : ""
+    };
+  },
   fromPartial(object) {
     var _object$granter2, _object$grantee2;
     const message = createBaseMsgRevokeAllowance();
@@ -164,6 +181,9 @@ export const MsgRevokeAllowanceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgRevokeAllowanceResponse();

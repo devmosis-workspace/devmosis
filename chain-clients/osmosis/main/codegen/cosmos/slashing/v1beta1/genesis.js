@@ -97,6 +97,17 @@ var GenesisState = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _slashing.Params.fromJSON(object.params) : undefined,
+      signingInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.signingInfos) ? object.signingInfos.map(function (e) {
+        return SigningInfo.fromJSON(e);
+      }) : [],
+      missedBlocks: Array.isArray(object === null || object === void 0 ? void 0 : object.missedBlocks) ? object.missedBlocks.map(function (e) {
+        return ValidatorMissedBlocks.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$signingInfos, _object$missedBlocks;
     var message = createBaseGenesisState();
@@ -147,6 +158,12 @@ var SigningInfo = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      validatorSigningInfo: (0, _helpers.isSet)(object.validatorSigningInfo) ? _slashing.ValidatorSigningInfo.fromJSON(object.validatorSigningInfo) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address;
@@ -203,6 +220,14 @@ var ValidatorMissedBlocks = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      missedBlocks: Array.isArray(object === null || object === void 0 ? void 0 : object.missedBlocks) ? object.missedBlocks.map(function (e) {
+        return MissedBlock.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address2, _object$missedBlocks2;
     var message = createBaseValidatorMissedBlocks();
@@ -250,6 +275,12 @@ var MissedBlock = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      index: (0, _helpers.isSet)(object.index) ? _helpers.Long.fromValue(object.index) : _helpers.Long.ZERO,
+      missed: (0, _helpers.isSet)(object.missed) ? Boolean(object.missed) : false
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$missed;

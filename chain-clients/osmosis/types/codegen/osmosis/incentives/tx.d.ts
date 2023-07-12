@@ -64,20 +64,24 @@ export interface MsgAddToGaugeResponseSDKType {
 export declare const MsgCreateGauge: {
     encode(message: MsgCreateGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGauge;
+    fromJSON(object: any): MsgCreateGauge;
     fromPartial(object: Partial<MsgCreateGauge>): MsgCreateGauge;
 };
 export declare const MsgCreateGaugeResponse: {
     encode(_: MsgCreateGaugeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateGaugeResponse;
+    fromJSON(_: any): MsgCreateGaugeResponse;
     fromPartial(_: Partial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse;
 };
 export declare const MsgAddToGauge: {
     encode(message: MsgAddToGauge, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGauge;
+    fromJSON(object: any): MsgAddToGauge;
     fromPartial(object: Partial<MsgAddToGauge>): MsgAddToGauge;
 };
 export declare const MsgAddToGaugeResponse: {
     encode(_: MsgAddToGaugeResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddToGaugeResponse;
+    fromJSON(_: any): MsgAddToGaugeResponse;
     fromPartial(_: Partial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse;
 };

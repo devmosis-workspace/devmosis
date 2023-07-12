@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.UpdateFeeTokenProposal = void 0;
 var _feetoken = require("./feetoken");
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
+var _helpers = require("../../../helpers");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 /**
@@ -68,6 +69,13 @@ var UpdateFeeTokenProposal = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      title: (0, _helpers.isSet)(object.title) ? String(object.title) : "",
+      description: (0, _helpers.isSet)(object.description) ? String(object.description) : "",
+      feetoken: (0, _helpers.isSet)(object.feetoken) ? _feetoken.FeeToken.fromJSON(object.feetoken) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$title, _object$description;

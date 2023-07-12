@@ -30,10 +30,12 @@ export interface PrivKeySDKType {
 export declare const PubKey: {
     encode(message: PubKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PubKey;
+    fromJSON(object: any): PubKey;
     fromPartial(object: Partial<PubKey>): PubKey;
 };
 export declare const PrivKey: {
     encode(message: PrivKey, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PrivKey;
+    fromJSON(object: any): PrivKey;
     fromPartial(object: Partial<PrivKey>): PrivKey;
 };

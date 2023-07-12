@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../../helpers";
 /** ConfigRequest defines the request structure for the Config gRPC query. */
 
 /** ConfigRequest defines the request structure for the Config gRPC query. */
@@ -27,6 +28,9 @@ export const ConfigRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseConfigRequest();
@@ -61,6 +65,11 @@ export const ConfigResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      minimumGasPrice: isSet(object.minimumGasPrice) ? String(object.minimumGasPrice) : ""
+    };
   },
   fromPartial(object) {
     var _object$minimumGasPri;

@@ -1,7 +1,7 @@
 import { Vote, VoteSDKType, LightBlock, LightBlockSDKType } from "./types";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Validator, ValidatorSDKType } from "./validator";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface Evidence {
   duplicateVoteEvidence?: DuplicateVoteEvidence;
@@ -85,6 +85,12 @@ export const Evidence = {
     }
     return message;
   },
+  fromJSON(object: any): Evidence {
+    return {
+      duplicateVoteEvidence: isSet(object.duplicateVoteEvidence) ? DuplicateVoteEvidence.fromJSON(object.duplicateVoteEvidence) : undefined,
+      lightClientAttackEvidence: isSet(object.lightClientAttackEvidence) ? LightClientAttackEvidence.fromJSON(object.lightClientAttackEvidence) : undefined
+    };
+  },
   fromPartial(object: Partial<Evidence>): Evidence {
     const message = createBaseEvidence();
     message.duplicateVoteEvidence = object.duplicateVoteEvidence !== undefined && object.duplicateVoteEvidence !== null ? DuplicateVoteEvidence.fromPartial(object.duplicateVoteEvidence) : undefined;
@@ -148,6 +154,15 @@ export const DuplicateVoteEvidence = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DuplicateVoteEvidence {
+    return {
+      voteA: isSet(object.voteA) ? Vote.fromJSON(object.voteA) : undefined,
+      voteB: isSet(object.voteB) ? Vote.fromJSON(object.voteB) : undefined,
+      totalVotingPower: isSet(object.totalVotingPower) ? Long.fromValue(object.totalVotingPower) : Long.ZERO,
+      validatorPower: isSet(object.validatorPower) ? Long.fromValue(object.validatorPower) : Long.ZERO,
+      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
+    };
   },
   fromPartial(object: Partial<DuplicateVoteEvidence>): DuplicateVoteEvidence {
     const message = createBaseDuplicateVoteEvidence();
@@ -216,6 +231,15 @@ export const LightClientAttackEvidence = {
     }
     return message;
   },
+  fromJSON(object: any): LightClientAttackEvidence {
+    return {
+      conflictingBlock: isSet(object.conflictingBlock) ? LightBlock.fromJSON(object.conflictingBlock) : undefined,
+      commonHeight: isSet(object.commonHeight) ? Long.fromValue(object.commonHeight) : Long.ZERO,
+      byzantineValidators: Array.isArray(object?.byzantineValidators) ? object.byzantineValidators.map((e: any) => Validator.fromJSON(e)) : [],
+      totalVotingPower: isSet(object.totalVotingPower) ? Long.fromValue(object.totalVotingPower) : Long.ZERO,
+      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined
+    };
+  },
   fromPartial(object: Partial<LightClientAttackEvidence>): LightClientAttackEvidence {
     const message = createBaseLightClientAttackEvidence();
     message.conflictingBlock = object.conflictingBlock !== undefined && object.conflictingBlock !== null ? LightBlock.fromPartial(object.conflictingBlock) : undefined;
@@ -254,6 +278,11 @@ export const EvidenceList = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EvidenceList {
+    return {
+      evidence: Array.isArray(object?.evidence) ? object.evidence.map((e: any) => Evidence.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<EvidenceList>): EvidenceList {
     const message = createBaseEvidenceList();

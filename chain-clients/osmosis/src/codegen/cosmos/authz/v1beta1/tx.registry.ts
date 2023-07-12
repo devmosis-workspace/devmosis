@@ -48,6 +48,26 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    grant(value: any) {
+      return {
+        typeUrl: "/cosmos.authz.v1beta1.MsgGrant",
+        value: MsgGrant.fromJSON(value)
+      };
+    },
+    exec(value: any) {
+      return {
+        typeUrl: "/cosmos.authz.v1beta1.MsgExec",
+        value: MsgExec.fromJSON(value)
+      };
+    },
+    revoke(value: any) {
+      return {
+        typeUrl: "/cosmos.authz.v1beta1.MsgRevoke",
+        value: MsgRevoke.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     grant(value: MsgGrant) {
       return {

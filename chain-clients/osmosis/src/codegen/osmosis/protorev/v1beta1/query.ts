@@ -1,7 +1,7 @@
 import { Params, ParamsSDKType } from "./params";
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { RouteStatistics, RouteStatisticsSDKType, TokenPairArbRoutes, TokenPairArbRoutesSDKType, PoolWeights, PoolWeightsSDKType, BaseDenom, BaseDenomSDKType } from "./protorev";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {}
@@ -423,6 +423,9 @@ export const QueryParamsRequest = {
     }
     return message;
   },
+  fromJSON(_: any): QueryParamsRequest {
+    return {};
+  },
   fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -457,6 +460,11 @@ export const QueryParamsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -483,6 +491,9 @@ export const QueryGetProtoRevNumberOfTradesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevNumberOfTradesRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevNumberOfTradesRequest>): QueryGetProtoRevNumberOfTradesRequest {
     const message = createBaseQueryGetProtoRevNumberOfTradesRequest();
@@ -517,6 +528,11 @@ export const QueryGetProtoRevNumberOfTradesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryGetProtoRevNumberOfTradesResponse {
+    return {
+      numberOfTrades: isSet(object.numberOfTrades) ? String(object.numberOfTrades) : ""
+    };
   },
   fromPartial(object: Partial<QueryGetProtoRevNumberOfTradesResponse>): QueryGetProtoRevNumberOfTradesResponse {
     const message = createBaseQueryGetProtoRevNumberOfTradesResponse();
@@ -553,6 +569,11 @@ export const QueryGetProtoRevProfitsByDenomRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevProfitsByDenomRequest {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevProfitsByDenomRequest>): QueryGetProtoRevProfitsByDenomRequest {
     const message = createBaseQueryGetProtoRevProfitsByDenomRequest();
     message.denom = object.denom ?? "";
@@ -588,6 +609,11 @@ export const QueryGetProtoRevProfitsByDenomResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevProfitsByDenomResponse {
+    return {
+      profit: isSet(object.profit) ? Coin.fromJSON(object.profit) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevProfitsByDenomResponse>): QueryGetProtoRevProfitsByDenomResponse {
     const message = createBaseQueryGetProtoRevProfitsByDenomResponse();
     message.profit = object.profit !== undefined && object.profit !== null ? Coin.fromPartial(object.profit) : undefined;
@@ -614,6 +640,9 @@ export const QueryGetProtoRevAllProfitsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevAllProfitsRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevAllProfitsRequest>): QueryGetProtoRevAllProfitsRequest {
     const message = createBaseQueryGetProtoRevAllProfitsRequest();
@@ -648,6 +677,11 @@ export const QueryGetProtoRevAllProfitsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryGetProtoRevAllProfitsResponse {
+    return {
+      profits: Array.isArray(object?.profits) ? object.profits.map((e: any) => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<QueryGetProtoRevAllProfitsResponse>): QueryGetProtoRevAllProfitsResponse {
     const message = createBaseQueryGetProtoRevAllProfitsResponse();
@@ -693,6 +727,11 @@ export const QueryGetProtoRevStatisticsByRouteRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevStatisticsByRouteRequest {
+    return {
+      route: Array.isArray(object?.route) ? object.route.map((e: any) => Long.fromValue(e)) : []
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevStatisticsByRouteRequest>): QueryGetProtoRevStatisticsByRouteRequest {
     const message = createBaseQueryGetProtoRevStatisticsByRouteRequest();
     message.route = object.route?.map(e => Long.fromValue(e)) || [];
@@ -728,6 +767,11 @@ export const QueryGetProtoRevStatisticsByRouteResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevStatisticsByRouteResponse {
+    return {
+      statistics: isSet(object.statistics) ? RouteStatistics.fromJSON(object.statistics) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevStatisticsByRouteResponse>): QueryGetProtoRevStatisticsByRouteResponse {
     const message = createBaseQueryGetProtoRevStatisticsByRouteResponse();
     message.statistics = object.statistics !== undefined && object.statistics !== null ? RouteStatistics.fromPartial(object.statistics) : undefined;
@@ -754,6 +798,9 @@ export const QueryGetProtoRevAllRouteStatisticsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevAllRouteStatisticsRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevAllRouteStatisticsRequest>): QueryGetProtoRevAllRouteStatisticsRequest {
     const message = createBaseQueryGetProtoRevAllRouteStatisticsRequest();
@@ -789,6 +836,11 @@ export const QueryGetProtoRevAllRouteStatisticsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevAllRouteStatisticsResponse {
+    return {
+      statistics: Array.isArray(object?.statistics) ? object.statistics.map((e: any) => RouteStatistics.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevAllRouteStatisticsResponse>): QueryGetProtoRevAllRouteStatisticsResponse {
     const message = createBaseQueryGetProtoRevAllRouteStatisticsResponse();
     message.statistics = object.statistics?.map(e => RouteStatistics.fromPartial(e)) || [];
@@ -815,6 +867,9 @@ export const QueryGetProtoRevTokenPairArbRoutesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevTokenPairArbRoutesRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevTokenPairArbRoutesRequest>): QueryGetProtoRevTokenPairArbRoutesRequest {
     const message = createBaseQueryGetProtoRevTokenPairArbRoutesRequest();
@@ -850,6 +905,11 @@ export const QueryGetProtoRevTokenPairArbRoutesResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevTokenPairArbRoutesResponse {
+    return {
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => TokenPairArbRoutes.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevTokenPairArbRoutesResponse>): QueryGetProtoRevTokenPairArbRoutesResponse {
     const message = createBaseQueryGetProtoRevTokenPairArbRoutesResponse();
     message.routes = object.routes?.map(e => TokenPairArbRoutes.fromPartial(e)) || [];
@@ -876,6 +936,9 @@ export const QueryGetProtoRevAdminAccountRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevAdminAccountRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevAdminAccountRequest>): QueryGetProtoRevAdminAccountRequest {
     const message = createBaseQueryGetProtoRevAdminAccountRequest();
@@ -911,6 +974,11 @@ export const QueryGetProtoRevAdminAccountResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevAdminAccountResponse {
+    return {
+      adminAccount: isSet(object.adminAccount) ? String(object.adminAccount) : ""
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevAdminAccountResponse>): QueryGetProtoRevAdminAccountResponse {
     const message = createBaseQueryGetProtoRevAdminAccountResponse();
     message.adminAccount = object.adminAccount ?? "";
@@ -937,6 +1005,9 @@ export const QueryGetProtoRevDeveloperAccountRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevDeveloperAccountRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevDeveloperAccountRequest>): QueryGetProtoRevDeveloperAccountRequest {
     const message = createBaseQueryGetProtoRevDeveloperAccountRequest();
@@ -972,6 +1043,11 @@ export const QueryGetProtoRevDeveloperAccountResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevDeveloperAccountResponse {
+    return {
+      developerAccount: isSet(object.developerAccount) ? String(object.developerAccount) : ""
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevDeveloperAccountResponse>): QueryGetProtoRevDeveloperAccountResponse {
     const message = createBaseQueryGetProtoRevDeveloperAccountResponse();
     message.developerAccount = object.developerAccount ?? "";
@@ -998,6 +1074,9 @@ export const QueryGetProtoRevPoolWeightsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevPoolWeightsRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevPoolWeightsRequest>): QueryGetProtoRevPoolWeightsRequest {
     const message = createBaseQueryGetProtoRevPoolWeightsRequest();
@@ -1033,6 +1112,11 @@ export const QueryGetProtoRevPoolWeightsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevPoolWeightsResponse {
+    return {
+      poolWeights: isSet(object.poolWeights) ? PoolWeights.fromJSON(object.poolWeights) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevPoolWeightsResponse>): QueryGetProtoRevPoolWeightsResponse {
     const message = createBaseQueryGetProtoRevPoolWeightsResponse();
     message.poolWeights = object.poolWeights !== undefined && object.poolWeights !== null ? PoolWeights.fromPartial(object.poolWeights) : undefined;
@@ -1059,6 +1143,9 @@ export const QueryGetProtoRevMaxPoolPointsPerBlockRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevMaxPoolPointsPerBlockRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevMaxPoolPointsPerBlockRequest>): QueryGetProtoRevMaxPoolPointsPerBlockRequest {
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerBlockRequest();
@@ -1094,6 +1181,11 @@ export const QueryGetProtoRevMaxPoolPointsPerBlockResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevMaxPoolPointsPerBlockResponse {
+    return {
+      maxPoolPointsPerBlock: isSet(object.maxPoolPointsPerBlock) ? Long.fromValue(object.maxPoolPointsPerBlock) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerBlockResponse>): QueryGetProtoRevMaxPoolPointsPerBlockResponse {
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerBlockResponse();
     message.maxPoolPointsPerBlock = object.maxPoolPointsPerBlock !== undefined && object.maxPoolPointsPerBlock !== null ? Long.fromValue(object.maxPoolPointsPerBlock) : Long.UZERO;
@@ -1120,6 +1212,9 @@ export const QueryGetProtoRevMaxPoolPointsPerTxRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevMaxPoolPointsPerTxRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevMaxPoolPointsPerTxRequest>): QueryGetProtoRevMaxPoolPointsPerTxRequest {
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerTxRequest();
@@ -1155,6 +1250,11 @@ export const QueryGetProtoRevMaxPoolPointsPerTxResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevMaxPoolPointsPerTxResponse {
+    return {
+      maxPoolPointsPerTx: isSet(object.maxPoolPointsPerTx) ? Long.fromValue(object.maxPoolPointsPerTx) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevMaxPoolPointsPerTxResponse>): QueryGetProtoRevMaxPoolPointsPerTxResponse {
     const message = createBaseQueryGetProtoRevMaxPoolPointsPerTxResponse();
     message.maxPoolPointsPerTx = object.maxPoolPointsPerTx !== undefined && object.maxPoolPointsPerTx !== null ? Long.fromValue(object.maxPoolPointsPerTx) : Long.UZERO;
@@ -1181,6 +1281,9 @@ export const QueryGetProtoRevBaseDenomsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevBaseDenomsRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevBaseDenomsRequest>): QueryGetProtoRevBaseDenomsRequest {
     const message = createBaseQueryGetProtoRevBaseDenomsRequest();
@@ -1216,6 +1319,11 @@ export const QueryGetProtoRevBaseDenomsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevBaseDenomsResponse {
+    return {
+      baseDenoms: Array.isArray(object?.baseDenoms) ? object.baseDenoms.map((e: any) => BaseDenom.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevBaseDenomsResponse>): QueryGetProtoRevBaseDenomsResponse {
     const message = createBaseQueryGetProtoRevBaseDenomsResponse();
     message.baseDenoms = object.baseDenoms?.map(e => BaseDenom.fromPartial(e)) || [];
@@ -1242,6 +1350,9 @@ export const QueryGetProtoRevEnabledRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryGetProtoRevEnabledRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryGetProtoRevEnabledRequest>): QueryGetProtoRevEnabledRequest {
     const message = createBaseQueryGetProtoRevEnabledRequest();
@@ -1276,6 +1387,11 @@ export const QueryGetProtoRevEnabledResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryGetProtoRevEnabledResponse {
+    return {
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false
+    };
   },
   fromPartial(object: Partial<QueryGetProtoRevEnabledResponse>): QueryGetProtoRevEnabledResponse {
     const message = createBaseQueryGetProtoRevEnabledResponse();
@@ -1319,6 +1435,12 @@ export const QueryGetProtoRevPoolRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryGetProtoRevPoolRequest {
+    return {
+      baseDenom: isSet(object.baseDenom) ? String(object.baseDenom) : "",
+      otherDenom: isSet(object.otherDenom) ? String(object.otherDenom) : ""
+    };
+  },
   fromPartial(object: Partial<QueryGetProtoRevPoolRequest>): QueryGetProtoRevPoolRequest {
     const message = createBaseQueryGetProtoRevPoolRequest();
     message.baseDenom = object.baseDenom ?? "";
@@ -1354,6 +1476,11 @@ export const QueryGetProtoRevPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryGetProtoRevPoolResponse {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<QueryGetProtoRevPoolResponse>): QueryGetProtoRevPoolResponse {
     const message = createBaseQueryGetProtoRevPoolResponse();

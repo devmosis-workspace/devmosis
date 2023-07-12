@@ -49,6 +49,20 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createGauge: function createGauge(value) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgCreateGauge",
+        value: _tx.MsgCreateGauge.fromJSON(value)
+      };
+    },
+    addToGauge: function addToGauge(value) {
+      return {
+        typeUrl: "/osmosis.incentives.MsgAddToGauge",
+        value: _tx.MsgAddToGauge.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createGauge: function createGauge(value) {
       return {

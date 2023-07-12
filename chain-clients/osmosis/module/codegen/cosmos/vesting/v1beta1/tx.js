@@ -1,6 +1,6 @@
 import { Coin } from "../../base/v1beta1/coin";
 import { Period } from "./vesting";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
@@ -127,6 +127,15 @@ export const MsgCreateVestingAccount = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(e => Coin.fromJSON(e)) : [],
+      endTime: isSet(object.endTime) ? Long.fromValue(object.endTime) : Long.ZERO,
+      delayed: isSet(object.delayed) ? Boolean(object.delayed) : false
+    };
+  },
   fromPartial(object) {
     var _object$fromAddress, _object$toAddress, _object$amount, _object$delayed;
     const message = createBaseMsgCreateVestingAccount();
@@ -158,6 +167,9 @@ export const MsgCreateVestingAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgCreateVestingAccountResponse();
@@ -207,6 +219,13 @@ export const MsgCreatePermanentLockedAccount = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$fromAddress2, _object$toAddress2, _object$amount2;
     const message = createBaseMsgCreatePermanentLockedAccount();
@@ -236,6 +255,9 @@ export const MsgCreatePermanentLockedAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgCreatePermanentLockedAccountResponse();
@@ -292,6 +314,14 @@ export const MsgCreatePeriodicVestingAccount = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
+      startTime: isSet(object.startTime) ? Long.fromValue(object.startTime) : Long.ZERO,
+      vestingPeriods: Array.isArray(object === null || object === void 0 ? void 0 : object.vestingPeriods) ? object.vestingPeriods.map(e => Period.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$fromAddress3, _object$toAddress3, _object$vestingPeriod;
     const message = createBaseMsgCreatePeriodicVestingAccount();
@@ -322,6 +352,9 @@ export const MsgCreatePeriodicVestingAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgCreatePeriodicVestingAccountResponse();

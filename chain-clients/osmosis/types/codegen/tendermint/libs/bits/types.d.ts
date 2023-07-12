@@ -11,5 +11,6 @@ export interface BitArraySDKType {
 export declare const BitArray: {
     encode(message: BitArray, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BitArray;
+    fromJSON(object: any): BitArray;
     fromPartial(object: Partial<BitArray>): BitArray;
 };

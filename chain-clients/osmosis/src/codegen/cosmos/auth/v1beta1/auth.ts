@@ -1,5 +1,5 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * BaseAccount defines a base account type. It contains all the necessary fields
@@ -101,6 +101,14 @@ export const BaseAccount = {
     }
     return message;
   },
+  fromJSON(object: any): BaseAccount {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      pubKey: isSet(object.pubKey) ? Any.fromJSON(object.pubKey) : undefined,
+      accountNumber: isSet(object.accountNumber) ? Long.fromValue(object.accountNumber) : Long.UZERO,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<BaseAccount>): BaseAccount {
     const message = createBaseBaseAccount();
     message.address = object.address ?? "";
@@ -152,6 +160,13 @@ export const ModuleAccount = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ModuleAccount {
+    return {
+      baseAccount: isSet(object.baseAccount) ? BaseAccount.fromJSON(object.baseAccount) : undefined,
+      name: isSet(object.name) ? String(object.name) : "",
+      permissions: Array.isArray(object?.permissions) ? object.permissions.map((e: any) => String(e)) : []
+    };
   },
   fromPartial(object: Partial<ModuleAccount>): ModuleAccount {
     const message = createBaseModuleAccount();
@@ -217,6 +232,15 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      maxMemoCharacters: isSet(object.maxMemoCharacters) ? Long.fromValue(object.maxMemoCharacters) : Long.UZERO,
+      txSigLimit: isSet(object.txSigLimit) ? Long.fromValue(object.txSigLimit) : Long.UZERO,
+      txSizeCostPerByte: isSet(object.txSizeCostPerByte) ? Long.fromValue(object.txSizeCostPerByte) : Long.UZERO,
+      sigVerifyCostEd25519: isSet(object.sigVerifyCostEd25519) ? Long.fromValue(object.sigVerifyCostEd25519) : Long.UZERO,
+      sigVerifyCostSecp256k1: isSet(object.sigVerifyCostSecp256k1) ? Long.fromValue(object.sigVerifyCostSecp256k1) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();

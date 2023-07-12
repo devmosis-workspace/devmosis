@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.EventWithdrawProposal = exports.EventVote = exports.EventUpdateGroupPolicy = exports.EventUpdateGroup = exports.EventSubmitProposal = exports.EventLeaveGroup = exports.EventExec = exports.EventCreateGroupPolicy = exports.EventCreateGroup = void 0;
+var _types = require("./types");
 var _helpers = require("../../../helpers");
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -75,6 +76,11 @@ var EventCreateGroup = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseEventCreateGroup();
     message.groupId = object.groupId !== undefined && object.groupId !== null ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO;
@@ -112,6 +118,11 @@ var EventUpdateGroup = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseEventUpdateGroup();
     message.groupId = object.groupId !== undefined && object.groupId !== null ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO;
@@ -148,6 +159,11 @@ var EventCreateGroupPolicy = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address;
@@ -187,6 +203,11 @@ var EventUpdateGroupPolicy = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address2;
     var message = createBaseEventUpdateGroupPolicy();
@@ -225,6 +246,11 @@ var EventSubmitProposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseEventSubmitProposal();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO;
@@ -262,6 +288,11 @@ var EventWithdrawProposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseEventWithdrawProposal();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO;
@@ -298,6 +329,11 @@ var EventVote = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseEventVote();
@@ -350,6 +386,13 @@ var EventExec = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      result: (0, _helpers.isSet)(object.result) ? (0, _types.proposalExecutorResultFromJSON)(object.result) : 0,
+      logs: (0, _helpers.isSet)(object.logs) ? String(object.logs) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$result, _object$logs;
     var message = createBaseEventExec();
@@ -396,6 +439,12 @@ var EventLeaveGroup = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO,
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address3;

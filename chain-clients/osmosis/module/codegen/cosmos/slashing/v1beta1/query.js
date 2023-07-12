@@ -1,6 +1,7 @@
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { Params, ValidatorSigningInfo } from "./slashing";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method */
 
 /** QueryParamsRequest is the request type for the Query/Params RPC method */
@@ -70,6 +71,9 @@ export const QueryParamsRequest = {
     }
     return message;
   },
+  fromJSON(_) {
+    return {};
+  },
   fromPartial(_) {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -103,6 +107,11 @@ export const QueryParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryParamsResponse();
@@ -138,6 +147,11 @@ export const QuerySigningInfoRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      consAddress: isSet(object.consAddress) ? String(object.consAddress) : ""
+    };
   },
   fromPartial(object) {
     var _object$consAddress;
@@ -175,6 +189,11 @@ export const QuerySigningInfoResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      valSigningInfo: isSet(object.valSigningInfo) ? ValidatorSigningInfo.fromJSON(object.valSigningInfo) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQuerySigningInfoResponse();
     message.valSigningInfo = object.valSigningInfo !== undefined && object.valSigningInfo !== null ? ValidatorSigningInfo.fromPartial(object.valSigningInfo) : undefined;
@@ -209,6 +228,11 @@ export const QuerySigningInfosRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQuerySigningInfosRequest();
@@ -251,6 +275,12 @@ export const QuerySigningInfosResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      info: Array.isArray(object === null || object === void 0 ? void 0 : object.info) ? object.info.map(e => ValidatorSigningInfo.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$info;

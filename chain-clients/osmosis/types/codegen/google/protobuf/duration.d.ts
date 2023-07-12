@@ -144,5 +144,6 @@ export interface DurationSDKType {
 export declare const Duration: {
     encode(message: Duration, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Duration;
+    fromJSON(object: any): Duration;
     fromPartial(object: Partial<Duration>): Duration;
 };

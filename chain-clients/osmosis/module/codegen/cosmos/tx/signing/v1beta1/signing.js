@@ -1,6 +1,6 @@
 import { CompactBitArray } from "../../../crypto/multisig/v1beta1/multisig";
 import { Any } from "../../../../google/protobuf/any";
-import { Long } from "../../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * SignMode represents a signing mode with its own security guarantees.
@@ -127,6 +127,11 @@ export const SignatureDescriptors = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      signatures: Array.isArray(object === null || object === void 0 ? void 0 : object.signatures) ? object.signatures.map(e => SignatureDescriptor.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$signatures;
     const message = createBaseSignatureDescriptors();
@@ -177,6 +182,13 @@ export const SignatureDescriptor = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      publicKey: isSet(object.publicKey) ? Any.fromJSON(object.publicKey) : undefined,
+      data: isSet(object.data) ? SignatureDescriptor_Data.fromJSON(object.data) : undefined,
+      sequence: isSet(object.sequence) ? Long.fromValue(object.sequence) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseSignatureDescriptor();
     message.publicKey = object.publicKey !== undefined && object.publicKey !== null ? Any.fromPartial(object.publicKey) : undefined;
@@ -221,6 +233,12 @@ export const SignatureDescriptor_Data = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      single: isSet(object.single) ? SignatureDescriptor_Data_Single.fromJSON(object.single) : undefined,
+      multi: isSet(object.multi) ? SignatureDescriptor_Data_Multi.fromJSON(object.multi) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseSignatureDescriptor_Data();
     message.single = object.single !== undefined && object.single !== null ? SignatureDescriptor_Data_Single.fromPartial(object.single) : undefined;
@@ -263,6 +281,12 @@ export const SignatureDescriptor_Data_Single = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      mode: isSet(object.mode) ? signModeFromJSON(object.mode) : 0,
+      signature: isSet(object.signature) ? bytesFromBase64(object.signature) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$mode, _object$signature;
@@ -307,6 +331,12 @@ export const SignatureDescriptor_Data_Multi = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      bitarray: isSet(object.bitarray) ? CompactBitArray.fromJSON(object.bitarray) : undefined,
+      signatures: Array.isArray(object === null || object === void 0 ? void 0 : object.signatures) ? object.signatures.map(e => SignatureDescriptor_Data.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$signatures2;

@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** EventGrant is emitted on Msg/Grant */
 
 /** EventGrant is emitted on Msg/Grant */
@@ -49,6 +50,13 @@ export const EventGrant = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      msgTypeUrl: isSet(object.msgTypeUrl) ? String(object.msgTypeUrl) : "",
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : ""
+    };
   },
   fromPartial(object) {
     var _object$msgTypeUrl, _object$granter, _object$grantee;
@@ -101,6 +109,13 @@ export const EventRevoke = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      msgTypeUrl: isSet(object.msgTypeUrl) ? String(object.msgTypeUrl) : "",
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : ""
+    };
   },
   fromPartial(object) {
     var _object$msgTypeUrl2, _object$granter2, _object$grantee2;

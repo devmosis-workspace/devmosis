@@ -55,6 +55,13 @@ var GenesisState = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      authorization: Array.isArray(object === null || object === void 0 ? void 0 : object.authorization) ? object.authorization.map(function (e) {
+        return _authz.GrantAuthorization.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$authorization;
     var message = createBaseGenesisState();

@@ -1,5 +1,5 @@
 import { DecCoin, Coin } from "../../base/v1beta1/coin";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** Params defines the set of params for the distribution module. */
 
@@ -189,6 +189,14 @@ export const Params = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      communityTax: isSet(object.communityTax) ? String(object.communityTax) : "",
+      baseProposerReward: isSet(object.baseProposerReward) ? String(object.baseProposerReward) : "",
+      bonusProposerReward: isSet(object.bonusProposerReward) ? String(object.bonusProposerReward) : "",
+      withdrawAddrEnabled: isSet(object.withdrawAddrEnabled) ? Boolean(object.withdrawAddrEnabled) : false
+    };
+  },
   fromPartial(object) {
     var _object$communityTax, _object$baseProposerR, _object$bonusProposer, _object$withdrawAddrE;
     const message = createBaseParams();
@@ -235,6 +243,12 @@ export const ValidatorHistoricalRewards = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      cumulativeRewardRatio: Array.isArray(object === null || object === void 0 ? void 0 : object.cumulativeRewardRatio) ? object.cumulativeRewardRatio.map(e => DecCoin.fromJSON(e)) : [],
+      referenceCount: isSet(object.referenceCount) ? Number(object.referenceCount) : 0
+    };
+  },
   fromPartial(object) {
     var _object$cumulativeRew, _object$referenceCoun;
     const message = createBaseValidatorHistoricalRewards();
@@ -279,6 +293,12 @@ export const ValidatorCurrentRewards = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      rewards: Array.isArray(object === null || object === void 0 ? void 0 : object.rewards) ? object.rewards.map(e => DecCoin.fromJSON(e)) : [],
+      period: isSet(object.period) ? Long.fromValue(object.period) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     var _object$rewards;
     const message = createBaseValidatorCurrentRewards();
@@ -316,6 +336,11 @@ export const ValidatorAccumulatedCommission = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      commission: Array.isArray(object === null || object === void 0 ? void 0 : object.commission) ? object.commission.map(e => DecCoin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$commission;
     const message = createBaseValidatorAccumulatedCommission();
@@ -351,6 +376,11 @@ export const ValidatorOutstandingRewards = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      rewards: Array.isArray(object === null || object === void 0 ? void 0 : object.rewards) ? object.rewards.map(e => DecCoin.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$rewards2;
@@ -395,6 +425,12 @@ export const ValidatorSlashEvent = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validatorPeriod: isSet(object.validatorPeriod) ? Long.fromValue(object.validatorPeriod) : Long.UZERO,
+      fraction: isSet(object.fraction) ? String(object.fraction) : ""
+    };
+  },
   fromPartial(object) {
     var _object$fraction;
     const message = createBaseValidatorSlashEvent();
@@ -432,6 +468,11 @@ export const ValidatorSlashEvents = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validatorSlashEvents: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorSlashEvents) ? object.validatorSlashEvents.map(e => ValidatorSlashEvent.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$validatorSlas;
     const message = createBaseValidatorSlashEvents();
@@ -467,6 +508,11 @@ export const FeePool = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      communityPool: Array.isArray(object === null || object === void 0 ? void 0 : object.communityPool) ? object.communityPool.map(e => DecCoin.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$communityPool;
@@ -525,6 +571,14 @@ export const CommunityPoolSpendProposal = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      recipient: isSet(object.recipient) ? String(object.recipient) : "",
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$title, _object$description, _object$recipient, _object$amount;
     const message = createBaseCommunityPoolSpendProposal();
@@ -578,6 +632,13 @@ export const DelegatorStartingInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      previousPeriod: isSet(object.previousPeriod) ? Long.fromValue(object.previousPeriod) : Long.UZERO,
+      stake: isSet(object.stake) ? String(object.stake) : "",
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     var _object$stake;
     const message = createBaseDelegatorStartingInfo();
@@ -622,6 +683,12 @@ export const DelegationDelegatorReward = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      reward: Array.isArray(object === null || object === void 0 ? void 0 : object.reward) ? object.reward.map(e => DecCoin.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$validatorAddr, _object$reward;
@@ -687,6 +754,15 @@ export const CommunityPoolSpendProposalWithDeposit = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      recipient: isSet(object.recipient) ? String(object.recipient) : "",
+      amount: isSet(object.amount) ? String(object.amount) : "",
+      deposit: isSet(object.deposit) ? String(object.deposit) : ""
+    };
   },
   fromPartial(object) {
     var _object$title2, _object$description2, _object$recipient2, _object$amount2, _object$deposit;

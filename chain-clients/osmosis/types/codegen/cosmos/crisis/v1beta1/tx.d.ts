@@ -20,10 +20,12 @@ export interface MsgVerifyInvariantResponseSDKType {
 export declare const MsgVerifyInvariant: {
     encode(message: MsgVerifyInvariant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVerifyInvariant;
+    fromJSON(object: any): MsgVerifyInvariant;
     fromPartial(object: Partial<MsgVerifyInvariant>): MsgVerifyInvariant;
 };
 export declare const MsgVerifyInvariantResponse: {
     encode(_: MsgVerifyInvariantResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVerifyInvariantResponse;
+    fromJSON(_: any): MsgVerifyInvariantResponse;
     fromPartial(_: Partial<MsgVerifyInvariantResponse>): MsgVerifyInvariantResponse;
 };

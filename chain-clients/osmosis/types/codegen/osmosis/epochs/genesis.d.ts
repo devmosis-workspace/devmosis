@@ -83,10 +83,12 @@ export interface GenesisStateSDKType {
 export declare const EpochInfo: {
     encode(message: EpochInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EpochInfo;
+    fromJSON(object: any): EpochInfo;
     fromPartial(object: Partial<EpochInfo>): EpochInfo;
 };
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    fromJSON(object: any): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
 };

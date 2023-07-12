@@ -53,6 +53,13 @@ var NetAddress = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      id: (0, _helpers.isSet)(object.id) ? String(object.id) : "",
+      ip: (0, _helpers.isSet)(object.ip) ? String(object.ip) : "",
+      port: (0, _helpers.isSet)(object.port) ? Number(object.port) : 0
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$id, _object$ip, _object$port;
     var message = createBaseNetAddress();
@@ -106,6 +113,13 @@ var ProtocolVersion = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      p2p: (0, _helpers.isSet)(object.p2p) ? _helpers.Long.fromValue(object.p2p) : _helpers.Long.UZERO,
+      block: (0, _helpers.isSet)(object.block) ? _helpers.Long.fromValue(object.block) : _helpers.Long.UZERO,
+      app: (0, _helpers.isSet)(object.app) ? _helpers.Long.fromValue(object.app) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseProtocolVersion();
@@ -195,6 +209,18 @@ var DefaultNodeInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      protocolVersion: (0, _helpers.isSet)(object.protocolVersion) ? ProtocolVersion.fromJSON(object.protocolVersion) : undefined,
+      defaultNodeId: (0, _helpers.isSet)(object.defaultNodeId) ? String(object.defaultNodeId) : "",
+      listenAddr: (0, _helpers.isSet)(object.listenAddr) ? String(object.listenAddr) : "",
+      network: (0, _helpers.isSet)(object.network) ? String(object.network) : "",
+      version: (0, _helpers.isSet)(object.version) ? String(object.version) : "",
+      channels: (0, _helpers.isSet)(object.channels) ? (0, _helpers.bytesFromBase64)(object.channels) : new Uint8Array(),
+      moniker: (0, _helpers.isSet)(object.moniker) ? String(object.moniker) : "",
+      other: (0, _helpers.isSet)(object.other) ? DefaultNodeInfoOther.fromJSON(object.other) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$defaultNodeId, _object$listenAddr, _object$network, _object$version, _object$channels, _object$moniker;
     var message = createBaseDefaultNodeInfo();
@@ -246,6 +272,12 @@ var DefaultNodeInfoOther = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      txIndex: (0, _helpers.isSet)(object.txIndex) ? String(object.txIndex) : "",
+      rpcAddress: (0, _helpers.isSet)(object.rpcAddress) ? String(object.rpcAddress) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$txIndex, _object$rpcAddress;

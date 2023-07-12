@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /**
  * PubKey defines a secp256k1 public key
  * Key is the compressed form of the pubkey. The first byte depends is a 0x02 byte
@@ -56,6 +57,11 @@ export const PubKey = {
     }
     return message;
   },
+  fromJSON(object: any): PubKey {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<PubKey>): PubKey {
     const message = createBasePubKey();
     message.key = object.key ?? new Uint8Array();
@@ -90,6 +96,11 @@ export const PrivKey = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PrivKey {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array()
+    };
   },
   fromPartial(object: Partial<PrivKey>): PrivKey {
     const message = createBasePrivKey();

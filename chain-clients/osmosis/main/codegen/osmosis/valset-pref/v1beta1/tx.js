@@ -96,6 +96,14 @@ var MsgSetValidatorSetPreference = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegator: (0, _helpers.isSet)(object.delegator) ? String(object.delegator) : "",
+      preferences: Array.isArray(object === null || object === void 0 ? void 0 : object.preferences) ? object.preferences.map(function (e) {
+        return _state.ValidatorPreference.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegator, _object$preferences;
     var message = createBaseMsgSetValidatorSetPreference();
@@ -128,6 +136,9 @@ var MsgSetValidatorSetPreferenceResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSetValidatorSetPreferenceResponse();
@@ -172,6 +183,12 @@ var MsgDelegateToValidatorSet = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegator: (0, _helpers.isSet)(object.delegator) ? String(object.delegator) : "",
+      coin: (0, _helpers.isSet)(object.coin) ? _coin.Coin.fromJSON(object.coin) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegator2;
     var message = createBaseMsgDelegateToValidatorSet();
@@ -202,6 +219,9 @@ var MsgDelegateToValidatorSetResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgDelegateToValidatorSetResponse();
@@ -246,6 +266,12 @@ var MsgUndelegateFromValidatorSet = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegator: (0, _helpers.isSet)(object.delegator) ? String(object.delegator) : "",
+      coin: (0, _helpers.isSet)(object.coin) ? _coin.Coin.fromJSON(object.coin) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegator3;
     var message = createBaseMsgUndelegateFromValidatorSet();
@@ -276,6 +302,9 @@ var MsgUndelegateFromValidatorSetResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgUndelegateFromValidatorSetResponse();
@@ -329,6 +358,14 @@ var MsgRedelegateValidatorSet = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegator: (0, _helpers.isSet)(object.delegator) ? String(object.delegator) : "",
+      preferences: Array.isArray(object === null || object === void 0 ? void 0 : object.preferences) ? object.preferences.map(function (e) {
+        return _state.ValidatorPreference.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegator4, _object$preferences2;
     var message = createBaseMsgRedelegateValidatorSet();
@@ -361,6 +398,9 @@ var MsgRedelegateValidatorSetResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgRedelegateValidatorSetResponse();
@@ -398,6 +438,11 @@ var MsgWithdrawDelegationRewards = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegator: (0, _helpers.isSet)(object.delegator) ? String(object.delegator) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegator5;
     var message = createBaseMsgWithdrawDelegationRewards();
@@ -427,6 +472,9 @@ var MsgWithdrawDelegationRewardsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgWithdrawDelegationRewardsResponse();
@@ -471,6 +519,12 @@ var MsgDelegateBondedTokens = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegator: (0, _helpers.isSet)(object.delegator) ? String(object.delegator) : "",
+      lockID: (0, _helpers.isSet)(object.lockID) ? _helpers.Long.fromValue(object.lockID) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegator6;
     var message = createBaseMsgDelegateBondedTokens();
@@ -501,6 +555,9 @@ var MsgDelegateBondedTokensResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgDelegateBondedTokensResponse();

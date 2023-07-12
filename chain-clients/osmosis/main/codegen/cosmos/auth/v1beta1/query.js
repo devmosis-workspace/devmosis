@@ -213,6 +213,11 @@ var QueryAccountsRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      pagination: (0, _helpers.isSet)(object.pagination) ? _pagination.PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryAccountsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? _pagination.PageRequest.fromPartial(object.pagination) : undefined;
@@ -266,6 +271,14 @@ var QueryAccountsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      accounts: Array.isArray(object === null || object === void 0 ? void 0 : object.accounts) ? object.accounts.map(function (e) {
+        return _any.Any.fromJSON(e);
+      }) : [],
+      pagination: (0, _helpers.isSet)(object.pagination) ? _pagination.PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$accounts;
     var message = createBaseQueryAccountsResponse();
@@ -307,6 +320,11 @@ var QueryAccountRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address;
     var message = createBaseQueryAccountRequest();
@@ -345,6 +363,11 @@ var QueryAccountResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      account: (0, _helpers.isSet)(object.account) ? _any.Any.fromJSON(object.account) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryAccountResponse();
     message.account = object.account !== undefined && object.account !== null ? _any.Any.fromPartial(object.account) : undefined;
@@ -373,6 +396,9 @@ var QueryParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryParamsRequest();
@@ -410,6 +436,11 @@ var QueryParamsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _auth.Params.fromJSON(object.params) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? _auth.Params.fromPartial(object.params) : undefined;
@@ -438,6 +469,9 @@ var QueryModuleAccountsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryModuleAccountsRequest();
@@ -484,6 +518,13 @@ var QueryModuleAccountsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      accounts: Array.isArray(object === null || object === void 0 ? void 0 : object.accounts) ? object.accounts.map(function (e) {
+        return _any.Any.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$accounts2;
     var message = createBaseQueryModuleAccountsResponse();
@@ -524,6 +565,11 @@ var QueryModuleAccountByNameRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      name: (0, _helpers.isSet)(object.name) ? String(object.name) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$name;
     var message = createBaseQueryModuleAccountByNameRequest();
@@ -562,6 +608,11 @@ var QueryModuleAccountByNameResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      account: (0, _helpers.isSet)(object.account) ? _any.Any.fromJSON(object.account) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryModuleAccountByNameResponse();
     message.account = object.account !== undefined && object.account !== null ? _any.Any.fromPartial(object.account) : undefined;
@@ -590,6 +641,9 @@ var Bech32PrefixRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseBech32PrefixRequest();
@@ -626,6 +680,11 @@ var Bech32PrefixResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      bech32Prefix: (0, _helpers.isSet)(object.bech32Prefix) ? String(object.bech32Prefix) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$bech32Prefix;
@@ -665,6 +724,11 @@ var AddressBytesToStringRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      addressBytes: (0, _helpers.isSet)(object.addressBytes) ? (0, _helpers.bytesFromBase64)(object.addressBytes) : new Uint8Array()
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$addressBytes;
     var message = createBaseAddressBytesToStringRequest();
@@ -702,6 +766,11 @@ var AddressBytesToStringResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      addressString: (0, _helpers.isSet)(object.addressString) ? String(object.addressString) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$addressString;
@@ -741,6 +810,11 @@ var AddressStringToBytesRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      addressString: (0, _helpers.isSet)(object.addressString) ? String(object.addressString) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$addressString2;
     var message = createBaseAddressStringToBytesRequest();
@@ -778,6 +852,11 @@ var AddressStringToBytesResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      addressBytes: (0, _helpers.isSet)(object.addressBytes) ? (0, _helpers.bytesFromBase64)(object.addressBytes) : new Uint8Array()
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$addressBytes2;
@@ -817,6 +896,11 @@ var QueryAccountAddressByIDRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      id: (0, _helpers.isSet)(object.id) ? _helpers.Long.fromValue(object.id) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryAccountAddressByIDRequest();
     message.id = object.id !== undefined && object.id !== null ? _helpers.Long.fromValue(object.id) : _helpers.Long.ZERO;
@@ -853,6 +937,11 @@ var QueryAccountAddressByIDResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      accountAddress: (0, _helpers.isSet)(object.accountAddress) ? String(object.accountAddress) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$accountAddres;

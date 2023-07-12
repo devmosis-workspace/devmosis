@@ -231,65 +231,78 @@ export interface TxProofSDKType {
 export declare const PartSetHeader: {
     encode(message: PartSetHeader, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PartSetHeader;
+    fromJSON(object: any): PartSetHeader;
     fromPartial(object: Partial<PartSetHeader>): PartSetHeader;
 };
 export declare const Part: {
     encode(message: Part, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Part;
+    fromJSON(object: any): Part;
     fromPartial(object: Partial<Part>): Part;
 };
 export declare const BlockID: {
     encode(message: BlockID, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockID;
+    fromJSON(object: any): BlockID;
     fromPartial(object: Partial<BlockID>): BlockID;
 };
 export declare const Header: {
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
+    fromJSON(object: any): Header;
     fromPartial(object: Partial<Header>): Header;
 };
 export declare const Data: {
     encode(message: Data, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Data;
+    fromJSON(object: any): Data;
     fromPartial(object: Partial<Data>): Data;
 };
 export declare const Vote: {
     encode(message: Vote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Vote;
+    fromJSON(object: any): Vote;
     fromPartial(object: Partial<Vote>): Vote;
 };
 export declare const Commit: {
     encode(message: Commit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Commit;
+    fromJSON(object: any): Commit;
     fromPartial(object: Partial<Commit>): Commit;
 };
 export declare const CommitSig: {
     encode(message: CommitSig, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommitSig;
+    fromJSON(object: any): CommitSig;
     fromPartial(object: Partial<CommitSig>): CommitSig;
 };
 export declare const Proposal: {
     encode(message: Proposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proposal;
+    fromJSON(object: any): Proposal;
     fromPartial(object: Partial<Proposal>): Proposal;
 };
 export declare const SignedHeader: {
     encode(message: SignedHeader, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignedHeader;
+    fromJSON(object: any): SignedHeader;
     fromPartial(object: Partial<SignedHeader>): SignedHeader;
 };
 export declare const LightBlock: {
     encode(message: LightBlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): LightBlock;
+    fromJSON(object: any): LightBlock;
     fromPartial(object: Partial<LightBlock>): LightBlock;
 };
 export declare const BlockMeta: {
     encode(message: BlockMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockMeta;
+    fromJSON(object: any): BlockMeta;
     fromPartial(object: Partial<BlockMeta>): BlockMeta;
 };
 export declare const TxProof: {
     encode(message: TxProof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxProof;
+    fromJSON(object: any): TxProof;
     fromPartial(object: Partial<TxProof>): TxProof;
 };

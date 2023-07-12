@@ -1,5 +1,6 @@
 import { Plan, PlanSDKType } from "./upgrade";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * MsgSoftwareUpgrade is the Msg/SoftwareUpgrade request type.
  * 
@@ -97,6 +98,12 @@ export const MsgSoftwareUpgrade = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSoftwareUpgrade {
+    return {
+      authority: isSet(object.authority) ? String(object.authority) : "",
+      plan: isSet(object.plan) ? Plan.fromJSON(object.plan) : undefined
+    };
+  },
   fromPartial(object: Partial<MsgSoftwareUpgrade>): MsgSoftwareUpgrade {
     const message = createBaseMsgSoftwareUpgrade();
     message.authority = object.authority ?? "";
@@ -124,6 +131,9 @@ export const MsgSoftwareUpgradeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSoftwareUpgradeResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgSoftwareUpgradeResponse>): MsgSoftwareUpgradeResponse {
     const message = createBaseMsgSoftwareUpgradeResponse();
@@ -159,6 +169,11 @@ export const MsgCancelUpgrade = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCancelUpgrade {
+    return {
+      authority: isSet(object.authority) ? String(object.authority) : ""
+    };
+  },
   fromPartial(object: Partial<MsgCancelUpgrade>): MsgCancelUpgrade {
     const message = createBaseMsgCancelUpgrade();
     message.authority = object.authority ?? "";
@@ -185,6 +200,9 @@ export const MsgCancelUpgradeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgCancelUpgradeResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgCancelUpgradeResponse>): MsgCancelUpgradeResponse {
     const message = createBaseMsgCancelUpgradeResponse();

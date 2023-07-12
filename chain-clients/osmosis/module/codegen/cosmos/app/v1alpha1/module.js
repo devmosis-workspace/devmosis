@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** ModuleDescriptor describes an app module. */
 
 /** ModuleDescriptor describes an app module. */
@@ -60,6 +61,13 @@ export const ModuleDescriptor = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      goImport: isSet(object.goImport) ? String(object.goImport) : "",
+      usePackage: Array.isArray(object === null || object === void 0 ? void 0 : object.usePackage) ? object.usePackage.map(e => PackageReference.fromJSON(e)) : [],
+      canMigrateFrom: Array.isArray(object === null || object === void 0 ? void 0 : object.canMigrateFrom) ? object.canMigrateFrom.map(e => MigrateFromInfo.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$goImport, _object$usePackage, _object$canMigrateFro;
     const message = createBaseModuleDescriptor();
@@ -105,6 +113,12 @@ export const PackageReference = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      revision: isSet(object.revision) ? Number(object.revision) : 0
+    };
+  },
   fromPartial(object) {
     var _object$name, _object$revision;
     const message = createBasePackageReference();
@@ -141,6 +155,11 @@ export const MigrateFromInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      module: isSet(object.module) ? String(object.module) : ""
+    };
   },
   fromPartial(object) {
     var _object$module;
