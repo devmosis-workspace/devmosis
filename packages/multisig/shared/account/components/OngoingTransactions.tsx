@@ -42,7 +42,7 @@ export const OngoingTransactions = ({
             <th className="w-[40px] shrink-0 flex" />
           </tr>
         </div>
-        <tbody className="w-full flex">
+        <tbody className="w-full flex flex-col">
           {ongoingTx?.map((transaction) => {
             const currentSigners = transaction.signatures.length;
             const isNotEnoughSigners = currentSigners < (threshold ?? 0);

@@ -25,18 +25,22 @@ import { useParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { MultisigThresholdPubkey, makeSignDoc } from "@cosmjs/amino";
 import { escapeHTML, getKeplrFromWindow } from "@common/utils";
-import { cosmos } from "@chain-clients/osmosis";
-import Long from "long";
 import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import { BroadcastMode, StdFee } from "@keplr-wallet/types";
-import { makeMultisignedTxBytes } from "@cosmjs/stargate";
+import {
+  SigningStargateClient,
+  StargateClient,
+  makeMultisignedTxBytes,
+} from "@cosmjs/stargate";
 import {
   UPDATE_TRANSACTION_TX_HASH,
   UpdateTransactionTxHashInput,
   UpdateTransactionTxHashResponse,
 } from "@/graphql/mutations/transaction";
 import { JsonViewer } from "@textea/json-viewer";
+import { cosmos } from "@chain-clients/osmosis";
+import Long from "long";
 
 export const dynamic = "force-dynamic";
 
@@ -62,13 +66,14 @@ export default function Transaction() {
   const { data: transactionData, refetch: refetchTransactionData } =
     useSuspenseQuery<TransactionResponse>(GET_TRANSACTION_BY_TRANSACTION_ID, {
       variables: {
-        transactionId: Number(params.transactionId),
+        transactionId: parseInt(params.transactionId, 10),
       },
       skip: params?.transactionId === undefined,
       fetchPolicy: "network-only",
     });
 
   const transaction = transactionData?.transactionByTransactionId;
+  const isBroadcasted = transaction?.txHash !== null;
   const accountAddress = transaction?.MultisigAccount.address;
 
   const { data: accountData } = useQuery({
@@ -143,7 +148,7 @@ export default function Transaction() {
     }
 
     let aminoMsgs: { type: string; value: any }[] = [];
-    let protoMsgs: { typeUrl: string; value: Uint8Array }[] = [];
+    let protoMsgs: { typeUrl: string; value: any }[] = [];
     if (bech32Prefix === "osmo") {
       const { amino, proto } = messages.reduce(
         (acc, msg) => {
@@ -172,7 +177,7 @@ export default function Transaction() {
             value: values,
           };
 
-          const proto = client.proto.encode(client.amino.fromAmino(values));
+          const proto = client.proto.fromJSON(client.amino.fromAmino(values));
 
           return {
             amino: [...acc.amino, amino],
@@ -184,7 +189,7 @@ export default function Transaction() {
           proto: [],
         } as {
           amino: { type: string; value: Record<string, any> }[];
-          proto: { typeUrl: string; value: Uint8Array }[];
+          proto: { typeUrl: string; value: any }[];
         }
       );
       aminoMsgs = amino;
@@ -215,58 +220,25 @@ export default function Transaction() {
     //         value: onChainPubkey.key,
     //       };
 
-    // const { simulatedTx } = await simulateOsmosisTx({
-    //   isNanoLedger: account.isNanoLedger,
-    //   memo,
-    //   protoMsgs,
-    //   pubKey: {
-    //     type: pubkey.type,
-    //     value: pubkey.value,
-    //   },
-    //   sequence: accountData.sequence,
-    //   baseDenom,
-    // });
+    const signingClient = await SigningStargateClient.offline(offlineSigner);
 
-    // const gasUsed = simulatedTx?.gas_info?.gas_used as string | undefined;
-    // const averageGasPrice = currentChain.fees?.fee_tokens[0].average_gas_price;
+    const signerData = {
+      accountNumber: parseInt(accountData.account_number, 10),
+      sequence: parseInt(accountData.sequence, 10),
+      chainId: currentChain.chain_id,
+    };
 
-    // if (gasUsed === undefined || averageGasPrice === undefined) {
-    //   throw new Error("Unable to calculate fee");
-    // }
-
-    // const { stdFee } = calculateStdFee({
-    //   averageGasPrice,
-    //   gasUsed,
-    //   baseDenom,
-    // });
-
-    const stdSignDoc = makeSignDoc(
-      aminoMsgs,
-      stdFee,
-      currentChain.chain_id,
-      memo,
-      accountData.account_number,
-      accountData.sequence
-    );
-
-    const { signature } = await offlineSigner.signAmino(
+    const { bodyBytes, signatures: txSignatures } = await signingClient.sign(
       signerAddress,
-      stdSignDoc
+      protoMsgs,
+      stdFee,
+      memo,
+      signerData
     );
 
-    const bodyBytes = cosmos.tx.v1beta1.TxBody.encode(
-      cosmos.tx.v1beta1.TxBody.fromPartial({
-        memo,
-        messages: protoMsgs,
-        timeoutHeight:
-          timeoutHeight !== undefined
-            ? Long.fromNumber(timeoutHeight)
-            : undefined,
-        extensionOptions,
-        nonCriticalExtensionOptions,
-      })
-    ).finish();
-
+    const bases64EncodedSignature = Buffer.from(txSignatures[0]).toString(
+      "base64"
+    );
     const bases64EncodedBodyBytes = Buffer.from(bodyBytes).toString("base64");
 
     if (isMySignatureExist) {
@@ -279,9 +251,9 @@ export default function Transaction() {
       }
       await updateSignature({
         variables: {
-          signature: signature.signature,
-          signatureId: Number(signatureId),
-          sequence: Number(accountData.sequence),
+          signature: bases64EncodedSignature,
+          signatureId: parseInt(signatureId, 10),
+          sequence: parseInt(accountData.sequence, 10),
         },
       });
       toast.success("Signature is successfully updated");
@@ -291,10 +263,10 @@ export default function Transaction() {
           data: {
             bodyBytes: bases64EncodedBodyBytes,
             memo,
-            signature: signature.signature,
+            signature: bases64EncodedSignature,
             signerAddress,
-            transactionId: Number(params.transactionId),
-            sequence: Number(accountData.sequence),
+            transactionId: parseInt(params.transactionId, 10),
+            sequence: parseInt(accountData.sequence, 10),
           },
         },
       });
@@ -324,6 +296,7 @@ export default function Transaction() {
     if (offChainPubkey === undefined) {
       throw new Error("Unable to load account");
     }
+
     const bodyBytes = Buffer.from(signatures[0].bodyBytes, "base64");
 
     const signatureMap = new Map(
@@ -336,7 +309,7 @@ export default function Transaction() {
     const checkSignatureSequence = signatures.every(
       (signature) =>
         signature.sequence === signatures[0].sequence &&
-        signature.sequence === Number(accountData?.sequence)
+        signature.sequence === parseInt(accountData?.sequence, 10)
     );
 
     if (!checkSignatureSequence) {
@@ -353,32 +326,38 @@ export default function Transaction() {
 
     const signedTxBytes = makeMultisignedTxBytes(
       offChainPubkey,
-      Number(accountData.sequence),
+      parseInt(accountData.sequence, 10),
       stdFee,
       bodyBytes,
       signatureMap
     );
 
-    const keplr = await getKeplrFromWindow();
-
-    if (keplr === undefined) {
-      throw new Error("Unable to load keplr");
-    }
-
-    const encodedTxHash = await keplr.sendTx(
-      currentChain.chain_id,
-      signedTxBytes,
-      "sync" as BroadcastMode
+    const broadcaster = await StargateClient.connect(
+      "https://rpc.osmosis.zone"
     );
+    const result = await broadcaster.broadcastTx(signedTxBytes);
 
-    const txHash = Buffer.from(encodedTxHash).toString("hex");
+    // const keplr = await getKeplrFromWindow();
+
+    // if (keplr === undefined) {
+    //   throw new Error("Unable to load keplr");
+    // }
+
+    // const encodedTxHash = await keplr.sendTx(
+    //   currentChain.chain_id,
+    //   signedTxBytes,
+    //   "sync" as BroadcastMode
+    // );
+
+    // const txHash = Buffer.from(encodedTxHash).toString("hex");
 
     await updateTransactionTxHash({
       variables: {
-        txHash,
-        transactionId: Number(transaction.id),
+        txHash: result.transactionHash,
+        transactionId: parseInt(transaction.id, 10),
       },
     });
+    toast.success("Transaction is successfully broadcasted");
   };
 
   return (
@@ -394,13 +373,17 @@ export default function Transaction() {
               {transaction?.description ?? "No description"}
             </Typography.H5>
 
-            <JsonViewer className="mt-4 p-2" value={JSON.parse(transaction?.txDataJSON ?? "")} theme={"dark"} />
+            <JsonViewer
+              className="mt-4 p-2"
+              value={JSON.parse(transaction?.txDataJSON ?? "")}
+              theme={"dark"}
+            />
           </div>
           <div className="flex justify-between items-center mb-4">
             <Typography.H4 className="text-[#778CA2]">
               Signature Status
             </Typography.H4>
-            <button
+            {!isBroadcasted ? <button
               type="button"
               onClick={handleTxSign}
               disabled={loading || updateLoading}
@@ -409,7 +392,7 @@ export default function Transaction() {
               <Typography.SMText className="text-white">
                 {isMySignatureExist ? "Update signature" : "Sign Transaction"}
               </Typography.SMText>
-            </button>
+            </button>: null}
           </div>
           <div className="w-full flex flex-col p-6 rounded-lg bg-white">
             {signatures.map((signature) => {
@@ -418,7 +401,7 @@ export default function Transaction() {
 
               const isExpiredSignature =
                 accountData !== undefined
-                  ? Number(accountData.sequence) !== signature.sequence
+                  ? parseInt(accountData.sequence, 10) !== signature.sequence
                   : false;
               return (
                 <div
@@ -433,7 +416,7 @@ export default function Transaction() {
                       </Typography.SMText>
                     </div>
                     <div className="flex items-center">
-                      {isExpiredSignature ? (
+                      {!isBroadcasted && isExpiredSignature ? (
                         <div className="flex items-center py-1 px-2 rounded bg-[#FE4D97]/10">
                           <Typography.SMText className="text-[#FE4D97]">
                             Expired signature
@@ -455,7 +438,7 @@ export default function Transaction() {
               );
             })}
           </div>
-          <button
+          {!isBroadcasted ? <button
             type="button"
             onClick={handleTxBroadcast}
             disabled={
@@ -468,7 +451,7 @@ export default function Transaction() {
                 ? "Execute Transaction"
                 : "Waiting for threshold"}
             </Typography.SMText>
-          </button>
+          </button>: null}
         </div>
         <div className="flex flex-col w-[200px] rounded bg-white p-4 h-fit">
           <Typography.H4 className="text-[#252631] mb-1">
@@ -486,7 +469,7 @@ export default function Transaction() {
           </Typography.SMText>
           <hr className="border-t border-t-[#E8ECEF] my-3" />
           <Typography.H4 className="text-[#252631] mb-1">TX Hash</Typography.H4>
-          <Typography.SMText className="text-[#778CA2]">
+          <Typography.SMText className="text-[#778CA2] break-all">
             {transaction?.txHash ?? "N/A"}
           </Typography.SMText>
           <hr className="border-t border-t-[#E8ECEF] my-3" />

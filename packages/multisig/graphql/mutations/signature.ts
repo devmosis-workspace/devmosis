@@ -26,8 +26,16 @@ export interface CreateSignatureResponse {
 }
 
 export const UPDATE_SIGNATURE = gql`
-  mutation UpdateSignature($signatureId: Int!, $signature: String!) {
-    updateSignature(signatureId: $signatureId, signature: $signature) {
+  mutation UpdateSignature(
+    $signatureId: Int!
+    $sequence: Int!
+    $signature: String!
+  ) {
+    updateSignature(
+      signatureId: $signatureId
+      sequence: $sequence
+      signature: $signature
+    ) {
       id
     }
   }

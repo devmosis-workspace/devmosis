@@ -17,7 +17,7 @@ export const osmosisAccountQuery = async ({
   address,
 }: Pick<QueryBalanceRequest, "address">) => {
   const { chain } = osmosisInfo;
-  const restEndpoint = chain?.apis?.rest?.[2].address ?? "";
+  const restEndpoint = chain?.apis?.rest?.[0].address ?? "";
 
   const {
     cosmos: {
