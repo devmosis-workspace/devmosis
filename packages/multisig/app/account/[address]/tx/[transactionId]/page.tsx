@@ -364,6 +364,7 @@ export default function Transaction() {
           transactionId: parseInt(transaction.id, 10),
         },
       });
+      await refetchTransactionData();
       toast.success("Transaction is successfully broadcasted");
     } catch (e) {
       const error = e as Error;
