@@ -17,6 +17,8 @@ import { useParams, useRouter } from "next/navigation";
 import { type ChangeEvent, useState } from "react";
 import { toast } from "react-toastify";
 
+export const dynamic = "force-dynamic";
+
 export default function CreateTransaction() {
   const params = useParams();
   const router = useRouter();
