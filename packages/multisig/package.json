@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "beta",
-    "@apollo/experimental-nextjs-app-support": "^0.3.1",
+    "@apollo/experimental-nextjs-app-support": "^0.3.2",
     "@chain-clients/osmosis": "workspace:^",
     "@chain-sources/osmosis": "workspace:^",
     "@common/utils": "workspace:^",

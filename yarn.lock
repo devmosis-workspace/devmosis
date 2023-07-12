@@ -58,9 +58,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/experimental-nextjs-app-support@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "@apollo/experimental-nextjs-app-support@npm:0.3.1"
+"@apollo/experimental-nextjs-app-support@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "@apollo/experimental-nextjs-app-support@npm:0.3.2"
   dependencies:
     superjson: ^1.12.2
     ts-invariant: ^0.10.3
@@ -68,7 +68,7 @@ __metadata:
     "@apollo/client": ">=3.8.0-beta.4"
     next: ^13.4.1
     react: ^18
-  checksum: aa15d6d0eb9a3ba32fd3bc3b9d022141515df647693343d31e4b41e2c7aabf7bc58c19f59386631e3fe06b95cedd561ea38c42e7bcd43beb0559213c3e42b3b1
+  checksum: 366c3b4d07ac5df86c065327a2ec31d91337c8a5ce7b40ebdd52cced7d9666830171de04e397af137ea236efebd33499e606e82b5d84caee9e345a6d41e5e6ea
   languageName: node
   linkType: hard
 
@@ -9606,7 +9606,7 @@ __metadata:
   resolution: "multisig@workspace:packages/multisig"
   dependencies:
     "@apollo/client": beta
-    "@apollo/experimental-nextjs-app-support": ^0.3.1
+    "@apollo/experimental-nextjs-app-support": ^0.3.2
     "@chain-clients/osmosis": "workspace:^"
     "@chain-sources/osmosis": "workspace:^"
     "@common/utils": "workspace:^"
