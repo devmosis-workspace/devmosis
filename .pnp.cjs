@@ -81,7 +81,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "@apollo/experimental-nextjs-app-support",\
-        "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:0.3.1"\
+        "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:0.3.2"\
       ],\
       [\
         "@babel/cli",\
@@ -3959,17 +3959,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@apollo/experimental-nextjs-app-support", [\
-        ["npm:0.3.1", {\
-          "packageLocation": "./.yarn/cache/@apollo-experimental-nextjs-app-support-npm-0.3.1-f3e8ae5b47-aa15d6d0eb.zip/node_modules/@apollo/experimental-nextjs-app-support/",\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@apollo-experimental-nextjs-app-support-npm-0.3.2-ff52fa010a-366c3b4d07.zip/node_modules/@apollo/experimental-nextjs-app-support/",\
           "packageDependencies": [\
-            ["@apollo/experimental-nextjs-app-support", "npm:0.3.1"]\
+            ["@apollo/experimental-nextjs-app-support", "npm:0.3.2"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:0.3.1", {\
-          "packageLocation": "./.yarn/__virtual__/@apollo-experimental-nextjs-app-support-virtual-03f035fed7/0/cache/@apollo-experimental-nextjs-app-support-npm-0.3.1-f3e8ae5b47-aa15d6d0eb.zip/node_modules/@apollo/experimental-nextjs-app-support/",\
+        ["virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:0.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@apollo-experimental-nextjs-app-support-virtual-ef1cffcc5e/0/cache/@apollo-experimental-nextjs-app-support-npm-0.3.2-ff52fa010a-366c3b4d07.zip/node_modules/@apollo/experimental-nextjs-app-support/",\
           "packageDependencies": [\
-            ["@apollo/experimental-nextjs-app-support", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:0.3.1"],\
+            ["@apollo/experimental-nextjs-app-support", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:0.3.2"],\
             ["@apollo/client", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:3.8.0-beta.5"],\
             ["@types/apollo__client", null],\
             ["@types/next", null],\
@@ -18874,7 +18874,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["multisig", "workspace:packages/multisig"],\
             ["@apollo/client", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:3.8.0-beta.5"],\
-            ["@apollo/experimental-nextjs-app-support", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:0.3.1"],\
+            ["@apollo/experimental-nextjs-app-support", "virtual:c533bf20b287768c85534341fe9aee4e75335965de454ac238e0ced408fd6621de5a6a3c9f2cfc462efa059aad2813a2b29b4f96aa826e27ea4f59272dd72ab2#npm:0.3.2"],\
             ["@chain-clients/osmosis", "workspace:chain-clients/osmosis"],\
             ["@chain-sources/osmosis", "workspace:chain-sources/osmosis"],\
             ["@common/utils", "workspace:common/utils"],\
