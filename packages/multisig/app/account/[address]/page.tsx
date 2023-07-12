@@ -141,6 +141,8 @@ export default function Account() {
         <TransactionHistory completedTx={completedTx} threshold={threshold} />
       ) : null}
       {tab === "owners" ? <OwnerList owners={owners} /> : null}
+
+      <>{JSON.stringify(params)}</>
     </div>
   );
 }
