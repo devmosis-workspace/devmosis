@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /** PubKey defines a secp256r1 ECDSA public key. */
 export interface PubKey {
   /**
@@ -49,6 +50,11 @@ export const PubKey = {
     }
     return message;
   },
+  fromJSON(object: any): PubKey {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<PubKey>): PubKey {
     const message = createBasePubKey();
     message.key = object.key ?? new Uint8Array();
@@ -83,6 +89,11 @@ export const PrivKey = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PrivKey {
+    return {
+      secret: isSet(object.secret) ? bytesFromBase64(object.secret) : new Uint8Array()
+    };
   },
   fromPartial(object: Partial<PrivKey>): PrivKey {
     const message = createBasePrivKey();

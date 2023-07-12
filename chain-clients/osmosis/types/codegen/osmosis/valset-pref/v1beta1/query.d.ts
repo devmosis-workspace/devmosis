@@ -20,10 +20,12 @@ export interface UserValidatorPreferencesResponseSDKType {
 export declare const UserValidatorPreferencesRequest: {
     encode(message: UserValidatorPreferencesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UserValidatorPreferencesRequest;
+    fromJSON(object: any): UserValidatorPreferencesRequest;
     fromPartial(object: Partial<UserValidatorPreferencesRequest>): UserValidatorPreferencesRequest;
 };
 export declare const UserValidatorPreferencesResponse: {
     encode(message: UserValidatorPreferencesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UserValidatorPreferencesResponse;
+    fromJSON(object: any): UserValidatorPreferencesResponse;
     fromPartial(object: Partial<UserValidatorPreferencesResponse>): UserValidatorPreferencesResponse;
 };

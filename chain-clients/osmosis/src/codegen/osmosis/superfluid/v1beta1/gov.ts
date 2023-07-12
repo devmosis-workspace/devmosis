@@ -1,5 +1,5 @@
 import { SuperfluidAsset, SuperfluidAssetSDKType } from "../superfluid";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
@@ -100,6 +100,13 @@ export const SetSuperfluidAssetsProposal = {
     }
     return message;
   },
+  fromJSON(object: any): SetSuperfluidAssetsProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      assets: Array.isArray(object?.assets) ? object.assets.map((e: any) => SuperfluidAsset.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<SetSuperfluidAssetsProposal>): SetSuperfluidAssetsProposal {
     const message = createBaseSetSuperfluidAssetsProposal();
     message.title = object.title ?? "";
@@ -150,6 +157,13 @@ export const RemoveSuperfluidAssetsProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): RemoveSuperfluidAssetsProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      superfluidAssetDenoms: Array.isArray(object?.superfluidAssetDenoms) ? object.superfluidAssetDenoms.map((e: any) => String(e)) : []
+    };
   },
   fromPartial(object: Partial<RemoveSuperfluidAssetsProposal>): RemoveSuperfluidAssetsProposal {
     const message = createBaseRemoveSuperfluidAssetsProposal();
@@ -217,6 +231,14 @@ export const UpdateUnpoolWhiteListProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): UpdateUnpoolWhiteListProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      ids: Array.isArray(object?.ids) ? object.ids.map((e: any) => Long.fromValue(e)) : [],
+      isOverwrite: isSet(object.isOverwrite) ? Boolean(object.isOverwrite) : false
+    };
   },
   fromPartial(object: Partial<UpdateUnpoolWhiteListProposal>): UpdateUnpoolWhiteListProposal {
     const message = createBaseUpdateUnpoolWhiteListProposal();

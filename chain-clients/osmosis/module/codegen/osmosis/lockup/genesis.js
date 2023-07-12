@@ -1,5 +1,5 @@
 import { PeriodLock, SyntheticLock } from "./lock";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the lockup module's genesis state. */
 
@@ -47,6 +47,13 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      lastLockId: isSet(object.lastLockId) ? Long.fromValue(object.lastLockId) : Long.UZERO,
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(e => PeriodLock.fromJSON(e)) : [],
+      syntheticLocks: Array.isArray(object === null || object === void 0 ? void 0 : object.syntheticLocks) ? object.syntheticLocks.map(e => SyntheticLock.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$locks, _object$syntheticLock;

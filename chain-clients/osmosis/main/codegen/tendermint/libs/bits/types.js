@@ -67,6 +67,14 @@ var BitArray = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      bits: (0, _helpers.isSet)(object.bits) ? _helpers.Long.fromValue(object.bits) : _helpers.Long.ZERO,
+      elems: Array.isArray(object === null || object === void 0 ? void 0 : object.elems) ? object.elems.map(function (e) {
+        return _helpers.Long.fromValue(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$elems;
     var message = createBaseBitArray();

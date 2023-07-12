@@ -1,4 +1,4 @@
-import { Long } from "../../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
@@ -97,6 +97,15 @@ export const PageRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      offset: isSet(object.offset) ? Long.fromValue(object.offset) : Long.UZERO,
+      limit: isSet(object.limit) ? Long.fromValue(object.limit) : Long.UZERO,
+      countTotal: isSet(object.countTotal) ? Boolean(object.countTotal) : false,
+      reverse: isSet(object.reverse) ? Boolean(object.reverse) : false
+    };
+  },
   fromPartial(object) {
     var _object$key, _object$countTotal, _object$reverse;
     const message = createBasePageRequest();
@@ -143,6 +152,12 @@ export const PageResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      nextKey: isSet(object.nextKey) ? bytesFromBase64(object.nextKey) : new Uint8Array(),
+      total: isSet(object.total) ? Long.fromValue(object.total) : Long.UZERO
+    };
   },
   fromPartial(object) {
     var _object$nextKey;

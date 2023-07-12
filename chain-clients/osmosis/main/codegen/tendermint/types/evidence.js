@@ -60,6 +60,12 @@ var Evidence = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      duplicateVoteEvidence: (0, _helpers.isSet)(object.duplicateVoteEvidence) ? DuplicateVoteEvidence.fromJSON(object.duplicateVoteEvidence) : undefined,
+      lightClientAttackEvidence: (0, _helpers.isSet)(object.lightClientAttackEvidence) ? LightClientAttackEvidence.fromJSON(object.lightClientAttackEvidence) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseEvidence();
     message.duplicateVoteEvidence = object.duplicateVoteEvidence !== undefined && object.duplicateVoteEvidence !== null ? DuplicateVoteEvidence.fromPartial(object.duplicateVoteEvidence) : undefined;
@@ -125,6 +131,15 @@ var DuplicateVoteEvidence = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      voteA: (0, _helpers.isSet)(object.voteA) ? _types.Vote.fromJSON(object.voteA) : undefined,
+      voteB: (0, _helpers.isSet)(object.voteB) ? _types.Vote.fromJSON(object.voteB) : undefined,
+      totalVotingPower: (0, _helpers.isSet)(object.totalVotingPower) ? _helpers.Long.fromValue(object.totalVotingPower) : _helpers.Long.ZERO,
+      validatorPower: (0, _helpers.isSet)(object.validatorPower) ? _helpers.Long.fromValue(object.validatorPower) : _helpers.Long.ZERO,
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$timestamp;
@@ -205,6 +220,17 @@ var LightClientAttackEvidence = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      conflictingBlock: (0, _helpers.isSet)(object.conflictingBlock) ? _types.LightBlock.fromJSON(object.conflictingBlock) : undefined,
+      commonHeight: (0, _helpers.isSet)(object.commonHeight) ? _helpers.Long.fromValue(object.commonHeight) : _helpers.Long.ZERO,
+      byzantineValidators: Array.isArray(object === null || object === void 0 ? void 0 : object.byzantineValidators) ? object.byzantineValidators.map(function (e) {
+        return _validator.Validator.fromJSON(e);
+      }) : [],
+      totalVotingPower: (0, _helpers.isSet)(object.totalVotingPower) ? _helpers.Long.fromValue(object.totalVotingPower) : _helpers.Long.ZERO,
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$byzantineVali, _object$timestamp2;
     var message = createBaseLightClientAttackEvidence();
@@ -257,6 +283,13 @@ var EvidenceList = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      evidence: Array.isArray(object === null || object === void 0 ? void 0 : object.evidence) ? object.evidence.map(function (e) {
+        return Evidence.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$evidence;

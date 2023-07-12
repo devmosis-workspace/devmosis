@@ -55,6 +55,32 @@ export declare const MessageComposer: {
             value: MsgSetBaseDenoms;
         };
     };
+    fromJSON: {
+        setHotRoutes(value: any): {
+            typeUrl: string;
+            value: MsgSetHotRoutes;
+        };
+        setDeveloperAccount(value: any): {
+            typeUrl: string;
+            value: MsgSetDeveloperAccount;
+        };
+        setMaxPoolPointsPerTx(value: any): {
+            typeUrl: string;
+            value: MsgSetMaxPoolPointsPerTx;
+        };
+        setMaxPoolPointsPerBlock(value: any): {
+            typeUrl: string;
+            value: MsgSetMaxPoolPointsPerBlock;
+        };
+        setPoolWeights(value: any): {
+            typeUrl: string;
+            value: MsgSetPoolWeights;
+        };
+        setBaseDenoms(value: any): {
+            typeUrl: string;
+            value: MsgSetBaseDenoms;
+        };
+    };
     fromPartial: {
         setHotRoutes(value: MsgSetHotRoutes): {
             typeUrl: string;

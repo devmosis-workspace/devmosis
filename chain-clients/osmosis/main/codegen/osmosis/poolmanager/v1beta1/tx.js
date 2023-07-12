@@ -8,6 +8,7 @@ exports.MsgSwapExactAmountOutResponse = exports.MsgSwapExactAmountOut = exports.
 var _swap_route = require("./swap_route");
 var _coin = require("../../../cosmos/base/v1beta1/coin");
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
+var _helpers = require("../../../helpers");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
@@ -81,6 +82,16 @@ var MsgSwapExactAmountIn = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      routes: Array.isArray(object === null || object === void 0 ? void 0 : object.routes) ? object.routes.map(function (e) {
+        return _swap_route.SwapAmountInRoute.fromJSON(e);
+      }) : [],
+      tokenIn: (0, _helpers.isSet)(object.tokenIn) ? _coin.Coin.fromJSON(object.tokenIn) : undefined,
+      tokenOutMinAmount: (0, _helpers.isSet)(object.tokenOutMinAmount) ? String(object.tokenOutMinAmount) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender, _object$routes, _object$tokenOutMinAm;
     var message = createBaseMsgSwapExactAmountIn();
@@ -123,6 +134,11 @@ var MsgSwapExactAmountInResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      tokenOutAmount: (0, _helpers.isSet)(object.tokenOutAmount) ? String(object.tokenOutAmount) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$tokenOutAmoun;
@@ -192,6 +208,16 @@ var MsgSwapExactAmountOut = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      routes: Array.isArray(object === null || object === void 0 ? void 0 : object.routes) ? object.routes.map(function (e) {
+        return _swap_route.SwapAmountOutRoute.fromJSON(e);
+      }) : [],
+      tokenInMaxAmount: (0, _helpers.isSet)(object.tokenInMaxAmount) ? String(object.tokenInMaxAmount) : "",
+      tokenOut: (0, _helpers.isSet)(object.tokenOut) ? _coin.Coin.fromJSON(object.tokenOut) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender2, _object$routes2, _object$tokenInMaxAmo;
     var message = createBaseMsgSwapExactAmountOut();
@@ -234,6 +260,11 @@ var MsgSwapExactAmountOutResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      tokenInAmount: (0, _helpers.isSet)(object.tokenInAmount) ? String(object.tokenInAmount) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$tokenInAmount;

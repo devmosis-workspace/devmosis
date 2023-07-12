@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * ValidatorPreference defines the message structure for
  * CreateValidatorSetPreference. It allows a user to set {val_addr, weight} in
@@ -65,6 +66,12 @@ export const ValidatorPreference = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      valOperAddress: isSet(object.valOperAddress) ? String(object.valOperAddress) : "",
+      weight: isSet(object.weight) ? String(object.weight) : ""
+    };
+  },
   fromPartial(object) {
     var _object$valOperAddres, _object$weight;
     const message = createBaseValidatorPreference();
@@ -101,6 +108,11 @@ export const ValidatorSetPreferences = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      preferences: Array.isArray(object === null || object === void 0 ? void 0 : object.preferences) ? object.preferences.map(e => ValidatorPreference.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$preferences;

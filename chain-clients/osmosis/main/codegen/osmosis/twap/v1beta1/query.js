@@ -69,6 +69,15 @@ var ArithmeticTwapRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      baseAsset: (0, _helpers.isSet)(object.baseAsset) ? String(object.baseAsset) : "",
+      quoteAsset: (0, _helpers.isSet)(object.quoteAsset) ? String(object.quoteAsset) : "",
+      startTime: (0, _helpers.isSet)(object.startTime) ? (0, _helpers.fromJsonTimestamp)(object.startTime) : undefined,
+      endTime: (0, _helpers.isSet)(object.endTime) ? (0, _helpers.fromJsonTimestamp)(object.endTime) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$baseAsset, _object$quoteAsset, _object$startTime, _object$endTime;
     var message = createBaseArithmeticTwapRequest();
@@ -110,6 +119,11 @@ var ArithmeticTwapResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      arithmeticTwap: (0, _helpers.isSet)(object.arithmeticTwap) ? String(object.arithmeticTwap) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$arithmeticTwa;
@@ -170,6 +184,14 @@ var ArithmeticTwapToNowRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      baseAsset: (0, _helpers.isSet)(object.baseAsset) ? String(object.baseAsset) : "",
+      quoteAsset: (0, _helpers.isSet)(object.quoteAsset) ? String(object.quoteAsset) : "",
+      startTime: (0, _helpers.isSet)(object.startTime) ? (0, _helpers.fromJsonTimestamp)(object.startTime) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$baseAsset2, _object$quoteAsset2, _object$startTime2;
     var message = createBaseArithmeticTwapToNowRequest();
@@ -210,6 +232,11 @@ var ArithmeticTwapToNowResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      arithmeticTwap: (0, _helpers.isSet)(object.arithmeticTwap) ? String(object.arithmeticTwap) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$arithmeticTwa2;
@@ -277,6 +304,15 @@ var GeometricTwapRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      baseAsset: (0, _helpers.isSet)(object.baseAsset) ? String(object.baseAsset) : "",
+      quoteAsset: (0, _helpers.isSet)(object.quoteAsset) ? String(object.quoteAsset) : "",
+      startTime: (0, _helpers.isSet)(object.startTime) ? (0, _helpers.fromJsonTimestamp)(object.startTime) : undefined,
+      endTime: (0, _helpers.isSet)(object.endTime) ? (0, _helpers.fromJsonTimestamp)(object.endTime) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$baseAsset3, _object$quoteAsset3, _object$startTime3, _object$endTime2;
     var message = createBaseGeometricTwapRequest();
@@ -318,6 +354,11 @@ var GeometricTwapResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      geometricTwap: (0, _helpers.isSet)(object.geometricTwap) ? String(object.geometricTwap) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$geometricTwap;
@@ -378,6 +419,14 @@ var GeometricTwapToNowRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      baseAsset: (0, _helpers.isSet)(object.baseAsset) ? String(object.baseAsset) : "",
+      quoteAsset: (0, _helpers.isSet)(object.quoteAsset) ? String(object.quoteAsset) : "",
+      startTime: (0, _helpers.isSet)(object.startTime) ? (0, _helpers.fromJsonTimestamp)(object.startTime) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$baseAsset4, _object$quoteAsset4, _object$startTime4;
     var message = createBaseGeometricTwapToNowRequest();
@@ -419,6 +468,11 @@ var GeometricTwapToNowResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      geometricTwap: (0, _helpers.isSet)(object.geometricTwap) ? String(object.geometricTwap) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$geometricTwap2;
     var message = createBaseGeometricTwapToNowResponse();
@@ -448,6 +502,9 @@ var ParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseParamsRequest();
@@ -484,6 +541,11 @@ var ParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _genesis.Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseParamsResponse();

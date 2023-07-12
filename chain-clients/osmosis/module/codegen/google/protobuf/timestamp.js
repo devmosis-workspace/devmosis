@@ -1,4 +1,4 @@
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * A Timestamp represents a point in time independent of any time zone or local
@@ -205,6 +205,12 @@ export const Timestamp = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      seconds: isSet(object.seconds) ? Long.fromValue(object.seconds) : Long.ZERO,
+      nanos: isSet(object.nanos) ? Number(object.nanos) : 0
+    };
   },
   fromPartial(object) {
     var _object$nanos;

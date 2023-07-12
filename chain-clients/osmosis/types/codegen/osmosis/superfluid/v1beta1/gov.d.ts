@@ -60,15 +60,18 @@ export interface UpdateUnpoolWhiteListProposalSDKType {
 export declare const SetSuperfluidAssetsProposal: {
     encode(message: SetSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SetSuperfluidAssetsProposal;
+    fromJSON(object: any): SetSuperfluidAssetsProposal;
     fromPartial(object: Partial<SetSuperfluidAssetsProposal>): SetSuperfluidAssetsProposal;
 };
 export declare const RemoveSuperfluidAssetsProposal: {
     encode(message: RemoveSuperfluidAssetsProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RemoveSuperfluidAssetsProposal;
+    fromJSON(object: any): RemoveSuperfluidAssetsProposal;
     fromPartial(object: Partial<RemoveSuperfluidAssetsProposal>): RemoveSuperfluidAssetsProposal;
 };
 export declare const UpdateUnpoolWhiteListProposal: {
     encode(message: UpdateUnpoolWhiteListProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UpdateUnpoolWhiteListProposal;
+    fromJSON(object: any): UpdateUnpoolWhiteListProposal;
     fromPartial(object: Partial<UpdateUnpoolWhiteListProposal>): UpdateUnpoolWhiteListProposal;
 };

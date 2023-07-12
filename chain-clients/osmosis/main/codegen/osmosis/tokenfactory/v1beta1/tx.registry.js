@@ -85,6 +85,38 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createDenom: function createDenom(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgCreateDenom",
+        value: _tx.MsgCreateDenom.fromJSON(value)
+      };
+    },
+    mint: function mint(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgMint",
+        value: _tx.MsgMint.fromJSON(value)
+      };
+    },
+    burn: function burn(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgBurn",
+        value: _tx.MsgBurn.fromJSON(value)
+      };
+    },
+    changeAdmin: function changeAdmin(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin",
+        value: _tx.MsgChangeAdmin.fromJSON(value)
+      };
+    },
+    setDenomMetadata: function setDenomMetadata(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata",
+        value: _tx.MsgSetDenomMetadata.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createDenom: function createDenom(value) {
       return {

@@ -67,20 +67,24 @@ export interface MissedBlockSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    fromJSON(object: any): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
 };
 export declare const SigningInfo: {
     encode(message: SigningInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SigningInfo;
+    fromJSON(object: any): SigningInfo;
     fromPartial(object: Partial<SigningInfo>): SigningInfo;
 };
 export declare const ValidatorMissedBlocks: {
     encode(message: ValidatorMissedBlocks, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorMissedBlocks;
+    fromJSON(object: any): ValidatorMissedBlocks;
     fromPartial(object: Partial<ValidatorMissedBlocks>): ValidatorMissedBlocks;
 };
 export declare const MissedBlock: {
     encode(message: MissedBlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MissedBlock;
+    fromJSON(object: any): MissedBlock;
     fromPartial(object: Partial<MissedBlock>): MissedBlock;
 };

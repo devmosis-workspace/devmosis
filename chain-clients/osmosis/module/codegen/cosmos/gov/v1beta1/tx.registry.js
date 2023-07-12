@@ -60,6 +60,32 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    submitProposal(value) {
+      return {
+        typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal",
+        value: MsgSubmitProposal.fromJSON(value)
+      };
+    },
+    vote(value) {
+      return {
+        typeUrl: "/cosmos.gov.v1beta1.MsgVote",
+        value: MsgVote.fromJSON(value)
+      };
+    },
+    voteWeighted(value) {
+      return {
+        typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted",
+        value: MsgVoteWeighted.fromJSON(value)
+      };
+    },
+    deposit(value) {
+      return {
+        typeUrl: "/cosmos.gov.v1beta1.MsgDeposit",
+        value: MsgDeposit.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     submitProposal(value) {
       return {

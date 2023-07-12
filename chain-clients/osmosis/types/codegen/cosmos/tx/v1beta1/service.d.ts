@@ -258,50 +258,60 @@ export interface GetBlockWithTxsResponseSDKType {
 export declare const GetTxsEventRequest: {
     encode(message: GetTxsEventRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventRequest;
+    fromJSON(object: any): GetTxsEventRequest;
     fromPartial(object: Partial<GetTxsEventRequest>): GetTxsEventRequest;
 };
 export declare const GetTxsEventResponse: {
     encode(message: GetTxsEventResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxsEventResponse;
+    fromJSON(object: any): GetTxsEventResponse;
     fromPartial(object: Partial<GetTxsEventResponse>): GetTxsEventResponse;
 };
 export declare const BroadcastTxRequest: {
     encode(message: BroadcastTxRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxRequest;
+    fromJSON(object: any): BroadcastTxRequest;
     fromPartial(object: Partial<BroadcastTxRequest>): BroadcastTxRequest;
 };
 export declare const BroadcastTxResponse: {
     encode(message: BroadcastTxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BroadcastTxResponse;
+    fromJSON(object: any): BroadcastTxResponse;
     fromPartial(object: Partial<BroadcastTxResponse>): BroadcastTxResponse;
 };
 export declare const SimulateRequest: {
     encode(message: SimulateRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulateRequest;
+    fromJSON(object: any): SimulateRequest;
     fromPartial(object: Partial<SimulateRequest>): SimulateRequest;
 };
 export declare const SimulateResponse: {
     encode(message: SimulateResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulateResponse;
+    fromJSON(object: any): SimulateResponse;
     fromPartial(object: Partial<SimulateResponse>): SimulateResponse;
 };
 export declare const GetTxRequest: {
     encode(message: GetTxRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxRequest;
+    fromJSON(object: any): GetTxRequest;
     fromPartial(object: Partial<GetTxRequest>): GetTxRequest;
 };
 export declare const GetTxResponse: {
     encode(message: GetTxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetTxResponse;
+    fromJSON(object: any): GetTxResponse;
     fromPartial(object: Partial<GetTxResponse>): GetTxResponse;
 };
 export declare const GetBlockWithTxsRequest: {
     encode(message: GetBlockWithTxsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsRequest;
+    fromJSON(object: any): GetBlockWithTxsRequest;
     fromPartial(object: Partial<GetBlockWithTxsRequest>): GetBlockWithTxsRequest;
 };
 export declare const GetBlockWithTxsResponse: {
     encode(message: GetBlockWithTxsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GetBlockWithTxsResponse;
+    fromJSON(object: any): GetBlockWithTxsResponse;
     fromPartial(object: Partial<GetBlockWithTxsResponse>): GetBlockWithTxsResponse;
 };

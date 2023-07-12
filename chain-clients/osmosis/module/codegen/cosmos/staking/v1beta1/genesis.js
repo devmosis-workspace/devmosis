@@ -1,5 +1,5 @@
 import { Params, Validator, Delegation, UnbondingDelegation, Redelegation } from "./staking";
-import { Long } from "../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the staking module's genesis state. */
 
@@ -87,6 +87,18 @@ export const GenesisState = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      lastTotalPower: isSet(object.lastTotalPower) ? bytesFromBase64(object.lastTotalPower) : new Uint8Array(),
+      lastValidatorPowers: Array.isArray(object === null || object === void 0 ? void 0 : object.lastValidatorPowers) ? object.lastValidatorPowers.map(e => LastValidatorPower.fromJSON(e)) : [],
+      validators: Array.isArray(object === null || object === void 0 ? void 0 : object.validators) ? object.validators.map(e => Validator.fromJSON(e)) : [],
+      delegations: Array.isArray(object === null || object === void 0 ? void 0 : object.delegations) ? object.delegations.map(e => Delegation.fromJSON(e)) : [],
+      unbondingDelegations: Array.isArray(object === null || object === void 0 ? void 0 : object.unbondingDelegations) ? object.unbondingDelegations.map(e => UnbondingDelegation.fromJSON(e)) : [],
+      redelegations: Array.isArray(object === null || object === void 0 ? void 0 : object.redelegations) ? object.redelegations.map(e => Redelegation.fromJSON(e)) : [],
+      exported: isSet(object.exported) ? Boolean(object.exported) : false
+    };
+  },
   fromPartial(object) {
     var _object$lastTotalPowe, _object$lastValidator, _object$validators, _object$delegations, _object$unbondingDele, _object$redelegations, _object$exported;
     const message = createBaseGenesisState();
@@ -136,6 +148,12 @@ export const LastValidatorPower = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      power: isSet(object.power) ? Long.fromValue(object.power) : Long.ZERO
+    };
   },
   fromPartial(object) {
     var _object$address;

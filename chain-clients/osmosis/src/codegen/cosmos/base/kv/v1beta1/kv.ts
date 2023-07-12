@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../../helpers";
 /** Pairs defines a repeated slice of Pair objects. */
 export interface Pairs {
   pairs: Pair[];
@@ -46,6 +47,11 @@ export const Pairs = {
     }
     return message;
   },
+  fromJSON(object: any): Pairs {
+    return {
+      pairs: Array.isArray(object?.pairs) ? object.pairs.map((e: any) => Pair.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<Pairs>): Pairs {
     const message = createBasePairs();
     message.pairs = object.pairs?.map(e => Pair.fromPartial(e)) || [];
@@ -87,6 +93,12 @@ export const Pair = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Pair {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
+    };
   },
   fromPartial(object: Partial<Pair>): Pair {
     const message = createBasePair();

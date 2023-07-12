@@ -108,6 +108,14 @@ var ConsensusParams = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      block: (0, _helpers.isSet)(object.block) ? BlockParams.fromJSON(object.block) : undefined,
+      evidence: (0, _helpers.isSet)(object.evidence) ? EvidenceParams.fromJSON(object.evidence) : undefined,
+      validator: (0, _helpers.isSet)(object.validator) ? ValidatorParams.fromJSON(object.validator) : undefined,
+      version: (0, _helpers.isSet)(object.version) ? VersionParams.fromJSON(object.version) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseConsensusParams();
     message.block = object.block !== undefined && object.block !== null ? BlockParams.fromPartial(object.block) : undefined;
@@ -162,6 +170,13 @@ var BlockParams = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      maxBytes: (0, _helpers.isSet)(object.maxBytes) ? _helpers.Long.fromValue(object.maxBytes) : _helpers.Long.ZERO,
+      maxGas: (0, _helpers.isSet)(object.maxGas) ? _helpers.Long.fromValue(object.maxGas) : _helpers.Long.ZERO,
+      timeIotaMs: (0, _helpers.isSet)(object.timeIotaMs) ? _helpers.Long.fromValue(object.timeIotaMs) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseBlockParams();
     message.maxBytes = object.maxBytes !== undefined && object.maxBytes !== null ? _helpers.Long.fromValue(object.maxBytes) : _helpers.Long.ZERO;
@@ -215,6 +230,13 @@ var EvidenceParams = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      maxAgeNumBlocks: (0, _helpers.isSet)(object.maxAgeNumBlocks) ? _helpers.Long.fromValue(object.maxAgeNumBlocks) : _helpers.Long.ZERO,
+      maxAgeDuration: (0, _helpers.isSet)(object.maxAgeDuration) ? _duration.Duration.fromJSON(object.maxAgeDuration) : undefined,
+      maxBytes: (0, _helpers.isSet)(object.maxBytes) ? _helpers.Long.fromValue(object.maxBytes) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseEvidenceParams();
     message.maxAgeNumBlocks = object.maxAgeNumBlocks !== undefined && object.maxAgeNumBlocks !== null ? _helpers.Long.fromValue(object.maxAgeNumBlocks) : _helpers.Long.ZERO;
@@ -263,6 +285,13 @@ var ValidatorParams = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      pubKeyTypes: Array.isArray(object === null || object === void 0 ? void 0 : object.pubKeyTypes) ? object.pubKeyTypes.map(function (e) {
+        return String(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$pubKeyTypes;
     var message = createBaseValidatorParams();
@@ -302,6 +331,11 @@ var VersionParams = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      appVersion: (0, _helpers.isSet)(object.appVersion) ? _helpers.Long.fromValue(object.appVersion) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseVersionParams();
@@ -346,6 +380,12 @@ var HashedParams = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      blockMaxBytes: (0, _helpers.isSet)(object.blockMaxBytes) ? _helpers.Long.fromValue(object.blockMaxBytes) : _helpers.Long.ZERO,
+      blockMaxGas: (0, _helpers.isSet)(object.blockMaxGas) ? _helpers.Long.fromValue(object.blockMaxGas) : _helpers.Long.ZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseHashedParams();

@@ -16,5 +16,6 @@ export interface ModuleSDKType {
 export declare const Module: {
     encode(_: Module, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Module;
+    fromJSON(_: any): Module;
     fromPartial(_: Partial<Module>): Module;
 };

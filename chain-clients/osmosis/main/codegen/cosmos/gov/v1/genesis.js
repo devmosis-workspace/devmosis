@@ -116,6 +116,23 @@ var GenesisState = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      startingProposalId: (0, _helpers.isSet)(object.startingProposalId) ? _helpers.Long.fromValue(object.startingProposalId) : _helpers.Long.UZERO,
+      deposits: Array.isArray(object === null || object === void 0 ? void 0 : object.deposits) ? object.deposits.map(function (e) {
+        return _gov.Deposit.fromJSON(e);
+      }) : [],
+      votes: Array.isArray(object === null || object === void 0 ? void 0 : object.votes) ? object.votes.map(function (e) {
+        return _gov.Vote.fromJSON(e);
+      }) : [],
+      proposals: Array.isArray(object === null || object === void 0 ? void 0 : object.proposals) ? object.proposals.map(function (e) {
+        return _gov.Proposal.fromJSON(e);
+      }) : [],
+      depositParams: (0, _helpers.isSet)(object.depositParams) ? _gov.DepositParams.fromJSON(object.depositParams) : undefined,
+      votingParams: (0, _helpers.isSet)(object.votingParams) ? _gov.VotingParams.fromJSON(object.votingParams) : undefined,
+      tallyParams: (0, _helpers.isSet)(object.tallyParams) ? _gov.TallyParams.fromJSON(object.tallyParams) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$deposits, _object$votes, _object$proposals;
     var message = createBaseGenesisState();

@@ -44,20 +44,24 @@ export interface MsgSwapExactAmountOutResponseSDKType {
 export declare const MsgSwapExactAmountIn: {
     encode(message: MsgSwapExactAmountIn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountIn;
+    fromJSON(object: any): MsgSwapExactAmountIn;
     fromPartial(object: Partial<MsgSwapExactAmountIn>): MsgSwapExactAmountIn;
 };
 export declare const MsgSwapExactAmountInResponse: {
     encode(message: MsgSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountInResponse;
+    fromJSON(object: any): MsgSwapExactAmountInResponse;
     fromPartial(object: Partial<MsgSwapExactAmountInResponse>): MsgSwapExactAmountInResponse;
 };
 export declare const MsgSwapExactAmountOut: {
     encode(message: MsgSwapExactAmountOut, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOut;
+    fromJSON(object: any): MsgSwapExactAmountOut;
     fromPartial(object: Partial<MsgSwapExactAmountOut>): MsgSwapExactAmountOut;
 };
 export declare const MsgSwapExactAmountOutResponse: {
     encode(message: MsgSwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSwapExactAmountOutResponse;
+    fromJSON(object: any): MsgSwapExactAmountOutResponse;
     fromPartial(object: Partial<MsgSwapExactAmountOutResponse>): MsgSwapExactAmountOutResponse;
 };

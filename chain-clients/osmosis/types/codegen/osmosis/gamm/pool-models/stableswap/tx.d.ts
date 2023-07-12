@@ -53,20 +53,24 @@ export interface MsgStableSwapAdjustScalingFactorsResponseSDKType {
 export declare const MsgCreateStableswapPool: {
     encode(message: MsgCreateStableswapPool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPool;
+    fromJSON(object: any): MsgCreateStableswapPool;
     fromPartial(object: Partial<MsgCreateStableswapPool>): MsgCreateStableswapPool;
 };
 export declare const MsgCreateStableswapPoolResponse: {
     encode(message: MsgCreateStableswapPoolResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateStableswapPoolResponse;
+    fromJSON(object: any): MsgCreateStableswapPoolResponse;
     fromPartial(object: Partial<MsgCreateStableswapPoolResponse>): MsgCreateStableswapPoolResponse;
 };
 export declare const MsgStableSwapAdjustScalingFactors: {
     encode(message: MsgStableSwapAdjustScalingFactors, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactors;
+    fromJSON(object: any): MsgStableSwapAdjustScalingFactors;
     fromPartial(object: Partial<MsgStableSwapAdjustScalingFactors>): MsgStableSwapAdjustScalingFactors;
 };
 export declare const MsgStableSwapAdjustScalingFactorsResponse: {
     encode(_: MsgStableSwapAdjustScalingFactorsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgStableSwapAdjustScalingFactorsResponse;
+    fromJSON(_: any): MsgStableSwapAdjustScalingFactorsResponse;
     fromPartial(_: Partial<MsgStableSwapAdjustScalingFactorsResponse>): MsgStableSwapAdjustScalingFactorsResponse;
 };

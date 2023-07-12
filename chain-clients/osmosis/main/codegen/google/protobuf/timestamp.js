@@ -216,6 +216,12 @@ var Timestamp = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      seconds: (0, _helpers.isSet)(object.seconds) ? _helpers.Long.fromValue(object.seconds) : _helpers.Long.ZERO,
+      nanos: (0, _helpers.isSet)(object.nanos) ? Number(object.nanos) : 0
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$nanos;
     var message = createBaseTimestamp();

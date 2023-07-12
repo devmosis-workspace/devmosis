@@ -84,6 +84,14 @@ var BaseAccount = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      pubKey: (0, _helpers.isSet)(object.pubKey) ? _any.Any.fromJSON(object.pubKey) : undefined,
+      accountNumber: (0, _helpers.isSet)(object.accountNumber) ? _helpers.Long.fromValue(object.accountNumber) : _helpers.Long.UZERO,
+      sequence: (0, _helpers.isSet)(object.sequence) ? _helpers.Long.fromValue(object.sequence) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address;
     var message = createBaseBaseAccount();
@@ -147,6 +155,15 @@ var ModuleAccount = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      baseAccount: (0, _helpers.isSet)(object.baseAccount) ? BaseAccount.fromJSON(object.baseAccount) : undefined,
+      name: (0, _helpers.isSet)(object.name) ? String(object.name) : "",
+      permissions: Array.isArray(object === null || object === void 0 ? void 0 : object.permissions) ? object.permissions.map(function (e) {
+        return String(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$name, _object$permissions;
@@ -217,6 +234,15 @@ var Params = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      maxMemoCharacters: (0, _helpers.isSet)(object.maxMemoCharacters) ? _helpers.Long.fromValue(object.maxMemoCharacters) : _helpers.Long.UZERO,
+      txSigLimit: (0, _helpers.isSet)(object.txSigLimit) ? _helpers.Long.fromValue(object.txSigLimit) : _helpers.Long.UZERO,
+      txSizeCostPerByte: (0, _helpers.isSet)(object.txSizeCostPerByte) ? _helpers.Long.fromValue(object.txSizeCostPerByte) : _helpers.Long.UZERO,
+      sigVerifyCostEd25519: (0, _helpers.isSet)(object.sigVerifyCostEd25519) ? _helpers.Long.fromValue(object.sigVerifyCostEd25519) : _helpers.Long.UZERO,
+      sigVerifyCostSecp256k1: (0, _helpers.isSet)(object.sigVerifyCostSecp256k1) ? _helpers.Long.fromValue(object.sigVerifyCostSecp256k1) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseParams();

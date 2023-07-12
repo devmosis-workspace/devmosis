@@ -84,6 +84,44 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    setValidatorSetPreference(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreference",
+        value: MsgSetValidatorSetPreference.fromJSON(value)
+      };
+    },
+    delegateToValidatorSet(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSet",
+        value: MsgDelegateToValidatorSet.fromJSON(value)
+      };
+    },
+    undelegateFromValidatorSet(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSet",
+        value: MsgUndelegateFromValidatorSet.fromJSON(value)
+      };
+    },
+    redelegateValidatorSet(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSet",
+        value: MsgRedelegateValidatorSet.fromJSON(value)
+      };
+    },
+    withdrawDelegationRewards(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards",
+        value: MsgWithdrawDelegationRewards.fromJSON(value)
+      };
+    },
+    delegateBondedTokens(value: any) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens",
+        value: MsgDelegateBondedTokens.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     setValidatorSetPreference(value: MsgSetValidatorSetPreference) {
       return {

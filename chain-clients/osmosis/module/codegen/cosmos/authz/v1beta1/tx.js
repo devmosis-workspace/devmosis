@@ -1,6 +1,7 @@
 import { Grant } from "./authz";
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /**
  * MsgGrant is a request type for Grant method. It declares authorization to the grantee
  * on behalf of the granter with the provided expiration time.
@@ -88,6 +89,13 @@ export const MsgGrant = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      grant: isSet(object.grant) ? Grant.fromJSON(object.grant) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$granter, _object$grantee;
     const message = createBaseMsgGrant();
@@ -125,6 +133,11 @@ export const MsgExecResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      results: Array.isArray(object === null || object === void 0 ? void 0 : object.results) ? object.results.map(e => bytesFromBase64(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$results;
@@ -169,6 +182,12 @@ export const MsgExec = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      msgs: Array.isArray(object === null || object === void 0 ? void 0 : object.msgs) ? object.msgs.map(e => Any.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$grantee2, _object$msgs;
     const message = createBaseMsgExec();
@@ -197,6 +216,9 @@ export const MsgGrantResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgGrantResponse();
@@ -246,6 +268,13 @@ export const MsgRevoke = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      msgTypeUrl: isSet(object.msgTypeUrl) ? String(object.msgTypeUrl) : ""
+    };
+  },
   fromPartial(object) {
     var _object$granter2, _object$grantee3, _object$msgTypeUrl;
     const message = createBaseMsgRevoke();
@@ -275,6 +304,9 @@ export const MsgRevokeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgRevokeResponse();

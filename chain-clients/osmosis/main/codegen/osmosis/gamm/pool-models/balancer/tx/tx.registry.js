@@ -37,6 +37,14 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createBalancerPool: function createBalancerPool(value) {
+      return {
+        typeUrl: "/osmosis.gamm.poolmodels.balancer.v1beta1.MsgCreateBalancerPool",
+        value: _tx.MsgCreateBalancerPool.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createBalancerPool: function createBalancerPool(value) {
       return {

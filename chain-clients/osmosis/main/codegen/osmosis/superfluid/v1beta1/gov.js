@@ -96,6 +96,15 @@ var SetSuperfluidAssetsProposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      title: (0, _helpers.isSet)(object.title) ? String(object.title) : "",
+      description: (0, _helpers.isSet)(object.description) ? String(object.description) : "",
+      assets: Array.isArray(object === null || object === void 0 ? void 0 : object.assets) ? object.assets.map(function (e) {
+        return _superfluid.SuperfluidAsset.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$title, _object$description, _object$assets;
     var message = createBaseSetSuperfluidAssetsProposal();
@@ -160,6 +169,15 @@ var RemoveSuperfluidAssetsProposal = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      title: (0, _helpers.isSet)(object.title) ? String(object.title) : "",
+      description: (0, _helpers.isSet)(object.description) ? String(object.description) : "",
+      superfluidAssetDenoms: Array.isArray(object === null || object === void 0 ? void 0 : object.superfluidAssetDenoms) ? object.superfluidAssetDenoms.map(function (e) {
+        return String(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$title2, _object$description2, _object$superfluidAss;
@@ -241,6 +259,16 @@ var UpdateUnpoolWhiteListProposal = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      title: (0, _helpers.isSet)(object.title) ? String(object.title) : "",
+      description: (0, _helpers.isSet)(object.description) ? String(object.description) : "",
+      ids: Array.isArray(object === null || object === void 0 ? void 0 : object.ids) ? object.ids.map(function (e) {
+        return _helpers.Long.fromValue(e);
+      }) : [],
+      isOverwrite: (0, _helpers.isSet)(object.isOverwrite) ? Boolean(object.isOverwrite) : false
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$title3, _object$description3, _object$ids, _object$isOverwrite;

@@ -148,60 +148,72 @@ export interface MsgSetBaseDenomsResponseSDKType {
 export declare const MsgSetHotRoutes: {
     encode(message: MsgSetHotRoutes, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetHotRoutes;
+    fromJSON(object: any): MsgSetHotRoutes;
     fromPartial(object: Partial<MsgSetHotRoutes>): MsgSetHotRoutes;
 };
 export declare const MsgSetHotRoutesResponse: {
     encode(_: MsgSetHotRoutesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetHotRoutesResponse;
+    fromJSON(_: any): MsgSetHotRoutesResponse;
     fromPartial(_: Partial<MsgSetHotRoutesResponse>): MsgSetHotRoutesResponse;
 };
 export declare const MsgSetDeveloperAccount: {
     encode(message: MsgSetDeveloperAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDeveloperAccount;
+    fromJSON(object: any): MsgSetDeveloperAccount;
     fromPartial(object: Partial<MsgSetDeveloperAccount>): MsgSetDeveloperAccount;
 };
 export declare const MsgSetDeveloperAccountResponse: {
     encode(_: MsgSetDeveloperAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDeveloperAccountResponse;
+    fromJSON(_: any): MsgSetDeveloperAccountResponse;
     fromPartial(_: Partial<MsgSetDeveloperAccountResponse>): MsgSetDeveloperAccountResponse;
 };
 export declare const MsgSetPoolWeights: {
     encode(message: MsgSetPoolWeights, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetPoolWeights;
+    fromJSON(object: any): MsgSetPoolWeights;
     fromPartial(object: Partial<MsgSetPoolWeights>): MsgSetPoolWeights;
 };
 export declare const MsgSetPoolWeightsResponse: {
     encode(_: MsgSetPoolWeightsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetPoolWeightsResponse;
+    fromJSON(_: any): MsgSetPoolWeightsResponse;
     fromPartial(_: Partial<MsgSetPoolWeightsResponse>): MsgSetPoolWeightsResponse;
 };
 export declare const MsgSetMaxPoolPointsPerTx: {
     encode(message: MsgSetMaxPoolPointsPerTx, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTx;
+    fromJSON(object: any): MsgSetMaxPoolPointsPerTx;
     fromPartial(object: Partial<MsgSetMaxPoolPointsPerTx>): MsgSetMaxPoolPointsPerTx;
 };
 export declare const MsgSetMaxPoolPointsPerTxResponse: {
     encode(_: MsgSetMaxPoolPointsPerTxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerTxResponse;
+    fromJSON(_: any): MsgSetMaxPoolPointsPerTxResponse;
     fromPartial(_: Partial<MsgSetMaxPoolPointsPerTxResponse>): MsgSetMaxPoolPointsPerTxResponse;
 };
 export declare const MsgSetMaxPoolPointsPerBlock: {
     encode(message: MsgSetMaxPoolPointsPerBlock, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlock;
+    fromJSON(object: any): MsgSetMaxPoolPointsPerBlock;
     fromPartial(object: Partial<MsgSetMaxPoolPointsPerBlock>): MsgSetMaxPoolPointsPerBlock;
 };
 export declare const MsgSetMaxPoolPointsPerBlockResponse: {
     encode(_: MsgSetMaxPoolPointsPerBlockResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetMaxPoolPointsPerBlockResponse;
+    fromJSON(_: any): MsgSetMaxPoolPointsPerBlockResponse;
     fromPartial(_: Partial<MsgSetMaxPoolPointsPerBlockResponse>): MsgSetMaxPoolPointsPerBlockResponse;
 };
 export declare const MsgSetBaseDenoms: {
     encode(message: MsgSetBaseDenoms, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBaseDenoms;
+    fromJSON(object: any): MsgSetBaseDenoms;
     fromPartial(object: Partial<MsgSetBaseDenoms>): MsgSetBaseDenoms;
 };
 export declare const MsgSetBaseDenomsResponse: {
     encode(_: MsgSetBaseDenomsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetBaseDenomsResponse;
+    fromJSON(_: any): MsgSetBaseDenomsResponse;
     fromPartial(_: Partial<MsgSetBaseDenomsResponse>): MsgSetBaseDenomsResponse;
 };

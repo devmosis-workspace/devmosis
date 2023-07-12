@@ -55,6 +55,32 @@ export declare const MessageComposer: {
             value: MsgCancelUnbondingDelegation;
         };
     };
+    fromJSON: {
+        createValidator(value: any): {
+            typeUrl: string;
+            value: MsgCreateValidator;
+        };
+        editValidator(value: any): {
+            typeUrl: string;
+            value: MsgEditValidator;
+        };
+        delegate(value: any): {
+            typeUrl: string;
+            value: MsgDelegate;
+        };
+        beginRedelegate(value: any): {
+            typeUrl: string;
+            value: MsgBeginRedelegate;
+        };
+        undelegate(value: any): {
+            typeUrl: string;
+            value: MsgUndelegate;
+        };
+        cancelUnbondingDelegation(value: any): {
+            typeUrl: string;
+            value: MsgCancelUnbondingDelegation;
+        };
+    };
     fromPartial: {
         createValidator(value: MsgCreateValidator): {
             typeUrl: string;

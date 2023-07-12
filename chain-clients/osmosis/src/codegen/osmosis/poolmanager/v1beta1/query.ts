@@ -1,6 +1,6 @@
 import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteSDKType } from "./swap_route";
 import { Params, ParamsSDKType } from "./genesis";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** =============================== Params */
 export interface ParamsRequest {}
@@ -85,6 +85,9 @@ export const ParamsRequest = {
     }
     return message;
   },
+  fromJSON(_: any): ParamsRequest {
+    return {};
+  },
   fromPartial(_: Partial<ParamsRequest>): ParamsRequest {
     const message = createBaseParamsRequest();
     return message;
@@ -118,6 +121,11 @@ export const ParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object: Partial<ParamsResponse>): ParamsResponse {
     const message = createBaseParamsResponse();
@@ -175,6 +183,14 @@ export const EstimateSwapExactAmountInRequest = {
     }
     return message;
   },
+  fromJSON(object: any): EstimateSwapExactAmountInRequest {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountInRoute.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<EstimateSwapExactAmountInRequest>): EstimateSwapExactAmountInRequest {
     const message = createBaseEstimateSwapExactAmountInRequest();
     message.sender = object.sender ?? "";
@@ -212,6 +228,11 @@ export const EstimateSwapExactAmountInResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EstimateSwapExactAmountInResponse {
+    return {
+      tokenOutAmount: isSet(object.tokenOutAmount) ? String(object.tokenOutAmount) : ""
+    };
   },
   fromPartial(object: Partial<EstimateSwapExactAmountInResponse>): EstimateSwapExactAmountInResponse {
     const message = createBaseEstimateSwapExactAmountInResponse();
@@ -269,6 +290,14 @@ export const EstimateSwapExactAmountOutRequest = {
     }
     return message;
   },
+  fromJSON(object: any): EstimateSwapExactAmountOutRequest {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountOutRoute.fromJSON(e)) : [],
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : ""
+    };
+  },
   fromPartial(object: Partial<EstimateSwapExactAmountOutRequest>): EstimateSwapExactAmountOutRequest {
     const message = createBaseEstimateSwapExactAmountOutRequest();
     message.sender = object.sender ?? "";
@@ -307,6 +336,11 @@ export const EstimateSwapExactAmountOutResponse = {
     }
     return message;
   },
+  fromJSON(object: any): EstimateSwapExactAmountOutResponse {
+    return {
+      tokenInAmount: isSet(object.tokenInAmount) ? String(object.tokenInAmount) : ""
+    };
+  },
   fromPartial(object: Partial<EstimateSwapExactAmountOutResponse>): EstimateSwapExactAmountOutResponse {
     const message = createBaseEstimateSwapExactAmountOutResponse();
     message.tokenInAmount = object.tokenInAmount ?? "";
@@ -333,6 +367,9 @@ export const NumPoolsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): NumPoolsRequest {
+    return {};
   },
   fromPartial(_: Partial<NumPoolsRequest>): NumPoolsRequest {
     const message = createBaseNumPoolsRequest();
@@ -367,6 +404,11 @@ export const NumPoolsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): NumPoolsResponse {
+    return {
+      numPools: isSet(object.numPools) ? Long.fromValue(object.numPools) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<NumPoolsResponse>): NumPoolsResponse {
     const message = createBaseNumPoolsResponse();

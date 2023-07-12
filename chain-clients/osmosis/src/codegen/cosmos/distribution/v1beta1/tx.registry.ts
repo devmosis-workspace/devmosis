@@ -60,6 +60,32 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    setWithdrawAddress(value: any) {
+      return {
+        typeUrl: "/cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
+        value: MsgSetWithdrawAddress.fromJSON(value)
+      };
+    },
+    withdrawDelegatorReward(value: any) {
+      return {
+        typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
+        value: MsgWithdrawDelegatorReward.fromJSON(value)
+      };
+    },
+    withdrawValidatorCommission(value: any) {
+      return {
+        typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
+        value: MsgWithdrawValidatorCommission.fromJSON(value)
+      };
+    },
+    fundCommunityPool(value: any) {
+      return {
+        typeUrl: "/cosmos.distribution.v1beta1.MsgFundCommunityPool",
+        value: MsgFundCommunityPool.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     setWithdrawAddress(value: MsgSetWithdrawAddress) {
       return {

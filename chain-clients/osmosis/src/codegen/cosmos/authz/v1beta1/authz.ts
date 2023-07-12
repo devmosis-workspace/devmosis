@@ -1,7 +1,7 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
  * the provided method on behalf of the granter's account.
@@ -96,6 +96,11 @@ export const GenericAuthorization = {
     }
     return message;
   },
+  fromJSON(object: any): GenericAuthorization {
+    return {
+      msg: isSet(object.msg) ? String(object.msg) : ""
+    };
+  },
   fromPartial(object: Partial<GenericAuthorization>): GenericAuthorization {
     const message = createBaseGenericAuthorization();
     message.msg = object.msg ?? "";
@@ -137,6 +142,12 @@ export const Grant = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Grant {
+    return {
+      authorization: isSet(object.authorization) ? Any.fromJSON(object.authorization) : undefined,
+      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
+    };
   },
   fromPartial(object: Partial<Grant>): Grant {
     const message = createBaseGrant();
@@ -195,6 +206,14 @@ export const GrantAuthorization = {
     }
     return message;
   },
+  fromJSON(object: any): GrantAuthorization {
+    return {
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      authorization: isSet(object.authorization) ? Any.fromJSON(object.authorization) : undefined,
+      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
+    };
+  },
   fromPartial(object: Partial<GrantAuthorization>): GrantAuthorization {
     const message = createBaseGrantAuthorization();
     message.granter = object.granter ?? "";
@@ -232,6 +251,11 @@ export const GrantQueueItem = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GrantQueueItem {
+    return {
+      msgTypeUrls: Array.isArray(object?.msgTypeUrls) ? object.msgTypeUrls.map((e: any) => String(e)) : []
+    };
   },
   fromPartial(object: Partial<GrantQueueItem>): GrantQueueItem {
     const message = createBaseGrantQueueItem();

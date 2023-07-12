@@ -45,20 +45,24 @@ export interface QueryEpochProvisionsResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    fromJSON(_: any): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryEpochProvisionsRequest: {
     encode(_: QueryEpochProvisionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsRequest;
+    fromJSON(_: any): QueryEpochProvisionsRequest;
     fromPartial(_: Partial<QueryEpochProvisionsRequest>): QueryEpochProvisionsRequest;
 };
 export declare const QueryEpochProvisionsResponse: {
     encode(message: QueryEpochProvisionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochProvisionsResponse;
+    fromJSON(object: any): QueryEpochProvisionsResponse;
     fromPartial(object: Partial<QueryEpochProvisionsResponse>): QueryEpochProvisionsResponse;
 };

@@ -1,6 +1,6 @@
 import { Any } from "../../../../google/protobuf/any";
 import { Event } from "../../../../tendermint/abci/types";
-import { Long } from "../../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
@@ -187,6 +187,23 @@ export const TxResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      txhash: isSet(object.txhash) ? String(object.txhash) : "",
+      codespace: isSet(object.codespace) ? String(object.codespace) : "",
+      code: isSet(object.code) ? Number(object.code) : 0,
+      data: isSet(object.data) ? String(object.data) : "",
+      rawLog: isSet(object.rawLog) ? String(object.rawLog) : "",
+      logs: Array.isArray(object === null || object === void 0 ? void 0 : object.logs) ? object.logs.map(e => ABCIMessageLog.fromJSON(e)) : [],
+      info: isSet(object.info) ? String(object.info) : "",
+      gasWanted: isSet(object.gasWanted) ? Long.fromValue(object.gasWanted) : Long.ZERO,
+      gasUsed: isSet(object.gasUsed) ? Long.fromValue(object.gasUsed) : Long.ZERO,
+      tx: isSet(object.tx) ? Any.fromJSON(object.tx) : undefined,
+      timestamp: isSet(object.timestamp) ? String(object.timestamp) : "",
+      events: Array.isArray(object === null || object === void 0 ? void 0 : object.events) ? object.events.map(e => Event.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$txhash, _object$codespace, _object$code, _object$data, _object$rawLog, _object$logs, _object$info, _object$timestamp, _object$events;
     const message = createBaseTxResponse();
@@ -249,6 +266,13 @@ export const ABCIMessageLog = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      msgIndex: isSet(object.msgIndex) ? Number(object.msgIndex) : 0,
+      log: isSet(object.log) ? String(object.log) : "",
+      events: Array.isArray(object === null || object === void 0 ? void 0 : object.events) ? object.events.map(e => StringEvent.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$msgIndex, _object$log, _object$events2;
     const message = createBaseABCIMessageLog();
@@ -294,6 +318,12 @@ export const StringEvent = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      type: isSet(object.type) ? String(object.type) : "",
+      attributes: Array.isArray(object === null || object === void 0 ? void 0 : object.attributes) ? object.attributes.map(e => Attribute.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$type, _object$attributes;
     const message = createBaseStringEvent();
@@ -338,6 +368,12 @@ export const Attribute = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value) ? String(object.value) : ""
+    };
+  },
   fromPartial(object) {
     var _object$key, _object$value;
     const message = createBaseAttribute();
@@ -381,6 +417,12 @@ export const GasInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      gasWanted: isSet(object.gasWanted) ? Long.fromValue(object.gasWanted) : Long.UZERO,
+      gasUsed: isSet(object.gasUsed) ? Long.fromValue(object.gasUsed) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseGasInfo();
@@ -439,6 +481,14 @@ export const Result = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      log: isSet(object.log) ? String(object.log) : "",
+      events: Array.isArray(object === null || object === void 0 ? void 0 : object.events) ? object.events.map(e => Event.fromJSON(e)) : [],
+      msgResponses: Array.isArray(object === null || object === void 0 ? void 0 : object.msgResponses) ? object.msgResponses.map(e => Any.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$data2, _object$log2, _object$events3, _object$msgResponses;
     const message = createBaseResult();
@@ -485,6 +535,12 @@ export const SimulationResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      gasInfo: isSet(object.gasInfo) ? GasInfo.fromJSON(object.gasInfo) : undefined,
+      result: isSet(object.result) ? Result.fromJSON(object.result) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseSimulationResponse();
     message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? GasInfo.fromPartial(object.gasInfo) : undefined;
@@ -527,6 +583,12 @@ export const MsgData = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      msgType: isSet(object.msgType) ? String(object.msgType) : "",
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$msgType, _object$data3;
@@ -571,6 +633,12 @@ export const TxMsgData = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      data: Array.isArray(object === null || object === void 0 ? void 0 : object.data) ? object.data.map(e => MsgData.fromJSON(e)) : [],
+      msgResponses: Array.isArray(object === null || object === void 0 ? void 0 : object.msgResponses) ? object.msgResponses.map(e => Any.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$data4, _object$msgResponses2;
@@ -643,6 +711,16 @@ export const SearchTxsResult = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      totalCount: isSet(object.totalCount) ? Long.fromValue(object.totalCount) : Long.UZERO,
+      count: isSet(object.count) ? Long.fromValue(object.count) : Long.UZERO,
+      pageNumber: isSet(object.pageNumber) ? Long.fromValue(object.pageNumber) : Long.UZERO,
+      pageTotal: isSet(object.pageTotal) ? Long.fromValue(object.pageTotal) : Long.UZERO,
+      limit: isSet(object.limit) ? Long.fromValue(object.limit) : Long.UZERO,
+      txs: Array.isArray(object === null || object === void 0 ? void 0 : object.txs) ? object.txs.map(e => TxResponse.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$txs;

@@ -109,30 +109,36 @@ export interface MsgCreatePeriodicVestingAccountResponseSDKType {
 export declare const MsgCreateVestingAccount: {
     encode(message: MsgCreateVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccount;
+    fromJSON(object: any): MsgCreateVestingAccount;
     fromPartial(object: Partial<MsgCreateVestingAccount>): MsgCreateVestingAccount;
 };
 export declare const MsgCreateVestingAccountResponse: {
     encode(_: MsgCreateVestingAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateVestingAccountResponse;
+    fromJSON(_: any): MsgCreateVestingAccountResponse;
     fromPartial(_: Partial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse;
 };
 export declare const MsgCreatePermanentLockedAccount: {
     encode(message: MsgCreatePermanentLockedAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePermanentLockedAccount;
+    fromJSON(object: any): MsgCreatePermanentLockedAccount;
     fromPartial(object: Partial<MsgCreatePermanentLockedAccount>): MsgCreatePermanentLockedAccount;
 };
 export declare const MsgCreatePermanentLockedAccountResponse: {
     encode(_: MsgCreatePermanentLockedAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePermanentLockedAccountResponse;
+    fromJSON(_: any): MsgCreatePermanentLockedAccountResponse;
     fromPartial(_: Partial<MsgCreatePermanentLockedAccountResponse>): MsgCreatePermanentLockedAccountResponse;
 };
 export declare const MsgCreatePeriodicVestingAccount: {
     encode(message: MsgCreatePeriodicVestingAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccount;
+    fromJSON(object: any): MsgCreatePeriodicVestingAccount;
     fromPartial(object: Partial<MsgCreatePeriodicVestingAccount>): MsgCreatePeriodicVestingAccount;
 };
 export declare const MsgCreatePeriodicVestingAccountResponse: {
     encode(_: MsgCreatePeriodicVestingAccountResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreatePeriodicVestingAccountResponse;
+    fromJSON(_: any): MsgCreatePeriodicVestingAccountResponse;
     fromPartial(_: Partial<MsgCreatePeriodicVestingAccountResponse>): MsgCreatePeriodicVestingAccountResponse;
 };

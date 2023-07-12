@@ -1,5 +1,6 @@
 import { DecCoin, DecCoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 export interface AccumulatorContent {
   accumValue: DecCoin[];
   totalShares: string;
@@ -58,6 +59,12 @@ export const AccumulatorContent = {
     }
     return message;
   },
+  fromJSON(object: any): AccumulatorContent {
+    return {
+      accumValue: Array.isArray(object?.accumValue) ? object.accumValue.map((e: any) => DecCoin.fromJSON(e)) : [],
+      totalShares: isSet(object.totalShares) ? String(object.totalShares) : ""
+    };
+  },
   fromPartial(object: Partial<AccumulatorContent>): AccumulatorContent {
     const message = createBaseAccumulatorContent();
     message.accumValue = object.accumValue?.map(e => DecCoin.fromPartial(e)) || [];
@@ -85,6 +92,9 @@ export const Options = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): Options {
+    return {};
   },
   fromPartial(_: Partial<Options>): Options {
     const message = createBaseOptions();
@@ -140,6 +150,14 @@ export const Record = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Record {
+    return {
+      numShares: isSet(object.numShares) ? String(object.numShares) : "",
+      initAccumValue: Array.isArray(object?.initAccumValue) ? object.initAccumValue.map((e: any) => DecCoin.fromJSON(e)) : [],
+      unclaimedRewards: Array.isArray(object?.unclaimedRewards) ? object.unclaimedRewards.map((e: any) => DecCoin.fromJSON(e)) : [],
+      options: isSet(object.options) ? Options.fromJSON(object.options) : undefined
+    };
   },
   fromPartial(object: Partial<Record>): Record {
     const message = createBaseRecord();

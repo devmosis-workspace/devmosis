@@ -1,7 +1,7 @@
 import { QueryCondition, QueryConditionSDKType } from "../lockup/lock";
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** MsgCreateGauge creates a gague to distribute rewards to users */
 export interface MsgCreateGauge {
@@ -122,6 +122,16 @@ export const MsgCreateGauge = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCreateGauge {
+    return {
+      isPerpetual: isSet(object.isPerpetual) ? Boolean(object.isPerpetual) : false,
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      distributeTo: isSet(object.distributeTo) ? QueryCondition.fromJSON(object.distributeTo) : undefined,
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : [],
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
+      numEpochsPaidOver: isSet(object.numEpochsPaidOver) ? Long.fromValue(object.numEpochsPaidOver) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<MsgCreateGauge>): MsgCreateGauge {
     const message = createBaseMsgCreateGauge();
     message.isPerpetual = object.isPerpetual ?? false;
@@ -153,6 +163,9 @@ export const MsgCreateGaugeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgCreateGaugeResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgCreateGaugeResponse>): MsgCreateGaugeResponse {
     const message = createBaseMsgCreateGaugeResponse();
@@ -202,6 +215,13 @@ export const MsgAddToGauge = {
     }
     return message;
   },
+  fromJSON(object: any): MsgAddToGauge {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      gaugeId: isSet(object.gaugeId) ? Long.fromValue(object.gaugeId) : Long.UZERO,
+      rewards: Array.isArray(object?.rewards) ? object.rewards.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgAddToGauge>): MsgAddToGauge {
     const message = createBaseMsgAddToGauge();
     message.owner = object.owner ?? "";
@@ -230,6 +250,9 @@ export const MsgAddToGaugeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgAddToGaugeResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgAddToGaugeResponse>): MsgAddToGaugeResponse {
     const message = createBaseMsgAddToGaugeResponse();

@@ -51,10 +51,12 @@ export interface NFTSDKType {
 export declare const Class: {
     encode(message: Class, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Class;
+    fromJSON(object: any): Class;
     fromPartial(object: Partial<Class>): Class;
 };
 export declare const NFT: {
     encode(message: NFT, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NFT;
+    fromJSON(object: any): NFT;
     fromPartial(object: Partial<NFT>): NFT;
 };

@@ -31,10 +31,12 @@ export interface GenesisStateSDKType {
 export declare const GenesisOwners: {
     encode(message: GenesisOwners, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisOwners;
+    fromJSON(object: any): GenesisOwners;
     fromPartial(object: Partial<GenesisOwners>): GenesisOwners;
 };
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    fromJSON(object: any): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
 };

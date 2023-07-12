@@ -145,6 +145,28 @@ var GenesisState = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _staking.Params.fromJSON(object.params) : undefined,
+      lastTotalPower: (0, _helpers.isSet)(object.lastTotalPower) ? (0, _helpers.bytesFromBase64)(object.lastTotalPower) : new Uint8Array(),
+      lastValidatorPowers: Array.isArray(object === null || object === void 0 ? void 0 : object.lastValidatorPowers) ? object.lastValidatorPowers.map(function (e) {
+        return LastValidatorPower.fromJSON(e);
+      }) : [],
+      validators: Array.isArray(object === null || object === void 0 ? void 0 : object.validators) ? object.validators.map(function (e) {
+        return _staking.Validator.fromJSON(e);
+      }) : [],
+      delegations: Array.isArray(object === null || object === void 0 ? void 0 : object.delegations) ? object.delegations.map(function (e) {
+        return _staking.Delegation.fromJSON(e);
+      }) : [],
+      unbondingDelegations: Array.isArray(object === null || object === void 0 ? void 0 : object.unbondingDelegations) ? object.unbondingDelegations.map(function (e) {
+        return _staking.UnbondingDelegation.fromJSON(e);
+      }) : [],
+      redelegations: Array.isArray(object === null || object === void 0 ? void 0 : object.redelegations) ? object.redelegations.map(function (e) {
+        return _staking.Redelegation.fromJSON(e);
+      }) : [],
+      exported: (0, _helpers.isSet)(object.exported) ? Boolean(object.exported) : false
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$lastTotalPowe, _object$lastValidator, _object$validators, _object$delegations, _object$unbondingDele, _object$redelegations, _object$exported;
     var message = createBaseGenesisState();
@@ -206,6 +228,12 @@ var LastValidatorPower = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      power: (0, _helpers.isSet)(object.power) ? _helpers.Long.fromValue(object.power) : _helpers.Long.ZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address;

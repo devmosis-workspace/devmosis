@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** Params defines the parameters for the module. */
 
 /** Params defines the parameters for the module. */
@@ -38,6 +39,12 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false,
+      admin: isSet(object.admin) ? String(object.admin) : ""
+    };
   },
   fromPartial(object) {
     var _object$enabled, _object$admin;

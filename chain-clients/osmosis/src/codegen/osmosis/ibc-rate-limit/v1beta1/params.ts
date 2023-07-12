@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** Params defines the parameters for the ibc-rate-limit module. */
 export interface Params {
   contractAddress: string;
@@ -35,6 +36,11 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      contractAddress: isSet(object.contractAddress) ? String(object.contractAddress) : ""
+    };
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();

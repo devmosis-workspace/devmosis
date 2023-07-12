@@ -26,10 +26,12 @@ export interface EntrySDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
+    fromJSON(object: any): GenesisState;
     fromPartial(object: Partial<GenesisState>): GenesisState;
 };
 export declare const Entry: {
     encode(message: Entry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Entry;
+    fromJSON(object: any): Entry;
     fromPartial(object: Partial<Entry>): Entry;
 };

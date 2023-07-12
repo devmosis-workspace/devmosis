@@ -1,5 +1,5 @@
 import { PublicKey, PublicKeySDKType } from "../crypto/keys";
-import { Long } from "../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface ValidatorSet {
   validators: Validator[];
@@ -74,6 +74,13 @@ export const ValidatorSet = {
     }
     return message;
   },
+  fromJSON(object: any): ValidatorSet {
+    return {
+      validators: Array.isArray(object?.validators) ? object.validators.map((e: any) => Validator.fromJSON(e)) : [],
+      proposer: isSet(object.proposer) ? Validator.fromJSON(object.proposer) : undefined,
+      totalVotingPower: isSet(object.totalVotingPower) ? Long.fromValue(object.totalVotingPower) : Long.ZERO
+    };
+  },
   fromPartial(object: Partial<ValidatorSet>): ValidatorSet {
     const message = createBaseValidatorSet();
     message.validators = object.validators?.map(e => Validator.fromPartial(e)) || [];
@@ -132,6 +139,14 @@ export const Validator = {
     }
     return message;
   },
+  fromJSON(object: any): Validator {
+    return {
+      address: isSet(object.address) ? bytesFromBase64(object.address) : new Uint8Array(),
+      pubKey: isSet(object.pubKey) ? PublicKey.fromJSON(object.pubKey) : undefined,
+      votingPower: isSet(object.votingPower) ? Long.fromValue(object.votingPower) : Long.ZERO,
+      proposerPriority: isSet(object.proposerPriority) ? Long.fromValue(object.proposerPriority) : Long.ZERO
+    };
+  },
   fromPartial(object: Partial<Validator>): Validator {
     const message = createBaseValidator();
     message.address = object.address ?? new Uint8Array();
@@ -176,6 +191,12 @@ export const SimpleValidator = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SimpleValidator {
+    return {
+      pubKey: isSet(object.pubKey) ? PublicKey.fromJSON(object.pubKey) : undefined,
+      votingPower: isSet(object.votingPower) ? Long.fromValue(object.votingPower) : Long.ZERO
+    };
   },
   fromPartial(object: Partial<SimpleValidator>): SimpleValidator {
     const message = createBaseSimpleValidator();

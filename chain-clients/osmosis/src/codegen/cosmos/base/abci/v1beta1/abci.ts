@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { Event, EventSDKType } from "../../../../tendermint/abci/types";
-import { Long } from "../../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * TxResponse defines a structure containing relevant tx data and metadata. The
@@ -354,6 +354,23 @@ export const TxResponse = {
     }
     return message;
   },
+  fromJSON(object: any): TxResponse {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      txhash: isSet(object.txhash) ? String(object.txhash) : "",
+      codespace: isSet(object.codespace) ? String(object.codespace) : "",
+      code: isSet(object.code) ? Number(object.code) : 0,
+      data: isSet(object.data) ? String(object.data) : "",
+      rawLog: isSet(object.rawLog) ? String(object.rawLog) : "",
+      logs: Array.isArray(object?.logs) ? object.logs.map((e: any) => ABCIMessageLog.fromJSON(e)) : [],
+      info: isSet(object.info) ? String(object.info) : "",
+      gasWanted: isSet(object.gasWanted) ? Long.fromValue(object.gasWanted) : Long.ZERO,
+      gasUsed: isSet(object.gasUsed) ? Long.fromValue(object.gasUsed) : Long.ZERO,
+      tx: isSet(object.tx) ? Any.fromJSON(object.tx) : undefined,
+      timestamp: isSet(object.timestamp) ? String(object.timestamp) : "",
+      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<TxResponse>): TxResponse {
     const message = createBaseTxResponse();
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
@@ -415,6 +432,13 @@ export const ABCIMessageLog = {
     }
     return message;
   },
+  fromJSON(object: any): ABCIMessageLog {
+    return {
+      msgIndex: isSet(object.msgIndex) ? Number(object.msgIndex) : 0,
+      log: isSet(object.log) ? String(object.log) : "",
+      events: Array.isArray(object?.events) ? object.events.map((e: any) => StringEvent.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<ABCIMessageLog>): ABCIMessageLog {
     const message = createBaseABCIMessageLog();
     message.msgIndex = object.msgIndex ?? 0;
@@ -459,6 +483,12 @@ export const StringEvent = {
     }
     return message;
   },
+  fromJSON(object: any): StringEvent {
+    return {
+      type: isSet(object.type) ? String(object.type) : "",
+      attributes: Array.isArray(object?.attributes) ? object.attributes.map((e: any) => Attribute.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<StringEvent>): StringEvent {
     const message = createBaseStringEvent();
     message.type = object.type ?? "";
@@ -502,6 +532,12 @@ export const Attribute = {
     }
     return message;
   },
+  fromJSON(object: any): Attribute {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value) ? String(object.value) : ""
+    };
+  },
   fromPartial(object: Partial<Attribute>): Attribute {
     const message = createBaseAttribute();
     message.key = object.key ?? "";
@@ -544,6 +580,12 @@ export const GasInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): GasInfo {
+    return {
+      gasWanted: isSet(object.gasWanted) ? Long.fromValue(object.gasWanted) : Long.UZERO,
+      gasUsed: isSet(object.gasUsed) ? Long.fromValue(object.gasUsed) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<GasInfo>): GasInfo {
     const message = createBaseGasInfo();
@@ -602,6 +644,14 @@ export const Result = {
     }
     return message;
   },
+  fromJSON(object: any): Result {
+    return {
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array(),
+      log: isSet(object.log) ? String(object.log) : "",
+      events: Array.isArray(object?.events) ? object.events.map((e: any) => Event.fromJSON(e)) : [],
+      msgResponses: Array.isArray(object?.msgResponses) ? object.msgResponses.map((e: any) => Any.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<Result>): Result {
     const message = createBaseResult();
     message.data = object.data ?? new Uint8Array();
@@ -647,6 +697,12 @@ export const SimulationResponse = {
     }
     return message;
   },
+  fromJSON(object: any): SimulationResponse {
+    return {
+      gasInfo: isSet(object.gasInfo) ? GasInfo.fromJSON(object.gasInfo) : undefined,
+      result: isSet(object.result) ? Result.fromJSON(object.result) : undefined
+    };
+  },
   fromPartial(object: Partial<SimulationResponse>): SimulationResponse {
     const message = createBaseSimulationResponse();
     message.gasInfo = object.gasInfo !== undefined && object.gasInfo !== null ? GasInfo.fromPartial(object.gasInfo) : undefined;
@@ -690,6 +746,12 @@ export const MsgData = {
     }
     return message;
   },
+  fromJSON(object: any): MsgData {
+    return {
+      msgType: isSet(object.msgType) ? String(object.msgType) : "",
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<MsgData>): MsgData {
     const message = createBaseMsgData();
     message.msgType = object.msgType ?? "";
@@ -732,6 +794,12 @@ export const TxMsgData = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): TxMsgData {
+    return {
+      data: Array.isArray(object?.data) ? object.data.map((e: any) => MsgData.fromJSON(e)) : [],
+      msgResponses: Array.isArray(object?.msgResponses) ? object.msgResponses.map((e: any) => Any.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<TxMsgData>): TxMsgData {
     const message = createBaseTxMsgData();
@@ -803,6 +871,16 @@ export const SearchTxsResult = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SearchTxsResult {
+    return {
+      totalCount: isSet(object.totalCount) ? Long.fromValue(object.totalCount) : Long.UZERO,
+      count: isSet(object.count) ? Long.fromValue(object.count) : Long.UZERO,
+      pageNumber: isSet(object.pageNumber) ? Long.fromValue(object.pageNumber) : Long.UZERO,
+      pageTotal: isSet(object.pageTotal) ? Long.fromValue(object.pageTotal) : Long.UZERO,
+      limit: isSet(object.limit) ? Long.fromValue(object.limit) : Long.UZERO,
+      txs: Array.isArray(object?.txs) ? object.txs.map((e: any) => TxResponse.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<SearchTxsResult>): SearchTxsResult {
     const message = createBaseSearchTxsResult();

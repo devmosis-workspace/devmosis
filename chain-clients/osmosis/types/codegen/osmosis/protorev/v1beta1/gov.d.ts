@@ -40,10 +40,12 @@ export interface SetProtoRevAdminAccountProposalSDKType {
 export declare const SetProtoRevEnabledProposal: {
     encode(message: SetProtoRevEnabledProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SetProtoRevEnabledProposal;
+    fromJSON(object: any): SetProtoRevEnabledProposal;
     fromPartial(object: Partial<SetProtoRevEnabledProposal>): SetProtoRevEnabledProposal;
 };
 export declare const SetProtoRevAdminAccountProposal: {
     encode(message: SetProtoRevAdminAccountProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SetProtoRevAdminAccountProposal;
+    fromJSON(object: any): SetProtoRevAdminAccountProposal;
     fromPartial(object: Partial<SetProtoRevAdminAccountProposal>): SetProtoRevAdminAccountProposal;
 };

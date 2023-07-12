@@ -167,6 +167,17 @@ var MsgCreateValidator = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      description: (0, _helpers.isSet)(object.description) ? _staking.Description.fromJSON(object.description) : undefined,
+      commission: (0, _helpers.isSet)(object.commission) ? _staking.CommissionRates.fromJSON(object.commission) : undefined,
+      minSelfDelegation: (0, _helpers.isSet)(object.minSelfDelegation) ? String(object.minSelfDelegation) : "",
+      delegatorAddress: (0, _helpers.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      pubkey: (0, _helpers.isSet)(object.pubkey) ? _any.Any.fromJSON(object.pubkey) : undefined,
+      value: (0, _helpers.isSet)(object.value) ? _coin.Coin.fromJSON(object.value) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$minSelfDelega, _object$delegatorAddr, _object$validatorAddr;
     var message = createBaseMsgCreateValidator();
@@ -202,6 +213,9 @@ var MsgCreateValidatorResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgCreateValidatorResponse();
@@ -260,6 +274,14 @@ var MsgEditValidator = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      description: (0, _helpers.isSet)(object.description) ? _staking.Description.fromJSON(object.description) : undefined,
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      commissionRate: (0, _helpers.isSet)(object.commissionRate) ? String(object.commissionRate) : "",
+      minSelfDelegation: (0, _helpers.isSet)(object.minSelfDelegation) ? String(object.minSelfDelegation) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$validatorAddr2, _object$commissionRat, _object$minSelfDelega2;
     var message = createBaseMsgEditValidator();
@@ -292,6 +314,9 @@ var MsgEditValidatorResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgEditValidatorResponse();
@@ -343,6 +368,13 @@ var MsgDelegate = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegatorAddress: (0, _helpers.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      amount: (0, _helpers.isSet)(object.amount) ? _coin.Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegatorAddr2, _object$validatorAddr3;
     var message = createBaseMsgDelegate();
@@ -374,6 +406,9 @@ var MsgDelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgDelegateResponse();
@@ -432,6 +467,14 @@ var MsgBeginRedelegate = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegatorAddress: (0, _helpers.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorSrcAddress: (0, _helpers.isSet)(object.validatorSrcAddress) ? String(object.validatorSrcAddress) : "",
+      validatorDstAddress: (0, _helpers.isSet)(object.validatorDstAddress) ? String(object.validatorDstAddress) : "",
+      amount: (0, _helpers.isSet)(object.amount) ? _coin.Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegatorAddr3, _object$validatorSrcA, _object$validatorDstA;
     var message = createBaseMsgBeginRedelegate();
@@ -472,6 +515,11 @@ var MsgBeginRedelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      completionTime: (0, _helpers.isSet)(object.completionTime) ? (0, _helpers.fromJsonTimestamp)(object.completionTime) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$completionTim;
@@ -525,6 +573,13 @@ var MsgUndelegate = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegatorAddress: (0, _helpers.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      amount: (0, _helpers.isSet)(object.amount) ? _coin.Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegatorAddr4, _object$validatorAddr4;
     var message = createBaseMsgUndelegate();
@@ -564,6 +619,11 @@ var MsgUndelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      completionTime: (0, _helpers.isSet)(object.completionTime) ? (0, _helpers.fromJsonTimestamp)(object.completionTime) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$completionTim2;
@@ -624,6 +684,14 @@ var MsgCancelUnbondingDelegation = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegatorAddress: (0, _helpers.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      amount: (0, _helpers.isSet)(object.amount) ? _coin.Coin.fromJSON(object.amount) : undefined,
+      creationHeight: (0, _helpers.isSet)(object.creationHeight) ? _helpers.Long.fromValue(object.creationHeight) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegatorAddr5, _object$validatorAddr5;
     var message = createBaseMsgCancelUnbondingDelegation();
@@ -656,6 +724,9 @@ var MsgCancelUnbondingDelegationResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgCancelUnbondingDelegationResponse();

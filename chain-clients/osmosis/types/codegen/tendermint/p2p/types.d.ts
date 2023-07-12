@@ -51,20 +51,24 @@ export interface DefaultNodeInfoOtherSDKType {
 export declare const NetAddress: {
     encode(message: NetAddress, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NetAddress;
+    fromJSON(object: any): NetAddress;
     fromPartial(object: Partial<NetAddress>): NetAddress;
 };
 export declare const ProtocolVersion: {
     encode(message: ProtocolVersion, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProtocolVersion;
+    fromJSON(object: any): ProtocolVersion;
     fromPartial(object: Partial<ProtocolVersion>): ProtocolVersion;
 };
 export declare const DefaultNodeInfo: {
     encode(message: DefaultNodeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DefaultNodeInfo;
+    fromJSON(object: any): DefaultNodeInfo;
     fromPartial(object: Partial<DefaultNodeInfo>): DefaultNodeInfo;
 };
 export declare const DefaultNodeInfoOther: {
     encode(message: DefaultNodeInfoOther, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DefaultNodeInfoOther;
+    fromJSON(object: any): DefaultNodeInfoOther;
     fromPartial(object: Partial<DefaultNodeInfoOther>): DefaultNodeInfoOther;
 };

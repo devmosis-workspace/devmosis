@@ -61,6 +61,26 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    grant: function grant(value) {
+      return {
+        typeUrl: "/cosmos.authz.v1beta1.MsgGrant",
+        value: _tx.MsgGrant.fromJSON(value)
+      };
+    },
+    exec: function exec(value) {
+      return {
+        typeUrl: "/cosmos.authz.v1beta1.MsgExec",
+        value: _tx.MsgExec.fromJSON(value)
+      };
+    },
+    revoke: function revoke(value) {
+      return {
+        typeUrl: "/cosmos.authz.v1beta1.MsgRevoke",
+        value: _tx.MsgRevoke.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     grant: function grant(value) {
       return {

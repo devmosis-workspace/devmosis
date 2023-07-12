@@ -28,10 +28,12 @@ export interface MsgSubmitEvidenceResponseSDKType {
 export declare const MsgSubmitEvidence: {
     encode(message: MsgSubmitEvidence, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitEvidence;
+    fromJSON(object: any): MsgSubmitEvidence;
     fromPartial(object: Partial<MsgSubmitEvidence>): MsgSubmitEvidence;
 };
 export declare const MsgSubmitEvidenceResponse: {
     encode(message: MsgSubmitEvidenceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitEvidenceResponse;
+    fromJSON(object: any): MsgSubmitEvidenceResponse;
     fromPartial(object: Partial<MsgSubmitEvidenceResponse>): MsgSubmitEvidenceResponse;
 };

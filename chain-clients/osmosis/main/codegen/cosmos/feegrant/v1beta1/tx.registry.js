@@ -49,6 +49,20 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    grantAllowance: function grantAllowance(value) {
+      return {
+        typeUrl: "/cosmos.feegrant.v1beta1.MsgGrantAllowance",
+        value: _tx.MsgGrantAllowance.fromJSON(value)
+      };
+    },
+    revokeAllowance: function revokeAllowance(value) {
+      return {
+        typeUrl: "/cosmos.feegrant.v1beta1.MsgRevokeAllowance",
+        value: _tx.MsgRevokeAllowance.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     grantAllowance: function grantAllowance(value) {
       return {

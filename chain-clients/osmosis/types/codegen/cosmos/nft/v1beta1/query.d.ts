@@ -132,70 +132,84 @@ export interface QueryClassesResponseSDKType {
 export declare const QueryBalanceRequest: {
     encode(message: QueryBalanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceRequest;
+    fromJSON(object: any): QueryBalanceRequest;
     fromPartial(object: Partial<QueryBalanceRequest>): QueryBalanceRequest;
 };
 export declare const QueryBalanceResponse: {
     encode(message: QueryBalanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryBalanceResponse;
+    fromJSON(object: any): QueryBalanceResponse;
     fromPartial(object: Partial<QueryBalanceResponse>): QueryBalanceResponse;
 };
 export declare const QueryOwnerRequest: {
     encode(message: QueryOwnerRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryOwnerRequest;
+    fromJSON(object: any): QueryOwnerRequest;
     fromPartial(object: Partial<QueryOwnerRequest>): QueryOwnerRequest;
 };
 export declare const QueryOwnerResponse: {
     encode(message: QueryOwnerResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryOwnerResponse;
+    fromJSON(object: any): QueryOwnerResponse;
     fromPartial(object: Partial<QueryOwnerResponse>): QueryOwnerResponse;
 };
 export declare const QuerySupplyRequest: {
     encode(message: QuerySupplyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyRequest;
+    fromJSON(object: any): QuerySupplyRequest;
     fromPartial(object: Partial<QuerySupplyRequest>): QuerySupplyRequest;
 };
 export declare const QuerySupplyResponse: {
     encode(message: QuerySupplyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySupplyResponse;
+    fromJSON(object: any): QuerySupplyResponse;
     fromPartial(object: Partial<QuerySupplyResponse>): QuerySupplyResponse;
 };
 export declare const QueryNFTsRequest: {
     encode(message: QueryNFTsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNFTsRequest;
+    fromJSON(object: any): QueryNFTsRequest;
     fromPartial(object: Partial<QueryNFTsRequest>): QueryNFTsRequest;
 };
 export declare const QueryNFTsResponse: {
     encode(message: QueryNFTsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNFTsResponse;
+    fromJSON(object: any): QueryNFTsResponse;
     fromPartial(object: Partial<QueryNFTsResponse>): QueryNFTsResponse;
 };
 export declare const QueryNFTRequest: {
     encode(message: QueryNFTRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNFTRequest;
+    fromJSON(object: any): QueryNFTRequest;
     fromPartial(object: Partial<QueryNFTRequest>): QueryNFTRequest;
 };
 export declare const QueryNFTResponse: {
     encode(message: QueryNFTResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryNFTResponse;
+    fromJSON(object: any): QueryNFTResponse;
     fromPartial(object: Partial<QueryNFTResponse>): QueryNFTResponse;
 };
 export declare const QueryClassRequest: {
     encode(message: QueryClassRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClassRequest;
+    fromJSON(object: any): QueryClassRequest;
     fromPartial(object: Partial<QueryClassRequest>): QueryClassRequest;
 };
 export declare const QueryClassResponse: {
     encode(message: QueryClassResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClassResponse;
+    fromJSON(object: any): QueryClassResponse;
     fromPartial(object: Partial<QueryClassResponse>): QueryClassResponse;
 };
 export declare const QueryClassesRequest: {
     encode(message: QueryClassesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClassesRequest;
+    fromJSON(object: any): QueryClassesRequest;
     fromPartial(object: Partial<QueryClassesRequest>): QueryClassesRequest;
 };
 export declare const QueryClassesResponse: {
     encode(message: QueryClassesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryClassesResponse;
+    fromJSON(object: any): QueryClassesResponse;
     fromPartial(object: Partial<QueryClassesResponse>): QueryClassesResponse;
 };

@@ -72,6 +72,38 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createDenom(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgCreateDenom",
+        value: MsgCreateDenom.fromJSON(value)
+      };
+    },
+    mint(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgMint",
+        value: MsgMint.fromJSON(value)
+      };
+    },
+    burn(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgBurn",
+        value: MsgBurn.fromJSON(value)
+      };
+    },
+    changeAdmin(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgChangeAdmin",
+        value: MsgChangeAdmin.fromJSON(value)
+      };
+    },
+    setDenomMetadata(value) {
+      return {
+        typeUrl: "/osmosis.tokenfactory.v1beta1.MsgSetDenomMetadata",
+        value: MsgSetDenomMetadata.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createDenom(value) {
       return {

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EventSend = exports.EventMint = exports.EventBurn = void 0;
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
+var _helpers = require("../../../helpers");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 /** EventSend is emitted on Msg/Send */
@@ -71,6 +72,14 @@ var EventSend = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      classId: (0, _helpers.isSet)(object.classId) ? String(object.classId) : "",
+      id: (0, _helpers.isSet)(object.id) ? String(object.id) : "",
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      receiver: (0, _helpers.isSet)(object.receiver) ? String(object.receiver) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$classId, _object$id, _object$sender, _object$receiver;
     var message = createBaseEventSend();
@@ -126,6 +135,13 @@ var EventMint = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      classId: (0, _helpers.isSet)(object.classId) ? String(object.classId) : "",
+      id: (0, _helpers.isSet)(object.id) ? String(object.id) : "",
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$classId2, _object$id2, _object$owner;
     var message = createBaseEventMint();
@@ -179,6 +195,13 @@ var EventBurn = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      classId: (0, _helpers.isSet)(object.classId) ? String(object.classId) : "",
+      id: (0, _helpers.isSet)(object.id) ? String(object.id) : "",
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$classId3, _object$id3, _object$owner2;

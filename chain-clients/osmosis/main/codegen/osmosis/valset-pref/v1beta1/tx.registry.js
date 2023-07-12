@@ -97,6 +97,44 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    setValidatorSetPreference: function setValidatorSetPreference(value) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgSetValidatorSetPreference",
+        value: _tx.MsgSetValidatorSetPreference.fromJSON(value)
+      };
+    },
+    delegateToValidatorSet: function delegateToValidatorSet(value) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateToValidatorSet",
+        value: _tx.MsgDelegateToValidatorSet.fromJSON(value)
+      };
+    },
+    undelegateFromValidatorSet: function undelegateFromValidatorSet(value) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgUndelegateFromValidatorSet",
+        value: _tx.MsgUndelegateFromValidatorSet.fromJSON(value)
+      };
+    },
+    redelegateValidatorSet: function redelegateValidatorSet(value) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgRedelegateValidatorSet",
+        value: _tx.MsgRedelegateValidatorSet.fromJSON(value)
+      };
+    },
+    withdrawDelegationRewards: function withdrawDelegationRewards(value) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgWithdrawDelegationRewards",
+        value: _tx.MsgWithdrawDelegationRewards.fromJSON(value)
+      };
+    },
+    delegateBondedTokens: function delegateBondedTokens(value) {
+      return {
+        typeUrl: "/osmosis.valsetpref.v1beta1.MsgDelegateBondedTokens",
+        value: _tx.MsgDelegateBondedTokens.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     setValidatorSetPreference: function setValidatorSetPreference(value) {
       return {

@@ -150,35 +150,42 @@ export interface MetadataSDKType {
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
     fromPartial(object: Partial<Params>): Params;
 };
 export declare const SendEnabled: {
     encode(message: SendEnabled, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SendEnabled;
+    fromJSON(object: any): SendEnabled;
     fromPartial(object: Partial<SendEnabled>): SendEnabled;
 };
 export declare const Input: {
     encode(message: Input, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Input;
+    fromJSON(object: any): Input;
     fromPartial(object: Partial<Input>): Input;
 };
 export declare const Output: {
     encode(message: Output, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Output;
+    fromJSON(object: any): Output;
     fromPartial(object: Partial<Output>): Output;
 };
 export declare const Supply: {
     encode(message: Supply, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Supply;
+    fromJSON(object: any): Supply;
     fromPartial(object: Partial<Supply>): Supply;
 };
 export declare const DenomUnit: {
     encode(message: DenomUnit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DenomUnit;
+    fromJSON(object: any): DenomUnit;
     fromPartial(object: Partial<DenomUnit>): DenomUnit;
 };
 export declare const Metadata: {
     encode(message: Metadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Metadata;
+    fromJSON(object: any): Metadata;
     fromPartial(object: Partial<Metadata>): Metadata;
 };

@@ -1,10 +1,10 @@
 import { PageRequest, PageResponse } from "../../cosmos/base/query/v1beta1/pagination";
 import { Params } from "./params";
-import { SuperfluidAsset, OsmoEquivalentMultiplierRecord, SuperfluidDelegationRecord } from "./superfluid";
+import { SuperfluidAsset, OsmoEquivalentMultiplierRecord, SuperfluidDelegationRecord, superfluidAssetTypeFromJSON } from "./superfluid";
 import { Coin } from "../../cosmos/base/v1beta1/coin";
 import { SyntheticLock } from "../lockup/lock";
 import { DelegationResponse } from "../../cosmos/staking/v1beta1/staking";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 function createBaseQueryParamsRequest() {
   return {};
@@ -26,6 +26,9 @@ export const QueryParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryParamsRequest();
@@ -61,6 +64,11 @@ export const QueryParamsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -95,6 +103,11 @@ export const AssetTypeRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
   },
   fromPartial(object) {
     var _object$denom;
@@ -132,6 +145,11 @@ export const AssetTypeResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      assetType: isSet(object.assetType) ? superfluidAssetTypeFromJSON(object.assetType) : 0
+    };
+  },
   fromPartial(object) {
     var _object$assetType;
     const message = createBaseAssetTypeResponse();
@@ -159,6 +177,9 @@ export const AllAssetsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseAllAssetsRequest();
@@ -193,6 +214,11 @@ export const AllAssetsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      assets: Array.isArray(object === null || object === void 0 ? void 0 : object.assets) ? object.assets.map(e => SuperfluidAsset.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$assets;
@@ -230,6 +256,11 @@ export const AssetMultiplierRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial(object) {
     var _object$denom2;
     const message = createBaseAssetMultiplierRequest();
@@ -265,6 +296,11 @@ export const AssetMultiplierResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      osmoEquivalentMultiplier: isSet(object.osmoEquivalentMultiplier) ? OsmoEquivalentMultiplierRecord.fromJSON(object.osmoEquivalentMultiplier) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseAssetMultiplierResponse();
@@ -322,6 +358,14 @@ export const SuperfluidIntermediaryAccountInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : "",
+      gaugeId: isSet(object.gaugeId) ? Long.fromValue(object.gaugeId) : Long.UZERO,
+      address: isSet(object.address) ? String(object.address) : ""
+    };
+  },
   fromPartial(object) {
     var _object$denom3, _object$valAddr, _object$address;
     const message = createBaseSuperfluidIntermediaryAccountInfo();
@@ -360,6 +404,11 @@ export const AllIntermediaryAccountsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseAllIntermediaryAccountsRequest();
@@ -403,6 +452,12 @@ export const AllIntermediaryAccountsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      accounts: Array.isArray(object === null || object === void 0 ? void 0 : object.accounts) ? object.accounts.map(e => SuperfluidIntermediaryAccountInfo.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$accounts;
     const message = createBaseAllIntermediaryAccountsResponse();
@@ -440,6 +495,11 @@ export const ConnectedIntermediaryAccountRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      lockId: isSet(object.lockId) ? Long.fromValue(object.lockId) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseConnectedIntermediaryAccountRequest();
     message.lockId = object.lockId !== undefined && object.lockId !== null ? Long.fromValue(object.lockId) : Long.UZERO;
@@ -474,6 +534,11 @@ export const ConnectedIntermediaryAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      account: isSet(object.account) ? SuperfluidIntermediaryAccountInfo.fromJSON(object.account) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseConnectedIntermediaryAccountResponse();
@@ -510,6 +575,11 @@ export const QueryTotalDelegationByValidatorForDenomRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial(object) {
     var _object$denom4;
     const message = createBaseQueryTotalDelegationByValidatorForDenomRequest();
@@ -545,6 +615,11 @@ export const QueryTotalDelegationByValidatorForDenomResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      assets: Array.isArray(object === null || object === void 0 ? void 0 : object.assets) ? object.assets.map(e => Delegations.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$assets2;
@@ -596,6 +671,13 @@ export const Delegations = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : "",
+      amountSfsd: isSet(object.amountSfsd) ? String(object.amountSfsd) : "",
+      osmoEquivalent: isSet(object.osmoEquivalent) ? String(object.osmoEquivalent) : ""
+    };
+  },
   fromPartial(object) {
     var _object$valAddr2, _object$amountSfsd, _object$osmoEquivalen;
     const message = createBaseDelegations();
@@ -625,6 +707,9 @@ export const TotalSuperfluidDelegationsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseTotalSuperfluidDelegationsRequest();
@@ -659,6 +744,11 @@ export const TotalSuperfluidDelegationsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      totalDelegations: isSet(object.totalDelegations) ? String(object.totalDelegations) : ""
+    };
   },
   fromPartial(object) {
     var _object$totalDelegati;
@@ -710,6 +800,13 @@ export const SuperfluidDelegationAmountRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr, _object$validatorAddr, _object$denom5;
     const message = createBaseSuperfluidDelegationAmountRequest();
@@ -748,6 +845,11 @@ export const SuperfluidDelegationAmountResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$amount;
     const message = createBaseSuperfluidDelegationAmountResponse();
@@ -783,6 +885,11 @@ export const SuperfluidDelegationsByDelegatorRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : ""
+    };
   },
   fromPartial(object) {
     var _object$delegatorAddr2;
@@ -834,6 +941,13 @@ export const SuperfluidDelegationsByDelegatorResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      superfluidDelegationRecords: Array.isArray(object === null || object === void 0 ? void 0 : object.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map(e => SuperfluidDelegationRecord.fromJSON(e)) : [],
+      totalDelegatedCoins: Array.isArray(object === null || object === void 0 ? void 0 : object.totalDelegatedCoins) ? object.totalDelegatedCoins.map(e => Coin.fromJSON(e)) : [],
+      totalEquivalentStakedAmount: isSet(object.totalEquivalentStakedAmount) ? Coin.fromJSON(object.totalEquivalentStakedAmount) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$superfluidDel, _object$totalDelegate;
     const message = createBaseSuperfluidDelegationsByDelegatorResponse();
@@ -878,6 +992,12 @@ export const SuperfluidUndelegationsByDelegatorRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
   },
   fromPartial(object) {
     var _object$delegatorAddr3, _object$denom6;
@@ -930,6 +1050,13 @@ export const SuperfluidUndelegationsByDelegatorResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      superfluidDelegationRecords: Array.isArray(object === null || object === void 0 ? void 0 : object.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map(e => SuperfluidDelegationRecord.fromJSON(e)) : [],
+      totalUndelegatedCoins: Array.isArray(object === null || object === void 0 ? void 0 : object.totalUndelegatedCoins) ? object.totalUndelegatedCoins.map(e => Coin.fromJSON(e)) : [],
+      syntheticLocks: Array.isArray(object === null || object === void 0 ? void 0 : object.syntheticLocks) ? object.syntheticLocks.map(e => SyntheticLock.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$superfluidDel2, _object$totalUndelega, _object$syntheticLock;
     const message = createBaseSuperfluidUndelegationsByDelegatorResponse();
@@ -975,6 +1102,12 @@ export const SuperfluidDelegationsByValidatorDenomRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial(object) {
     var _object$validatorAddr2, _object$denom7;
     const message = createBaseSuperfluidDelegationsByValidatorDenomRequest();
@@ -1011,6 +1144,11 @@ export const SuperfluidDelegationsByValidatorDenomResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      superfluidDelegationRecords: Array.isArray(object === null || object === void 0 ? void 0 : object.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map(e => SuperfluidDelegationRecord.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$superfluidDel3;
@@ -1055,6 +1193,12 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
   fromPartial(object) {
     var _object$validatorAddr3, _object$denom8;
     const message = createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomRequest();
@@ -1092,6 +1236,11 @@ export const EstimateSuperfluidDelegatedAmountByValidatorDenomResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      totalDelegatedCoins: Array.isArray(object === null || object === void 0 ? void 0 : object.totalDelegatedCoins) ? object.totalDelegatedCoins.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$totalDelegate2;
     const message = createBaseEstimateSuperfluidDelegatedAmountByValidatorDenomResponse();
@@ -1127,6 +1276,11 @@ export const QueryTotalDelegationByDelegatorRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : ""
+    };
   },
   fromPartial(object) {
     var _object$delegatorAddr4;
@@ -1185,6 +1339,14 @@ export const QueryTotalDelegationByDelegatorResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      superfluidDelegationRecords: Array.isArray(object === null || object === void 0 ? void 0 : object.superfluidDelegationRecords) ? object.superfluidDelegationRecords.map(e => SuperfluidDelegationRecord.fromJSON(e)) : [],
+      delegationResponse: Array.isArray(object === null || object === void 0 ? void 0 : object.delegationResponse) ? object.delegationResponse.map(e => DelegationResponse.fromJSON(e)) : [],
+      totalDelegatedCoins: Array.isArray(object === null || object === void 0 ? void 0 : object.totalDelegatedCoins) ? object.totalDelegatedCoins.map(e => Coin.fromJSON(e)) : [],
+      totalEquivalentStakedAmount: isSet(object.totalEquivalentStakedAmount) ? Coin.fromJSON(object.totalEquivalentStakedAmount) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$superfluidDel4, _object$delegationRes, _object$totalDelegate3;
     const message = createBaseQueryTotalDelegationByDelegatorResponse();
@@ -1215,6 +1377,9 @@ export const QueryUnpoolWhitelistRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryUnpoolWhitelistRequest();
@@ -1258,6 +1423,11 @@ export const QueryUnpoolWhitelistResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      poolIds: Array.isArray(object === null || object === void 0 ? void 0 : object.poolIds) ? object.poolIds.map(e => Long.fromValue(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$poolIds;

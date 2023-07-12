@@ -120,30 +120,36 @@ export interface HashedParamsSDKType {
 export declare const ConsensusParams: {
     encode(message: ConsensusParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ConsensusParams;
+    fromJSON(object: any): ConsensusParams;
     fromPartial(object: Partial<ConsensusParams>): ConsensusParams;
 };
 export declare const BlockParams: {
     encode(message: BlockParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockParams;
+    fromJSON(object: any): BlockParams;
     fromPartial(object: Partial<BlockParams>): BlockParams;
 };
 export declare const EvidenceParams: {
     encode(message: EvidenceParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EvidenceParams;
+    fromJSON(object: any): EvidenceParams;
     fromPartial(object: Partial<EvidenceParams>): EvidenceParams;
 };
 export declare const ValidatorParams: {
     encode(message: ValidatorParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorParams;
+    fromJSON(object: any): ValidatorParams;
     fromPartial(object: Partial<ValidatorParams>): ValidatorParams;
 };
 export declare const VersionParams: {
     encode(message: VersionParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): VersionParams;
+    fromJSON(object: any): VersionParams;
     fromPartial(object: Partial<VersionParams>): VersionParams;
 };
 export declare const HashedParams: {
     encode(message: HashedParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HashedParams;
+    fromJSON(object: any): HashedParams;
     fromPartial(object: Partial<HashedParams>): HashedParams;
 };

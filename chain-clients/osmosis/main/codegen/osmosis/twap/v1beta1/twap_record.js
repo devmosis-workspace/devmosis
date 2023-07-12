@@ -130,6 +130,21 @@ var TwapRecord = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      asset0Denom: (0, _helpers.isSet)(object.asset0Denom) ? String(object.asset0Denom) : "",
+      asset1Denom: (0, _helpers.isSet)(object.asset1Denom) ? String(object.asset1Denom) : "",
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO,
+      time: (0, _helpers.isSet)(object.time) ? (0, _helpers.fromJsonTimestamp)(object.time) : undefined,
+      p0LastSpotPrice: (0, _helpers.isSet)(object.p0LastSpotPrice) ? String(object.p0LastSpotPrice) : "",
+      p1LastSpotPrice: (0, _helpers.isSet)(object.p1LastSpotPrice) ? String(object.p1LastSpotPrice) : "",
+      p0ArithmeticTwapAccumulator: (0, _helpers.isSet)(object.p0ArithmeticTwapAccumulator) ? String(object.p0ArithmeticTwapAccumulator) : "",
+      p1ArithmeticTwapAccumulator: (0, _helpers.isSet)(object.p1ArithmeticTwapAccumulator) ? String(object.p1ArithmeticTwapAccumulator) : "",
+      geometricTwapAccumulator: (0, _helpers.isSet)(object.geometricTwapAccumulator) ? String(object.geometricTwapAccumulator) : "",
+      lastErrorTime: (0, _helpers.isSet)(object.lastErrorTime) ? (0, _helpers.fromJsonTimestamp)(object.lastErrorTime) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$asset0Denom, _object$asset1Denom, _object$time, _object$p0LastSpotPri, _object$p1LastSpotPri, _object$p0ArithmeticT, _object$p1ArithmeticT, _object$geometricTwap, _object$lastErrorTime;
     var message = createBaseTwapRecord();

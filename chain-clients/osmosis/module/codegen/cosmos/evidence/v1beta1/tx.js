@@ -1,5 +1,6 @@
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /**
  * MsgSubmitEvidence represents a message that supports submitting arbitrary
  * Evidence of misbehavior such as equivocation or counterfactual signing.
@@ -50,6 +51,12 @@ export const MsgSubmitEvidence = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      submitter: isSet(object.submitter) ? String(object.submitter) : "",
+      evidence: isSet(object.evidence) ? Any.fromJSON(object.evidence) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$submitter;
     const message = createBaseMsgSubmitEvidence();
@@ -86,6 +93,11 @@ export const MsgSubmitEvidenceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      hash: isSet(object.hash) ? bytesFromBase64(object.hash) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$hash;

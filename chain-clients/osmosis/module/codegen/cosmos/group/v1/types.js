@@ -1,7 +1,7 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Duration } from "../../../google/protobuf/duration";
 import { Any } from "../../../google/protobuf/any";
-import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** VoteOption enumerates the valid vote options for a given proposal. */
 export let VoteOption = /*#__PURE__*/function (VoteOption) {
@@ -302,6 +302,14 @@ export const Member = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      weight: isSet(object.weight) ? String(object.weight) : "",
+      metadata: isSet(object.metadata) ? String(object.metadata) : "",
+      addedAt: isSet(object.addedAt) ? fromJsonTimestamp(object.addedAt) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$address, _object$weight, _object$metadata, _object$addedAt;
     const message = createBaseMember();
@@ -355,6 +363,13 @@ export const MemberRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      weight: isSet(object.weight) ? String(object.weight) : "",
+      metadata: isSet(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial(object) {
     var _object$address2, _object$weight2, _object$metadata2;
     const message = createBaseMemberRequest();
@@ -400,6 +415,12 @@ export const ThresholdDecisionPolicy = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      threshold: isSet(object.threshold) ? String(object.threshold) : "",
+      windows: isSet(object.windows) ? DecisionPolicyWindows.fromJSON(object.windows) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$threshold;
     const message = createBaseThresholdDecisionPolicy();
@@ -444,6 +465,12 @@ export const PercentageDecisionPolicy = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      percentage: isSet(object.percentage) ? String(object.percentage) : "",
+      windows: isSet(object.windows) ? DecisionPolicyWindows.fromJSON(object.windows) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$percentage;
     const message = createBasePercentageDecisionPolicy();
@@ -487,6 +514,12 @@ export const DecisionPolicyWindows = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      votingPeriod: isSet(object.votingPeriod) ? Duration.fromJSON(object.votingPeriod) : undefined,
+      minExecutionPeriod: isSet(object.minExecutionPeriod) ? Duration.fromJSON(object.minExecutionPeriod) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseDecisionPolicyWindows();
@@ -559,6 +592,16 @@ export const GroupInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      metadata: isSet(object.metadata) ? String(object.metadata) : "",
+      version: isSet(object.version) ? Long.fromValue(object.version) : Long.UZERO,
+      totalWeight: isSet(object.totalWeight) ? String(object.totalWeight) : "",
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$admin, _object$metadata3, _object$totalWeight, _object$createdAt;
     const message = createBaseGroupInfo();
@@ -606,6 +649,12 @@ export const GroupMember = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      groupId: isSet(object.groupId) ? Long.fromValue(object.groupId) : Long.UZERO,
+      member: isSet(object.member) ? Member.fromJSON(object.member) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseGroupMember();
@@ -684,6 +733,17 @@ export const GroupPolicyInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      groupId: isSet(object.groupId) ? Long.fromValue(object.groupId) : Long.UZERO,
+      admin: isSet(object.admin) ? String(object.admin) : "",
+      metadata: isSet(object.metadata) ? String(object.metadata) : "",
+      version: isSet(object.version) ? Long.fromValue(object.version) : Long.UZERO,
+      decisionPolicy: isSet(object.decisionPolicy) ? Any.fromJSON(object.decisionPolicy) : undefined,
+      createdAt: isSet(object.createdAt) ? fromJsonTimestamp(object.createdAt) : undefined
+    };
   },
   fromPartial(object) {
     var _object$address3, _object$admin2, _object$metadata4, _object$createdAt2;
@@ -804,6 +864,22 @@ export const Proposal = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
+      groupPolicyAddress: isSet(object.groupPolicyAddress) ? String(object.groupPolicyAddress) : "",
+      metadata: isSet(object.metadata) ? String(object.metadata) : "",
+      proposers: Array.isArray(object === null || object === void 0 ? void 0 : object.proposers) ? object.proposers.map(e => String(e)) : [],
+      submitTime: isSet(object.submitTime) ? fromJsonTimestamp(object.submitTime) : undefined,
+      groupVersion: isSet(object.groupVersion) ? Long.fromValue(object.groupVersion) : Long.UZERO,
+      groupPolicyVersion: isSet(object.groupPolicyVersion) ? Long.fromValue(object.groupPolicyVersion) : Long.UZERO,
+      status: isSet(object.status) ? proposalStatusFromJSON(object.status) : 0,
+      finalTallyResult: isSet(object.finalTallyResult) ? TallyResult.fromJSON(object.finalTallyResult) : undefined,
+      votingPeriodEnd: isSet(object.votingPeriodEnd) ? fromJsonTimestamp(object.votingPeriodEnd) : undefined,
+      executorResult: isSet(object.executorResult) ? proposalExecutorResultFromJSON(object.executorResult) : 0,
+      messages: Array.isArray(object === null || object === void 0 ? void 0 : object.messages) ? object.messages.map(e => Any.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$groupPolicyAd, _object$metadata5, _object$proposers, _object$submitTime, _object$status, _object$votingPeriodE, _object$executorResul, _object$messages;
     const message = createBaseProposal();
@@ -872,6 +948,14 @@ export const TallyResult = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      yesCount: isSet(object.yesCount) ? String(object.yesCount) : "",
+      abstainCount: isSet(object.abstainCount) ? String(object.abstainCount) : "",
+      noCount: isSet(object.noCount) ? String(object.noCount) : "",
+      noWithVetoCount: isSet(object.noWithVetoCount) ? String(object.noWithVetoCount) : ""
+    };
+  },
   fromPartial(object) {
     var _object$yesCount, _object$abstainCount, _object$noCount, _object$noWithVetoCou;
     const message = createBaseTallyResult();
@@ -938,6 +1022,15 @@ export const Vote = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO,
+      voter: isSet(object.voter) ? String(object.voter) : "",
+      option: isSet(object.option) ? voteOptionFromJSON(object.option) : 0,
+      metadata: isSet(object.metadata) ? String(object.metadata) : "",
+      submitTime: isSet(object.submitTime) ? fromJsonTimestamp(object.submitTime) : undefined
+    };
   },
   fromPartial(object) {
     var _object$voter, _object$option, _object$metadata6, _object$submitTime2;

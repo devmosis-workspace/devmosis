@@ -1,6 +1,7 @@
 import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { BIP44Params, BIP44ParamsSDKType } from "../../hd/v1/hd";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../../helpers";
 /** Record is used for representing a key in the keyring. */
 export interface Record {
   /** name represents a name of Record */
@@ -119,6 +120,16 @@ export const Record = {
     }
     return message;
   },
+  fromJSON(object: any): Record {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      pubKey: isSet(object.pubKey) ? Any.fromJSON(object.pubKey) : undefined,
+      local: isSet(object.local) ? Record_Local.fromJSON(object.local) : undefined,
+      ledger: isSet(object.ledger) ? Record_Ledger.fromJSON(object.ledger) : undefined,
+      multi: isSet(object.multi) ? Record_Multi.fromJSON(object.multi) : undefined,
+      offline: isSet(object.offline) ? Record_Offline.fromJSON(object.offline) : undefined
+    };
+  },
   fromPartial(object: Partial<Record>): Record {
     const message = createBaseRecord();
     message.name = object.name ?? "";
@@ -159,6 +170,11 @@ export const Record_Local = {
     }
     return message;
   },
+  fromJSON(object: any): Record_Local {
+    return {
+      privKey: isSet(object.privKey) ? Any.fromJSON(object.privKey) : undefined
+    };
+  },
   fromPartial(object: Partial<Record_Local>): Record_Local {
     const message = createBaseRecord_Local();
     message.privKey = object.privKey !== undefined && object.privKey !== null ? Any.fromPartial(object.privKey) : undefined;
@@ -194,6 +210,11 @@ export const Record_Ledger = {
     }
     return message;
   },
+  fromJSON(object: any): Record_Ledger {
+    return {
+      path: isSet(object.path) ? BIP44Params.fromJSON(object.path) : undefined
+    };
+  },
   fromPartial(object: Partial<Record_Ledger>): Record_Ledger {
     const message = createBaseRecord_Ledger();
     message.path = object.path !== undefined && object.path !== null ? BIP44Params.fromPartial(object.path) : undefined;
@@ -221,6 +242,9 @@ export const Record_Multi = {
     }
     return message;
   },
+  fromJSON(_: any): Record_Multi {
+    return {};
+  },
   fromPartial(_: Partial<Record_Multi>): Record_Multi {
     const message = createBaseRecord_Multi();
     return message;
@@ -246,6 +270,9 @@ export const Record_Offline = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): Record_Offline {
+    return {};
   },
   fromPartial(_: Partial<Record_Offline>): Record_Offline {
     const message = createBaseRecord_Offline();

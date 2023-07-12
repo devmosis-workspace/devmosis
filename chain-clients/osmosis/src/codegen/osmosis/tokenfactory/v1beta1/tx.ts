@@ -1,6 +1,7 @@
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { Metadata, MetadataSDKType } from "../../../cosmos/bank/v1beta1/bank";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * MsgCreateDenom defines the message structure for the CreateDenom gRPC service
  * method. It allows an account to create a new denom. It requires a sender
@@ -172,6 +173,12 @@ export const MsgCreateDenom = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCreateDenom {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      subdenom: isSet(object.subdenom) ? String(object.subdenom) : ""
+    };
+  },
   fromPartial(object: Partial<MsgCreateDenom>): MsgCreateDenom {
     const message = createBaseMsgCreateDenom();
     message.sender = object.sender ?? "";
@@ -207,6 +214,11 @@ export const MsgCreateDenomResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateDenomResponse {
+    return {
+      newTokenDenom: isSet(object.newTokenDenom) ? String(object.newTokenDenom) : ""
+    };
   },
   fromPartial(object: Partial<MsgCreateDenomResponse>): MsgCreateDenomResponse {
     const message = createBaseMsgCreateDenomResponse();
@@ -250,6 +262,12 @@ export const MsgMint = {
     }
     return message;
   },
+  fromJSON(object: any): MsgMint {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial(object: Partial<MsgMint>): MsgMint {
     const message = createBaseMsgMint();
     message.sender = object.sender ?? "";
@@ -277,6 +295,9 @@ export const MsgMintResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgMintResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgMintResponse>): MsgMintResponse {
     const message = createBaseMsgMintResponse();
@@ -319,6 +340,12 @@ export const MsgBurn = {
     }
     return message;
   },
+  fromJSON(object: any): MsgBurn {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial(object: Partial<MsgBurn>): MsgBurn {
     const message = createBaseMsgBurn();
     message.sender = object.sender ?? "";
@@ -346,6 +373,9 @@ export const MsgBurnResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgBurnResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgBurnResponse>): MsgBurnResponse {
     const message = createBaseMsgBurnResponse();
@@ -395,6 +425,13 @@ export const MsgChangeAdmin = {
     }
     return message;
   },
+  fromJSON(object: any): MsgChangeAdmin {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      newAdmin: isSet(object.newAdmin) ? String(object.newAdmin) : ""
+    };
+  },
   fromPartial(object: Partial<MsgChangeAdmin>): MsgChangeAdmin {
     const message = createBaseMsgChangeAdmin();
     message.sender = object.sender ?? "";
@@ -423,6 +460,9 @@ export const MsgChangeAdminResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgChangeAdminResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgChangeAdminResponse>): MsgChangeAdminResponse {
     const message = createBaseMsgChangeAdminResponse();
@@ -465,6 +505,12 @@ export const MsgSetDenomMetadata = {
     }
     return message;
   },
+  fromJSON(object: any): MsgSetDenomMetadata {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      metadata: isSet(object.metadata) ? Metadata.fromJSON(object.metadata) : undefined
+    };
+  },
   fromPartial(object: Partial<MsgSetDenomMetadata>): MsgSetDenomMetadata {
     const message = createBaseMsgSetDenomMetadata();
     message.sender = object.sender ?? "";
@@ -492,6 +538,9 @@ export const MsgSetDenomMetadataResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgSetDenomMetadataResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse {
     const message = createBaseMsgSetDenomMetadataResponse();

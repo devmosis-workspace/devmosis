@@ -88,6 +88,14 @@ var CommitInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      version: (0, _helpers.isSet)(object.version) ? _helpers.Long.fromValue(object.version) : _helpers.Long.ZERO,
+      storeInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.storeInfos) ? object.storeInfos.map(function (e) {
+        return StoreInfo.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$storeInfos;
     var message = createBaseCommitInfo();
@@ -136,6 +144,12 @@ var StoreInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      name: (0, _helpers.isSet)(object.name) ? String(object.name) : "",
+      commitId: (0, _helpers.isSet)(object.commitId) ? CommitID.fromJSON(object.commitId) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$name;
     var message = createBaseStoreInfo();
@@ -181,6 +195,12 @@ var CommitID = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      version: (0, _helpers.isSet)(object.version) ? _helpers.Long.fromValue(object.version) : _helpers.Long.ZERO,
+      hash: (0, _helpers.isSet)(object.hash) ? (0, _helpers.bytesFromBase64)(object.hash) : new Uint8Array()
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$hash;

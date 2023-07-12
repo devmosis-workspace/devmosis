@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.GenesisState = exports.GenesisDowntimeEntry = void 0;
+var _downtime_duration = require("./downtime_duration");
 var _timestamp = require("../../../google/protobuf/timestamp");
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
 var _helpers = require("../../../helpers");
@@ -53,6 +54,12 @@ var GenesisDowntimeEntry = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      duration: (0, _helpers.isSet)(object.duration) ? (0, _downtime_duration.downtimeFromJSON)(object.duration) : 0,
+      lastDowntime: (0, _helpers.isSet)(object.lastDowntime) ? (0, _helpers.fromJsonTimestamp)(object.lastDowntime) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$duration, _object$lastDowntime;
@@ -108,6 +115,14 @@ var GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      downtimes: Array.isArray(object === null || object === void 0 ? void 0 : object.downtimes) ? object.downtimes.map(function (e) {
+        return GenesisDowntimeEntry.fromJSON(e);
+      }) : [],
+      lastBlockTime: (0, _helpers.isSet)(object.lastBlockTime) ? (0, _helpers.fromJsonTimestamp)(object.lastBlockTime) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$downtimes, _object$lastBlockTime;

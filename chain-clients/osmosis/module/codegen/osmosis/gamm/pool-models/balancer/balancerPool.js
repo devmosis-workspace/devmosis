@@ -1,7 +1,7 @@
 import { Timestamp } from "../../../../google/protobuf/timestamp";
 import { Duration } from "../../../../google/protobuf/duration";
 import { Coin } from "../../../../cosmos/base/v1beta1/coin";
-import { Long, toTimestamp, fromTimestamp } from "../../../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * Parameters for changing the weights in a balancer pool smoothly from
@@ -109,6 +109,14 @@ export const SmoothWeightChangeParams = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
+      initialPoolWeights: Array.isArray(object === null || object === void 0 ? void 0 : object.initialPoolWeights) ? object.initialPoolWeights.map(e => PoolAsset.fromJSON(e)) : [],
+      targetPoolWeights: Array.isArray(object === null || object === void 0 ? void 0 : object.targetPoolWeights) ? object.targetPoolWeights.map(e => PoolAsset.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$startTime, _object$initialPoolWe, _object$targetPoolWei;
     const message = createBaseSmoothWeightChangeParams();
@@ -162,6 +170,13 @@ export const PoolParams = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      swapFee: isSet(object.swapFee) ? String(object.swapFee) : "",
+      exitFee: isSet(object.exitFee) ? String(object.exitFee) : "",
+      smoothWeightChangeParams: isSet(object.smoothWeightChangeParams) ? SmoothWeightChangeParams.fromJSON(object.smoothWeightChangeParams) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$swapFee, _object$exitFee;
     const message = createBasePoolParams();
@@ -206,6 +221,12 @@ export const PoolAsset = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      token: isSet(object.token) ? Coin.fromJSON(object.token) : undefined,
+      weight: isSet(object.weight) ? String(object.weight) : ""
+    };
   },
   fromPartial(object) {
     var _object$weight;
@@ -285,6 +306,17 @@ export const Pool = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
+      poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      totalShares: isSet(object.totalShares) ? Coin.fromJSON(object.totalShares) : undefined,
+      poolAssets: Array.isArray(object === null || object === void 0 ? void 0 : object.poolAssets) ? object.poolAssets.map(e => PoolAsset.fromJSON(e)) : [],
+      totalWeight: isSet(object.totalWeight) ? String(object.totalWeight) : ""
+    };
   },
   fromPartial(object) {
     var _object$address, _object$futurePoolGov, _object$poolAssets, _object$totalWeight;

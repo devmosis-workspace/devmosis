@@ -81,6 +81,16 @@ var MsgCreateBalancerPool = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      poolParams: (0, _helpers.isSet)(object.poolParams) ? _balancerPool.PoolParams.fromJSON(object.poolParams) : undefined,
+      poolAssets: Array.isArray(object === null || object === void 0 ? void 0 : object.poolAssets) ? object.poolAssets.map(function (e) {
+        return _balancerPool.PoolAsset.fromJSON(e);
+      }) : [],
+      futurePoolGovernor: (0, _helpers.isSet)(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender, _object$poolAssets, _object$futurePoolGov;
     var message = createBaseMsgCreateBalancerPool();
@@ -123,6 +133,11 @@ var MsgCreateBalancerPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseMsgCreateBalancerPoolResponse();

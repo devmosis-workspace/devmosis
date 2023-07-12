@@ -48,10 +48,12 @@ export interface ValidatorSetPreferencesSDKType {
 export declare const ValidatorPreference: {
     encode(message: ValidatorPreference, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorPreference;
+    fromJSON(object: any): ValidatorPreference;
     fromPartial(object: Partial<ValidatorPreference>): ValidatorPreference;
 };
 export declare const ValidatorSetPreferences: {
     encode(message: ValidatorSetPreferences, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSetPreferences;
+    fromJSON(object: any): ValidatorSetPreferences;
     fromPartial(object: Partial<ValidatorSetPreferences>): ValidatorSetPreferences;
 };

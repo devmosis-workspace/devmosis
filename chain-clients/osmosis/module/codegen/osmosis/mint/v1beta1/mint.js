@@ -1,4 +1,4 @@
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** Minter represents the minting state. */
 
@@ -61,6 +61,11 @@ export const Minter = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      epochProvisions: isSet(object.epochProvisions) ? String(object.epochProvisions) : ""
+    };
+  },
   fromPartial(object) {
     var _object$epochProvisio;
     const message = createBaseMinter();
@@ -103,6 +108,12 @@ export const WeightedAddress = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      weight: isSet(object.weight) ? String(object.weight) : ""
+    };
   },
   fromPartial(object) {
     var _object$address, _object$weight;
@@ -161,6 +172,14 @@ export const DistributionProportions = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      staking: isSet(object.staking) ? String(object.staking) : "",
+      poolIncentives: isSet(object.poolIncentives) ? String(object.poolIncentives) : "",
+      developerRewards: isSet(object.developerRewards) ? String(object.developerRewards) : "",
+      communityPool: isSet(object.communityPool) ? String(object.communityPool) : ""
+    };
   },
   fromPartial(object) {
     var _object$staking, _object$poolIncentive, _object$developerRewa, _object$communityPool;
@@ -249,6 +268,18 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      mintDenom: isSet(object.mintDenom) ? String(object.mintDenom) : "",
+      genesisEpochProvisions: isSet(object.genesisEpochProvisions) ? String(object.genesisEpochProvisions) : "",
+      epochIdentifier: isSet(object.epochIdentifier) ? String(object.epochIdentifier) : "",
+      reductionPeriodInEpochs: isSet(object.reductionPeriodInEpochs) ? Long.fromValue(object.reductionPeriodInEpochs) : Long.ZERO,
+      reductionFactor: isSet(object.reductionFactor) ? String(object.reductionFactor) : "",
+      distributionProportions: isSet(object.distributionProportions) ? DistributionProportions.fromJSON(object.distributionProportions) : undefined,
+      weightedDeveloperRewardsReceivers: Array.isArray(object === null || object === void 0 ? void 0 : object.weightedDeveloperRewardsReceivers) ? object.weightedDeveloperRewardsReceivers.map(e => WeightedAddress.fromJSON(e)) : [],
+      mintingRewardsDistributionStartEpoch: isSet(object.mintingRewardsDistributionStartEpoch) ? Long.fromValue(object.mintingRewardsDistributionStartEpoch) : Long.ZERO
+    };
   },
   fromPartial(object) {
     var _object$mintDenom, _object$genesisEpochP, _object$epochIdentifi, _object$reductionFact, _object$weightedDevel;

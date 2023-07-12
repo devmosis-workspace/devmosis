@@ -52,6 +52,9 @@ var ParamsRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(_) {
+    return {};
+  },
   fromPartial: function fromPartial(_) {
     var message = createBaseParamsRequest();
     return message;
@@ -87,6 +90,11 @@ var ParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _genesis.Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseParamsResponse();
@@ -155,6 +163,16 @@ var EstimateSwapExactAmountInRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      tokenIn: (0, _helpers.isSet)(object.tokenIn) ? String(object.tokenIn) : "",
+      routes: Array.isArray(object === null || object === void 0 ? void 0 : object.routes) ? object.routes.map(function (e) {
+        return _swap_route.SwapAmountInRoute.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender, _object$tokenIn, _object$routes;
     var message = createBaseEstimateSwapExactAmountInRequest();
@@ -197,6 +215,11 @@ var EstimateSwapExactAmountInResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      tokenOutAmount: (0, _helpers.isSet)(object.tokenOutAmount) ? String(object.tokenOutAmount) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$tokenOutAmoun;
@@ -266,6 +289,16 @@ var EstimateSwapExactAmountOutRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      sender: (0, _helpers.isSet)(object.sender) ? String(object.sender) : "",
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      routes: Array.isArray(object === null || object === void 0 ? void 0 : object.routes) ? object.routes.map(function (e) {
+        return _swap_route.SwapAmountOutRoute.fromJSON(e);
+      }) : [],
+      tokenOut: (0, _helpers.isSet)(object.tokenOut) ? String(object.tokenOut) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$sender2, _object$routes2, _object$tokenOut;
     var message = createBaseEstimateSwapExactAmountOutRequest();
@@ -309,6 +342,11 @@ var EstimateSwapExactAmountOutResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      tokenInAmount: (0, _helpers.isSet)(object.tokenInAmount) ? String(object.tokenInAmount) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$tokenInAmount;
     var message = createBaseEstimateSwapExactAmountOutResponse();
@@ -338,6 +376,9 @@ var NumPoolsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseNumPoolsRequest();
@@ -374,6 +415,11 @@ var NumPoolsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      numPools: (0, _helpers.isSet)(object.numPools) ? _helpers.Long.fromValue(object.numPools) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseNumPoolsResponse();

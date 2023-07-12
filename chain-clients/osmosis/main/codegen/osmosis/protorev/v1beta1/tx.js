@@ -131,6 +131,14 @@ var MsgSetHotRoutes = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      hotRoutes: Array.isArray(object === null || object === void 0 ? void 0 : object.hotRoutes) ? object.hotRoutes.map(function (e) {
+        return _protorev.TokenPairArbRoutes.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin, _object$hotRoutes;
     var message = createBaseMsgSetHotRoutes();
@@ -163,6 +171,9 @@ var MsgSetHotRoutesResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSetHotRoutesResponse();
@@ -207,6 +218,12 @@ var MsgSetDeveloperAccount = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      developerAccount: (0, _helpers.isSet)(object.developerAccount) ? String(object.developerAccount) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin2, _object$developerAcco;
     var message = createBaseMsgSetDeveloperAccount();
@@ -237,6 +254,9 @@ var MsgSetDeveloperAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSetDeveloperAccountResponse();
@@ -281,6 +301,12 @@ var MsgSetPoolWeights = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      poolWeights: (0, _helpers.isSet)(object.poolWeights) ? _protorev.PoolWeights.fromJSON(object.poolWeights) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin3;
     var message = createBaseMsgSetPoolWeights();
@@ -311,6 +337,9 @@ var MsgSetPoolWeightsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSetPoolWeightsResponse();
@@ -355,6 +384,12 @@ var MsgSetMaxPoolPointsPerTx = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      maxPoolPointsPerTx: (0, _helpers.isSet)(object.maxPoolPointsPerTx) ? _helpers.Long.fromValue(object.maxPoolPointsPerTx) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin4;
     var message = createBaseMsgSetMaxPoolPointsPerTx();
@@ -385,6 +420,9 @@ var MsgSetMaxPoolPointsPerTxResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSetMaxPoolPointsPerTxResponse();
@@ -429,6 +467,12 @@ var MsgSetMaxPoolPointsPerBlock = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      maxPoolPointsPerBlock: (0, _helpers.isSet)(object.maxPoolPointsPerBlock) ? _helpers.Long.fromValue(object.maxPoolPointsPerBlock) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin5;
     var message = createBaseMsgSetMaxPoolPointsPerBlock();
@@ -459,6 +503,9 @@ var MsgSetMaxPoolPointsPerBlockResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSetMaxPoolPointsPerBlockResponse();
@@ -512,6 +559,14 @@ var MsgSetBaseDenoms = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      baseDenoms: Array.isArray(object === null || object === void 0 ? void 0 : object.baseDenoms) ? object.baseDenoms.map(function (e) {
+        return _protorev.BaseDenom.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin6, _object$baseDenoms;
     var message = createBaseMsgSetBaseDenoms();
@@ -544,6 +599,9 @@ var MsgSetBaseDenomsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgSetBaseDenomsResponse();

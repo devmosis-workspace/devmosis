@@ -58,6 +58,13 @@ var GenesisState = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      minter: (0, _helpers.isSet)(object.minter) ? _mint.Minter.fromJSON(object.minter) : undefined,
+      params: (0, _helpers.isSet)(object.params) ? _mint.Params.fromJSON(object.params) : undefined,
+      reductionStartedEpoch: (0, _helpers.isSet)(object.reductionStartedEpoch) ? _helpers.Long.fromValue(object.reductionStartedEpoch) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseGenesisState();
     message.minter = object.minter !== undefined && object.minter !== null ? _mint.Minter.fromPartial(object.minter) : undefined;

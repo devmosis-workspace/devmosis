@@ -125,6 +125,22 @@ var Gauge = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      id: (0, _helpers.isSet)(object.id) ? _helpers.Long.fromValue(object.id) : _helpers.Long.UZERO,
+      isPerpetual: (0, _helpers.isSet)(object.isPerpetual) ? Boolean(object.isPerpetual) : false,
+      distributeTo: (0, _helpers.isSet)(object.distributeTo) ? _lock.QueryCondition.fromJSON(object.distributeTo) : undefined,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      startTime: (0, _helpers.isSet)(object.startTime) ? (0, _helpers.fromJsonTimestamp)(object.startTime) : undefined,
+      numEpochsPaidOver: (0, _helpers.isSet)(object.numEpochsPaidOver) ? _helpers.Long.fromValue(object.numEpochsPaidOver) : _helpers.Long.UZERO,
+      filledEpochs: (0, _helpers.isSet)(object.filledEpochs) ? _helpers.Long.fromValue(object.filledEpochs) : _helpers.Long.UZERO,
+      distributedCoins: Array.isArray(object === null || object === void 0 ? void 0 : object.distributedCoins) ? object.distributedCoins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$isPerpetual, _object$coins, _object$startTime, _object$distributedCo;
     var message = createBaseGauge();
@@ -182,6 +198,13 @@ var LockableDurationsInfo = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      lockableDurations: Array.isArray(object === null || object === void 0 ? void 0 : object.lockableDurations) ? object.lockableDurations.map(function (e) {
+        return _duration.Duration.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$lockableDurat;

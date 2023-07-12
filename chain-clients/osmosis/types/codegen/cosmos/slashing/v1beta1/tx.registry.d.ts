@@ -15,6 +15,12 @@ export declare const MessageComposer: {
             value: MsgUnjail;
         };
     };
+    fromJSON: {
+        unjail(value: any): {
+            typeUrl: string;
+            value: MsgUnjail;
+        };
+    };
     fromPartial: {
         unjail(value: MsgUnjail): {
             typeUrl: string;

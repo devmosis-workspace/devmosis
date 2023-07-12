@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * Coin defines a token with a denomination and an amount.
  * 
@@ -71,6 +72,12 @@ export const Coin = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      amount: isSet(object.amount) ? String(object.amount) : ""
+    };
+  },
   fromPartial(object) {
     var _object$denom, _object$amount;
     const message = createBaseCoin();
@@ -115,6 +122,12 @@ export const DecCoin = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      amount: isSet(object.amount) ? String(object.amount) : ""
+    };
+  },
   fromPartial(object) {
     var _object$denom2, _object$amount2;
     const message = createBaseDecCoin();
@@ -152,6 +165,11 @@ export const IntProto = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      int: isSet(object.int) ? String(object.int) : ""
+    };
+  },
   fromPartial(object) {
     var _object$int;
     const message = createBaseIntProto();
@@ -187,6 +205,11 @@ export const DecProto = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      dec: isSet(object.dec) ? String(object.dec) : ""
+    };
   },
   fromPartial(object) {
     var _object$dec;

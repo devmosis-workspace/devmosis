@@ -126,30 +126,36 @@ export interface BaseDenomSDKType {
 export declare const TokenPairArbRoutes: {
     encode(message: TokenPairArbRoutes, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TokenPairArbRoutes;
+    fromJSON(object: any): TokenPairArbRoutes;
     fromPartial(object: Partial<TokenPairArbRoutes>): TokenPairArbRoutes;
 };
 export declare const Route: {
     encode(message: Route, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Route;
+    fromJSON(object: any): Route;
     fromPartial(object: Partial<Route>): Route;
 };
 export declare const Trade: {
     encode(message: Trade, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Trade;
+    fromJSON(object: any): Trade;
     fromPartial(object: Partial<Trade>): Trade;
 };
 export declare const RouteStatistics: {
     encode(message: RouteStatistics, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RouteStatistics;
+    fromJSON(object: any): RouteStatistics;
     fromPartial(object: Partial<RouteStatistics>): RouteStatistics;
 };
 export declare const PoolWeights: {
     encode(message: PoolWeights, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PoolWeights;
+    fromJSON(object: any): PoolWeights;
     fromPartial(object: Partial<PoolWeights>): PoolWeights;
 };
 export declare const BaseDenom: {
     encode(message: BaseDenom, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BaseDenom;
+    fromJSON(object: any): BaseDenom;
     fromPartial(object: Partial<BaseDenom>): BaseDenom;
 };

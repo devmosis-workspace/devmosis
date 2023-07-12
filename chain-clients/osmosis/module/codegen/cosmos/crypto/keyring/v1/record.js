@@ -1,6 +1,7 @@
 import { Any } from "../../../../google/protobuf/any";
 import { BIP44Params } from "../../hd/v1/hd";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../../helpers";
 /** Record is used for representing a key in the keyring. */
 
 /** Record is used for representing a key in the keyring. */
@@ -91,6 +92,16 @@ export const Record = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      pubKey: isSet(object.pubKey) ? Any.fromJSON(object.pubKey) : undefined,
+      local: isSet(object.local) ? Record_Local.fromJSON(object.local) : undefined,
+      ledger: isSet(object.ledger) ? Record_Ledger.fromJSON(object.ledger) : undefined,
+      multi: isSet(object.multi) ? Record_Multi.fromJSON(object.multi) : undefined,
+      offline: isSet(object.offline) ? Record_Offline.fromJSON(object.offline) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$name;
     const message = createBaseRecord();
@@ -132,6 +143,11 @@ export const Record_Local = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      privKey: isSet(object.privKey) ? Any.fromJSON(object.privKey) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseRecord_Local();
     message.privKey = object.privKey !== undefined && object.privKey !== null ? Any.fromPartial(object.privKey) : undefined;
@@ -167,6 +183,11 @@ export const Record_Ledger = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      path: isSet(object.path) ? BIP44Params.fromJSON(object.path) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseRecord_Ledger();
     message.path = object.path !== undefined && object.path !== null ? BIP44Params.fromPartial(object.path) : undefined;
@@ -194,6 +215,9 @@ export const Record_Multi = {
     }
     return message;
   },
+  fromJSON(_) {
+    return {};
+  },
   fromPartial(_) {
     const message = createBaseRecord_Multi();
     return message;
@@ -219,6 +243,9 @@ export const Record_Offline = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseRecord_Offline();

@@ -90,50 +90,60 @@ export interface ParamsResponseSDKType {
 export declare const ArithmeticTwapRequest: {
     encode(message: ArithmeticTwapRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapRequest;
+    fromJSON(object: any): ArithmeticTwapRequest;
     fromPartial(object: Partial<ArithmeticTwapRequest>): ArithmeticTwapRequest;
 };
 export declare const ArithmeticTwapResponse: {
     encode(message: ArithmeticTwapResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapResponse;
+    fromJSON(object: any): ArithmeticTwapResponse;
     fromPartial(object: Partial<ArithmeticTwapResponse>): ArithmeticTwapResponse;
 };
 export declare const ArithmeticTwapToNowRequest: {
     encode(message: ArithmeticTwapToNowRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowRequest;
+    fromJSON(object: any): ArithmeticTwapToNowRequest;
     fromPartial(object: Partial<ArithmeticTwapToNowRequest>): ArithmeticTwapToNowRequest;
 };
 export declare const ArithmeticTwapToNowResponse: {
     encode(message: ArithmeticTwapToNowResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArithmeticTwapToNowResponse;
+    fromJSON(object: any): ArithmeticTwapToNowResponse;
     fromPartial(object: Partial<ArithmeticTwapToNowResponse>): ArithmeticTwapToNowResponse;
 };
 export declare const GeometricTwapRequest: {
     encode(message: GeometricTwapRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapRequest;
+    fromJSON(object: any): GeometricTwapRequest;
     fromPartial(object: Partial<GeometricTwapRequest>): GeometricTwapRequest;
 };
 export declare const GeometricTwapResponse: {
     encode(message: GeometricTwapResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapResponse;
+    fromJSON(object: any): GeometricTwapResponse;
     fromPartial(object: Partial<GeometricTwapResponse>): GeometricTwapResponse;
 };
 export declare const GeometricTwapToNowRequest: {
     encode(message: GeometricTwapToNowRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapToNowRequest;
+    fromJSON(object: any): GeometricTwapToNowRequest;
     fromPartial(object: Partial<GeometricTwapToNowRequest>): GeometricTwapToNowRequest;
 };
 export declare const GeometricTwapToNowResponse: {
     encode(message: GeometricTwapToNowResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GeometricTwapToNowResponse;
+    fromJSON(object: any): GeometricTwapToNowResponse;
     fromPartial(object: Partial<GeometricTwapToNowResponse>): GeometricTwapToNowResponse;
 };
 export declare const ParamsRequest: {
     encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
+    fromJSON(_: any): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
 };
 export declare const ParamsResponse: {
     encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
+    fromJSON(object: any): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;
 };

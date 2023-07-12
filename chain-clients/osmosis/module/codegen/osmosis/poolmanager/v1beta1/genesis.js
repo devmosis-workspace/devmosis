@@ -1,6 +1,6 @@
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
 import { ModuleRoute } from "./module_route";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** Params holds parameters for the poolmanager module */
 
@@ -38,6 +38,11 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      poolCreationFee: Array.isArray(object === null || object === void 0 ? void 0 : object.poolCreationFee) ? object.poolCreationFee.map(e => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$poolCreationF;
@@ -88,6 +93,13 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      nextPoolId: isSet(object.nextPoolId) ? Long.fromValue(object.nextPoolId) : Long.UZERO,
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      poolRoutes: Array.isArray(object === null || object === void 0 ? void 0 : object.poolRoutes) ? object.poolRoutes.map(e => ModuleRoute.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$poolRoutes;

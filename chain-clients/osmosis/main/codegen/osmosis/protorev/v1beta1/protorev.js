@@ -116,6 +116,15 @@ var TokenPairArbRoutes = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      arbRoutes: Array.isArray(object === null || object === void 0 ? void 0 : object.arbRoutes) ? object.arbRoutes.map(function (e) {
+        return Route.fromJSON(e);
+      }) : [],
+      tokenIn: (0, _helpers.isSet)(object.tokenIn) ? String(object.tokenIn) : "",
+      tokenOut: (0, _helpers.isSet)(object.tokenOut) ? String(object.tokenOut) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$arbRoutes, _object$tokenIn, _object$tokenOut;
     var message = createBaseTokenPairArbRoutes();
@@ -174,6 +183,14 @@ var Route = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      trades: Array.isArray(object === null || object === void 0 ? void 0 : object.trades) ? object.trades.map(function (e) {
+        return Trade.fromJSON(e);
+      }) : [],
+      stepSize: (0, _helpers.isSet)(object.stepSize) ? String(object.stepSize) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$trades, _object$stepSize;
     var message = createBaseRoute();
@@ -228,6 +245,13 @@ var Trade = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      pool: (0, _helpers.isSet)(object.pool) ? _helpers.Long.fromValue(object.pool) : _helpers.Long.UZERO,
+      tokenIn: (0, _helpers.isSet)(object.tokenIn) ? String(object.tokenIn) : "",
+      tokenOut: (0, _helpers.isSet)(object.tokenOut) ? String(object.tokenOut) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$tokenIn2, _object$tokenOut2;
@@ -310,6 +334,17 @@ var RouteStatistics = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      profits: Array.isArray(object === null || object === void 0 ? void 0 : object.profits) ? object.profits.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      numberOfTrades: (0, _helpers.isSet)(object.numberOfTrades) ? String(object.numberOfTrades) : "",
+      route: Array.isArray(object === null || object === void 0 ? void 0 : object.route) ? object.route.map(function (e) {
+        return _helpers.Long.fromValue(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$profits, _object$numberOfTrade, _object$route;
     var message = createBaseRouteStatistics();
@@ -368,6 +403,13 @@ var PoolWeights = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      stableWeight: (0, _helpers.isSet)(object.stableWeight) ? _helpers.Long.fromValue(object.stableWeight) : _helpers.Long.UZERO,
+      balancerWeight: (0, _helpers.isSet)(object.balancerWeight) ? _helpers.Long.fromValue(object.balancerWeight) : _helpers.Long.UZERO,
+      concentratedWeight: (0, _helpers.isSet)(object.concentratedWeight) ? _helpers.Long.fromValue(object.concentratedWeight) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBasePoolWeights();
     message.stableWeight = object.stableWeight !== undefined && object.stableWeight !== null ? _helpers.Long.fromValue(object.stableWeight) : _helpers.Long.UZERO;
@@ -413,6 +455,12 @@ var BaseDenom = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : "",
+      stepSize: (0, _helpers.isSet)(object.stepSize) ? String(object.stepSize) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$denom, _object$stepSize2;

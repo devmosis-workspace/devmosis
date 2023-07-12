@@ -16,5 +16,6 @@ export interface BlockSDKType {
 export declare const Block: {
     encode(message: Block, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Block;
+    fromJSON(object: any): Block;
     fromPartial(object: Partial<Block>): Block;
 };

@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** ParameterChangeProposal defines a proposal to change one or more parameters. */
 export interface ParameterChangeProposal {
   title: string;
@@ -72,6 +73,13 @@ export const ParameterChangeProposal = {
     }
     return message;
   },
+  fromJSON(object: any): ParameterChangeProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      changes: Array.isArray(object?.changes) ? object.changes.map((e: any) => ParamChange.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<ParameterChangeProposal>): ParameterChangeProposal {
     const message = createBaseParameterChangeProposal();
     message.title = object.title ?? "";
@@ -122,6 +130,13 @@ export const ParamChange = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ParamChange {
+    return {
+      subspace: isSet(object.subspace) ? String(object.subspace) : "",
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value) ? String(object.value) : ""
+    };
   },
   fromPartial(object: Partial<ParamChange>): ParamChange {
     const message = createBaseParamChange();

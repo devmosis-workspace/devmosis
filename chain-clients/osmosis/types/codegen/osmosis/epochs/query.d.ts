@@ -26,20 +26,24 @@ export interface QueryCurrentEpochResponseSDKType {
 export declare const QueryEpochsInfoRequest: {
     encode(_: QueryEpochsInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoRequest;
+    fromJSON(_: any): QueryEpochsInfoRequest;
     fromPartial(_: Partial<QueryEpochsInfoRequest>): QueryEpochsInfoRequest;
 };
 export declare const QueryEpochsInfoResponse: {
     encode(message: QueryEpochsInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryEpochsInfoResponse;
+    fromJSON(object: any): QueryEpochsInfoResponse;
     fromPartial(object: Partial<QueryEpochsInfoResponse>): QueryEpochsInfoResponse;
 };
 export declare const QueryCurrentEpochRequest: {
     encode(message: QueryCurrentEpochRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochRequest;
+    fromJSON(object: any): QueryCurrentEpochRequest;
     fromPartial(object: Partial<QueryCurrentEpochRequest>): QueryCurrentEpochRequest;
 };
 export declare const QueryCurrentEpochResponse: {
     encode(message: QueryCurrentEpochResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryCurrentEpochResponse;
+    fromJSON(object: any): QueryCurrentEpochResponse;
     fromPartial(object: Partial<QueryCurrentEpochResponse>): QueryCurrentEpochResponse;
 };

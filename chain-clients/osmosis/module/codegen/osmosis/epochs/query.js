@@ -1,5 +1,5 @@
 import { EpochInfo } from "./genesis";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 function createBaseQueryEpochsInfoRequest() {
   return {};
@@ -21,6 +21,9 @@ export const QueryEpochsInfoRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryEpochsInfoRequest();
@@ -55,6 +58,11 @@ export const QueryEpochsInfoResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      epochs: Array.isArray(object === null || object === void 0 ? void 0 : object.epochs) ? object.epochs.map(e => EpochInfo.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$epochs;
@@ -92,6 +100,11 @@ export const QueryCurrentEpochRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      identifier: isSet(object.identifier) ? String(object.identifier) : ""
+    };
+  },
   fromPartial(object) {
     var _object$identifier;
     const message = createBaseQueryCurrentEpochRequest();
@@ -127,6 +140,11 @@ export const QueryCurrentEpochResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      currentEpoch: isSet(object.currentEpoch) ? Long.fromValue(object.currentEpoch) : Long.ZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryCurrentEpochResponse();

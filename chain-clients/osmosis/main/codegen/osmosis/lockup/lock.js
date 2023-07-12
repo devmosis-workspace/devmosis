@@ -164,6 +164,17 @@ var PeriodLock = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      ID: (0, _helpers.isSet)(object.ID) ? _helpers.Long.fromValue(object.ID) : _helpers.Long.UZERO,
+      owner: (0, _helpers.isSet)(object.owner) ? String(object.owner) : "",
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined,
+      endTime: (0, _helpers.isSet)(object.endTime) ? (0, _helpers.fromJsonTimestamp)(object.endTime) : undefined,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$owner, _object$endTime, _object$coins;
     var message = createBasePeriodLock();
@@ -229,6 +240,14 @@ var QueryCondition = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      lockQueryType: (0, _helpers.isSet)(object.lockQueryType) ? lockQueryTypeFromJSON(object.lockQueryType) : 0,
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : "",
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined,
+      timestamp: (0, _helpers.isSet)(object.timestamp) ? (0, _helpers.fromJsonTimestamp)(object.timestamp) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$lockQueryType, _object$denom, _object$timestamp;
     var message = createBaseQueryCondition();
@@ -290,6 +309,14 @@ var SyntheticLock = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      underlyingLockId: (0, _helpers.isSet)(object.underlyingLockId) ? _helpers.Long.fromValue(object.underlyingLockId) : _helpers.Long.UZERO,
+      synthDenom: (0, _helpers.isSet)(object.synthDenom) ? String(object.synthDenom) : "",
+      endTime: (0, _helpers.isSet)(object.endTime) ? (0, _helpers.fromJsonTimestamp)(object.endTime) : undefined,
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$synthDenom, _object$endTime2;

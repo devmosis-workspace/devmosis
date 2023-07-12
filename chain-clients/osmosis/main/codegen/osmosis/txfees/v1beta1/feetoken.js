@@ -60,6 +60,12 @@ var FeeToken = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      denom: (0, _helpers.isSet)(object.denom) ? String(object.denom) : "",
+      poolID: (0, _helpers.isSet)(object.poolID) ? _helpers.Long.fromValue(object.poolID) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$denom;
     var message = createBaseFeeToken();

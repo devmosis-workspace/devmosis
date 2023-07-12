@@ -23,6 +23,16 @@ export declare const MessageComposer: {
             value: MsgSwapExactAmountOut;
         };
     };
+    fromJSON: {
+        swapExactAmountIn(value: any): {
+            typeUrl: string;
+            value: MsgSwapExactAmountIn;
+        };
+        swapExactAmountOut(value: any): {
+            typeUrl: string;
+            value: MsgSwapExactAmountOut;
+        };
+    };
     fromPartial: {
         swapExactAmountIn(value: MsgSwapExactAmountIn): {
             typeUrl: string;

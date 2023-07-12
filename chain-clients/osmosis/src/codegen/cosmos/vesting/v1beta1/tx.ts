@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import { Period, PeriodSDKType } from "./vesting";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * MsgCreateVestingAccount defines a message that enables creating a vesting
@@ -157,6 +157,15 @@ export const MsgCreateVestingAccount = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCreateVestingAccount {
+    return {
+      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : [],
+      endTime: isSet(object.endTime) ? Long.fromValue(object.endTime) : Long.ZERO,
+      delayed: isSet(object.delayed) ? Boolean(object.delayed) : false
+    };
+  },
   fromPartial(object: Partial<MsgCreateVestingAccount>): MsgCreateVestingAccount {
     const message = createBaseMsgCreateVestingAccount();
     message.fromAddress = object.fromAddress ?? "";
@@ -187,6 +196,9 @@ export const MsgCreateVestingAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgCreateVestingAccountResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgCreateVestingAccountResponse>): MsgCreateVestingAccountResponse {
     const message = createBaseMsgCreateVestingAccountResponse();
@@ -236,6 +248,13 @@ export const MsgCreatePermanentLockedAccount = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCreatePermanentLockedAccount {
+    return {
+      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
+      amount: Array.isArray(object?.amount) ? object.amount.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgCreatePermanentLockedAccount>): MsgCreatePermanentLockedAccount {
     const message = createBaseMsgCreatePermanentLockedAccount();
     message.fromAddress = object.fromAddress ?? "";
@@ -264,6 +283,9 @@ export const MsgCreatePermanentLockedAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgCreatePermanentLockedAccountResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgCreatePermanentLockedAccountResponse>): MsgCreatePermanentLockedAccountResponse {
     const message = createBaseMsgCreatePermanentLockedAccountResponse();
@@ -320,6 +342,14 @@ export const MsgCreatePeriodicVestingAccount = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCreatePeriodicVestingAccount {
+    return {
+      fromAddress: isSet(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: isSet(object.toAddress) ? String(object.toAddress) : "",
+      startTime: isSet(object.startTime) ? Long.fromValue(object.startTime) : Long.ZERO,
+      vestingPeriods: Array.isArray(object?.vestingPeriods) ? object.vestingPeriods.map((e: any) => Period.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<MsgCreatePeriodicVestingAccount>): MsgCreatePeriodicVestingAccount {
     const message = createBaseMsgCreatePeriodicVestingAccount();
     message.fromAddress = object.fromAddress ?? "";
@@ -349,6 +379,9 @@ export const MsgCreatePeriodicVestingAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgCreatePeriodicVestingAccountResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgCreatePeriodicVestingAccountResponse>): MsgCreatePeriodicVestingAccountResponse {
     const message = createBaseMsgCreatePeriodicVestingAccountResponse();

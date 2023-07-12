@@ -26,6 +26,7 @@ telescope({
       methods: {
         encode: true,
         decode: true,
+        fromJSON: true,
         fromPartial: true,
       }
     },

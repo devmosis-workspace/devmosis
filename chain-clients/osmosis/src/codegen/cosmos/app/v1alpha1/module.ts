@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** ModuleDescriptor describes an app module. */
 export interface ModuleDescriptor {
   /**
@@ -140,6 +141,13 @@ export const ModuleDescriptor = {
     }
     return message;
   },
+  fromJSON(object: any): ModuleDescriptor {
+    return {
+      goImport: isSet(object.goImport) ? String(object.goImport) : "",
+      usePackage: Array.isArray(object?.usePackage) ? object.usePackage.map((e: any) => PackageReference.fromJSON(e)) : [],
+      canMigrateFrom: Array.isArray(object?.canMigrateFrom) ? object.canMigrateFrom.map((e: any) => MigrateFromInfo.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<ModuleDescriptor>): ModuleDescriptor {
     const message = createBaseModuleDescriptor();
     message.goImport = object.goImport ?? "";
@@ -184,6 +192,12 @@ export const PackageReference = {
     }
     return message;
   },
+  fromJSON(object: any): PackageReference {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      revision: isSet(object.revision) ? Number(object.revision) : 0
+    };
+  },
   fromPartial(object: Partial<PackageReference>): PackageReference {
     const message = createBasePackageReference();
     message.name = object.name ?? "";
@@ -219,6 +233,11 @@ export const MigrateFromInfo = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MigrateFromInfo {
+    return {
+      module: isSet(object.module) ? String(object.module) : ""
+    };
   },
   fromPartial(object: Partial<MigrateFromInfo>): MigrateFromInfo {
     const message = createBaseMigrateFromInfo();

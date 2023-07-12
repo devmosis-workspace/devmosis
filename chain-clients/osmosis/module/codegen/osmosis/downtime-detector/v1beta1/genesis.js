@@ -1,6 +1,7 @@
+import { downtimeFromJSON } from "./downtime_duration";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 
 /** GenesisState defines the twap module's genesis state. */
 
@@ -41,6 +42,12 @@ export const GenesisDowntimeEntry = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      duration: isSet(object.duration) ? downtimeFromJSON(object.duration) : 0,
+      lastDowntime: isSet(object.lastDowntime) ? fromJsonTimestamp(object.lastDowntime) : undefined
+    };
   },
   fromPartial(object) {
     var _object$duration, _object$lastDowntime;
@@ -85,6 +92,12 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      downtimes: Array.isArray(object === null || object === void 0 ? void 0 : object.downtimes) ? object.downtimes.map(e => GenesisDowntimeEntry.fromJSON(e)) : [],
+      lastBlockTime: isSet(object.lastBlockTime) ? fromJsonTimestamp(object.lastBlockTime) : undefined
+    };
   },
   fromPartial(object) {
     var _object$downtimes, _object$lastBlockTime;

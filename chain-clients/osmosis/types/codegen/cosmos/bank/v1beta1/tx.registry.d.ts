@@ -23,6 +23,16 @@ export declare const MessageComposer: {
             value: MsgMultiSend;
         };
     };
+    fromJSON: {
+        send(value: any): {
+            typeUrl: string;
+            value: MsgSend;
+        };
+        multiSend(value: any): {
+            typeUrl: string;
+            value: MsgMultiSend;
+        };
+    };
     fromPartial: {
         send(value: MsgSend): {
             typeUrl: string;

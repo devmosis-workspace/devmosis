@@ -327,6 +327,14 @@ var Member = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      weight: (0, _helpers.isSet)(object.weight) ? String(object.weight) : "",
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : "",
+      addedAt: (0, _helpers.isSet)(object.addedAt) ? (0, _helpers.fromJsonTimestamp)(object.addedAt) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address, _object$weight, _object$metadata, _object$addedAt;
     var message = createBaseMember();
@@ -382,6 +390,13 @@ var MemberRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      weight: (0, _helpers.isSet)(object.weight) ? String(object.weight) : "",
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address2, _object$weight2, _object$metadata2;
     var message = createBaseMemberRequest();
@@ -429,6 +444,12 @@ var ThresholdDecisionPolicy = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      threshold: (0, _helpers.isSet)(object.threshold) ? String(object.threshold) : "",
+      windows: (0, _helpers.isSet)(object.windows) ? DecisionPolicyWindows.fromJSON(object.windows) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$threshold;
     var message = createBaseThresholdDecisionPolicy();
@@ -475,6 +496,12 @@ var PercentageDecisionPolicy = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      percentage: (0, _helpers.isSet)(object.percentage) ? String(object.percentage) : "",
+      windows: (0, _helpers.isSet)(object.windows) ? DecisionPolicyWindows.fromJSON(object.windows) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$percentage;
     var message = createBasePercentageDecisionPolicy();
@@ -520,6 +547,12 @@ var DecisionPolicyWindows = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      votingPeriod: (0, _helpers.isSet)(object.votingPeriod) ? _duration.Duration.fromJSON(object.votingPeriod) : undefined,
+      minExecutionPeriod: (0, _helpers.isSet)(object.minExecutionPeriod) ? _duration.Duration.fromJSON(object.minExecutionPeriod) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseDecisionPolicyWindows();
@@ -594,6 +627,16 @@ var GroupInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      id: (0, _helpers.isSet)(object.id) ? _helpers.Long.fromValue(object.id) : _helpers.Long.UZERO,
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : "",
+      version: (0, _helpers.isSet)(object.version) ? _helpers.Long.fromValue(object.version) : _helpers.Long.UZERO,
+      totalWeight: (0, _helpers.isSet)(object.totalWeight) ? String(object.totalWeight) : "",
+      createdAt: (0, _helpers.isSet)(object.createdAt) ? (0, _helpers.fromJsonTimestamp)(object.createdAt) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$admin, _object$metadata3, _object$totalWeight, _object$createdAt;
     var message = createBaseGroupInfo();
@@ -643,6 +686,12 @@ var GroupMember = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO,
+      member: (0, _helpers.isSet)(object.member) ? Member.fromJSON(object.member) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseGroupMember();
@@ -723,6 +772,17 @@ var GroupPolicyInfo = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      groupId: (0, _helpers.isSet)(object.groupId) ? _helpers.Long.fromValue(object.groupId) : _helpers.Long.UZERO,
+      admin: (0, _helpers.isSet)(object.admin) ? String(object.admin) : "",
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : "",
+      version: (0, _helpers.isSet)(object.version) ? _helpers.Long.fromValue(object.version) : _helpers.Long.UZERO,
+      decisionPolicy: (0, _helpers.isSet)(object.decisionPolicy) ? _any.Any.fromJSON(object.decisionPolicy) : undefined,
+      createdAt: (0, _helpers.isSet)(object.createdAt) ? (0, _helpers.fromJsonTimestamp)(object.createdAt) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address3, _object$admin2, _object$metadata4, _object$createdAt2;
@@ -863,6 +923,26 @@ var Proposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      id: (0, _helpers.isSet)(object.id) ? _helpers.Long.fromValue(object.id) : _helpers.Long.UZERO,
+      groupPolicyAddress: (0, _helpers.isSet)(object.groupPolicyAddress) ? String(object.groupPolicyAddress) : "",
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : "",
+      proposers: Array.isArray(object === null || object === void 0 ? void 0 : object.proposers) ? object.proposers.map(function (e) {
+        return String(e);
+      }) : [],
+      submitTime: (0, _helpers.isSet)(object.submitTime) ? (0, _helpers.fromJsonTimestamp)(object.submitTime) : undefined,
+      groupVersion: (0, _helpers.isSet)(object.groupVersion) ? _helpers.Long.fromValue(object.groupVersion) : _helpers.Long.UZERO,
+      groupPolicyVersion: (0, _helpers.isSet)(object.groupPolicyVersion) ? _helpers.Long.fromValue(object.groupPolicyVersion) : _helpers.Long.UZERO,
+      status: (0, _helpers.isSet)(object.status) ? proposalStatusFromJSON(object.status) : 0,
+      finalTallyResult: (0, _helpers.isSet)(object.finalTallyResult) ? TallyResult.fromJSON(object.finalTallyResult) : undefined,
+      votingPeriodEnd: (0, _helpers.isSet)(object.votingPeriodEnd) ? (0, _helpers.fromJsonTimestamp)(object.votingPeriodEnd) : undefined,
+      executorResult: (0, _helpers.isSet)(object.executorResult) ? proposalExecutorResultFromJSON(object.executorResult) : 0,
+      messages: Array.isArray(object === null || object === void 0 ? void 0 : object.messages) ? object.messages.map(function (e) {
+        return _any.Any.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$groupPolicyAd, _object$metadata5, _object$proposers, _object$submitTime, _object$status, _object$votingPeriodE, _object$executorResul, _object$messages;
     var message = createBaseProposal();
@@ -937,6 +1017,14 @@ var TallyResult = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      yesCount: (0, _helpers.isSet)(object.yesCount) ? String(object.yesCount) : "",
+      abstainCount: (0, _helpers.isSet)(object.abstainCount) ? String(object.abstainCount) : "",
+      noCount: (0, _helpers.isSet)(object.noCount) ? String(object.noCount) : "",
+      noWithVetoCount: (0, _helpers.isSet)(object.noWithVetoCount) ? String(object.noWithVetoCount) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$yesCount, _object$abstainCount, _object$noCount, _object$noWithVetoCou;
     var message = createBaseTallyResult();
@@ -1005,6 +1093,15 @@ var Vote = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      voter: (0, _helpers.isSet)(object.voter) ? String(object.voter) : "",
+      option: (0, _helpers.isSet)(object.option) ? voteOptionFromJSON(object.option) : 0,
+      metadata: (0, _helpers.isSet)(object.metadata) ? String(object.metadata) : "",
+      submitTime: (0, _helpers.isSet)(object.submitTime) ? (0, _helpers.fromJsonTimestamp)(object.submitTime) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$voter, _object$option, _object$metadata6, _object$submitTime2;

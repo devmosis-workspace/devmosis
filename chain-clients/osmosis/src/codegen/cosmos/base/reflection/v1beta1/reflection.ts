@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../../helpers";
 /** ListAllInterfacesRequest is the request type of the ListAllInterfaces RPC. */
 export interface ListAllInterfacesRequest {}
 /** ListAllInterfacesRequest is the request type of the ListAllInterfaces RPC. */
@@ -62,6 +63,9 @@ export const ListAllInterfacesRequest = {
     }
     return message;
   },
+  fromJSON(_: any): ListAllInterfacesRequest {
+    return {};
+  },
   fromPartial(_: Partial<ListAllInterfacesRequest>): ListAllInterfacesRequest {
     const message = createBaseListAllInterfacesRequest();
     return message;
@@ -95,6 +99,11 @@ export const ListAllInterfacesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ListAllInterfacesResponse {
+    return {
+      interfaceNames: Array.isArray(object?.interfaceNames) ? object.interfaceNames.map((e: any) => String(e)) : []
+    };
   },
   fromPartial(object: Partial<ListAllInterfacesResponse>): ListAllInterfacesResponse {
     const message = createBaseListAllInterfacesResponse();
@@ -131,6 +140,11 @@ export const ListImplementationsRequest = {
     }
     return message;
   },
+  fromJSON(object: any): ListImplementationsRequest {
+    return {
+      interfaceName: isSet(object.interfaceName) ? String(object.interfaceName) : ""
+    };
+  },
   fromPartial(object: Partial<ListImplementationsRequest>): ListImplementationsRequest {
     const message = createBaseListImplementationsRequest();
     message.interfaceName = object.interfaceName ?? "";
@@ -165,6 +179,11 @@ export const ListImplementationsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ListImplementationsResponse {
+    return {
+      implementationMessageNames: Array.isArray(object?.implementationMessageNames) ? object.implementationMessageNames.map((e: any) => String(e)) : []
+    };
   },
   fromPartial(object: Partial<ListImplementationsResponse>): ListImplementationsResponse {
     const message = createBaseListImplementationsResponse();

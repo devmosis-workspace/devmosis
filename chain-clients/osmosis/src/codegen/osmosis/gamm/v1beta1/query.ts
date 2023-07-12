@@ -2,7 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Coin, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
 import { SwapAmountInRoute, SwapAmountInRouteSDKType, SwapAmountOutRoute, SwapAmountOutRouteSDKType } from "../../poolmanager/v1beta1/swap_route";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** =============================== Pool */
 export interface QueryPoolRequest {
@@ -303,6 +303,11 @@ export const QueryPoolRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryPoolRequest {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<QueryPoolRequest>): QueryPoolRequest {
     const message = createBaseQueryPoolRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -338,6 +343,11 @@ export const QueryPoolResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryPoolResponse {
+    return {
+      pool: isSet(object.pool) ? Any.fromJSON(object.pool) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryPoolResponse>): QueryPoolResponse {
     const message = createBaseQueryPoolResponse();
     message.pool = object.pool !== undefined && object.pool !== null ? Any.fromPartial(object.pool) : undefined;
@@ -372,6 +382,11 @@ export const QueryPoolsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryPoolsRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object: Partial<QueryPoolsRequest>): QueryPoolsRequest {
     const message = createBaseQueryPoolsRequest();
@@ -415,6 +430,12 @@ export const QueryPoolsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryPoolsResponse {
+    return {
+      pools: Array.isArray(object?.pools) ? object.pools.map((e: any) => Any.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryPoolsResponse>): QueryPoolsResponse {
     const message = createBaseQueryPoolsResponse();
     message.pools = object.pools?.map(e => Any.fromPartial(e)) || [];
@@ -442,6 +463,9 @@ export const QueryNumPoolsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryNumPoolsRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryNumPoolsRequest>): QueryNumPoolsRequest {
     const message = createBaseQueryNumPoolsRequest();
@@ -476,6 +500,11 @@ export const QueryNumPoolsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryNumPoolsResponse {
+    return {
+      numPools: isSet(object.numPools) ? Long.fromValue(object.numPools) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<QueryNumPoolsResponse>): QueryNumPoolsResponse {
     const message = createBaseQueryNumPoolsResponse();
@@ -512,6 +541,11 @@ export const QueryPoolTypeRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryPoolTypeRequest {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<QueryPoolTypeRequest>): QueryPoolTypeRequest {
     const message = createBaseQueryPoolTypeRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -546,6 +580,11 @@ export const QueryPoolTypeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryPoolTypeResponse {
+    return {
+      poolType: isSet(object.poolType) ? String(object.poolType) : ""
+    };
   },
   fromPartial(object: Partial<QueryPoolTypeResponse>): QueryPoolTypeResponse {
     const message = createBaseQueryPoolTypeResponse();
@@ -588,6 +627,12 @@ export const QueryCalcJoinPoolSharesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryCalcJoinPoolSharesRequest {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      tokensIn: Array.isArray(object?.tokensIn) ? object.tokensIn.map((e: any) => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<QueryCalcJoinPoolSharesRequest>): QueryCalcJoinPoolSharesRequest {
     const message = createBaseQueryCalcJoinPoolSharesRequest();
@@ -632,6 +677,12 @@ export const QueryCalcJoinPoolSharesResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryCalcJoinPoolSharesResponse {
+    return {
+      shareOutAmount: isSet(object.shareOutAmount) ? String(object.shareOutAmount) : "",
+      tokensOut: Array.isArray(object?.tokensOut) ? object.tokensOut.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<QueryCalcJoinPoolSharesResponse>): QueryCalcJoinPoolSharesResponse {
     const message = createBaseQueryCalcJoinPoolSharesResponse();
     message.shareOutAmount = object.shareOutAmount ?? "";
@@ -675,6 +726,12 @@ export const QueryCalcExitPoolCoinsFromSharesRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryCalcExitPoolCoinsFromSharesRequest {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      shareInAmount: isSet(object.shareInAmount) ? String(object.shareInAmount) : ""
+    };
+  },
   fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesRequest>): QueryCalcExitPoolCoinsFromSharesRequest {
     const message = createBaseQueryCalcExitPoolCoinsFromSharesRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -711,6 +768,11 @@ export const QueryCalcExitPoolCoinsFromSharesResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryCalcExitPoolCoinsFromSharesResponse {
+    return {
+      tokensOut: Array.isArray(object?.tokensOut) ? object.tokensOut.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<QueryCalcExitPoolCoinsFromSharesResponse>): QueryCalcExitPoolCoinsFromSharesResponse {
     const message = createBaseQueryCalcExitPoolCoinsFromSharesResponse();
     message.tokensOut = object.tokensOut?.map(e => Coin.fromPartial(e)) || [];
@@ -745,6 +807,11 @@ export const QueryPoolParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryPoolParamsRequest {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<QueryPoolParamsRequest>): QueryPoolParamsRequest {
     const message = createBaseQueryPoolParamsRequest();
@@ -781,6 +848,11 @@ export const QueryPoolParamsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryPoolParamsResponse {
+    return {
+      params: isSet(object.params) ? Any.fromJSON(object.params) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryPoolParamsResponse>): QueryPoolParamsResponse {
     const message = createBaseQueryPoolParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Any.fromPartial(object.params) : undefined;
@@ -815,6 +887,11 @@ export const QueryTotalPoolLiquidityRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryTotalPoolLiquidityRequest {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<QueryTotalPoolLiquidityRequest>): QueryTotalPoolLiquidityRequest {
     const message = createBaseQueryTotalPoolLiquidityRequest();
@@ -851,6 +928,11 @@ export const QueryTotalPoolLiquidityResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryTotalPoolLiquidityResponse {
+    return {
+      liquidity: Array.isArray(object?.liquidity) ? object.liquidity.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<QueryTotalPoolLiquidityResponse>): QueryTotalPoolLiquidityResponse {
     const message = createBaseQueryTotalPoolLiquidityResponse();
     message.liquidity = object.liquidity?.map(e => Coin.fromPartial(e)) || [];
@@ -886,6 +968,11 @@ export const QueryTotalSharesRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryTotalSharesRequest {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
+  },
   fromPartial(object: Partial<QueryTotalSharesRequest>): QueryTotalSharesRequest {
     const message = createBaseQueryTotalSharesRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -920,6 +1007,11 @@ export const QueryTotalSharesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryTotalSharesResponse {
+    return {
+      totalShares: isSet(object.totalShares) ? Coin.fromJSON(object.totalShares) : undefined
+    };
   },
   fromPartial(object: Partial<QueryTotalSharesResponse>): QueryTotalSharesResponse {
     const message = createBaseQueryTotalSharesResponse();
@@ -963,6 +1055,12 @@ export const QueryCalcJoinPoolNoSwapSharesRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryCalcJoinPoolNoSwapSharesRequest {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      tokensIn: Array.isArray(object?.tokensIn) ? object.tokensIn.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesRequest>): QueryCalcJoinPoolNoSwapSharesRequest {
     const message = createBaseQueryCalcJoinPoolNoSwapSharesRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -1005,6 +1103,12 @@ export const QueryCalcJoinPoolNoSwapSharesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryCalcJoinPoolNoSwapSharesResponse {
+    return {
+      tokensOut: Array.isArray(object?.tokensOut) ? object.tokensOut.map((e: any) => Coin.fromJSON(e)) : [],
+      sharesOut: isSet(object.sharesOut) ? String(object.sharesOut) : ""
+    };
   },
   fromPartial(object: Partial<QueryCalcJoinPoolNoSwapSharesResponse>): QueryCalcJoinPoolNoSwapSharesResponse {
     const message = createBaseQueryCalcJoinPoolNoSwapSharesResponse();
@@ -1055,6 +1159,13 @@ export const QuerySpotPriceRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QuerySpotPriceRequest {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      baseAssetDenom: isSet(object.baseAssetDenom) ? String(object.baseAssetDenom) : "",
+      quoteAssetDenom: isSet(object.quoteAssetDenom) ? String(object.quoteAssetDenom) : ""
+    };
   },
   fromPartial(object: Partial<QuerySpotPriceRequest>): QuerySpotPriceRequest {
     const message = createBaseQuerySpotPriceRequest();
@@ -1107,6 +1218,13 @@ export const QueryPoolsWithFilterRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryPoolsWithFilterRequest {
+    return {
+      minLiquidity: isSet(object.minLiquidity) ? String(object.minLiquidity) : "",
+      poolType: isSet(object.poolType) ? String(object.poolType) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryPoolsWithFilterRequest>): QueryPoolsWithFilterRequest {
     const message = createBaseQueryPoolsWithFilterRequest();
     message.minLiquidity = object.minLiquidity ?? "";
@@ -1151,6 +1269,12 @@ export const QueryPoolsWithFilterResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryPoolsWithFilterResponse {
+    return {
+      pools: Array.isArray(object?.pools) ? object.pools.map((e: any) => Any.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryPoolsWithFilterResponse>): QueryPoolsWithFilterResponse {
     const message = createBaseQueryPoolsWithFilterResponse();
     message.pools = object.pools?.map(e => Any.fromPartial(e)) || [];
@@ -1186,6 +1310,11 @@ export const QuerySpotPriceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QuerySpotPriceResponse {
+    return {
+      spotPrice: isSet(object.spotPrice) ? String(object.spotPrice) : ""
+    };
   },
   fromPartial(object: Partial<QuerySpotPriceResponse>): QuerySpotPriceResponse {
     const message = createBaseQuerySpotPriceResponse();
@@ -1243,6 +1372,14 @@ export const QuerySwapExactAmountInRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QuerySwapExactAmountInRequest {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountInRoute.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<QuerySwapExactAmountInRequest>): QuerySwapExactAmountInRequest {
     const message = createBaseQuerySwapExactAmountInRequest();
     message.sender = object.sender ?? "";
@@ -1280,6 +1417,11 @@ export const QuerySwapExactAmountInResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QuerySwapExactAmountInResponse {
+    return {
+      tokenOutAmount: isSet(object.tokenOutAmount) ? String(object.tokenOutAmount) : ""
+    };
   },
   fromPartial(object: Partial<QuerySwapExactAmountInResponse>): QuerySwapExactAmountInResponse {
     const message = createBaseQuerySwapExactAmountInResponse();
@@ -1337,6 +1479,14 @@ export const QuerySwapExactAmountOutRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QuerySwapExactAmountOutRequest {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      routes: Array.isArray(object?.routes) ? object.routes.map((e: any) => SwapAmountOutRoute.fromJSON(e)) : [],
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : ""
+    };
+  },
   fromPartial(object: Partial<QuerySwapExactAmountOutRequest>): QuerySwapExactAmountOutRequest {
     const message = createBaseQuerySwapExactAmountOutRequest();
     message.sender = object.sender ?? "";
@@ -1375,6 +1525,11 @@ export const QuerySwapExactAmountOutResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QuerySwapExactAmountOutResponse {
+    return {
+      tokenInAmount: isSet(object.tokenInAmount) ? String(object.tokenInAmount) : ""
+    };
+  },
   fromPartial(object: Partial<QuerySwapExactAmountOutResponse>): QuerySwapExactAmountOutResponse {
     const message = createBaseQuerySwapExactAmountOutResponse();
     message.tokenInAmount = object.tokenInAmount ?? "";
@@ -1401,6 +1556,9 @@ export const QueryTotalLiquidityRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QueryTotalLiquidityRequest {
+    return {};
   },
   fromPartial(_: Partial<QueryTotalLiquidityRequest>): QueryTotalLiquidityRequest {
     const message = createBaseQueryTotalLiquidityRequest();
@@ -1435,6 +1593,11 @@ export const QueryTotalLiquidityResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryTotalLiquidityResponse {
+    return {
+      liquidity: Array.isArray(object?.liquidity) ? object.liquidity.map((e: any) => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<QueryTotalLiquidityResponse>): QueryTotalLiquidityResponse {
     const message = createBaseQueryTotalLiquidityResponse();

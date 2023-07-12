@@ -79,30 +79,36 @@ export interface QuerySigningInfosResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    fromJSON(_: any): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QuerySigningInfoRequest: {
     encode(message: QuerySigningInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfoRequest;
+    fromJSON(object: any): QuerySigningInfoRequest;
     fromPartial(object: Partial<QuerySigningInfoRequest>): QuerySigningInfoRequest;
 };
 export declare const QuerySigningInfoResponse: {
     encode(message: QuerySigningInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfoResponse;
+    fromJSON(object: any): QuerySigningInfoResponse;
     fromPartial(object: Partial<QuerySigningInfoResponse>): QuerySigningInfoResponse;
 };
 export declare const QuerySigningInfosRequest: {
     encode(message: QuerySigningInfosRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfosRequest;
+    fromJSON(object: any): QuerySigningInfosRequest;
     fromPartial(object: Partial<QuerySigningInfosRequest>): QuerySigningInfosRequest;
 };
 export declare const QuerySigningInfosResponse: {
     encode(message: QuerySigningInfosResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySigningInfosResponse;
+    fromJSON(object: any): QuerySigningInfosResponse;
     fromPartial(object: Partial<QuerySigningInfosResponse>): QuerySigningInfosResponse;
 };

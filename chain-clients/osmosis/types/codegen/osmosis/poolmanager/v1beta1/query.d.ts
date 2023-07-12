@@ -71,40 +71,48 @@ export interface NumPoolsResponseSDKType {
 export declare const ParamsRequest: {
     encode(_: ParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsRequest;
+    fromJSON(_: any): ParamsRequest;
     fromPartial(_: Partial<ParamsRequest>): ParamsRequest;
 };
 export declare const ParamsResponse: {
     encode(message: ParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ParamsResponse;
+    fromJSON(object: any): ParamsResponse;
     fromPartial(object: Partial<ParamsResponse>): ParamsResponse;
 };
 export declare const EstimateSwapExactAmountInRequest: {
     encode(message: EstimateSwapExactAmountInRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountInRequest;
+    fromJSON(object: any): EstimateSwapExactAmountInRequest;
     fromPartial(object: Partial<EstimateSwapExactAmountInRequest>): EstimateSwapExactAmountInRequest;
 };
 export declare const EstimateSwapExactAmountInResponse: {
     encode(message: EstimateSwapExactAmountInResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountInResponse;
+    fromJSON(object: any): EstimateSwapExactAmountInResponse;
     fromPartial(object: Partial<EstimateSwapExactAmountInResponse>): EstimateSwapExactAmountInResponse;
 };
 export declare const EstimateSwapExactAmountOutRequest: {
     encode(message: EstimateSwapExactAmountOutRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountOutRequest;
+    fromJSON(object: any): EstimateSwapExactAmountOutRequest;
     fromPartial(object: Partial<EstimateSwapExactAmountOutRequest>): EstimateSwapExactAmountOutRequest;
 };
 export declare const EstimateSwapExactAmountOutResponse: {
     encode(message: EstimateSwapExactAmountOutResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EstimateSwapExactAmountOutResponse;
+    fromJSON(object: any): EstimateSwapExactAmountOutResponse;
     fromPartial(object: Partial<EstimateSwapExactAmountOutResponse>): EstimateSwapExactAmountOutResponse;
 };
 export declare const NumPoolsRequest: {
     encode(_: NumPoolsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NumPoolsRequest;
+    fromJSON(_: any): NumPoolsRequest;
     fromPartial(_: Partial<NumPoolsRequest>): NumPoolsRequest;
 };
 export declare const NumPoolsResponse: {
     encode(message: NumPoolsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): NumPoolsResponse;
+    fromJSON(object: any): NumPoolsResponse;
     fromPartial(object: Partial<NumPoolsResponse>): NumPoolsResponse;
 };

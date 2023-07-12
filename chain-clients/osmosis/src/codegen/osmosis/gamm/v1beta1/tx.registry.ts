@@ -108,6 +108,56 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    joinPool(value: any) {
+      return {
+        typeUrl: "/osmosis.gamm.v1beta1.MsgJoinPool",
+        value: MsgJoinPool.fromJSON(value)
+      };
+    },
+    exitPool(value: any) {
+      return {
+        typeUrl: "/osmosis.gamm.v1beta1.MsgExitPool",
+        value: MsgExitPool.fromJSON(value)
+      };
+    },
+    swapExactAmountIn(value: any) {
+      return {
+        typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountIn",
+        value: MsgSwapExactAmountIn.fromJSON(value)
+      };
+    },
+    swapExactAmountOut(value: any) {
+      return {
+        typeUrl: "/osmosis.gamm.v1beta1.MsgSwapExactAmountOut",
+        value: MsgSwapExactAmountOut.fromJSON(value)
+      };
+    },
+    joinSwapExternAmountIn(value: any) {
+      return {
+        typeUrl: "/osmosis.gamm.v1beta1.MsgJoinSwapExternAmountIn",
+        value: MsgJoinSwapExternAmountIn.fromJSON(value)
+      };
+    },
+    joinSwapShareAmountOut(value: any) {
+      return {
+        typeUrl: "/osmosis.gamm.v1beta1.MsgJoinSwapShareAmountOut",
+        value: MsgJoinSwapShareAmountOut.fromJSON(value)
+      };
+    },
+    exitSwapExternAmountOut(value: any) {
+      return {
+        typeUrl: "/osmosis.gamm.v1beta1.MsgExitSwapExternAmountOut",
+        value: MsgExitSwapExternAmountOut.fromJSON(value)
+      };
+    },
+    exitSwapShareAmountIn(value: any) {
+      return {
+        typeUrl: "/osmosis.gamm.v1beta1.MsgExitSwapShareAmountIn",
+        value: MsgExitSwapShareAmountIn.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     joinPool(value: MsgJoinPool) {
       return {

@@ -1,6 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
 export interface QueryEvidenceRequest {
   /** evidence_hash defines the hash of the requested evidence. */
@@ -81,6 +82,11 @@ export const QueryEvidenceRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryEvidenceRequest {
+    return {
+      evidenceHash: isSet(object.evidenceHash) ? bytesFromBase64(object.evidenceHash) : new Uint8Array()
+    };
+  },
   fromPartial(object: Partial<QueryEvidenceRequest>): QueryEvidenceRequest {
     const message = createBaseQueryEvidenceRequest();
     message.evidenceHash = object.evidenceHash ?? new Uint8Array();
@@ -116,6 +122,11 @@ export const QueryEvidenceResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryEvidenceResponse {
+    return {
+      evidence: isSet(object.evidence) ? Any.fromJSON(object.evidence) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryEvidenceResponse>): QueryEvidenceResponse {
     const message = createBaseQueryEvidenceResponse();
     message.evidence = object.evidence !== undefined && object.evidence !== null ? Any.fromPartial(object.evidence) : undefined;
@@ -150,6 +161,11 @@ export const QueryAllEvidenceRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryAllEvidenceRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object: Partial<QueryAllEvidenceRequest>): QueryAllEvidenceRequest {
     const message = createBaseQueryAllEvidenceRequest();
@@ -192,6 +208,12 @@ export const QueryAllEvidenceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QueryAllEvidenceResponse {
+    return {
+      evidence: Array.isArray(object?.evidence) ? object.evidence.map((e: any) => Any.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object: Partial<QueryAllEvidenceResponse>): QueryAllEvidenceResponse {
     const message = createBaseQueryAllEvidenceResponse();

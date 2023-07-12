@@ -1,5 +1,5 @@
 import { Coin, CoinSDKType } from "../../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../../helpers";
+import { Long, isSet } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * PoolParams defined the parameters that will be managed by the pool
@@ -92,6 +92,12 @@ export const PoolParams = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): PoolParams {
+    return {
+      swapFee: isSet(object.swapFee) ? String(object.swapFee) : "",
+      exitFee: isSet(object.exitFee) ? String(object.exitFee) : ""
+    };
   },
   fromPartial(object: Partial<PoolParams>): PoolParams {
     const message = createBasePoolParams();
@@ -186,6 +192,18 @@ export const Pool = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Pool {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
+      poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      totalShares: isSet(object.totalShares) ? Coin.fromJSON(object.totalShares) : undefined,
+      poolLiquidity: Array.isArray(object?.poolLiquidity) ? object.poolLiquidity.map((e: any) => Coin.fromJSON(e)) : [],
+      scalingFactors: Array.isArray(object?.scalingFactors) ? object.scalingFactors.map((e: any) => Long.fromValue(e)) : [],
+      scalingFactorController: isSet(object.scalingFactorController) ? String(object.scalingFactorController) : ""
+    };
   },
   fromPartial(object: Partial<Pool>): Pool {
     const message = createBasePool();

@@ -47,6 +47,28 @@ export declare const MessageComposer: {
             value: MsgDeposit;
         };
     };
+    fromJSON: {
+        submitProposal(value: any): {
+            typeUrl: string;
+            value: MsgSubmitProposal;
+        };
+        execLegacyContent(value: any): {
+            typeUrl: string;
+            value: MsgExecLegacyContent;
+        };
+        vote(value: any): {
+            typeUrl: string;
+            value: MsgVote;
+        };
+        voteWeighted(value: any): {
+            typeUrl: string;
+            value: MsgVoteWeighted;
+        };
+        deposit(value: any): {
+            typeUrl: string;
+            value: MsgDeposit;
+        };
+    };
     fromPartial: {
         submitProposal(value: MsgSubmitProposal): {
             typeUrl: string;

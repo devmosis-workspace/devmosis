@@ -97,6 +97,44 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    setHotRoutes: function setHotRoutes(value) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetHotRoutes",
+        value: _tx.MsgSetHotRoutes.fromJSON(value)
+      };
+    },
+    setDeveloperAccount: function setDeveloperAccount(value) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetDeveloperAccount",
+        value: _tx.MsgSetDeveloperAccount.fromJSON(value)
+      };
+    },
+    setMaxPoolPointsPerTx: function setMaxPoolPointsPerTx(value) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerTx",
+        value: _tx.MsgSetMaxPoolPointsPerTx.fromJSON(value)
+      };
+    },
+    setMaxPoolPointsPerBlock: function setMaxPoolPointsPerBlock(value) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetMaxPoolPointsPerBlock",
+        value: _tx.MsgSetMaxPoolPointsPerBlock.fromJSON(value)
+      };
+    },
+    setPoolWeights: function setPoolWeights(value) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetPoolWeights",
+        value: _tx.MsgSetPoolWeights.fromJSON(value)
+      };
+    },
+    setBaseDenoms: function setBaseDenoms(value) {
+      return {
+        typeUrl: "/osmosis.protorev.v1beta1.MsgSetBaseDenoms",
+        value: _tx.MsgSetBaseDenoms.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     setHotRoutes: function setHotRoutes(value) {
       return {

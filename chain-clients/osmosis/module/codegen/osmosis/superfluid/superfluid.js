@@ -1,5 +1,5 @@
 import { Coin } from "../../cosmos/base/v1beta1/coin";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * SuperfluidAssetType indicates whether the superfluid asset is
@@ -131,6 +131,12 @@ export const SuperfluidAsset = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      assetType: isSet(object.assetType) ? superfluidAssetTypeFromJSON(object.assetType) : 0
+    };
+  },
   fromPartial(object) {
     var _object$denom, _object$assetType;
     const message = createBaseSuperfluidAsset();
@@ -181,6 +187,13 @@ export const SuperfluidIntermediaryAccount = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      valAddr: isSet(object.valAddr) ? String(object.valAddr) : "",
+      gaugeId: isSet(object.gaugeId) ? Long.fromValue(object.gaugeId) : Long.UZERO
+    };
   },
   fromPartial(object) {
     var _object$denom2, _object$valAddr;
@@ -233,6 +246,13 @@ export const OsmoEquivalentMultiplierRecord = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      epochNumber: isSet(object.epochNumber) ? Long.fromValue(object.epochNumber) : Long.ZERO,
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      multiplier: isSet(object.multiplier) ? String(object.multiplier) : ""
+    };
   },
   fromPartial(object) {
     var _object$denom3, _object$multiplier;
@@ -293,6 +313,14 @@ export const SuperfluidDelegationRecord = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      delegationAmount: isSet(object.delegationAmount) ? Coin.fromJSON(object.delegationAmount) : undefined,
+      equivalentStakedAmount: isSet(object.equivalentStakedAmount) ? Coin.fromJSON(object.equivalentStakedAmount) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr, _object$validatorAddr;
     const message = createBaseSuperfluidDelegationRecord();
@@ -339,6 +367,12 @@ export const LockIdIntermediaryAccountConnection = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      lockId: isSet(object.lockId) ? Long.fromValue(object.lockId) : Long.UZERO,
+      intermediaryAccount: isSet(object.intermediaryAccount) ? String(object.intermediaryAccount) : ""
+    };
+  },
   fromPartial(object) {
     var _object$intermediaryA;
     const message = createBaseLockIdIntermediaryAccountConnection();
@@ -384,6 +418,11 @@ export const UnpoolWhitelistedPools = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      ids: Array.isArray(object === null || object === void 0 ? void 0 : object.ids) ? object.ids.map(e => Long.fromValue(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$ids;

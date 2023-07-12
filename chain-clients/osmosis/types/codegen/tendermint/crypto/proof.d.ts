@@ -63,25 +63,30 @@ export interface ProofOpsSDKType {
 export declare const Proof: {
     encode(message: Proof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proof;
+    fromJSON(object: any): Proof;
     fromPartial(object: Partial<Proof>): Proof;
 };
 export declare const ValueOp: {
     encode(message: ValueOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValueOp;
+    fromJSON(object: any): ValueOp;
     fromPartial(object: Partial<ValueOp>): ValueOp;
 };
 export declare const DominoOp: {
     encode(message: DominoOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DominoOp;
+    fromJSON(object: any): DominoOp;
     fromPartial(object: Partial<DominoOp>): DominoOp;
 };
 export declare const ProofOp: {
     encode(message: ProofOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOp;
+    fromJSON(object: any): ProofOp;
     fromPartial(object: Partial<ProofOp>): ProofOp;
 };
 export declare const ProofOps: {
     encode(message: ProofOps, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOps;
+    fromJSON(object: any): ProofOps;
     fromPartial(object: Partial<ProofOps>): ProofOps;
 };

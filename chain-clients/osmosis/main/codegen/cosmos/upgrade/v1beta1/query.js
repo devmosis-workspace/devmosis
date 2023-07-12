@@ -139,6 +139,9 @@ var QueryCurrentPlanRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(_) {
+    return {};
+  },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryCurrentPlanRequest();
     return message;
@@ -174,6 +177,11 @@ var QueryCurrentPlanResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      plan: (0, _helpers.isSet)(object.plan) ? _upgrade.Plan.fromJSON(object.plan) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryCurrentPlanResponse();
@@ -211,6 +219,11 @@ var QueryAppliedPlanRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      name: (0, _helpers.isSet)(object.name) ? String(object.name) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$name;
@@ -250,6 +263,11 @@ var QueryAppliedPlanResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryAppliedPlanResponse();
     message.height = object.height !== undefined && object.height !== null ? _helpers.Long.fromValue(object.height) : _helpers.Long.ZERO;
@@ -286,6 +304,11 @@ var QueryUpgradedConsensusStateRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      lastHeight: (0, _helpers.isSet)(object.lastHeight) ? _helpers.Long.fromValue(object.lastHeight) : _helpers.Long.ZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryUpgradedConsensusStateRequest();
@@ -324,6 +347,11 @@ var QueryUpgradedConsensusStateResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      upgradedConsensusState: (0, _helpers.isSet)(object.upgradedConsensusState) ? (0, _helpers.bytesFromBase64)(object.upgradedConsensusState) : new Uint8Array()
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$upgradedConse;
     var message = createBaseQueryUpgradedConsensusStateResponse();
@@ -361,6 +389,11 @@ var QueryModuleVersionsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      moduleName: (0, _helpers.isSet)(object.moduleName) ? String(object.moduleName) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$moduleName;
@@ -409,6 +442,13 @@ var QueryModuleVersionsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      moduleVersions: Array.isArray(object === null || object === void 0 ? void 0 : object.moduleVersions) ? object.moduleVersions.map(function (e) {
+        return _upgrade.ModuleVersion.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$moduleVersion;
     var message = createBaseQueryModuleVersionsResponse();
@@ -440,6 +480,9 @@ var QueryAuthorityRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryAuthorityRequest();
@@ -476,6 +519,11 @@ var QueryAuthorityResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address;

@@ -102,40 +102,48 @@ export interface MsgDepositResponseSDKType {
 export declare const MsgSubmitProposal: {
     encode(message: MsgSubmitProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposal;
+    fromJSON(object: any): MsgSubmitProposal;
     fromPartial(object: Partial<MsgSubmitProposal>): MsgSubmitProposal;
 };
 export declare const MsgSubmitProposalResponse: {
     encode(message: MsgSubmitProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSubmitProposalResponse;
+    fromJSON(object: any): MsgSubmitProposalResponse;
     fromPartial(object: Partial<MsgSubmitProposalResponse>): MsgSubmitProposalResponse;
 };
 export declare const MsgVote: {
     encode(message: MsgVote, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVote;
+    fromJSON(object: any): MsgVote;
     fromPartial(object: Partial<MsgVote>): MsgVote;
 };
 export declare const MsgVoteResponse: {
     encode(_: MsgVoteResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteResponse;
+    fromJSON(_: any): MsgVoteResponse;
     fromPartial(_: Partial<MsgVoteResponse>): MsgVoteResponse;
 };
 export declare const MsgVoteWeighted: {
     encode(message: MsgVoteWeighted, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeighted;
+    fromJSON(object: any): MsgVoteWeighted;
     fromPartial(object: Partial<MsgVoteWeighted>): MsgVoteWeighted;
 };
 export declare const MsgVoteWeightedResponse: {
     encode(_: MsgVoteWeightedResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgVoteWeightedResponse;
+    fromJSON(_: any): MsgVoteWeightedResponse;
     fromPartial(_: Partial<MsgVoteWeightedResponse>): MsgVoteWeightedResponse;
 };
 export declare const MsgDeposit: {
     encode(message: MsgDeposit, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDeposit;
+    fromJSON(object: any): MsgDeposit;
     fromPartial(object: Partial<MsgDeposit>): MsgDeposit;
 };
 export declare const MsgDepositResponse: {
     encode(_: MsgDepositResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgDepositResponse;
+    fromJSON(_: any): MsgDepositResponse;
     fromPartial(_: Partial<MsgDepositResponse>): MsgDepositResponse;
 };

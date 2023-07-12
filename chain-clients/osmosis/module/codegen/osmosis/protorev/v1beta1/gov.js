@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /**
  * SetProtoRevEnabledProposal is a gov Content type to update whether the
  * protorev module is enabled
@@ -64,6 +65,13 @@ export const SetProtoRevEnabledProposal = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false
+    };
+  },
   fromPartial(object) {
     var _object$title, _object$description, _object$enabled;
     const message = createBaseSetProtoRevEnabledProposal();
@@ -115,6 +123,13 @@ export const SetProtoRevAdminAccountProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      account: isSet(object.account) ? String(object.account) : ""
+    };
   },
   fromPartial(object) {
     var _object$title2, _object$description2, _object$account;

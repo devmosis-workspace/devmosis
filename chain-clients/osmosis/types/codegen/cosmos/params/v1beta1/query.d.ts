@@ -78,25 +78,30 @@ export interface SubspaceSDKType {
 export declare const QueryParamsRequest: {
     encode(message: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    fromJSON(object: any): QueryParamsRequest;
     fromPartial(object: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QuerySubspacesRequest: {
     encode(_: QuerySubspacesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySubspacesRequest;
+    fromJSON(_: any): QuerySubspacesRequest;
     fromPartial(_: Partial<QuerySubspacesRequest>): QuerySubspacesRequest;
 };
 export declare const QuerySubspacesResponse: {
     encode(message: QuerySubspacesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySubspacesResponse;
+    fromJSON(object: any): QuerySubspacesResponse;
     fromPartial(object: Partial<QuerySubspacesResponse>): QuerySubspacesResponse;
 };
 export declare const Subspace: {
     encode(message: Subspace, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Subspace;
+    fromJSON(object: any): Subspace;
     fromPartial(object: Partial<Subspace>): Subspace;
 };

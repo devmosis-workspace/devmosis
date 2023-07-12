@@ -100,15 +100,18 @@ export interface MigrateFromInfoSDKType {
 export declare const ModuleDescriptor: {
     encode(message: ModuleDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleDescriptor;
+    fromJSON(object: any): ModuleDescriptor;
     fromPartial(object: Partial<ModuleDescriptor>): ModuleDescriptor;
 };
 export declare const PackageReference: {
     encode(message: PackageReference, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PackageReference;
+    fromJSON(object: any): PackageReference;
     fromPartial(object: Partial<PackageReference>): PackageReference;
 };
 export declare const MigrateFromInfo: {
     encode(message: MigrateFromInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MigrateFromInfo;
+    fromJSON(object: any): MigrateFromInfo;
     fromPartial(object: Partial<MigrateFromInfo>): MigrateFromInfo;
 };

@@ -107,6 +107,15 @@ var PageRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
+      offset: (0, _helpers.isSet)(object.offset) ? _helpers.Long.fromValue(object.offset) : _helpers.Long.UZERO,
+      limit: (0, _helpers.isSet)(object.limit) ? _helpers.Long.fromValue(object.limit) : _helpers.Long.UZERO,
+      countTotal: (0, _helpers.isSet)(object.countTotal) ? Boolean(object.countTotal) : false,
+      reverse: (0, _helpers.isSet)(object.reverse) ? Boolean(object.reverse) : false
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$key, _object$countTotal, _object$reverse;
     var message = createBasePageRequest();
@@ -155,6 +164,12 @@ var PageResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      nextKey: (0, _helpers.isSet)(object.nextKey) ? (0, _helpers.bytesFromBase64)(object.nextKey) : new Uint8Array(),
+      total: (0, _helpers.isSet)(object.total) ? _helpers.Long.fromValue(object.total) : _helpers.Long.UZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$nextKey;

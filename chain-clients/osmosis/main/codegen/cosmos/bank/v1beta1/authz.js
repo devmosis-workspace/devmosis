@@ -65,6 +65,13 @@ var SendAuthorization = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      spendLimit: Array.isArray(object === null || object === void 0 ? void 0 : object.spendLimit) ? object.spendLimit.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$spendLimit;
     var message = createBaseSendAuthorization();

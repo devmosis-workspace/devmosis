@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** EventSend is emitted on Msg/Send */
 export interface EventSend {
   classId: string;
@@ -87,6 +88,14 @@ export const EventSend = {
     }
     return message;
   },
+  fromJSON(object: any): EventSend {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : "",
+      id: isSet(object.id) ? String(object.id) : "",
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      receiver: isSet(object.receiver) ? String(object.receiver) : ""
+    };
+  },
   fromPartial(object: Partial<EventSend>): EventSend {
     const message = createBaseEventSend();
     message.classId = object.classId ?? "";
@@ -139,6 +148,13 @@ export const EventMint = {
     }
     return message;
   },
+  fromJSON(object: any): EventMint {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : "",
+      id: isSet(object.id) ? String(object.id) : "",
+      owner: isSet(object.owner) ? String(object.owner) : ""
+    };
+  },
   fromPartial(object: Partial<EventMint>): EventMint {
     const message = createBaseEventMint();
     message.classId = object.classId ?? "";
@@ -189,6 +205,13 @@ export const EventBurn = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): EventBurn {
+    return {
+      classId: isSet(object.classId) ? String(object.classId) : "",
+      id: isSet(object.id) ? String(object.id) : "",
+      owner: isSet(object.owner) ? String(object.owner) : ""
+    };
   },
   fromPartial(object: Partial<EventBurn>): EventBurn {
     const message = createBaseEventBurn();

@@ -1,7 +1,7 @@
 import { QueryCondition } from "../lockup/lock";
 import { Coin } from "../../cosmos/base/v1beta1/coin";
 import { Timestamp } from "../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** MsgCreateGauge creates a gague to distribute rewards to users */
 
@@ -75,6 +75,16 @@ export const MsgCreateGauge = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      isPerpetual: isSet(object.isPerpetual) ? Boolean(object.isPerpetual) : false,
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      distributeTo: isSet(object.distributeTo) ? QueryCondition.fromJSON(object.distributeTo) : undefined,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(e => Coin.fromJSON(e)) : [],
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
+      numEpochsPaidOver: isSet(object.numEpochsPaidOver) ? Long.fromValue(object.numEpochsPaidOver) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     var _object$isPerpetual, _object$owner, _object$coins, _object$startTime;
     const message = createBaseMsgCreateGauge();
@@ -107,6 +117,9 @@ export const MsgCreateGaugeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgCreateGaugeResponse();
@@ -156,6 +169,13 @@ export const MsgAddToGauge = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      gaugeId: isSet(object.gaugeId) ? Long.fromValue(object.gaugeId) : Long.UZERO,
+      rewards: Array.isArray(object === null || object === void 0 ? void 0 : object.rewards) ? object.rewards.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$owner2, _object$rewards;
     const message = createBaseMsgAddToGauge();
@@ -185,6 +205,9 @@ export const MsgAddToGaugeResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgAddToGaugeResponse();

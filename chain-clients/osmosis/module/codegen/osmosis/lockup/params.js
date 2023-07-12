@@ -28,6 +28,11 @@ export const Params = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      forceUnlockAllowedAddresses: Array.isArray(object === null || object === void 0 ? void 0 : object.forceUnlockAllowedAddresses) ? object.forceUnlockAllowedAddresses.map(e => String(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$forceUnlockAl;
     const message = createBaseParams();

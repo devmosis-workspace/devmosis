@@ -34,15 +34,18 @@ export interface SimpleValidatorSDKType {
 export declare const ValidatorSet: {
     encode(message: ValidatorSet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValidatorSet;
+    fromJSON(object: any): ValidatorSet;
     fromPartial(object: Partial<ValidatorSet>): ValidatorSet;
 };
 export declare const Validator: {
     encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
+    fromJSON(object: any): Validator;
     fromPartial(object: Partial<Validator>): Validator;
 };
 export declare const SimpleValidator: {
     encode(message: SimpleValidator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimpleValidator;
+    fromJSON(object: any): SimpleValidator;
     fromPartial(object: Partial<SimpleValidator>): SimpleValidator;
 };

@@ -1,7 +1,7 @@
 import { Duration } from "../../google/protobuf/duration";
 import { Coin } from "../../cosmos/base/v1beta1/coin";
 import { PeriodLock } from "./lock";
-import { Long } from "../../helpers";
+import { Long, isSet } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 
 /**
@@ -67,6 +67,13 @@ export const MsgLockTokens = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$owner, _object$coins;
     const message = createBaseMsgLockTokens();
@@ -105,6 +112,11 @@ export const MsgLockTokensResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseMsgLockTokensResponse();
     message.ID = object.ID !== undefined && object.ID !== null ? Long.fromValue(object.ID) : Long.UZERO;
@@ -139,6 +151,11 @@ export const MsgBeginUnlockingAll = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : ""
+    };
   },
   fromPartial(object) {
     var _object$owner2;
@@ -175,6 +192,11 @@ export const MsgBeginUnlockingAllResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      unlocks: Array.isArray(object === null || object === void 0 ? void 0 : object.unlocks) ? object.unlocks.map(e => PeriodLock.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$unlocks;
@@ -226,6 +248,13 @@ export const MsgBeginUnlocking = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$owner3, _object$coins2;
     const message = createBaseMsgBeginUnlocking();
@@ -270,6 +299,12 @@ export const MsgBeginUnlockingResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false,
+      unlockingLockID: isSet(object.unlockingLockID) ? Long.fromValue(object.unlockingLockID) : Long.UZERO
+    };
   },
   fromPartial(object) {
     var _object$success;
@@ -322,6 +357,13 @@ export const MsgExtendLockup = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO,
+      duration: isSet(object.duration) ? Duration.fromJSON(object.duration) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$owner4;
     const message = createBaseMsgExtendLockup();
@@ -359,6 +401,11 @@ export const MsgExtendLockupResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false
+    };
   },
   fromPartial(object) {
     var _object$success2;
@@ -410,6 +457,13 @@ export const MsgForceUnlock = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      owner: isSet(object.owner) ? String(object.owner) : "",
+      ID: isSet(object.ID) ? Long.fromValue(object.ID) : Long.UZERO,
+      coins: Array.isArray(object === null || object === void 0 ? void 0 : object.coins) ? object.coins.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$owner5, _object$coins3;
     const message = createBaseMsgForceUnlock();
@@ -447,6 +501,11 @@ export const MsgForceUnlockResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false
+    };
   },
   fromPartial(object) {
     var _object$success3;

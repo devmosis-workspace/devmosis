@@ -103,6 +103,12 @@ var DelegatorWithdrawInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegatorAddress: (0, _helpers.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      withdrawAddress: (0, _helpers.isSet)(object.withdrawAddress) ? String(object.withdrawAddress) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$delegatorAddr, _object$withdrawAddre;
     var message = createBaseDelegatorWithdrawInfo();
@@ -158,6 +164,14 @@ var ValidatorOutstandingRewardsRecord = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      outstandingRewards: Array.isArray(object === null || object === void 0 ? void 0 : object.outstandingRewards) ? object.outstandingRewards.map(function (e) {
+        return _coin.DecCoin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$validatorAddr, _object$outstandingRe;
     var message = createBaseValidatorOutstandingRewardsRecord();
@@ -205,6 +219,12 @@ var ValidatorAccumulatedCommissionRecord = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      accumulated: (0, _helpers.isSet)(object.accumulated) ? _distribution.ValidatorAccumulatedCommission.fromJSON(object.accumulated) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$validatorAddr2;
@@ -259,6 +279,13 @@ var ValidatorHistoricalRewardsRecord = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      period: (0, _helpers.isSet)(object.period) ? _helpers.Long.fromValue(object.period) : _helpers.Long.UZERO,
+      rewards: (0, _helpers.isSet)(object.rewards) ? _distribution.ValidatorHistoricalRewards.fromJSON(object.rewards) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$validatorAddr3;
     var message = createBaseValidatorHistoricalRewardsRecord();
@@ -305,6 +332,12 @@ var ValidatorCurrentRewardsRecord = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      rewards: (0, _helpers.isSet)(object.rewards) ? _distribution.ValidatorCurrentRewards.fromJSON(object.rewards) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$validatorAddr4;
@@ -358,6 +391,13 @@ var DelegatorStartingInfoRecord = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      delegatorAddress: (0, _helpers.isSet)(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      startingInfo: (0, _helpers.isSet)(object.startingInfo) ? _distribution.DelegatorStartingInfo.fromJSON(object.startingInfo) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$delegatorAddr2, _object$validatorAddr5;
@@ -419,6 +459,14 @@ var ValidatorSlashEventRecord = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      validatorAddress: (0, _helpers.isSet)(object.validatorAddress) ? String(object.validatorAddress) : "",
+      height: (0, _helpers.isSet)(object.height) ? _helpers.Long.fromValue(object.height) : _helpers.Long.UZERO,
+      period: (0, _helpers.isSet)(object.period) ? _helpers.Long.fromValue(object.period) : _helpers.Long.UZERO,
+      validatorSlashEvent: (0, _helpers.isSet)(object.validatorSlashEvent) ? _distribution.ValidatorSlashEvent.fromJSON(object.validatorSlashEvent) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$validatorAddr6;
@@ -586,6 +634,34 @@ var GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _distribution.Params.fromJSON(object.params) : undefined,
+      feePool: (0, _helpers.isSet)(object.feePool) ? _distribution.FeePool.fromJSON(object.feePool) : undefined,
+      delegatorWithdrawInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.delegatorWithdrawInfos) ? object.delegatorWithdrawInfos.map(function (e) {
+        return DelegatorWithdrawInfo.fromJSON(e);
+      }) : [],
+      previousProposer: (0, _helpers.isSet)(object.previousProposer) ? String(object.previousProposer) : "",
+      outstandingRewards: Array.isArray(object === null || object === void 0 ? void 0 : object.outstandingRewards) ? object.outstandingRewards.map(function (e) {
+        return ValidatorOutstandingRewardsRecord.fromJSON(e);
+      }) : [],
+      validatorAccumulatedCommissions: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorAccumulatedCommissions) ? object.validatorAccumulatedCommissions.map(function (e) {
+        return ValidatorAccumulatedCommissionRecord.fromJSON(e);
+      }) : [],
+      validatorHistoricalRewards: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorHistoricalRewards) ? object.validatorHistoricalRewards.map(function (e) {
+        return ValidatorHistoricalRewardsRecord.fromJSON(e);
+      }) : [],
+      validatorCurrentRewards: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorCurrentRewards) ? object.validatorCurrentRewards.map(function (e) {
+        return ValidatorCurrentRewardsRecord.fromJSON(e);
+      }) : [],
+      delegatorStartingInfos: Array.isArray(object === null || object === void 0 ? void 0 : object.delegatorStartingInfos) ? object.delegatorStartingInfos.map(function (e) {
+        return DelegatorStartingInfoRecord.fromJSON(e);
+      }) : [],
+      validatorSlashEvents: Array.isArray(object === null || object === void 0 ? void 0 : object.validatorSlashEvents) ? object.validatorSlashEvents.map(function (e) {
+        return ValidatorSlashEventRecord.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$delegatorWith, _object$previousPropo, _object$outstandingRe2, _object$validatorAccu, _object$validatorHist, _object$validatorCurr, _object$delegatorStar, _object$validatorSlas;

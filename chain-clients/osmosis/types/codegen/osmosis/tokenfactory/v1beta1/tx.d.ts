@@ -147,50 +147,60 @@ export interface MsgSetDenomMetadataResponseSDKType {
 export declare const MsgCreateDenom: {
     encode(message: MsgCreateDenom, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenom;
+    fromJSON(object: any): MsgCreateDenom;
     fromPartial(object: Partial<MsgCreateDenom>): MsgCreateDenom;
 };
 export declare const MsgCreateDenomResponse: {
     encode(message: MsgCreateDenomResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateDenomResponse;
+    fromJSON(object: any): MsgCreateDenomResponse;
     fromPartial(object: Partial<MsgCreateDenomResponse>): MsgCreateDenomResponse;
 };
 export declare const MsgMint: {
     encode(message: MsgMint, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMint;
+    fromJSON(object: any): MsgMint;
     fromPartial(object: Partial<MsgMint>): MsgMint;
 };
 export declare const MsgMintResponse: {
     encode(_: MsgMintResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgMintResponse;
+    fromJSON(_: any): MsgMintResponse;
     fromPartial(_: Partial<MsgMintResponse>): MsgMintResponse;
 };
 export declare const MsgBurn: {
     encode(message: MsgBurn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurn;
+    fromJSON(object: any): MsgBurn;
     fromPartial(object: Partial<MsgBurn>): MsgBurn;
 };
 export declare const MsgBurnResponse: {
     encode(_: MsgBurnResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgBurnResponse;
+    fromJSON(_: any): MsgBurnResponse;
     fromPartial(_: Partial<MsgBurnResponse>): MsgBurnResponse;
 };
 export declare const MsgChangeAdmin: {
     encode(message: MsgChangeAdmin, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdmin;
+    fromJSON(object: any): MsgChangeAdmin;
     fromPartial(object: Partial<MsgChangeAdmin>): MsgChangeAdmin;
 };
 export declare const MsgChangeAdminResponse: {
     encode(_: MsgChangeAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgChangeAdminResponse;
+    fromJSON(_: any): MsgChangeAdminResponse;
     fromPartial(_: Partial<MsgChangeAdminResponse>): MsgChangeAdminResponse;
 };
 export declare const MsgSetDenomMetadata: {
     encode(message: MsgSetDenomMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata;
+    fromJSON(object: any): MsgSetDenomMetadata;
     fromPartial(object: Partial<MsgSetDenomMetadata>): MsgSetDenomMetadata;
 };
 export declare const MsgSetDenomMetadataResponse: {
     encode(_: MsgSetDenomMetadataResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataResponse;
+    fromJSON(_: any): MsgSetDenomMetadataResponse;
     fromPartial(_: Partial<MsgSetDenomMetadataResponse>): MsgSetDenomMetadataResponse;
 };

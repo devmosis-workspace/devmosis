@@ -1,5 +1,6 @@
 import { Config } from "./config";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** QueryConfigRequest is the Query/Config request type. */
 
 /** QueryConfigRequest is the Query/Config request type. */
@@ -28,6 +29,9 @@ export const QueryConfigRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryConfigRequest();
@@ -62,6 +66,11 @@ export const QueryConfigResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      config: isSet(object.config) ? Config.fromJSON(object.config) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryConfigResponse();

@@ -1,6 +1,6 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Params } from "./genesis";
-import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 function createBaseArithmeticTwapRequest() {
   return {
@@ -59,6 +59,15 @@ export const ArithmeticTwapRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      baseAsset: isSet(object.baseAsset) ? String(object.baseAsset) : "",
+      quoteAsset: isSet(object.quoteAsset) ? String(object.quoteAsset) : "",
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
+      endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$baseAsset, _object$quoteAsset, _object$startTime, _object$endTime;
     const message = createBaseArithmeticTwapRequest();
@@ -98,6 +107,11 @@ export const ArithmeticTwapResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      arithmeticTwap: isSet(object.arithmeticTwap) ? String(object.arithmeticTwap) : ""
+    };
   },
   fromPartial(object) {
     var _object$arithmeticTwa;
@@ -156,6 +170,14 @@ export const ArithmeticTwapToNowRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      baseAsset: isSet(object.baseAsset) ? String(object.baseAsset) : "",
+      quoteAsset: isSet(object.quoteAsset) ? String(object.quoteAsset) : "",
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$baseAsset2, _object$quoteAsset2, _object$startTime2;
     const message = createBaseArithmeticTwapToNowRequest();
@@ -194,6 +216,11 @@ export const ArithmeticTwapToNowResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      arithmeticTwap: isSet(object.arithmeticTwap) ? String(object.arithmeticTwap) : ""
+    };
   },
   fromPartial(object) {
     var _object$arithmeticTwa2;
@@ -259,6 +286,15 @@ export const GeometricTwapRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      baseAsset: isSet(object.baseAsset) ? String(object.baseAsset) : "",
+      quoteAsset: isSet(object.quoteAsset) ? String(object.quoteAsset) : "",
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined,
+      endTime: isSet(object.endTime) ? fromJsonTimestamp(object.endTime) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$baseAsset3, _object$quoteAsset3, _object$startTime3, _object$endTime2;
     const message = createBaseGeometricTwapRequest();
@@ -298,6 +334,11 @@ export const GeometricTwapResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      geometricTwap: isSet(object.geometricTwap) ? String(object.geometricTwap) : ""
+    };
   },
   fromPartial(object) {
     var _object$geometricTwap;
@@ -356,6 +397,14 @@ export const GeometricTwapToNowRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      baseAsset: isSet(object.baseAsset) ? String(object.baseAsset) : "",
+      quoteAsset: isSet(object.quoteAsset) ? String(object.quoteAsset) : "",
+      startTime: isSet(object.startTime) ? fromJsonTimestamp(object.startTime) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$baseAsset4, _object$quoteAsset4, _object$startTime4;
     const message = createBaseGeometricTwapToNowRequest();
@@ -395,6 +444,11 @@ export const GeometricTwapToNowResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      geometricTwap: isSet(object.geometricTwap) ? String(object.geometricTwap) : ""
+    };
+  },
   fromPartial(object) {
     var _object$geometricTwap2;
     const message = createBaseGeometricTwapToNowResponse();
@@ -422,6 +476,9 @@ export const ParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseParamsRequest();
@@ -456,6 +513,11 @@ export const ParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseParamsResponse();

@@ -48,6 +48,26 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    createVestingAccount(value: any) {
+      return {
+        typeUrl: "/cosmos.vesting.v1beta1.MsgCreateVestingAccount",
+        value: MsgCreateVestingAccount.fromJSON(value)
+      };
+    },
+    createPermanentLockedAccount(value: any) {
+      return {
+        typeUrl: "/cosmos.vesting.v1beta1.MsgCreatePermanentLockedAccount",
+        value: MsgCreatePermanentLockedAccount.fromJSON(value)
+      };
+    },
+    createPeriodicVestingAccount(value: any) {
+      return {
+        typeUrl: "/cosmos.vesting.v1beta1.MsgCreatePeriodicVestingAccount",
+        value: MsgCreatePeriodicVestingAccount.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     createVestingAccount(value: MsgCreateVestingAccount) {
       return {

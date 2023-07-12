@@ -231,6 +231,12 @@ var WeightedVoteOption = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      option: (0, _helpers.isSet)(object.option) ? voteOptionFromJSON(object.option) : 0,
+      weight: (0, _helpers.isSet)(object.weight) ? String(object.weight) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$option, _object$weight;
     var message = createBaseWeightedVoteOption();
@@ -276,6 +282,12 @@ var TextProposal = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      title: (0, _helpers.isSet)(object.title) ? String(object.title) : "",
+      description: (0, _helpers.isSet)(object.description) ? String(object.description) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$title, _object$description;
@@ -338,6 +350,15 @@ var Deposit = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      depositor: (0, _helpers.isSet)(object.depositor) ? String(object.depositor) : "",
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$depositor, _object$amount;
@@ -446,6 +467,21 @@ var Proposal = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      content: (0, _helpers.isSet)(object.content) ? _any.Any.fromJSON(object.content) : undefined,
+      status: (0, _helpers.isSet)(object.status) ? proposalStatusFromJSON(object.status) : 0,
+      finalTallyResult: (0, _helpers.isSet)(object.finalTallyResult) ? TallyResult.fromJSON(object.finalTallyResult) : undefined,
+      submitTime: (0, _helpers.isSet)(object.submitTime) ? (0, _helpers.fromJsonTimestamp)(object.submitTime) : undefined,
+      depositEndTime: (0, _helpers.isSet)(object.depositEndTime) ? (0, _helpers.fromJsonTimestamp)(object.depositEndTime) : undefined,
+      totalDeposit: Array.isArray(object === null || object === void 0 ? void 0 : object.totalDeposit) ? object.totalDeposit.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      votingStartTime: (0, _helpers.isSet)(object.votingStartTime) ? (0, _helpers.fromJsonTimestamp)(object.votingStartTime) : undefined,
+      votingEndTime: (0, _helpers.isSet)(object.votingEndTime) ? (0, _helpers.fromJsonTimestamp)(object.votingEndTime) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$status, _object$submitTime, _object$depositEndTim, _object$totalDeposit, _object$votingStartTi, _object$votingEndTime;
     var message = createBaseProposal();
@@ -514,6 +550,14 @@ var TallyResult = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      yes: (0, _helpers.isSet)(object.yes) ? String(object.yes) : "",
+      abstain: (0, _helpers.isSet)(object.abstain) ? String(object.abstain) : "",
+      no: (0, _helpers.isSet)(object.no) ? String(object.no) : "",
+      noWithVeto: (0, _helpers.isSet)(object.noWithVeto) ? String(object.noWithVeto) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$yes, _object$abstain, _object$no, _object$noWithVeto;
@@ -586,6 +630,16 @@ var Vote = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      proposalId: (0, _helpers.isSet)(object.proposalId) ? _helpers.Long.fromValue(object.proposalId) : _helpers.Long.UZERO,
+      voter: (0, _helpers.isSet)(object.voter) ? String(object.voter) : "",
+      option: (0, _helpers.isSet)(object.option) ? voteOptionFromJSON(object.option) : 0,
+      options: Array.isArray(object === null || object === void 0 ? void 0 : object.options) ? object.options.map(function (e) {
+        return WeightedVoteOption.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$voter, _object$option2, _object$options;
     var message = createBaseVote();
@@ -645,6 +699,14 @@ var DepositParams = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      minDeposit: Array.isArray(object === null || object === void 0 ? void 0 : object.minDeposit) ? object.minDeposit.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      maxDepositPeriod: (0, _helpers.isSet)(object.maxDepositPeriod) ? _duration.Duration.fromJSON(object.maxDepositPeriod) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$minDeposit;
     var message = createBaseDepositParams();
@@ -685,6 +747,11 @@ var VotingParams = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      votingPeriod: (0, _helpers.isSet)(object.votingPeriod) ? _duration.Duration.fromJSON(object.votingPeriod) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseVotingParams();
@@ -736,6 +803,13 @@ var TallyParams = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      quorum: (0, _helpers.isSet)(object.quorum) ? (0, _helpers.bytesFromBase64)(object.quorum) : new Uint8Array(),
+      threshold: (0, _helpers.isSet)(object.threshold) ? (0, _helpers.bytesFromBase64)(object.threshold) : new Uint8Array(),
+      vetoThreshold: (0, _helpers.isSet)(object.vetoThreshold) ? (0, _helpers.bytesFromBase64)(object.vetoThreshold) : new Uint8Array()
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$quorum, _object$threshold, _object$vetoThreshold;

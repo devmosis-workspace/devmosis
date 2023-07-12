@@ -149,6 +149,17 @@ var MsgCreateVestingAccount = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      fromAddress: (0, _helpers.isSet)(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: (0, _helpers.isSet)(object.toAddress) ? String(object.toAddress) : "",
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      endTime: (0, _helpers.isSet)(object.endTime) ? _helpers.Long.fromValue(object.endTime) : _helpers.Long.ZERO,
+      delayed: (0, _helpers.isSet)(object.delayed) ? Boolean(object.delayed) : false
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$fromAddress, _object$toAddress, _object$amount, _object$delayed;
     var message = createBaseMsgCreateVestingAccount();
@@ -184,6 +195,9 @@ var MsgCreateVestingAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgCreateVestingAccountResponse();
@@ -244,6 +258,15 @@ var MsgCreatePermanentLockedAccount = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      fromAddress: (0, _helpers.isSet)(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: (0, _helpers.isSet)(object.toAddress) ? String(object.toAddress) : "",
+      amount: Array.isArray(object === null || object === void 0 ? void 0 : object.amount) ? object.amount.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$fromAddress2, _object$toAddress2, _object$amount2;
     var message = createBaseMsgCreatePermanentLockedAccount();
@@ -277,6 +300,9 @@ var MsgCreatePermanentLockedAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgCreatePermanentLockedAccountResponse();
@@ -344,6 +370,16 @@ var MsgCreatePeriodicVestingAccount = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      fromAddress: (0, _helpers.isSet)(object.fromAddress) ? String(object.fromAddress) : "",
+      toAddress: (0, _helpers.isSet)(object.toAddress) ? String(object.toAddress) : "",
+      startTime: (0, _helpers.isSet)(object.startTime) ? _helpers.Long.fromValue(object.startTime) : _helpers.Long.ZERO,
+      vestingPeriods: Array.isArray(object === null || object === void 0 ? void 0 : object.vestingPeriods) ? object.vestingPeriods.map(function (e) {
+        return _vesting.Period.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$fromAddress3, _object$toAddress3, _object$vestingPeriod;
     var message = createBaseMsgCreatePeriodicVestingAccount();
@@ -378,6 +414,9 @@ var MsgCreatePeriodicVestingAccountResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgCreatePeriodicVestingAccountResponse();

@@ -79,6 +79,17 @@ var GenesisState = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      lastLockId: (0, _helpers.isSet)(object.lastLockId) ? _helpers.Long.fromValue(object.lastLockId) : _helpers.Long.UZERO,
+      locks: Array.isArray(object === null || object === void 0 ? void 0 : object.locks) ? object.locks.map(function (e) {
+        return _lock.PeriodLock.fromJSON(e);
+      }) : [],
+      syntheticLocks: Array.isArray(object === null || object === void 0 ? void 0 : object.syntheticLocks) ? object.syntheticLocks.map(function (e) {
+        return _lock.SyntheticLock.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$locks, _object$syntheticLock;
     var message = createBaseGenesisState();

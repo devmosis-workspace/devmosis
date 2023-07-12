@@ -244,50 +244,60 @@ export interface SearchTxsResultSDKType {
 export declare const TxResponse: {
     encode(message: TxResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxResponse;
+    fromJSON(object: any): TxResponse;
     fromPartial(object: Partial<TxResponse>): TxResponse;
 };
 export declare const ABCIMessageLog: {
     encode(message: ABCIMessageLog, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ABCIMessageLog;
+    fromJSON(object: any): ABCIMessageLog;
     fromPartial(object: Partial<ABCIMessageLog>): ABCIMessageLog;
 };
 export declare const StringEvent: {
     encode(message: StringEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StringEvent;
+    fromJSON(object: any): StringEvent;
     fromPartial(object: Partial<StringEvent>): StringEvent;
 };
 export declare const Attribute: {
     encode(message: Attribute, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Attribute;
+    fromJSON(object: any): Attribute;
     fromPartial(object: Partial<Attribute>): Attribute;
 };
 export declare const GasInfo: {
     encode(message: GasInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GasInfo;
+    fromJSON(object: any): GasInfo;
     fromPartial(object: Partial<GasInfo>): GasInfo;
 };
 export declare const Result: {
     encode(message: Result, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Result;
+    fromJSON(object: any): Result;
     fromPartial(object: Partial<Result>): Result;
 };
 export declare const SimulationResponse: {
     encode(message: SimulationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SimulationResponse;
+    fromJSON(object: any): SimulationResponse;
     fromPartial(object: Partial<SimulationResponse>): SimulationResponse;
 };
 export declare const MsgData: {
     encode(message: MsgData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgData;
+    fromJSON(object: any): MsgData;
     fromPartial(object: Partial<MsgData>): MsgData;
 };
 export declare const TxMsgData: {
     encode(message: TxMsgData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxMsgData;
+    fromJSON(object: any): TxMsgData;
     fromPartial(object: Partial<TxMsgData>): TxMsgData;
 };
 export declare const SearchTxsResult: {
     encode(message: SearchTxsResult, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SearchTxsResult;
+    fromJSON(object: any): SearchTxsResult;
     fromPartial(object: Partial<SearchTxsResult>): SearchTxsResult;
 };

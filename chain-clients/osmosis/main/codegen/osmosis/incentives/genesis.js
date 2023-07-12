@@ -94,6 +94,18 @@ var GenesisState = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _params.Params.fromJSON(object.params) : undefined,
+      gauges: Array.isArray(object === null || object === void 0 ? void 0 : object.gauges) ? object.gauges.map(function (e) {
+        return _gauge.Gauge.fromJSON(e);
+      }) : [],
+      lockableDurations: Array.isArray(object === null || object === void 0 ? void 0 : object.lockableDurations) ? object.lockableDurations.map(function (e) {
+        return _duration.Duration.fromJSON(e);
+      }) : [],
+      lastGaugeId: (0, _helpers.isSet)(object.lastGaugeId) ? _helpers.Long.fromValue(object.lastGaugeId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$gauges, _object$lockableDurat;
     var message = createBaseGenesisState();

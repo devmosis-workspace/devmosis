@@ -90,6 +90,16 @@ var ValidatorSigningInfo = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      startHeight: (0, _helpers.isSet)(object.startHeight) ? _helpers.Long.fromValue(object.startHeight) : _helpers.Long.ZERO,
+      indexOffset: (0, _helpers.isSet)(object.indexOffset) ? _helpers.Long.fromValue(object.indexOffset) : _helpers.Long.ZERO,
+      jailedUntil: (0, _helpers.isSet)(object.jailedUntil) ? (0, _helpers.fromJsonTimestamp)(object.jailedUntil) : undefined,
+      tombstoned: (0, _helpers.isSet)(object.tombstoned) ? Boolean(object.tombstoned) : false,
+      missedBlocksCounter: (0, _helpers.isSet)(object.missedBlocksCounter) ? _helpers.Long.fromValue(object.missedBlocksCounter) : _helpers.Long.ZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$address, _object$jailedUntil, _object$tombstoned;
     var message = createBaseValidatorSigningInfo();
@@ -160,6 +170,15 @@ var Params = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      signedBlocksWindow: (0, _helpers.isSet)(object.signedBlocksWindow) ? _helpers.Long.fromValue(object.signedBlocksWindow) : _helpers.Long.ZERO,
+      minSignedPerWindow: (0, _helpers.isSet)(object.minSignedPerWindow) ? (0, _helpers.bytesFromBase64)(object.minSignedPerWindow) : new Uint8Array(),
+      downtimeJailDuration: (0, _helpers.isSet)(object.downtimeJailDuration) ? _duration.Duration.fromJSON(object.downtimeJailDuration) : undefined,
+      slashFractionDoubleSign: (0, _helpers.isSet)(object.slashFractionDoubleSign) ? (0, _helpers.bytesFromBase64)(object.slashFractionDoubleSign) : new Uint8Array(),
+      slashFractionDowntime: (0, _helpers.isSet)(object.slashFractionDowntime) ? (0, _helpers.bytesFromBase64)(object.slashFractionDowntime) : new Uint8Array()
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$minSignedPerW, _object$slashFraction, _object$slashFraction2;

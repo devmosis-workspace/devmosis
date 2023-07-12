@@ -58,6 +58,12 @@ var GenesisOwners = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      index: (0, _helpers.isSet)(object.index) ? _helpers.Long.fromValue(object.index) : _helpers.Long.UZERO,
+      indexOwners: (0, _helpers.isSet)(object.indexOwners) ? _capability.CapabilityOwners.fromJSON(object.indexOwners) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseGenesisOwners();
     message.index = object.index !== undefined && object.index !== null ? _helpers.Long.fromValue(object.index) : _helpers.Long.UZERO;
@@ -111,6 +117,14 @@ var GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      index: (0, _helpers.isSet)(object.index) ? _helpers.Long.fromValue(object.index) : _helpers.Long.UZERO,
+      owners: Array.isArray(object === null || object === void 0 ? void 0 : object.owners) ? object.owners.map(function (e) {
+        return GenesisOwners.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$owners;

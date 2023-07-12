@@ -65,15 +65,18 @@ export interface BlockMetadata_DeliverTxSDKType {
 export declare const StoreKVPair: {
     encode(message: StoreKVPair, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): StoreKVPair;
+    fromJSON(object: any): StoreKVPair;
     fromPartial(object: Partial<StoreKVPair>): StoreKVPair;
 };
 export declare const BlockMetadata: {
     encode(message: BlockMetadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockMetadata;
+    fromJSON(object: any): BlockMetadata;
     fromPartial(object: Partial<BlockMetadata>): BlockMetadata;
 };
 export declare const BlockMetadata_DeliverTx: {
     encode(message: BlockMetadata_DeliverTx, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BlockMetadata_DeliverTx;
+    fromJSON(object: any): BlockMetadata_DeliverTx;
     fromPartial(object: Partial<BlockMetadata_DeliverTx>): BlockMetadata_DeliverTx;
 };

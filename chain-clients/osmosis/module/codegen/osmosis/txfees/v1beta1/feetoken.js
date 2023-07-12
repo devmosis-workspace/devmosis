@@ -1,4 +1,4 @@
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * FeeToken is a struct that specifies a coin denom, and pool ID pair.
@@ -49,6 +49,12 @@ export const FeeToken = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      poolID: isSet(object.poolID) ? Long.fromValue(object.poolID) : Long.UZERO
+    };
   },
   fromPartial(object) {
     var _object$denom;

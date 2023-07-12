@@ -66,30 +66,36 @@ export interface QueryAnnualProvisionsResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
+    fromJSON(_: any): QueryParamsRequest;
     fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
+    fromJSON(object: any): QueryParamsResponse;
     fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryInflationRequest: {
     encode(_: QueryInflationRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryInflationRequest;
+    fromJSON(_: any): QueryInflationRequest;
     fromPartial(_: Partial<QueryInflationRequest>): QueryInflationRequest;
 };
 export declare const QueryInflationResponse: {
     encode(message: QueryInflationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryInflationResponse;
+    fromJSON(object: any): QueryInflationResponse;
     fromPartial(object: Partial<QueryInflationResponse>): QueryInflationResponse;
 };
 export declare const QueryAnnualProvisionsRequest: {
     encode(_: QueryAnnualProvisionsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAnnualProvisionsRequest;
+    fromJSON(_: any): QueryAnnualProvisionsRequest;
     fromPartial(_: Partial<QueryAnnualProvisionsRequest>): QueryAnnualProvisionsRequest;
 };
 export declare const QueryAnnualProvisionsResponse: {
     encode(message: QueryAnnualProvisionsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAnnualProvisionsResponse;
+    fromJSON(object: any): QueryAnnualProvisionsResponse;
     fromPartial(object: Partial<QueryAnnualProvisionsResponse>): QueryAnnualProvisionsResponse;
 };

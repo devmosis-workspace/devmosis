@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../helpers";
 /** Params holds parameters for the incentives module */
 export interface Params {
   /**
@@ -39,6 +40,11 @@ export const Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Params {
+    return {
+      distrEpochIdentifier: isSet(object.distrEpochIdentifier) ? String(object.distrEpochIdentifier) : ""
+    };
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();

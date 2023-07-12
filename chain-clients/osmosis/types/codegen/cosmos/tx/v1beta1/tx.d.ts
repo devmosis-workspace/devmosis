@@ -397,65 +397,78 @@ export interface AuxSignerDataSDKType {
 export declare const Tx: {
     encode(message: Tx, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Tx;
+    fromJSON(object: any): Tx;
     fromPartial(object: Partial<Tx>): Tx;
 };
 export declare const TxRaw: {
     encode(message: TxRaw, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxRaw;
+    fromJSON(object: any): TxRaw;
     fromPartial(object: Partial<TxRaw>): TxRaw;
 };
 export declare const SignDoc: {
     encode(message: SignDoc, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignDoc;
+    fromJSON(object: any): SignDoc;
     fromPartial(object: Partial<SignDoc>): SignDoc;
 };
 export declare const SignDocDirectAux: {
     encode(message: SignDocDirectAux, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignDocDirectAux;
+    fromJSON(object: any): SignDocDirectAux;
     fromPartial(object: Partial<SignDocDirectAux>): SignDocDirectAux;
 };
 export declare const TxBody: {
     encode(message: TxBody, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TxBody;
+    fromJSON(object: any): TxBody;
     fromPartial(object: Partial<TxBody>): TxBody;
 };
 export declare const AuthInfo: {
     encode(message: AuthInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AuthInfo;
+    fromJSON(object: any): AuthInfo;
     fromPartial(object: Partial<AuthInfo>): AuthInfo;
 };
 export declare const SignerInfo: {
     encode(message: SignerInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SignerInfo;
+    fromJSON(object: any): SignerInfo;
     fromPartial(object: Partial<SignerInfo>): SignerInfo;
 };
 export declare const ModeInfo: {
     encode(message: ModeInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModeInfo;
+    fromJSON(object: any): ModeInfo;
     fromPartial(object: Partial<ModeInfo>): ModeInfo;
 };
 export declare const ModeInfo_Single: {
     encode(message: ModeInfo_Single, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModeInfo_Single;
+    fromJSON(object: any): ModeInfo_Single;
     fromPartial(object: Partial<ModeInfo_Single>): ModeInfo_Single;
 };
 export declare const ModeInfo_Multi: {
     encode(message: ModeInfo_Multi, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModeInfo_Multi;
+    fromJSON(object: any): ModeInfo_Multi;
     fromPartial(object: Partial<ModeInfo_Multi>): ModeInfo_Multi;
 };
 export declare const Fee: {
     encode(message: Fee, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Fee;
+    fromJSON(object: any): Fee;
     fromPartial(object: Partial<Fee>): Fee;
 };
 export declare const Tip: {
     encode(message: Tip, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Tip;
+    fromJSON(object: any): Tip;
     fromPartial(object: Partial<Tip>): Tip;
 };
 export declare const AuxSignerData: {
     encode(message: AuxSignerData, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AuxSignerData;
+    fromJSON(object: any): AuxSignerData;
     fromPartial(object: Partial<AuxSignerData>): AuxSignerData;
 };

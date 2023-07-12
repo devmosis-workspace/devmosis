@@ -47,6 +47,28 @@ export declare const MessageComposer: {
             value: MsgSetDenomMetadata;
         };
     };
+    fromJSON: {
+        createDenom(value: any): {
+            typeUrl: string;
+            value: MsgCreateDenom;
+        };
+        mint(value: any): {
+            typeUrl: string;
+            value: MsgMint;
+        };
+        burn(value: any): {
+            typeUrl: string;
+            value: MsgBurn;
+        };
+        changeAdmin(value: any): {
+            typeUrl: string;
+            value: MsgChangeAdmin;
+        };
+        setDenomMetadata(value: any): {
+            typeUrl: string;
+            value: MsgSetDenomMetadata;
+        };
+    };
     fromPartial: {
         createDenom(value: MsgCreateDenom): {
             typeUrl: string;

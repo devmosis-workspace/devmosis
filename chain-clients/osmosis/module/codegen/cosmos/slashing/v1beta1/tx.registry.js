@@ -24,6 +24,14 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    unjail(value) {
+      return {
+        typeUrl: "/cosmos.slashing.v1beta1.MsgUnjail",
+        value: MsgUnjail.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     unjail(value) {
       return {

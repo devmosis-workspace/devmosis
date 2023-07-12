@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** MsgVerifyInvariant represents a message to verify a particular invariance. */
 export interface MsgVerifyInvariant {
   sender: string;
@@ -58,6 +59,13 @@ export const MsgVerifyInvariant = {
     }
     return message;
   },
+  fromJSON(object: any): MsgVerifyInvariant {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      invariantModuleName: isSet(object.invariantModuleName) ? String(object.invariantModuleName) : "",
+      invariantRoute: isSet(object.invariantRoute) ? String(object.invariantRoute) : ""
+    };
+  },
   fromPartial(object: Partial<MsgVerifyInvariant>): MsgVerifyInvariant {
     const message = createBaseMsgVerifyInvariant();
     message.sender = object.sender ?? "";
@@ -86,6 +94,9 @@ export const MsgVerifyInvariantResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): MsgVerifyInvariantResponse {
+    return {};
   },
   fromPartial(_: Partial<MsgVerifyInvariantResponse>): MsgVerifyInvariantResponse {
     const message = createBaseMsgVerifyInvariantResponse();

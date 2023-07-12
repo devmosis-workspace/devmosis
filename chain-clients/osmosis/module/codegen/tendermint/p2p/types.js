@@ -1,4 +1,4 @@
-import { Long } from "../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 function createBaseNetAddress() {
   return {
@@ -42,6 +42,13 @@ export const NetAddress = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      ip: isSet(object.ip) ? String(object.ip) : "",
+      port: isSet(object.port) ? Number(object.port) : 0
+    };
   },
   fromPartial(object) {
     var _object$id, _object$ip, _object$port;
@@ -94,6 +101,13 @@ export const ProtocolVersion = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      p2p: isSet(object.p2p) ? Long.fromValue(object.p2p) : Long.UZERO,
+      block: isSet(object.block) ? Long.fromValue(object.block) : Long.UZERO,
+      app: isSet(object.app) ? Long.fromValue(object.app) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseProtocolVersion();
@@ -181,6 +195,18 @@ export const DefaultNodeInfo = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      protocolVersion: isSet(object.protocolVersion) ? ProtocolVersion.fromJSON(object.protocolVersion) : undefined,
+      defaultNodeId: isSet(object.defaultNodeId) ? String(object.defaultNodeId) : "",
+      listenAddr: isSet(object.listenAddr) ? String(object.listenAddr) : "",
+      network: isSet(object.network) ? String(object.network) : "",
+      version: isSet(object.version) ? String(object.version) : "",
+      channels: isSet(object.channels) ? bytesFromBase64(object.channels) : new Uint8Array(),
+      moniker: isSet(object.moniker) ? String(object.moniker) : "",
+      other: isSet(object.other) ? DefaultNodeInfoOther.fromJSON(object.other) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$defaultNodeId, _object$listenAddr, _object$network, _object$version, _object$channels, _object$moniker;
     const message = createBaseDefaultNodeInfo();
@@ -230,6 +256,12 @@ export const DefaultNodeInfoOther = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      txIndex: isSet(object.txIndex) ? String(object.txIndex) : "",
+      rpcAddress: isSet(object.rpcAddress) ? String(object.rpcAddress) : ""
+    };
   },
   fromPartial(object) {
     var _object$txIndex, _object$rpcAddress;

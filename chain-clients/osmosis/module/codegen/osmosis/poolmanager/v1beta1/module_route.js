@@ -1,4 +1,4 @@
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** PoolType is an enumeration of all supported pool types. */
 export let PoolType = /*#__PURE__*/function (PoolType) {
@@ -82,6 +82,12 @@ export const ModuleRoute = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      poolType: isSet(object.poolType) ? poolTypeFromJSON(object.poolType) : 0,
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : undefined
+    };
   },
   fromPartial(object) {
     var _object$poolType;

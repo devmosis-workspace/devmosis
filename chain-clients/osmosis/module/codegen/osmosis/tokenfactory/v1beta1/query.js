@@ -1,6 +1,7 @@
 import { Params } from "./params";
 import { DenomAuthorityMetadata } from "./authorityMetadata";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
 
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -70,6 +71,9 @@ export const QueryParamsRequest = {
     }
     return message;
   },
+  fromJSON(_) {
+    return {};
+  },
   fromPartial(_) {
     const message = createBaseQueryParamsRequest();
     return message;
@@ -103,6 +107,11 @@ export const QueryParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryParamsResponse();
@@ -138,6 +147,11 @@ export const QueryDenomAuthorityMetadataRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
   },
   fromPartial(object) {
     var _object$denom;
@@ -175,6 +189,11 @@ export const QueryDenomAuthorityMetadataResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      authorityMetadata: isSet(object.authorityMetadata) ? DenomAuthorityMetadata.fromJSON(object.authorityMetadata) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryDenomAuthorityMetadataResponse();
     message.authorityMetadata = object.authorityMetadata !== undefined && object.authorityMetadata !== null ? DenomAuthorityMetadata.fromPartial(object.authorityMetadata) : undefined;
@@ -209,6 +228,11 @@ export const QueryDenomsFromCreatorRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      creator: isSet(object.creator) ? String(object.creator) : ""
+    };
   },
   fromPartial(object) {
     var _object$creator;
@@ -245,6 +269,11 @@ export const QueryDenomsFromCreatorResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      denoms: Array.isArray(object === null || object === void 0 ? void 0 : object.denoms) ? object.denoms.map(e => String(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$denoms;

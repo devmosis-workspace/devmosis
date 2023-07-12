@@ -33,6 +33,11 @@ export const Params = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      denomCreationFee: Array.isArray(object === null || object === void 0 ? void 0 : object.denomCreationFee) ? object.denomCreationFee.map(e => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$denomCreation;
     const message = createBaseParams();

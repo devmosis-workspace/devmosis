@@ -1,7 +1,7 @@
 import { Any } from "../../../google/protobuf/any";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
-import { toTimestamp, fromTimestamp } from "../../../helpers";
+import { isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
  * the provided method on behalf of the granter's account.
@@ -65,6 +65,11 @@ export const GenericAuthorization = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      msg: isSet(object.msg) ? String(object.msg) : ""
+    };
+  },
   fromPartial(object) {
     var _object$msg;
     const message = createBaseGenericAuthorization();
@@ -107,6 +112,12 @@ export const Grant = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      authorization: isSet(object.authorization) ? Any.fromJSON(object.authorization) : undefined,
+      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
+    };
   },
   fromPartial(object) {
     var _object$expiration;
@@ -166,6 +177,14 @@ export const GrantAuthorization = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      granter: isSet(object.granter) ? String(object.granter) : "",
+      grantee: isSet(object.grantee) ? String(object.grantee) : "",
+      authorization: isSet(object.authorization) ? Any.fromJSON(object.authorization) : undefined,
+      expiration: isSet(object.expiration) ? fromJsonTimestamp(object.expiration) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$granter, _object$grantee, _object$expiration2;
     const message = createBaseGrantAuthorization();
@@ -204,6 +223,11 @@ export const GrantQueueItem = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      msgTypeUrls: Array.isArray(object === null || object === void 0 ? void 0 : object.msgTypeUrls) ? object.msgTypeUrls.map(e => String(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$msgTypeUrls;

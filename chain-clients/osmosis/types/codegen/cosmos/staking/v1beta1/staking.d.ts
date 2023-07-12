@@ -417,100 +417,120 @@ export interface PoolSDKType {
 export declare const HistoricalInfo: {
     encode(message: HistoricalInfo, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): HistoricalInfo;
+    fromJSON(object: any): HistoricalInfo;
     fromPartial(object: Partial<HistoricalInfo>): HistoricalInfo;
 };
 export declare const CommissionRates: {
     encode(message: CommissionRates, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CommissionRates;
+    fromJSON(object: any): CommissionRates;
     fromPartial(object: Partial<CommissionRates>): CommissionRates;
 };
 export declare const Commission: {
     encode(message: Commission, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Commission;
+    fromJSON(object: any): Commission;
     fromPartial(object: Partial<Commission>): Commission;
 };
 export declare const Description: {
     encode(message: Description, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Description;
+    fromJSON(object: any): Description;
     fromPartial(object: Partial<Description>): Description;
 };
 export declare const Validator: {
     encode(message: Validator, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Validator;
+    fromJSON(object: any): Validator;
     fromPartial(object: Partial<Validator>): Validator;
 };
 export declare const ValAddresses: {
     encode(message: ValAddresses, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValAddresses;
+    fromJSON(object: any): ValAddresses;
     fromPartial(object: Partial<ValAddresses>): ValAddresses;
 };
 export declare const DVPair: {
     encode(message: DVPair, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVPair;
+    fromJSON(object: any): DVPair;
     fromPartial(object: Partial<DVPair>): DVPair;
 };
 export declare const DVPairs: {
     encode(message: DVPairs, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVPairs;
+    fromJSON(object: any): DVPairs;
     fromPartial(object: Partial<DVPairs>): DVPairs;
 };
 export declare const DVVTriplet: {
     encode(message: DVVTriplet, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplet;
+    fromJSON(object: any): DVVTriplet;
     fromPartial(object: Partial<DVVTriplet>): DVVTriplet;
 };
 export declare const DVVTriplets: {
     encode(message: DVVTriplets, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DVVTriplets;
+    fromJSON(object: any): DVVTriplets;
     fromPartial(object: Partial<DVVTriplets>): DVVTriplets;
 };
 export declare const Delegation: {
     encode(message: Delegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Delegation;
+    fromJSON(object: any): Delegation;
     fromPartial(object: Partial<Delegation>): Delegation;
 };
 export declare const UnbondingDelegation: {
     encode(message: UnbondingDelegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegation;
+    fromJSON(object: any): UnbondingDelegation;
     fromPartial(object: Partial<UnbondingDelegation>): UnbondingDelegation;
 };
 export declare const UnbondingDelegationEntry: {
     encode(message: UnbondingDelegationEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): UnbondingDelegationEntry;
+    fromJSON(object: any): UnbondingDelegationEntry;
     fromPartial(object: Partial<UnbondingDelegationEntry>): UnbondingDelegationEntry;
 };
 export declare const RedelegationEntry: {
     encode(message: RedelegationEntry, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntry;
+    fromJSON(object: any): RedelegationEntry;
     fromPartial(object: Partial<RedelegationEntry>): RedelegationEntry;
 };
 export declare const Redelegation: {
     encode(message: Redelegation, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Redelegation;
+    fromJSON(object: any): Redelegation;
     fromPartial(object: Partial<Redelegation>): Redelegation;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
+    fromJSON(object: any): Params;
     fromPartial(object: Partial<Params>): Params;
 };
 export declare const DelegationResponse: {
     encode(message: DelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DelegationResponse;
+    fromJSON(object: any): DelegationResponse;
     fromPartial(object: Partial<DelegationResponse>): DelegationResponse;
 };
 export declare const RedelegationEntryResponse: {
     encode(message: RedelegationEntryResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationEntryResponse;
+    fromJSON(object: any): RedelegationEntryResponse;
     fromPartial(object: Partial<RedelegationEntryResponse>): RedelegationEntryResponse;
 };
 export declare const RedelegationResponse: {
     encode(message: RedelegationResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): RedelegationResponse;
+    fromJSON(object: any): RedelegationResponse;
     fromPartial(object: Partial<RedelegationResponse>): RedelegationResponse;
 };
 export declare const Pool: {
     encode(message: Pool, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Pool;
+    fromJSON(object: any): Pool;
     fromPartial(object: Partial<Pool>): Pool;
 };

@@ -1,5 +1,6 @@
 import { ParamChange, ParamChangeSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
   /** subspace defines the module to query the parameter for. */
@@ -109,6 +110,12 @@ export const QueryParamsRequest = {
     }
     return message;
   },
+  fromJSON(object: any): QueryParamsRequest {
+    return {
+      subspace: isSet(object.subspace) ? String(object.subspace) : "",
+      key: isSet(object.key) ? String(object.key) : ""
+    };
+  },
   fromPartial(object: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     message.subspace = object.subspace ?? "";
@@ -145,6 +152,11 @@ export const QueryParamsResponse = {
     }
     return message;
   },
+  fromJSON(object: any): QueryParamsResponse {
+    return {
+      param: isSet(object.param) ? ParamChange.fromJSON(object.param) : undefined
+    };
+  },
   fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.param = object.param !== undefined && object.param !== null ? ParamChange.fromPartial(object.param) : undefined;
@@ -171,6 +183,9 @@ export const QuerySubspacesRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_: any): QuerySubspacesRequest {
+    return {};
   },
   fromPartial(_: Partial<QuerySubspacesRequest>): QuerySubspacesRequest {
     const message = createBaseQuerySubspacesRequest();
@@ -205,6 +220,11 @@ export const QuerySubspacesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): QuerySubspacesResponse {
+    return {
+      subspaces: Array.isArray(object?.subspaces) ? object.subspaces.map((e: any) => Subspace.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<QuerySubspacesResponse>): QuerySubspacesResponse {
     const message = createBaseQuerySubspacesResponse();
@@ -247,6 +267,12 @@ export const Subspace = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Subspace {
+    return {
+      subspace: isSet(object.subspace) ? String(object.subspace) : "",
+      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => String(e)) : []
+    };
   },
   fromPartial(object: Partial<Subspace>): Subspace {
     const message = createBaseSubspace();

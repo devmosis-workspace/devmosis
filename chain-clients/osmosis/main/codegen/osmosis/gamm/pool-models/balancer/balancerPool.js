@@ -140,6 +140,18 @@ var SmoothWeightChangeParams = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      startTime: (0, _helpers.isSet)(object.startTime) ? (0, _helpers.fromJsonTimestamp)(object.startTime) : undefined,
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined,
+      initialPoolWeights: Array.isArray(object === null || object === void 0 ? void 0 : object.initialPoolWeights) ? object.initialPoolWeights.map(function (e) {
+        return PoolAsset.fromJSON(e);
+      }) : [],
+      targetPoolWeights: Array.isArray(object === null || object === void 0 ? void 0 : object.targetPoolWeights) ? object.targetPoolWeights.map(function (e) {
+        return PoolAsset.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$startTime, _object$initialPoolWe, _object$targetPoolWei;
     var message = createBaseSmoothWeightChangeParams();
@@ -199,6 +211,13 @@ var PoolParams = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      swapFee: (0, _helpers.isSet)(object.swapFee) ? String(object.swapFee) : "",
+      exitFee: (0, _helpers.isSet)(object.exitFee) ? String(object.exitFee) : "",
+      smoothWeightChangeParams: (0, _helpers.isSet)(object.smoothWeightChangeParams) ? SmoothWeightChangeParams.fromJSON(object.smoothWeightChangeParams) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$swapFee, _object$exitFee;
     var message = createBasePoolParams();
@@ -245,6 +264,12 @@ var PoolAsset = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      token: (0, _helpers.isSet)(object.token) ? _coin.Coin.fromJSON(object.token) : undefined,
+      weight: (0, _helpers.isSet)(object.weight) ? String(object.weight) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$weight;
@@ -335,6 +360,19 @@ var Pool = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      id: (0, _helpers.isSet)(object.id) ? _helpers.Long.fromValue(object.id) : _helpers.Long.UZERO,
+      poolParams: (0, _helpers.isSet)(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      futurePoolGovernor: (0, _helpers.isSet)(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      totalShares: (0, _helpers.isSet)(object.totalShares) ? _coin.Coin.fromJSON(object.totalShares) : undefined,
+      poolAssets: Array.isArray(object === null || object === void 0 ? void 0 : object.poolAssets) ? object.poolAssets.map(function (e) {
+        return PoolAsset.fromJSON(e);
+      }) : [],
+      totalWeight: (0, _helpers.isSet)(object.totalWeight) ? String(object.totalWeight) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address, _object$futurePoolGov, _object$poolAssets, _object$totalWeight;

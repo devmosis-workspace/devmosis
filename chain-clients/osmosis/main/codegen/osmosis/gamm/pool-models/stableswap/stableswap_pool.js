@@ -68,6 +68,12 @@ var PoolParams = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      swapFee: (0, _helpers.isSet)(object.swapFee) ? String(object.swapFee) : "",
+      exitFee: (0, _helpers.isSet)(object.exitFee) ? String(object.exitFee) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$swapFee, _object$exitFee;
     var message = createBasePoolParams();
@@ -182,6 +188,22 @@ var Pool = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      address: (0, _helpers.isSet)(object.address) ? String(object.address) : "",
+      id: (0, _helpers.isSet)(object.id) ? _helpers.Long.fromValue(object.id) : _helpers.Long.UZERO,
+      poolParams: (0, _helpers.isSet)(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      futurePoolGovernor: (0, _helpers.isSet)(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : "",
+      totalShares: (0, _helpers.isSet)(object.totalShares) ? _coin.Coin.fromJSON(object.totalShares) : undefined,
+      poolLiquidity: Array.isArray(object === null || object === void 0 ? void 0 : object.poolLiquidity) ? object.poolLiquidity.map(function (e) {
+        return _coin.Coin.fromJSON(e);
+      }) : [],
+      scalingFactors: Array.isArray(object === null || object === void 0 ? void 0 : object.scalingFactors) ? object.scalingFactors.map(function (e) {
+        return _helpers.Long.fromValue(e);
+      }) : [],
+      scalingFactorController: (0, _helpers.isSet)(object.scalingFactorController) ? String(object.scalingFactorController) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$address, _object$futurePoolGov, _object$poolLiquidity, _object$scalingFactor, _object$scalingFactor2;

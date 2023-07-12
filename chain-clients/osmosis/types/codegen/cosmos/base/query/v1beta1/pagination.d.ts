@@ -95,10 +95,12 @@ export interface PageResponseSDKType {
 export declare const PageRequest: {
     encode(message: PageRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PageRequest;
+    fromJSON(object: any): PageRequest;
     fromPartial(object: Partial<PageRequest>): PageRequest;
 };
 export declare const PageResponse: {
     encode(message: PageResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PageResponse;
+    fromJSON(object: any): PageResponse;
     fromPartial(object: Partial<PageResponse>): PageResponse;
 };

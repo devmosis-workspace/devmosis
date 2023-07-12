@@ -1,5 +1,5 @@
 import { PoolParams, PoolParamsSDKType, PoolAsset, PoolAssetSDKType } from "../balancerPool";
-import { Long } from "../../../../../helpers";
+import { Long, isSet } from "../../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** ===================== MsgCreatePool */
 export interface MsgCreateBalancerPool {
@@ -73,6 +73,14 @@ export const MsgCreateBalancerPool = {
     }
     return message;
   },
+  fromJSON(object: any): MsgCreateBalancerPool {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      poolAssets: Array.isArray(object?.poolAssets) ? object.poolAssets.map((e: any) => PoolAsset.fromJSON(e)) : [],
+      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : ""
+    };
+  },
   fromPartial(object: Partial<MsgCreateBalancerPool>): MsgCreateBalancerPool {
     const message = createBaseMsgCreateBalancerPool();
     message.sender = object.sender ?? "";
@@ -110,6 +118,11 @@ export const MsgCreateBalancerPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): MsgCreateBalancerPoolResponse {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
   },
   fromPartial(object: Partial<MsgCreateBalancerPoolResponse>): MsgCreateBalancerPoolResponse {
     const message = createBaseMsgCreateBalancerPoolResponse();

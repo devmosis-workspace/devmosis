@@ -2,7 +2,7 @@ import { Description, CommissionRates } from "./staking";
 import { Any } from "../../../google/protobuf/any";
 import { Coin } from "../../base/v1beta1/coin";
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
+import { Long, isSet, toTimestamp, fromTimestamp, fromJsonTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** MsgCreateValidator defines a SDK message for creating a new validator. */
 
@@ -157,6 +157,17 @@ export const MsgCreateValidator = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      description: isSet(object.description) ? Description.fromJSON(object.description) : undefined,
+      commission: isSet(object.commission) ? CommissionRates.fromJSON(object.commission) : undefined,
+      minSelfDelegation: isSet(object.minSelfDelegation) ? String(object.minSelfDelegation) : "",
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      pubkey: isSet(object.pubkey) ? Any.fromJSON(object.pubkey) : undefined,
+      value: isSet(object.value) ? Coin.fromJSON(object.value) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$minSelfDelega, _object$delegatorAddr, _object$validatorAddr;
     const message = createBaseMsgCreateValidator();
@@ -190,6 +201,9 @@ export const MsgCreateValidatorResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgCreateValidatorResponse();
@@ -246,6 +260,14 @@ export const MsgEditValidator = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      description: isSet(object.description) ? Description.fromJSON(object.description) : undefined,
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      commissionRate: isSet(object.commissionRate) ? String(object.commissionRate) : "",
+      minSelfDelegation: isSet(object.minSelfDelegation) ? String(object.minSelfDelegation) : ""
+    };
+  },
   fromPartial(object) {
     var _object$validatorAddr2, _object$commissionRat, _object$minSelfDelega2;
     const message = createBaseMsgEditValidator();
@@ -276,6 +298,9 @@ export const MsgEditValidatorResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgEditValidatorResponse();
@@ -325,6 +350,13 @@ export const MsgDelegate = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr2, _object$validatorAddr3;
     const message = createBaseMsgDelegate();
@@ -354,6 +386,9 @@ export const MsgDelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgDelegateResponse();
@@ -410,6 +445,14 @@ export const MsgBeginRedelegate = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorSrcAddress: isSet(object.validatorSrcAddress) ? String(object.validatorSrcAddress) : "",
+      validatorDstAddress: isSet(object.validatorDstAddress) ? String(object.validatorDstAddress) : "",
+      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr3, _object$validatorSrcA, _object$validatorDstA;
     const message = createBaseMsgBeginRedelegate();
@@ -448,6 +491,11 @@ export const MsgBeginRedelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined
+    };
   },
   fromPartial(object) {
     var _object$completionTim;
@@ -499,6 +547,13 @@ export const MsgUndelegate = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr4, _object$validatorAddr4;
     const message = createBaseMsgUndelegate();
@@ -536,6 +591,11 @@ export const MsgUndelegateResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      completionTime: isSet(object.completionTime) ? fromJsonTimestamp(object.completionTime) : undefined
+    };
   },
   fromPartial(object) {
     var _object$completionTim2;
@@ -594,6 +654,14 @@ export const MsgCancelUnbondingDelegation = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddress: isSet(object.delegatorAddress) ? String(object.delegatorAddress) : "",
+      validatorAddress: isSet(object.validatorAddress) ? String(object.validatorAddress) : "",
+      amount: isSet(object.amount) ? Coin.fromJSON(object.amount) : undefined,
+      creationHeight: isSet(object.creationHeight) ? Long.fromValue(object.creationHeight) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr5, _object$validatorAddr5;
     const message = createBaseMsgCancelUnbondingDelegation();
@@ -624,6 +692,9 @@ export const MsgCancelUnbondingDelegationResponse = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseMsgCancelUnbondingDelegationResponse();

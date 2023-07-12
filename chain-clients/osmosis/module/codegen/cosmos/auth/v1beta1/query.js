@@ -1,7 +1,7 @@
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { Any } from "../../../google/protobuf/any";
 import { Params } from "./auth";
-import { Long } from "../../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * QueryAccountsRequest is the request type for the Query/Accounts RPC method.
@@ -200,6 +200,11 @@ export const QueryAccountsRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryAccountsRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
@@ -242,6 +247,12 @@ export const QueryAccountsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      accounts: Array.isArray(object === null || object === void 0 ? void 0 : object.accounts) ? object.accounts.map(e => Any.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$accounts;
     const message = createBaseQueryAccountsResponse();
@@ -279,6 +290,11 @@ export const QueryAccountRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
+  },
   fromPartial(object) {
     var _object$address;
     const message = createBaseQueryAccountRequest();
@@ -315,6 +331,11 @@ export const QueryAccountResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      account: isSet(object.account) ? Any.fromJSON(object.account) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryAccountResponse();
     message.account = object.account !== undefined && object.account !== null ? Any.fromPartial(object.account) : undefined;
@@ -341,6 +362,9 @@ export const QueryParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryParamsRequest();
@@ -376,6 +400,11 @@ export const QueryParamsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
@@ -402,6 +431,9 @@ export const QueryModuleAccountsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryModuleAccountsRequest();
@@ -436,6 +468,11 @@ export const QueryModuleAccountsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      accounts: Array.isArray(object === null || object === void 0 ? void 0 : object.accounts) ? object.accounts.map(e => Any.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$accounts2;
@@ -473,6 +510,11 @@ export const QueryModuleAccountByNameRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      name: isSet(object.name) ? String(object.name) : ""
+    };
+  },
   fromPartial(object) {
     var _object$name;
     const message = createBaseQueryModuleAccountByNameRequest();
@@ -509,6 +551,11 @@ export const QueryModuleAccountByNameResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      account: isSet(object.account) ? Any.fromJSON(object.account) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryModuleAccountByNameResponse();
     message.account = object.account !== undefined && object.account !== null ? Any.fromPartial(object.account) : undefined;
@@ -535,6 +582,9 @@ export const Bech32PrefixRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseBech32PrefixRequest();
@@ -569,6 +619,11 @@ export const Bech32PrefixResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      bech32Prefix: isSet(object.bech32Prefix) ? String(object.bech32Prefix) : ""
+    };
   },
   fromPartial(object) {
     var _object$bech32Prefix;
@@ -606,6 +661,11 @@ export const AddressBytesToStringRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      addressBytes: isSet(object.addressBytes) ? bytesFromBase64(object.addressBytes) : new Uint8Array()
+    };
+  },
   fromPartial(object) {
     var _object$addressBytes;
     const message = createBaseAddressBytesToStringRequest();
@@ -641,6 +701,11 @@ export const AddressBytesToStringResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      addressString: isSet(object.addressString) ? String(object.addressString) : ""
+    };
   },
   fromPartial(object) {
     var _object$addressString;
@@ -678,6 +743,11 @@ export const AddressStringToBytesRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      addressString: isSet(object.addressString) ? String(object.addressString) : ""
+    };
+  },
   fromPartial(object) {
     var _object$addressString2;
     const message = createBaseAddressStringToBytesRequest();
@@ -713,6 +783,11 @@ export const AddressStringToBytesResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      addressBytes: isSet(object.addressBytes) ? bytesFromBase64(object.addressBytes) : new Uint8Array()
+    };
   },
   fromPartial(object) {
     var _object$addressBytes2;
@@ -750,6 +825,11 @@ export const QueryAccountAddressByIDRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      id: isSet(object.id) ? Long.fromValue(object.id) : Long.ZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryAccountAddressByIDRequest();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.ZERO;
@@ -784,6 +864,11 @@ export const QueryAccountAddressByIDResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      accountAddress: isSet(object.accountAddress) ? String(object.accountAddress) : ""
+    };
   },
   fromPartial(object) {
     var _object$accountAddres;

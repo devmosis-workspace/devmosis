@@ -1,5 +1,5 @@
 import { PoolParams, PoolAsset } from "../balancerPool";
-import { Long } from "../../../../../helpers";
+import { Long, isSet } from "../../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** ===================== MsgCreatePool */
 
@@ -59,6 +59,14 @@ export const MsgCreateBalancerPool = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      sender: isSet(object.sender) ? String(object.sender) : "",
+      poolParams: isSet(object.poolParams) ? PoolParams.fromJSON(object.poolParams) : undefined,
+      poolAssets: Array.isArray(object === null || object === void 0 ? void 0 : object.poolAssets) ? object.poolAssets.map(e => PoolAsset.fromJSON(e)) : [],
+      futurePoolGovernor: isSet(object.futurePoolGovernor) ? String(object.futurePoolGovernor) : ""
+    };
+  },
   fromPartial(object) {
     var _object$sender, _object$poolAssets, _object$futurePoolGov;
     const message = createBaseMsgCreateBalancerPool();
@@ -97,6 +105,11 @@ export const MsgCreateBalancerPoolResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseMsgCreateBalancerPoolResponse();

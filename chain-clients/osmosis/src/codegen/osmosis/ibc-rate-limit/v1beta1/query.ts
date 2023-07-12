@@ -1,5 +1,6 @@
 import { Params, ParamsSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** ParamsRequest is the request type for the Query/Params RPC method. */
 export interface ParamsRequest {}
 /** ParamsRequest is the request type for the Query/Params RPC method. */
@@ -34,6 +35,9 @@ export const ParamsRequest = {
     }
     return message;
   },
+  fromJSON(_: any): ParamsRequest {
+    return {};
+  },
   fromPartial(_: Partial<ParamsRequest>): ParamsRequest {
     const message = createBaseParamsRequest();
     return message;
@@ -67,6 +71,11 @@ export const ParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): ParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object: Partial<ParamsResponse>): ParamsResponse {
     const message = createBaseParamsResponse();

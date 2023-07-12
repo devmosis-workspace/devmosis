@@ -110,20 +110,24 @@ export interface SingletonDescriptorSDKType {
 export declare const TableDescriptor: {
     encode(message: TableDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): TableDescriptor;
+    fromJSON(object: any): TableDescriptor;
     fromPartial(object: Partial<TableDescriptor>): TableDescriptor;
 };
 export declare const PrimaryKeyDescriptor: {
     encode(message: PrimaryKeyDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PrimaryKeyDescriptor;
+    fromJSON(object: any): PrimaryKeyDescriptor;
     fromPartial(object: Partial<PrimaryKeyDescriptor>): PrimaryKeyDescriptor;
 };
 export declare const SecondaryIndexDescriptor: {
     encode(message: SecondaryIndexDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SecondaryIndexDescriptor;
+    fromJSON(object: any): SecondaryIndexDescriptor;
     fromPartial(object: Partial<SecondaryIndexDescriptor>): SecondaryIndexDescriptor;
 };
 export declare const SingletonDescriptor: {
     encode(message: SingletonDescriptor, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SingletonDescriptor;
+    fromJSON(object: any): SingletonDescriptor;
     fromPartial(object: Partial<SingletonDescriptor>): SingletonDescriptor;
 };

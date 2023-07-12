@@ -38,10 +38,12 @@ export interface CompactBitArraySDKType {
 export declare const MultiSignature: {
     encode(message: MultiSignature, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MultiSignature;
+    fromJSON(object: any): MultiSignature;
     fromPartial(object: Partial<MultiSignature>): MultiSignature;
 };
 export declare const CompactBitArray: {
     encode(message: CompactBitArray, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CompactBitArray;
+    fromJSON(object: any): CompactBitArray;
     fromPartial(object: Partial<CompactBitArray>): CompactBitArray;
 };

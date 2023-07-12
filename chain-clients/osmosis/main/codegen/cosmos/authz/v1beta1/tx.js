@@ -8,6 +8,7 @@ exports.MsgRevokeResponse = exports.MsgRevoke = exports.MsgGrantResponse = expor
 var _authz = require("./authz");
 var _any = require("../../../google/protobuf/any");
 var _m0 = _interopRequireWildcard(require("protobufjs/minimal"));
+var _helpers = require("../../../helpers");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
@@ -101,6 +102,13 @@ var MsgGrant = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      granter: (0, _helpers.isSet)(object.granter) ? String(object.granter) : "",
+      grantee: (0, _helpers.isSet)(object.grantee) ? String(object.grantee) : "",
+      grant: (0, _helpers.isSet)(object.grant) ? _authz.Grant.fromJSON(object.grant) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$granter, _object$grantee;
     var message = createBaseMsgGrant();
@@ -149,6 +157,13 @@ var MsgExecResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      results: Array.isArray(object === null || object === void 0 ? void 0 : object.results) ? object.results.map(function (e) {
+        return (0, _helpers.bytesFromBase64)(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$results;
@@ -206,6 +221,14 @@ var MsgExec = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      grantee: (0, _helpers.isSet)(object.grantee) ? String(object.grantee) : "",
+      msgs: Array.isArray(object === null || object === void 0 ? void 0 : object.msgs) ? object.msgs.map(function (e) {
+        return _any.Any.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$grantee2, _object$msgs;
     var message = createBaseMsgExec();
@@ -238,6 +261,9 @@ var MsgGrantResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgGrantResponse();
@@ -289,6 +315,13 @@ var MsgRevoke = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      granter: (0, _helpers.isSet)(object.granter) ? String(object.granter) : "",
+      grantee: (0, _helpers.isSet)(object.grantee) ? String(object.grantee) : "",
+      msgTypeUrl: (0, _helpers.isSet)(object.msgTypeUrl) ? String(object.msgTypeUrl) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$granter2, _object$grantee3, _object$msgTypeUrl;
     var message = createBaseMsgRevoke();
@@ -320,6 +353,9 @@ var MsgRevokeResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseMsgRevokeResponse();

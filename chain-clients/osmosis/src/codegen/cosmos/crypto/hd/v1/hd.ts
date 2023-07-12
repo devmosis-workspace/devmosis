@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../../helpers";
 /** BIP44Params is used as path field in ledger item in Record. */
 export interface BIP44Params {
   /** purpose is a constant set to 44' (or 0x8000002C) following the BIP43 recommendation */
@@ -79,6 +80,15 @@ export const BIP44Params = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): BIP44Params {
+    return {
+      purpose: isSet(object.purpose) ? Number(object.purpose) : 0,
+      coinType: isSet(object.coinType) ? Number(object.coinType) : 0,
+      account: isSet(object.account) ? Number(object.account) : 0,
+      change: isSet(object.change) ? Boolean(object.change) : false,
+      addressIndex: isSet(object.addressIndex) ? Number(object.addressIndex) : 0
+    };
   },
   fromPartial(object: Partial<BIP44Params>): BIP44Params {
     const message = createBaseBIP44Params();

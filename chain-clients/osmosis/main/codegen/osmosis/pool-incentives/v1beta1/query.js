@@ -45,6 +45,11 @@ var QueryGaugeIdsRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryGaugeIdsRequest();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO;
@@ -90,6 +95,13 @@ var QueryGaugeIdsResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      gaugeIdsWithDuration: Array.isArray(object === null || object === void 0 ? void 0 : object.gaugeIdsWithDuration) ? object.gaugeIdsWithDuration.map(function (e) {
+        return QueryGaugeIdsResponse_GaugeIdWithDuration.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$gaugeIdsWithD;
@@ -145,6 +157,13 @@ var QueryGaugeIdsResponse_GaugeIdWithDuration = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      gaugeId: (0, _helpers.isSet)(object.gaugeId) ? _helpers.Long.fromValue(object.gaugeId) : _helpers.Long.UZERO,
+      duration: (0, _helpers.isSet)(object.duration) ? _duration.Duration.fromJSON(object.duration) : undefined,
+      gaugeIncentivePercentage: (0, _helpers.isSet)(object.gaugeIncentivePercentage) ? String(object.gaugeIncentivePercentage) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$gaugeIncentiv;
     var message = createBaseQueryGaugeIdsResponse_GaugeIdWithDuration();
@@ -176,6 +195,9 @@ var QueryDistrInfoRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryDistrInfoRequest();
@@ -213,6 +235,11 @@ var QueryDistrInfoResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      distrInfo: (0, _helpers.isSet)(object.distrInfo) ? _incentives.DistrInfo.fromJSON(object.distrInfo) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryDistrInfoResponse();
     message.distrInfo = object.distrInfo !== undefined && object.distrInfo !== null ? _incentives.DistrInfo.fromPartial(object.distrInfo) : undefined;
@@ -241,6 +268,9 @@ var QueryParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryParamsRequest();
@@ -278,6 +308,11 @@ var QueryParamsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      params: (0, _helpers.isSet)(object.params) ? _incentives.Params.fromJSON(object.params) : undefined
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? _incentives.Params.fromPartial(object.params) : undefined;
@@ -306,6 +341,9 @@ var QueryLockableDurationsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryLockableDurationsRequest();
@@ -352,6 +390,13 @@ var QueryLockableDurationsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      lockableDurations: Array.isArray(object === null || object === void 0 ? void 0 : object.lockableDurations) ? object.lockableDurations.map(function (e) {
+        return _duration.Duration.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$lockableDurat;
     var message = createBaseQueryLockableDurationsResponse();
@@ -383,6 +428,9 @@ var QueryIncentivizedPoolsRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryIncentivizedPoolsRequest();
@@ -434,6 +482,13 @@ var IncentivizedPool = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      poolId: (0, _helpers.isSet)(object.poolId) ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO,
+      lockableDuration: (0, _helpers.isSet)(object.lockableDuration) ? _duration.Duration.fromJSON(object.lockableDuration) : undefined,
+      gaugeId: (0, _helpers.isSet)(object.gaugeId) ? _helpers.Long.fromValue(object.gaugeId) : _helpers.Long.UZERO
+    };
+  },
   fromPartial: function fromPartial(object) {
     var message = createBaseIncentivizedPool();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? _helpers.Long.fromValue(object.poolId) : _helpers.Long.UZERO;
@@ -482,6 +537,13 @@ var QueryIncentivizedPoolsResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      incentivizedPools: Array.isArray(object === null || object === void 0 ? void 0 : object.incentivizedPools) ? object.incentivizedPools.map(function (e) {
+        return IncentivizedPool.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$incentivizedP;
     var message = createBaseQueryIncentivizedPoolsResponse();
@@ -513,6 +575,9 @@ var QueryExternalIncentiveGaugesRequest = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(_) {
+    return {};
   },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryExternalIncentiveGaugesRequest();
@@ -558,6 +623,13 @@ var QueryExternalIncentiveGaugesResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      data: Array.isArray(object === null || object === void 0 ? void 0 : object.data) ? object.data.map(function (e) {
+        return _gauge.Gauge.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$data;

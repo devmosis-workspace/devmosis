@@ -1,5 +1,6 @@
 import { Coin, CoinSDKType } from "../../base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
+import { isSet } from "../../../helpers";
 /** Params defines the parameters for the bank module. */
 export interface Params {
   sendEnabled: SendEnabled[];
@@ -183,6 +184,12 @@ export const Params = {
     }
     return message;
   },
+  fromJSON(object: any): Params {
+    return {
+      sendEnabled: Array.isArray(object?.sendEnabled) ? object.sendEnabled.map((e: any) => SendEnabled.fromJSON(e)) : [],
+      defaultSendEnabled: isSet(object.defaultSendEnabled) ? Boolean(object.defaultSendEnabled) : false
+    };
+  },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.sendEnabled = object.sendEnabled?.map(e => SendEnabled.fromPartial(e)) || [];
@@ -225,6 +232,12 @@ export const SendEnabled = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SendEnabled {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false
+    };
   },
   fromPartial(object: Partial<SendEnabled>): SendEnabled {
     const message = createBaseSendEnabled();
@@ -269,6 +282,12 @@ export const Input = {
     }
     return message;
   },
+  fromJSON(object: any): Input {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<Input>): Input {
     const message = createBaseInput();
     message.address = object.address ?? "";
@@ -312,6 +331,12 @@ export const Output = {
     }
     return message;
   },
+  fromJSON(object: any): Output {
+    return {
+      address: isSet(object.address) ? String(object.address) : "",
+      coins: Array.isArray(object?.coins) ? object.coins.map((e: any) => Coin.fromJSON(e)) : []
+    };
+  },
   fromPartial(object: Partial<Output>): Output {
     const message = createBaseOutput();
     message.address = object.address ?? "";
@@ -347,6 +372,11 @@ export const Supply = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Supply {
+    return {
+      total: Array.isArray(object?.total) ? object.total.map((e: any) => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object: Partial<Supply>): Supply {
     const message = createBaseSupply();
@@ -396,6 +426,13 @@ export const DenomUnit = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): DenomUnit {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      exponent: isSet(object.exponent) ? Number(object.exponent) : 0,
+      aliases: Array.isArray(object?.aliases) ? object.aliases.map((e: any) => String(e)) : []
+    };
   },
   fromPartial(object: Partial<DenomUnit>): DenomUnit {
     const message = createBaseDenomUnit();
@@ -482,6 +519,18 @@ export const Metadata = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): Metadata {
+    return {
+      description: isSet(object.description) ? String(object.description) : "",
+      denomUnits: Array.isArray(object?.denomUnits) ? object.denomUnits.map((e: any) => DenomUnit.fromJSON(e)) : [],
+      base: isSet(object.base) ? String(object.base) : "",
+      display: isSet(object.display) ? String(object.display) : "",
+      name: isSet(object.name) ? String(object.name) : "",
+      symbol: isSet(object.symbol) ? String(object.symbol) : "",
+      uri: isSet(object.uri) ? String(object.uri) : "",
+      uriHash: isSet(object.uriHash) ? String(object.uriHash) : ""
+    };
   },
   fromPartial(object: Partial<Metadata>): Metadata {
     const message = createBaseMetadata();

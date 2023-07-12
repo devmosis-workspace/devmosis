@@ -1,4 +1,5 @@
-import { Long } from "../../../helpers";
+import { proposalExecutorResultFromJSON } from "./types";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** EventCreateGroup is an event emitted when a group is created. */
 
@@ -65,6 +66,11 @@ export const EventCreateGroup = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      groupId: isSet(object.groupId) ? Long.fromValue(object.groupId) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseEventCreateGroup();
     message.groupId = object.groupId !== undefined && object.groupId !== null ? Long.fromValue(object.groupId) : Long.UZERO;
@@ -100,6 +106,11 @@ export const EventUpdateGroup = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      groupId: isSet(object.groupId) ? Long.fromValue(object.groupId) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseEventUpdateGroup();
     message.groupId = object.groupId !== undefined && object.groupId !== null ? Long.fromValue(object.groupId) : Long.UZERO;
@@ -134,6 +145,11 @@ export const EventCreateGroupPolicy = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
   },
   fromPartial(object) {
     var _object$address;
@@ -171,6 +187,11 @@ export const EventUpdateGroupPolicy = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      address: isSet(object.address) ? String(object.address) : ""
+    };
+  },
   fromPartial(object) {
     var _object$address2;
     const message = createBaseEventUpdateGroupPolicy();
@@ -207,6 +228,11 @@ export const EventSubmitProposal = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseEventSubmitProposal();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
@@ -242,6 +268,11 @@ export const EventWithdrawProposal = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBaseEventWithdrawProposal();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
@@ -276,6 +307,11 @@ export const EventVote = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseEventVote();
@@ -326,6 +362,13 @@ export const EventExec = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO,
+      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : 0,
+      logs: isSet(object.logs) ? String(object.logs) : ""
+    };
+  },
   fromPartial(object) {
     var _object$result, _object$logs;
     const message = createBaseEventExec();
@@ -370,6 +413,12 @@ export const EventLeaveGroup = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      groupId: isSet(object.groupId) ? Long.fromValue(object.groupId) : Long.UZERO,
+      address: isSet(object.address) ? String(object.address) : ""
+    };
   },
   fromPartial(object) {
     var _object$address3;

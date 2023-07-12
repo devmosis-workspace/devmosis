@@ -50,6 +50,13 @@ var Params = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      forceUnlockAllowedAddresses: Array.isArray(object === null || object === void 0 ? void 0 : object.forceUnlockAllowedAddresses) ? object.forceUnlockAllowedAddresses.map(function (e) {
+        return String(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$forceUnlockAl;
     var message = createBaseParams();

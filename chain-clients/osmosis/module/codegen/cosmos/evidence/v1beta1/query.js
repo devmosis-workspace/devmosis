@@ -1,6 +1,7 @@
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { Any } from "../../../google/protobuf/any";
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../helpers";
 /** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
 
 /** QueryEvidenceRequest is the request type for the Query/Evidence RPC method. */
@@ -58,6 +59,11 @@ export const QueryEvidenceRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      evidenceHash: isSet(object.evidenceHash) ? bytesFromBase64(object.evidenceHash) : new Uint8Array()
+    };
+  },
   fromPartial(object) {
     var _object$evidenceHash;
     const message = createBaseQueryEvidenceRequest();
@@ -94,6 +100,11 @@ export const QueryEvidenceResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      evidence: isSet(object.evidence) ? Any.fromJSON(object.evidence) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryEvidenceResponse();
     message.evidence = object.evidence !== undefined && object.evidence !== null ? Any.fromPartial(object.evidence) : undefined;
@@ -128,6 +139,11 @@ export const QueryAllEvidenceRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryAllEvidenceRequest();
@@ -170,6 +186,12 @@ export const QueryAllEvidenceResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      evidence: Array.isArray(object === null || object === void 0 ? void 0 : object.evidence) ? object.evidence.map(e => Any.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$evidence;

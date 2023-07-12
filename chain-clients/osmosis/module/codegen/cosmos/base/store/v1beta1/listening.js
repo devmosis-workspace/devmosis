@@ -1,5 +1,6 @@
 import { RequestDeliverTx, ResponseDeliverTx, RequestBeginBlock, ResponseBeginBlock, RequestEndBlock, ResponseEndBlock, ResponseCommit } from "../../../../tendermint/abci/types";
 import * as _m0 from "protobufjs/minimal";
+import { isSet, bytesFromBase64 } from "../../../../helpers";
 /**
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
@@ -80,6 +81,14 @@ export const StoreKVPair = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      storeKey: isSet(object.storeKey) ? String(object.storeKey) : "",
+      delete: isSet(object.delete) ? Boolean(object.delete) : false,
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      value: isSet(object.value) ? bytesFromBase64(object.value) : new Uint8Array()
+    };
+  },
   fromPartial(object) {
     var _object$storeKey, _object$delete, _object$key, _object$value;
     const message = createBaseStoreKVPair();
@@ -154,6 +163,16 @@ export const BlockMetadata = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      requestBeginBlock: isSet(object.requestBeginBlock) ? RequestBeginBlock.fromJSON(object.requestBeginBlock) : undefined,
+      responseBeginBlock: isSet(object.responseBeginBlock) ? ResponseBeginBlock.fromJSON(object.responseBeginBlock) : undefined,
+      deliverTxs: Array.isArray(object === null || object === void 0 ? void 0 : object.deliverTxs) ? object.deliverTxs.map(e => BlockMetadata_DeliverTx.fromJSON(e)) : [],
+      requestEndBlock: isSet(object.requestEndBlock) ? RequestEndBlock.fromJSON(object.requestEndBlock) : undefined,
+      responseEndBlock: isSet(object.responseEndBlock) ? ResponseEndBlock.fromJSON(object.responseEndBlock) : undefined,
+      responseCommit: isSet(object.responseCommit) ? ResponseCommit.fromJSON(object.responseCommit) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$deliverTxs;
     const message = createBaseBlockMetadata();
@@ -201,6 +220,12 @@ export const BlockMetadata_DeliverTx = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      request: isSet(object.request) ? RequestDeliverTx.fromJSON(object.request) : undefined,
+      response: isSet(object.response) ? ResponseDeliverTx.fromJSON(object.response) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseBlockMetadata_DeliverTx();

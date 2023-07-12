@@ -1,5 +1,5 @@
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** TokenPairArbRoutes tracks all of the hot routes for a given pair of tokens */
 
@@ -94,6 +94,13 @@ export const TokenPairArbRoutes = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      arbRoutes: Array.isArray(object === null || object === void 0 ? void 0 : object.arbRoutes) ? object.arbRoutes.map(e => Route.fromJSON(e)) : [],
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : ""
+    };
+  },
   fromPartial(object) {
     var _object$arbRoutes, _object$tokenIn, _object$tokenOut;
     const message = createBaseTokenPairArbRoutes();
@@ -138,6 +145,12 @@ export const Route = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      trades: Array.isArray(object === null || object === void 0 ? void 0 : object.trades) ? object.trades.map(e => Trade.fromJSON(e)) : [],
+      stepSize: isSet(object.stepSize) ? String(object.stepSize) : ""
+    };
   },
   fromPartial(object) {
     var _object$trades, _object$stepSize;
@@ -189,6 +202,13 @@ export const Trade = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      pool: isSet(object.pool) ? Long.fromValue(object.pool) : Long.UZERO,
+      tokenIn: isSet(object.tokenIn) ? String(object.tokenIn) : "",
+      tokenOut: isSet(object.tokenOut) ? String(object.tokenOut) : ""
+    };
   },
   fromPartial(object) {
     var _object$tokenIn2, _object$tokenOut2;
@@ -251,6 +271,13 @@ export const RouteStatistics = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      profits: Array.isArray(object === null || object === void 0 ? void 0 : object.profits) ? object.profits.map(e => Coin.fromJSON(e)) : [],
+      numberOfTrades: isSet(object.numberOfTrades) ? String(object.numberOfTrades) : "",
+      route: Array.isArray(object === null || object === void 0 ? void 0 : object.route) ? object.route.map(e => Long.fromValue(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$profits, _object$numberOfTrade, _object$route;
     const message = createBaseRouteStatistics();
@@ -303,6 +330,13 @@ export const PoolWeights = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      stableWeight: isSet(object.stableWeight) ? Long.fromValue(object.stableWeight) : Long.UZERO,
+      balancerWeight: isSet(object.balancerWeight) ? Long.fromValue(object.balancerWeight) : Long.UZERO,
+      concentratedWeight: isSet(object.concentratedWeight) ? Long.fromValue(object.concentratedWeight) : Long.UZERO
+    };
+  },
   fromPartial(object) {
     const message = createBasePoolWeights();
     message.stableWeight = object.stableWeight !== undefined && object.stableWeight !== null ? Long.fromValue(object.stableWeight) : Long.UZERO;
@@ -346,6 +380,12 @@ export const BaseDenom = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      denom: isSet(object.denom) ? String(object.denom) : "",
+      stepSize: isSet(object.stepSize) ? String(object.stepSize) : ""
+    };
   },
   fromPartial(object) {
     var _object$denom, _object$stepSize2;

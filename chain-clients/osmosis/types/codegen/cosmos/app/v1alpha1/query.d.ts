@@ -18,10 +18,12 @@ export interface QueryConfigResponseSDKType {
 export declare const QueryConfigRequest: {
     encode(_: QueryConfigRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConfigRequest;
+    fromJSON(_: any): QueryConfigRequest;
     fromPartial(_: Partial<QueryConfigRequest>): QueryConfigRequest;
 };
 export declare const QueryConfigResponse: {
     encode(message: QueryConfigResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryConfigResponse;
+    fromJSON(object: any): QueryConfigResponse;
     fromPartial(object: Partial<QueryConfigResponse>): QueryConfigResponse;
 };

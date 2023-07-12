@@ -37,6 +37,14 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    unjail: function unjail(value) {
+      return {
+        typeUrl: "/cosmos.slashing.v1beta1.MsgUnjail",
+        value: _tx.MsgUnjail.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     unjail: function unjail(value) {
       return {

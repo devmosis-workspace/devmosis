@@ -46,20 +46,24 @@ export interface ListImplementationsResponseSDKType {
 export declare const ListAllInterfacesRequest: {
     encode(_: ListAllInterfacesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ListAllInterfacesRequest;
+    fromJSON(_: any): ListAllInterfacesRequest;
     fromPartial(_: Partial<ListAllInterfacesRequest>): ListAllInterfacesRequest;
 };
 export declare const ListAllInterfacesResponse: {
     encode(message: ListAllInterfacesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ListAllInterfacesResponse;
+    fromJSON(object: any): ListAllInterfacesResponse;
     fromPartial(object: Partial<ListAllInterfacesResponse>): ListAllInterfacesResponse;
 };
 export declare const ListImplementationsRequest: {
     encode(message: ListImplementationsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ListImplementationsRequest;
+    fromJSON(object: any): ListImplementationsRequest;
     fromPartial(object: Partial<ListImplementationsRequest>): ListImplementationsRequest;
 };
 export declare const ListImplementationsResponse: {
     encode(message: ListImplementationsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ListImplementationsResponse;
+    fromJSON(object: any): ListImplementationsResponse;
     fromPartial(object: Partial<ListImplementationsResponse>): ListImplementationsResponse;
 };

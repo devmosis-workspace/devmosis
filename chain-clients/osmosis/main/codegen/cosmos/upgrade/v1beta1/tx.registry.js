@@ -49,6 +49,20 @@ var MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    softwareUpgrade: function softwareUpgrade(value) {
+      return {
+        typeUrl: "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade",
+        value: _tx.MsgSoftwareUpgrade.fromJSON(value)
+      };
+    },
+    cancelUpgrade: function cancelUpgrade(value) {
+      return {
+        typeUrl: "/cosmos.upgrade.v1beta1.MsgCancelUpgrade",
+        value: _tx.MsgCancelUpgrade.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     softwareUpgrade: function softwareUpgrade(value) {
       return {

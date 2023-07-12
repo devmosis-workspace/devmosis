@@ -40,15 +40,18 @@ export interface EventBurnSDKType {
 export declare const EventSend: {
     encode(message: EventSend, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventSend;
+    fromJSON(object: any): EventSend;
     fromPartial(object: Partial<EventSend>): EventSend;
 };
 export declare const EventMint: {
     encode(message: EventMint, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventMint;
+    fromJSON(object: any): EventMint;
     fromPartial(object: Partial<EventMint>): EventMint;
 };
 export declare const EventBurn: {
     encode(message: EventBurn, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): EventBurn;
+    fromJSON(object: any): EventBurn;
     fromPartial(object: Partial<EventBurn>): EventBurn;
 };

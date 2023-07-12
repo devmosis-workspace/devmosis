@@ -1,4 +1,4 @@
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 export interface SwapAmountInRoute {
   poolId: Long;
@@ -52,6 +52,12 @@ export const SwapAmountInRoute = {
     }
     return message;
   },
+  fromJSON(object: any): SwapAmountInRoute {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      tokenOutDenom: isSet(object.tokenOutDenom) ? String(object.tokenOutDenom) : ""
+    };
+  },
   fromPartial(object: Partial<SwapAmountInRoute>): SwapAmountInRoute {
     const message = createBaseSwapAmountInRoute();
     message.poolId = object.poolId !== undefined && object.poolId !== null ? Long.fromValue(object.poolId) : Long.UZERO;
@@ -94,6 +100,12 @@ export const SwapAmountOutRoute = {
       }
     }
     return message;
+  },
+  fromJSON(object: any): SwapAmountOutRoute {
+    return {
+      poolId: isSet(object.poolId) ? Long.fromValue(object.poolId) : Long.UZERO,
+      tokenInDenom: isSet(object.tokenInDenom) ? String(object.tokenInDenom) : ""
+    };
   },
   fromPartial(object: Partial<SwapAmountOutRoute>): SwapAmountOutRoute {
     const message = createBaseSwapAmountOutRoute();

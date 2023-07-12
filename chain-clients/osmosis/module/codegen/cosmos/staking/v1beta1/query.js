@@ -1,6 +1,6 @@
 import { PageRequest, PageResponse } from "../../base/query/v1beta1/pagination";
 import { Validator, DelegationResponse, UnbondingDelegation, RedelegationResponse, HistoricalInfo, Pool, Params } from "./staking";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** QueryValidatorsRequest is request type for Query/Validators RPC method. */
 
@@ -258,6 +258,12 @@ export const QueryValidatorsRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      status: isSet(object.status) ? String(object.status) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$status;
     const message = createBaseQueryValidatorsRequest();
@@ -302,6 +308,12 @@ export const QueryValidatorsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validators: Array.isArray(object === null || object === void 0 ? void 0 : object.validators) ? object.validators.map(e => Validator.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$validators;
     const message = createBaseQueryValidatorsResponse();
@@ -339,6 +351,11 @@ export const QueryValidatorRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validatorAddr: isSet(object.validatorAddr) ? String(object.validatorAddr) : ""
+    };
+  },
   fromPartial(object) {
     var _object$validatorAddr;
     const message = createBaseQueryValidatorRequest();
@@ -374,6 +391,11 @@ export const QueryValidatorResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      validator: isSet(object.validator) ? Validator.fromJSON(object.validator) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryValidatorResponse();
@@ -416,6 +438,12 @@ export const QueryValidatorDelegationsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      validatorAddr: isSet(object.validatorAddr) ? String(object.validatorAddr) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$validatorAddr2;
@@ -461,6 +489,12 @@ export const QueryValidatorDelegationsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegationResponses: Array.isArray(object === null || object === void 0 ? void 0 : object.delegationResponses) ? object.delegationResponses.map(e => DelegationResponse.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$delegationRes;
     const message = createBaseQueryValidatorDelegationsResponse();
@@ -504,6 +538,12 @@ export const QueryValidatorUnbondingDelegationsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      validatorAddr: isSet(object.validatorAddr) ? String(object.validatorAddr) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$validatorAddr3;
@@ -549,6 +589,12 @@ export const QueryValidatorUnbondingDelegationsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      unbondingResponses: Array.isArray(object === null || object === void 0 ? void 0 : object.unbondingResponses) ? object.unbondingResponses.map(e => UnbondingDelegation.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$unbondingResp;
     const message = createBaseQueryValidatorUnbondingDelegationsResponse();
@@ -593,6 +639,12 @@ export const QueryDelegationRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddr: isSet(object.delegatorAddr) ? String(object.delegatorAddr) : "",
+      validatorAddr: isSet(object.validatorAddr) ? String(object.validatorAddr) : ""
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr, _object$validatorAddr4;
     const message = createBaseQueryDelegationRequest();
@@ -629,6 +681,11 @@ export const QueryDelegationResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      delegationResponse: isSet(object.delegationResponse) ? DelegationResponse.fromJSON(object.delegationResponse) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryDelegationResponse();
@@ -672,6 +729,12 @@ export const QueryUnbondingDelegationRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddr: isSet(object.delegatorAddr) ? String(object.delegatorAddr) : "",
+      validatorAddr: isSet(object.validatorAddr) ? String(object.validatorAddr) : ""
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr2, _object$validatorAddr5;
     const message = createBaseQueryUnbondingDelegationRequest();
@@ -708,6 +771,11 @@ export const QueryUnbondingDelegationResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      unbond: isSet(object.unbond) ? UnbondingDelegation.fromJSON(object.unbond) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryUnbondingDelegationResponse();
@@ -750,6 +818,12 @@ export const QueryDelegatorDelegationsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      delegatorAddr: isSet(object.delegatorAddr) ? String(object.delegatorAddr) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$delegatorAddr3;
@@ -795,6 +869,12 @@ export const QueryDelegatorDelegationsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegationResponses: Array.isArray(object === null || object === void 0 ? void 0 : object.delegationResponses) ? object.delegationResponses.map(e => DelegationResponse.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$delegationRes2;
     const message = createBaseQueryDelegatorDelegationsResponse();
@@ -839,6 +919,12 @@ export const QueryDelegatorUnbondingDelegationsRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddr: isSet(object.delegatorAddr) ? String(object.delegatorAddr) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr4;
     const message = createBaseQueryDelegatorUnbondingDelegationsRequest();
@@ -882,6 +968,12 @@ export const QueryDelegatorUnbondingDelegationsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      unbondingResponses: Array.isArray(object === null || object === void 0 ? void 0 : object.unbondingResponses) ? object.unbondingResponses.map(e => UnbondingDelegation.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$unbondingResp2;
@@ -941,6 +1033,14 @@ export const QueryRedelegationsRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddr: isSet(object.delegatorAddr) ? String(object.delegatorAddr) : "",
+      srcValidatorAddr: isSet(object.srcValidatorAddr) ? String(object.srcValidatorAddr) : "",
+      dstValidatorAddr: isSet(object.dstValidatorAddr) ? String(object.dstValidatorAddr) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr5, _object$srcValidatorA, _object$dstValidatorA;
     const message = createBaseQueryRedelegationsRequest();
@@ -987,6 +1087,12 @@ export const QueryRedelegationsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      redelegationResponses: Array.isArray(object === null || object === void 0 ? void 0 : object.redelegationResponses) ? object.redelegationResponses.map(e => RedelegationResponse.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$redelegationR;
     const message = createBaseQueryRedelegationsResponse();
@@ -1030,6 +1136,12 @@ export const QueryDelegatorValidatorsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      delegatorAddr: isSet(object.delegatorAddr) ? String(object.delegatorAddr) : "",
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
   },
   fromPartial(object) {
     var _object$delegatorAddr6;
@@ -1075,6 +1187,12 @@ export const QueryDelegatorValidatorsResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validators: Array.isArray(object === null || object === void 0 ? void 0 : object.validators) ? object.validators.map(e => Validator.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
   fromPartial(object) {
     var _object$validators2;
     const message = createBaseQueryDelegatorValidatorsResponse();
@@ -1119,6 +1237,12 @@ export const QueryDelegatorValidatorRequest = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      delegatorAddr: isSet(object.delegatorAddr) ? String(object.delegatorAddr) : "",
+      validatorAddr: isSet(object.validatorAddr) ? String(object.validatorAddr) : ""
+    };
+  },
   fromPartial(object) {
     var _object$delegatorAddr7, _object$validatorAddr6;
     const message = createBaseQueryDelegatorValidatorRequest();
@@ -1156,6 +1280,11 @@ export const QueryDelegatorValidatorResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      validator: isSet(object.validator) ? Validator.fromJSON(object.validator) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryDelegatorValidatorResponse();
     message.validator = object.validator !== undefined && object.validator !== null ? Validator.fromPartial(object.validator) : undefined;
@@ -1190,6 +1319,11 @@ export const QueryHistoricalInfoRequest = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryHistoricalInfoRequest();
@@ -1226,6 +1360,11 @@ export const QueryHistoricalInfoResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      hist: isSet(object.hist) ? HistoricalInfo.fromJSON(object.hist) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryHistoricalInfoResponse();
     message.hist = object.hist !== undefined && object.hist !== null ? HistoricalInfo.fromPartial(object.hist) : undefined;
@@ -1252,6 +1391,9 @@ export const QueryPoolRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryPoolRequest();
@@ -1287,6 +1429,11 @@ export const QueryPoolResponse = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      pool: isSet(object.pool) ? Pool.fromJSON(object.pool) : undefined
+    };
+  },
   fromPartial(object) {
     const message = createBaseQueryPoolResponse();
     message.pool = object.pool !== undefined && object.pool !== null ? Pool.fromPartial(object.pool) : undefined;
@@ -1313,6 +1460,9 @@ export const QueryParamsRequest = {
       }
     }
     return message;
+  },
+  fromJSON(_) {
+    return {};
   },
   fromPartial(_) {
     const message = createBaseQueryParamsRequest();
@@ -1347,6 +1497,11 @@ export const QueryParamsResponse = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
   },
   fromPartial(object) {
     const message = createBaseQueryParamsResponse();

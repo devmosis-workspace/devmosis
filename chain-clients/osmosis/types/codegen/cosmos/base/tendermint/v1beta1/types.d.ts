@@ -73,10 +73,12 @@ export interface HeaderSDKType {
 export declare const Block: {
     encode(message: Block, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Block;
+    fromJSON(object: any): Block;
     fromPartial(object: Partial<Block>): Block;
 };
 export declare const Header: {
     encode(message: Header, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Header;
+    fromJSON(object: any): Header;
     fromPartial(object: Partial<Header>): Header;
 };

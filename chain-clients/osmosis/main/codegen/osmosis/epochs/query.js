@@ -35,6 +35,9 @@ var QueryEpochsInfoRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(_) {
+    return {};
+  },
   fromPartial: function fromPartial(_) {
     var message = createBaseQueryEpochsInfoRequest();
     return message;
@@ -80,6 +83,13 @@ var QueryEpochsInfoResponse = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      epochs: Array.isArray(object === null || object === void 0 ? void 0 : object.epochs) ? object.epochs.map(function (e) {
+        return _genesis.EpochInfo.fromJSON(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$epochs;
     var message = createBaseQueryEpochsInfoResponse();
@@ -120,6 +130,11 @@ var QueryCurrentEpochRequest = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      identifier: (0, _helpers.isSet)(object.identifier) ? String(object.identifier) : ""
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$identifier;
     var message = createBaseQueryCurrentEpochRequest();
@@ -157,6 +172,11 @@ var QueryCurrentEpochResponse = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      currentEpoch: (0, _helpers.isSet)(object.currentEpoch) ? _helpers.Long.fromValue(object.currentEpoch) : _helpers.Long.ZERO
+    };
   },
   fromPartial: function fromPartial(object) {
     var message = createBaseQueryCurrentEpochResponse();

@@ -162,45 +162,54 @@ export interface SnapshotSchemaSDKType {
 export declare const Snapshot: {
     encode(message: Snapshot, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Snapshot;
+    fromJSON(object: any): Snapshot;
     fromPartial(object: Partial<Snapshot>): Snapshot;
 };
 export declare const Metadata: {
     encode(message: Metadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Metadata;
+    fromJSON(object: any): Metadata;
     fromPartial(object: Partial<Metadata>): Metadata;
 };
 export declare const SnapshotItem: {
     encode(message: SnapshotItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotItem;
+    fromJSON(object: any): SnapshotItem;
     fromPartial(object: Partial<SnapshotItem>): SnapshotItem;
 };
 export declare const SnapshotStoreItem: {
     encode(message: SnapshotStoreItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotStoreItem;
+    fromJSON(object: any): SnapshotStoreItem;
     fromPartial(object: Partial<SnapshotStoreItem>): SnapshotStoreItem;
 };
 export declare const SnapshotIAVLItem: {
     encode(message: SnapshotIAVLItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotIAVLItem;
+    fromJSON(object: any): SnapshotIAVLItem;
     fromPartial(object: Partial<SnapshotIAVLItem>): SnapshotIAVLItem;
 };
 export declare const SnapshotExtensionMeta: {
     encode(message: SnapshotExtensionMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionMeta;
+    fromJSON(object: any): SnapshotExtensionMeta;
     fromPartial(object: Partial<SnapshotExtensionMeta>): SnapshotExtensionMeta;
 };
 export declare const SnapshotExtensionPayload: {
     encode(message: SnapshotExtensionPayload, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionPayload;
+    fromJSON(object: any): SnapshotExtensionPayload;
     fromPartial(object: Partial<SnapshotExtensionPayload>): SnapshotExtensionPayload;
 };
 export declare const SnapshotKVItem: {
     encode(message: SnapshotKVItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotKVItem;
+    fromJSON(object: any): SnapshotKVItem;
     fromPartial(object: Partial<SnapshotKVItem>): SnapshotKVItem;
 };
 export declare const SnapshotSchema: {
     encode(message: SnapshotSchema, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotSchema;
+    fromJSON(object: any): SnapshotSchema;
     fromPartial(object: Partial<SnapshotSchema>): SnapshotSchema;
 };

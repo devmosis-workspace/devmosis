@@ -1,5 +1,5 @@
 import { SuperfluidAsset } from "../superfluid";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * SetSuperfluidAssetsProposal is a gov Content type to update the superfluid
@@ -74,6 +74,13 @@ export const SetSuperfluidAssetsProposal = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      assets: Array.isArray(object === null || object === void 0 ? void 0 : object.assets) ? object.assets.map(e => SuperfluidAsset.fromJSON(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$title, _object$description, _object$assets;
     const message = createBaseSetSuperfluidAssetsProposal();
@@ -125,6 +132,13 @@ export const RemoveSuperfluidAssetsProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      superfluidAssetDenoms: Array.isArray(object === null || object === void 0 ? void 0 : object.superfluidAssetDenoms) ? object.superfluidAssetDenoms.map(e => String(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$title2, _object$description2, _object$superfluidAss;
@@ -193,6 +207,14 @@ export const UpdateUnpoolWhiteListProposal = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      ids: Array.isArray(object === null || object === void 0 ? void 0 : object.ids) ? object.ids.map(e => Long.fromValue(e)) : [],
+      isOverwrite: isSet(object.isOverwrite) ? Boolean(object.isOverwrite) : false
+    };
   },
   fromPartial(object) {
     var _object$title3, _object$description3, _object$ids, _object$isOverwrite;

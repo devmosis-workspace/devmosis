@@ -88,6 +88,16 @@ var Proof = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      total: (0, _helpers.isSet)(object.total) ? _helpers.Long.fromValue(object.total) : _helpers.Long.ZERO,
+      index: (0, _helpers.isSet)(object.index) ? _helpers.Long.fromValue(object.index) : _helpers.Long.ZERO,
+      leafHash: (0, _helpers.isSet)(object.leafHash) ? (0, _helpers.bytesFromBase64)(object.leafHash) : new Uint8Array(),
+      aunts: Array.isArray(object === null || object === void 0 ? void 0 : object.aunts) ? object.aunts.map(function (e) {
+        return (0, _helpers.bytesFromBase64)(e);
+      }) : []
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$leafHash, _object$aunts;
     var message = createBaseProof();
@@ -137,6 +147,12 @@ var ValueOp = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
+      proof: (0, _helpers.isSet)(object.proof) ? Proof.fromJSON(object.proof) : undefined
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$key;
@@ -190,6 +206,13 @@ var DominoOp = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      key: (0, _helpers.isSet)(object.key) ? String(object.key) : "",
+      input: (0, _helpers.isSet)(object.input) ? String(object.input) : "",
+      output: (0, _helpers.isSet)(object.output) ? String(object.output) : ""
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$key2, _object$input, _object$output;
@@ -245,6 +268,13 @@ var ProofOp = {
     }
     return message;
   },
+  fromJSON: function fromJSON(object) {
+    return {
+      type: (0, _helpers.isSet)(object.type) ? String(object.type) : "",
+      key: (0, _helpers.isSet)(object.key) ? (0, _helpers.bytesFromBase64)(object.key) : new Uint8Array(),
+      data: (0, _helpers.isSet)(object.data) ? (0, _helpers.bytesFromBase64)(object.data) : new Uint8Array()
+    };
+  },
   fromPartial: function fromPartial(object) {
     var _object$type, _object$key3, _object$data;
     var message = createBaseProofOp();
@@ -293,6 +323,13 @@ var ProofOps = {
       }
     }
     return message;
+  },
+  fromJSON: function fromJSON(object) {
+    return {
+      ops: Array.isArray(object === null || object === void 0 ? void 0 : object.ops) ? object.ops.map(function (e) {
+        return ProofOp.fromJSON(e);
+      }) : []
+    };
   },
   fromPartial: function fromPartial(object) {
     var _object$ops;

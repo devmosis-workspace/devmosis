@@ -1,4 +1,4 @@
-import { Long } from "../../helpers";
+import { Long, isSet, bytesFromBase64 } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 
 /**
@@ -67,6 +67,14 @@ export const Proof = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      total: isSet(object.total) ? Long.fromValue(object.total) : Long.ZERO,
+      index: isSet(object.index) ? Long.fromValue(object.index) : Long.ZERO,
+      leafHash: isSet(object.leafHash) ? bytesFromBase64(object.leafHash) : new Uint8Array(),
+      aunts: Array.isArray(object === null || object === void 0 ? void 0 : object.aunts) ? object.aunts.map(e => bytesFromBase64(e)) : []
+    };
+  },
   fromPartial(object) {
     var _object$leafHash, _object$aunts;
     const message = createBaseProof();
@@ -112,6 +120,12 @@ export const ValueOp = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      proof: isSet(object.proof) ? Proof.fromJSON(object.proof) : undefined
+    };
   },
   fromPartial(object) {
     var _object$key;
@@ -163,6 +177,13 @@ export const DominoOp = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      input: isSet(object.input) ? String(object.input) : "",
+      output: isSet(object.output) ? String(object.output) : ""
+    };
   },
   fromPartial(object) {
     var _object$key2, _object$input, _object$output;
@@ -216,6 +237,13 @@ export const ProofOp = {
     }
     return message;
   },
+  fromJSON(object) {
+    return {
+      type: isSet(object.type) ? String(object.type) : "",
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      data: isSet(object.data) ? bytesFromBase64(object.data) : new Uint8Array()
+    };
+  },
   fromPartial(object) {
     var _object$type, _object$key3, _object$data;
     const message = createBaseProofOp();
@@ -253,6 +281,11 @@ export const ProofOps = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      ops: Array.isArray(object === null || object === void 0 ? void 0 : object.ops) ? object.ops.map(e => ProofOp.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$ops;

@@ -1,5 +1,5 @@
 import { Timestamp } from "../../../google/protobuf/timestamp";
-import { Long, toTimestamp, fromTimestamp } from "../../../helpers";
+import { Long, toTimestamp, fromTimestamp, isSet, fromJsonTimestamp } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /**
  * Equivocation implements the Evidence interface and defines evidence of double
@@ -60,6 +60,14 @@ export const Equivocation = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
+      power: isSet(object.power) ? Long.fromValue(object.power) : Long.ZERO,
+      consensusAddress: isSet(object.consensusAddress) ? String(object.consensusAddress) : ""
+    };
   },
   fromPartial(object) {
     var _object$time, _object$consensusAddr;

@@ -24,6 +24,14 @@ export const MessageComposer = {
       };
     }
   },
+  fromJSON: {
+    submitEvidence(value) {
+      return {
+        typeUrl: "/cosmos.evidence.v1beta1.MsgSubmitEvidence",
+        value: MsgSubmitEvidence.fromJSON(value)
+      };
+    }
+  },
   fromPartial: {
     submitEvidence(value) {
       return {

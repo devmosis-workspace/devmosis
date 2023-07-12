@@ -9611,6 +9611,7 @@ __metadata:
     "@chain-sources/osmosis": "workspace:^"
     "@common/utils": "workspace:^"
     "@cosmjs/amino": ^0.31.0
+    "@cosmjs/encoding": ^0.31.0
     "@cosmjs/math": ^0.31.0
     "@cosmjs/proto-signing": ^0.31.0
     "@cosmjs/stargate": ^0.31.0

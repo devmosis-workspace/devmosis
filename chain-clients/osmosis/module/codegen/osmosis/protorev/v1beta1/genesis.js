@@ -1,7 +1,7 @@
 import { Params } from "./params";
 import { TokenPairArbRoutes, BaseDenom, PoolWeights } from "./protorev";
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
-import { Long } from "../../../helpers";
+import { Long, isSet } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the protorev module's genesis state. */
 
@@ -112,6 +112,22 @@ export const GenesisState = {
       }
     }
     return message;
+  },
+  fromJSON(object) {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
+      tokenPairArbRoutes: Array.isArray(object === null || object === void 0 ? void 0 : object.tokenPairArbRoutes) ? object.tokenPairArbRoutes.map(e => TokenPairArbRoutes.fromJSON(e)) : [],
+      baseDenoms: Array.isArray(object === null || object === void 0 ? void 0 : object.baseDenoms) ? object.baseDenoms.map(e => BaseDenom.fromJSON(e)) : [],
+      poolWeights: isSet(object.poolWeights) ? PoolWeights.fromJSON(object.poolWeights) : undefined,
+      daysSinceModuleGenesis: isSet(object.daysSinceModuleGenesis) ? Long.fromValue(object.daysSinceModuleGenesis) : Long.UZERO,
+      developerFees: Array.isArray(object === null || object === void 0 ? void 0 : object.developerFees) ? object.developerFees.map(e => Coin.fromJSON(e)) : [],
+      latestBlockHeight: isSet(object.latestBlockHeight) ? Long.fromValue(object.latestBlockHeight) : Long.UZERO,
+      developerAddress: isSet(object.developerAddress) ? String(object.developerAddress) : "",
+      maxPoolPointsPerBlock: isSet(object.maxPoolPointsPerBlock) ? Long.fromValue(object.maxPoolPointsPerBlock) : Long.UZERO,
+      maxPoolPointsPerTx: isSet(object.maxPoolPointsPerTx) ? Long.fromValue(object.maxPoolPointsPerTx) : Long.UZERO,
+      pointCountForBlock: isSet(object.pointCountForBlock) ? Long.fromValue(object.pointCountForBlock) : Long.UZERO,
+      profits: Array.isArray(object === null || object === void 0 ? void 0 : object.profits) ? object.profits.map(e => Coin.fromJSON(e)) : []
+    };
   },
   fromPartial(object) {
     var _object$tokenPairArbR, _object$baseDenoms, _object$developerFees, _object$developerAddr, _object$profits;
