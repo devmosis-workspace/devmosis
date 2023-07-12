@@ -23,26 +23,26 @@ export const OngoingTransactions = ({
 
       <div className="w-full mt-6 max-w-full overflow-x-auto">
         <div className="w-full border-b-2 border-[#F6F9FC]">
-          <tr className="w-full flex">
-            <th className="w-[600px] shrink-0 pl-4 pb-3 flex">
+          <div className="w-full flex">
+            <div className="w-[600px] shrink-0 pl-4 pb-3 flex">
               <Typography.SMText className="text-[#98A9BC]">
                 Title
               </Typography.SMText>
-            </th>
-            <th className="w-[200px] shrink-0 pl-4 pb-3 flex">
+            </div>
+            <div className="w-[200px] shrink-0 pl-4 pb-3 flex">
               <Typography.SMText className="text-[#98A9BC]">
                 Threshold
               </Typography.SMText>
-            </th>
-            <th className="w-[248px] shrink-0 pl-4 pb-3 flex">
+            </div>
+            <div className="w-[248px] shrink-0 pl-4 pb-3 flex">
               <Typography.SMText className="text-[#98A9BC]">
                 Submit Time
               </Typography.SMText>
-            </th>
-            <th className="w-[40px] shrink-0 flex" />
-          </tr>
+            </div>
+            <div className="w-[40px] shrink-0 flex" />
+          </div>
         </div>
-        <tbody className="w-full flex flex-col">
+        <div className="w-full flex flex-col">
           {ongoingTx?.map((transaction) => {
             const currentSigners = transaction.signatures.length;
             const isNotEnoughSigners = currentSigners < (threshold ?? 0);
@@ -55,15 +55,13 @@ export const OngoingTransactions = ({
 
             return (
               <Link
+                key={transaction.id}
                 href={`/account/${params?.address}/tx/${transaction.id}`}
                 prefetch={false}
                 className="w-full flex"
               >
-                <tr
-                  key={transaction.id}
-                  className="w-full flex items-center h-16 hover:bg-[#F6F9FC] cursor-pointer"
-                >
-                  <td className="w-[600px] pl-4 flex flex-col">
+                <div className="w-full flex items-center h-16 hover:bg-[#F6F9FC] cursor-pointer">
+                  <div className="w-[600px] pl-4 flex flex-col">
                     <Typography.SMText className="text-[#252631]">
                       {transaction.title}
                     </Typography.SMText>
@@ -72,8 +70,8 @@ export const OngoingTransactions = ({
                         {transaction.description}
                       </Typography.XSText>
                     ) : null}
-                  </td>
-                  <td className="w-[200px] pl-4 py-3 flex items-center">
+                  </div>
+                  <div className="w-[200px] pl-4 py-3 flex items-center">
                     <Image src="/users.svg" alt="user" width={22} height={20} />
                     <Typography.SMText
                       className={twMerge(
@@ -86,28 +84,28 @@ export const OngoingTransactions = ({
                     <Typography.SMText className="text-[#252631]">
                       {`/ ${threshold}`}
                     </Typography.SMText>
-                  </td>
-                  <td className="w-[248px] pl-4 py-3 flex">
+                  </div>
+                  <div className="w-[248px] pl-4 py-3 flex">
                     <Typography.SMText className="text-[#252631]">
                       {dayjs(transaction.createdAt).fromNow()}
                     </Typography.SMText>
-                  </td>
-                  <td className="w-[40px] flex">
+                  </div>
+                  <div className="w-[40px] flex">
                     <Image
                       src="/chevron-right.svg"
                       alt="chevron-right"
                       width={10}
                       height={10}
                     />
-                  </td>
-                </tr>
+                  </div>
+                </div>
                 {!isLast ? (
                   <hr className="w-full border-t-2 border-[#F6F9FC]" />
                 ) : null}
               </Link>
             );
           })}
-        </tbody>
+        </div>
       </div>
     </div>
   );
