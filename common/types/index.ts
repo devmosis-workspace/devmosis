@@ -36,7 +36,7 @@ export type TxResult =
       data?: undefined;
     };
 export interface TxEvent {
-  event?: {
+  txEvent?: {
     onError?: (data: any) => void;
     onFulfill?: (data: any) => void;
   };

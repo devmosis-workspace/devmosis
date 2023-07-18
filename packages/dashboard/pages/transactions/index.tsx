@@ -15,7 +15,7 @@ import {
   TxResult,
   type TransactionBaseFormValues,
 } from "@common/types";
-import { osmosisTxs } from "@chain-sources/osmosis/utils";
+import { broadcastOsmosisTx } from "@chain-sources/osmosis/utils";
 import { type MouseEvent, useState } from "react";
 import { savedFormAtom } from "@/atoms/savedFormAtom";
 import { TxProcessModal } from "pages/transactions/components/TxProcessModal";
@@ -80,7 +80,7 @@ export default function Home() {
             const bech32Prefix = transaction.bech32Prefix;
 
             if (bech32Prefix === "osmo") {
-              return osmosisTxs({ ...transaction, ...onTxEvent });
+              return broadcastOsmosisTx({ ...transaction, ...onTxEvent });
             }
 
             throw new Error("Invalid bech32 prefix");

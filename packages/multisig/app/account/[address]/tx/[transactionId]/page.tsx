@@ -149,7 +149,7 @@ export default function Transaction() {
 
       let protoMsgs: { typeUrl: string; value: any }[] = [];
       if (bech32Prefix === "osmo") {
-        const { amino, proto } = messages.reduce(
+        const { proto } = messages.reduce(
           (acc, msg) => {
             const type = msg["@type"] as string;
             const osmosisMsg = osmosisMsgs[type as keyof typeof osmosisMsgs];
@@ -169,11 +169,6 @@ export default function Transaction() {
               }
               return acc;
             }, {} as Record<string, any>);
-
-            const amino = {
-              type: osmosisMsg.amino.aminoType,
-              value: values,
-            };
 
             const proto = osmosisMsg.proto.fromJSON(osmosisMsg.amino.fromAmino(values));
 

@@ -34,7 +34,7 @@ interface AminoTx {
   bech32Address: string;
 }
 
-const broadcastOsmosisAminoTx = async ({
+const broadcastAminoTx = async ({
   keplr,
   aminoMsgs,
   protoMsgs,
@@ -113,7 +113,7 @@ interface ProtoTx extends Omit<AminoTx, "aminoMsgs"> {
   pubKey: Required<QueryAccountResponse>["account"]["pub_key"];
 }
 
-const broadcastOsmosisProtoTx = async ({
+const broadcastProtoTx = async ({
   keplr,
   protoMsgs,
   stdFee,
@@ -191,7 +191,7 @@ interface SimulateTx {
   baseDenom: string;
 }
 
-export const simulateOsmosisTx = async ({
+const simulateTx = async ({
   protoMsgs,
   memo,
   sequence,
@@ -201,15 +201,6 @@ export const simulateOsmosisTx = async ({
 }: SimulateTx) => {
   const { chain } = osmosisInfo;
   const escapedMemo = escapeHTML(memo);
-  console.log(pubKey.value);
-  console.log(
-    cosmos.crypto.multisig.LegacyAminoPubKey.encode(
-      cosmos.crypto.multisig.LegacyAminoPubKey.fromPartial({
-        publicKeys: pubKey.value.pubkeys.map(encodePubkey),
-        threshold: Uint53.fromString(pubKey.value.threshold).toNumber(),
-      })
-    ).finish()
-  );
 
   const txBytesForSimulation = cosmos.tx.v1beta1.TxRaw.encode({
     bodyBytes: cosmos.tx.v1beta1.TxBody.encode(
@@ -260,7 +251,7 @@ export const simulateOsmosisTx = async ({
     signatures: [new Uint8Array(0)],
   }).finish();
 
-  const simulateTx = async () => {
+  const getSimulatedTx = async () => {
     const restEndpoint = chain?.apis?.rest?.[2].address ?? "";
     const data = (
       await fetch(`${restEndpoint}/cosmos/tx/v1beta1/simulate`, {
@@ -276,7 +267,7 @@ export const simulateOsmosisTx = async ({
     return data;
   };
 
-  const simulatedTx = await simulateTx();
+  const simulatedTx = await getSimulatedTx();
 
   return { simulatedTx };
 };
@@ -387,17 +378,13 @@ export const getTxResult = (txHash: Uint8Array): Promise<TxResult> => {
   });
 };
 
-interface BroadcastOsmosisTx {
+interface BroadcastTx {
   aminoMsgs: AminoMsg[];
   protoMsgs: Any[];
   memo: string;
 }
 
-export const broadcastOsmosisTx = async ({
-  aminoMsgs,
-  protoMsgs,
-  memo,
-}: BroadcastOsmosisTx) => {
+const broadcastTx = async ({ aminoMsgs, protoMsgs, memo }: BroadcastTx) => {
   const { chain } = osmosisInfo;
   const chainId = chain.chain_id;
   const escapedMemo = escapeHTML(memo);
@@ -417,7 +404,7 @@ export const broadcastOsmosisTx = async ({
     throw new Error("Unable to load account");
   }
 
-  const { simulatedTx } = await simulateOsmosisTx({
+  const { simulatedTx } = await simulateTx({
     isNanoLedger,
     memo: escapedMemo,
     protoMsgs,
@@ -443,7 +430,7 @@ export const broadcastOsmosisTx = async ({
   });
 
   if (isNanoLedger) {
-    const txHash = await broadcastOsmosisAminoTx({
+    const txHash = await broadcastAminoTx({
       keplr,
       chainId,
       stdFee,
@@ -457,7 +444,7 @@ export const broadcastOsmosisTx = async ({
 
     return txHash;
   } else {
-    const txHash = await broadcastOsmosisProtoTx({
+    const txHash = await broadcastProtoTx({
       keplr,
       chainId,
       stdFee,
@@ -474,4 +461,9 @@ export const broadcastOsmosisTx = async ({
 
     return txHash;
   }
+};
+
+export const osmosisTxUtils = {
+  simulateTx,
+  broadcastTx,
 };

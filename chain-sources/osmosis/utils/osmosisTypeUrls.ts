@@ -1,13 +1,5 @@
 import { cosmos, osmosis } from "@chain-clients/osmosis";
 
-// const {
-//   deposit: v1Deposit,
-//   execLegacyContent: v1ExecLegacyContent,
-//   submitProposal: v1SubmitProposal,
-//   vote: v1Vote,
-//   voteWeighted: v1VoteWeighted,
-// } = cosmos.gov.v1.MessageComposer.withTypeUrl;
-
 const cosmosTypeUrl = {
   ...cosmos.authz.v1beta1.MessageComposer.withTypeUrl,
   ...cosmos.bank.v1beta1.MessageComposer.withTypeUrl,
