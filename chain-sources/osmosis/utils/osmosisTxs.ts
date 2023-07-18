@@ -1,8 +1,7 @@
 import type { TransactionBaseFormValue, TxEvent } from "@common/types";
-import { osmosisMsgs } from "./osmosisMsgs";
+import { osmosisTypeUrls } from "./osmosisTypeUrls";
 import type {
   MsgBeginRedelegate,
-  MsgCancelUnbondingDelegation,
   MsgDelegate,
   MsgUndelegate,
 } from "@chain-clients/osmosis/types/codegen/cosmos/staking/v1beta1/tx";
@@ -10,7 +9,6 @@ import {
   msgBeginRedelegate,
   msgBeginUnlocking,
   msgBeginUnlockingAll,
-  msgCancelUnbondingDelegation,
   msgDelegate,
   msgDelegateBondedTokens,
   msgDelegateToValidatorSet,
@@ -90,7 +88,6 @@ export const osmosisTxs = async ({
   const {
     // cosmos
     beginRedelegate,
-    cancelUnbondingDelegation,
     delegate,
     multiSend,
     send,
@@ -120,17 +117,12 @@ export const osmosisTxs = async ({
     swapExactAmountOut,
     undelegateFromValidatorSet,
     withdrawDelegationRewards,
-  } = osmosisMsgs;
+  } = osmosisTypeUrls;
 
   const txs = () => {
     switch (typeUrl) {
       case beginRedelegate(null as any).typeUrl:
         return msgBeginRedelegate(formValues as MsgBeginRedelegate, memo);
-      case cancelUnbondingDelegation(null as any).typeUrl:
-        return msgCancelUnbondingDelegation(
-          formValues as MsgCancelUnbondingDelegation,
-          memo
-        );
       case delegate(null as any).typeUrl:
         return msgDelegate(formValues as MsgDelegate, memo);
       case multiSend(null as any).typeUrl:

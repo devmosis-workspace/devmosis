@@ -5,7 +5,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@chain-clients/osmosis": "workspace:^",
+    "@chain-clients/osmosis": "16.1.0-4",
     "@common/components": "workspace:^",
     "@common/queries": "workspace:^",
     "@common/types": "workspace:^",

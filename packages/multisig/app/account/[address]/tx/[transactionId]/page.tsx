@@ -17,7 +17,7 @@ import {
 } from "@/graphql/queries/transaction";
 import { useMutation } from "@apollo/client";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
-import { osmosisAccountQuery, osmosisClient } from "@chain-sources/osmosis";
+import { osmosisAccountQuery, osmosisMsgs } from "@chain-sources/osmosis";
 import dayjs from "dayjs";
 import { useAtomValue } from "jotai";
 import Image from "next/image";
@@ -147,16 +147,14 @@ export default function Transaction() {
         return;
       }
 
-      let aminoMsgs: { type: string; value: any }[] = [];
       let protoMsgs: { typeUrl: string; value: any }[] = [];
       if (bech32Prefix === "osmo") {
         const { amino, proto } = messages.reduce(
           (acc, msg) => {
-            const client = osmosisClient.find(
-              (osmosis) => osmosis.proto.typeUrl === msg["@type"]
-            );
+            const type = msg["@type"] as string;
+            const osmosisMsg = osmosisMsgs[type as keyof typeof osmosisMsgs];
 
-            if (client === undefined) {
+            if (osmosisMsg === undefined) {
               throw new Error("Invalid message type");
             }
 
@@ -173,26 +171,22 @@ export default function Transaction() {
             }, {} as Record<string, any>);
 
             const amino = {
-              type: client.amino.aminoType,
+              type: osmosisMsg.amino.aminoType,
               value: values,
             };
 
-            const proto = client.proto.fromJSON(client.amino.fromAmino(values));
+            const proto = osmosisMsg.proto.fromJSON(osmosisMsg.amino.fromAmino(values));
 
             return {
-              amino: [...acc.amino, amino],
               proto: [...acc.proto, proto],
             };
           },
           {
-            amino: [],
             proto: [],
           } as {
-            amino: { type: string; value: Record<string, any> }[];
             proto: { typeUrl: string; value: any }[];
           }
         );
-        aminoMsgs = amino;
         protoMsgs = proto;
       }
 

@@ -41,3 +41,8 @@ export interface TxEvent {
     onFulfill?: (data: any) => void;
   };
 }
+
+export interface Any {
+  typeUrl: string;
+  value: Uint8Array;
+}

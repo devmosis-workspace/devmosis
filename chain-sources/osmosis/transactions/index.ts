@@ -1,5 +1,4 @@
 export * from "./msgBeginRedelegate";
-export * from "./msgCancelUnbondingDelegation";
 export * from "./msgDelegate";
 export * from "./msgMultiSend";
 export * from "./msgSend";
