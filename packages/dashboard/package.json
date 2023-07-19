@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chain-clients/osmosis": "workspace:^",
+    "@chain-clients/osmosis": "16.1.0-4",
     "@chain-sources/osmosis": "workspace:^",
     "@common/components": "workspace:^",
     "@common/types": "workspace:^",

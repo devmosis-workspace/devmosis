@@ -17,7 +17,7 @@ import {
 } from "@/graphql/queries/transaction";
 import { useMutation } from "@apollo/client";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
-import { osmosisAccountQuery, osmosisClient } from "@chain-sources/osmosis";
+import { osmosisLCDClient, osmosisMsgs } from "@chain-sources/osmosis";
 import dayjs from "dayjs";
 import { useAtomValue } from "jotai";
 import Image from "next/image";
@@ -35,10 +35,11 @@ import {
 } from "@cosmjs/stargate";
 import {
   UPDATE_TRANSACTION_TX_HASH,
-  UpdateTransactionTxHashInput,
-  UpdateTransactionTxHashResponse,
+  type UpdateTransactionTxHashInput,
+  type UpdateTransactionTxHashResponse,
 } from "@/graphql/mutations/transaction";
 import { JsonViewer } from "@textea/json-viewer";
+import type { Account } from "@/types/Account";
 
 export const dynamic = "force-dynamic";
 
@@ -76,7 +77,12 @@ export default function Transaction() {
 
   const { data: accountData } = useQuery({
     queryKey: ["osmosisAccountQuery", { address: accountAddress! }],
-    queryFn: () => osmosisAccountQuery({ address: accountAddress! }),
+    queryFn: async () => {
+      const { cosmos } = await osmosisLCDClient();
+      return (await cosmos.auth.v1beta1.account({
+        address: accountAddress!,
+      })) as unknown as Account;
+    },
     enabled: accountAddress !== undefined,
   });
   const signatures = transaction?.signatures ?? [];
@@ -136,27 +142,18 @@ export default function Transaction() {
           ? escapeHTML(txDataJSON?.body?.memo)
           : undefined;
 
-      const timeoutHeight: number | undefined =
-        txDataJSON?.body?.timeout_height;
-      const extensionOptions: any[] | undefined =
-        txDataJSON?.body?.extension_options;
-      const nonCriticalExtensionOptions: any[] | undefined =
-        txDataJSON?.body?.non_critical_extension_options;
-
       if (messages === undefined || memo === undefined) {
         return;
       }
 
-      let aminoMsgs: { type: string; value: any }[] = [];
       let protoMsgs: { typeUrl: string; value: any }[] = [];
       if (bech32Prefix === "osmo") {
-        const { amino, proto } = messages.reduce(
+        const { proto } = messages.reduce(
           (acc, msg) => {
-            const client = osmosisClient.find(
-              (osmosis) => osmosis.proto.typeUrl === msg["@type"]
-            );
+            const type = msg["@type"] as string;
+            const osmosisMsg = osmosisMsgs[type as keyof typeof osmosisMsgs];
 
-            if (client === undefined) {
+            if (osmosisMsg === undefined) {
               throw new Error("Invalid message type");
             }
 
@@ -172,35 +169,28 @@ export default function Transaction() {
               return acc;
             }, {} as Record<string, any>);
 
-            const amino = {
-              type: client.amino.aminoType,
-              value: values,
-            };
-
-            const proto = client.proto.fromJSON(client.amino.fromAmino(values));
+            const proto = osmosisMsg.proto.fromJSON(
+              osmosisMsg.amino.fromAmino(values)
+            );
 
             return {
-              amino: [...acc.amino, amino],
               proto: [...acc.proto, proto],
             };
           },
           {
-            amino: [],
             proto: [],
           } as {
-            amino: { type: string; value: Record<string, any> }[];
             proto: { typeUrl: string; value: any }[];
           }
         );
-        aminoMsgs = amino;
         protoMsgs = proto;
       }
 
       const signingClient = await SigningStargateClient.offline(offlineSigner);
 
       const signerData = {
-        accountNumber: parseInt(accountData.account_number, 10),
-        sequence: parseInt(accountData.sequence, 10),
+        accountNumber: parseInt(accountData.account.account_number, 10),
+        sequence: parseInt(accountData.account.sequence, 10),
         chainId: currentChain.chain_id,
       };
 
@@ -229,7 +219,7 @@ export default function Transaction() {
           variables: {
             signature: bases64EncodedSignature,
             signatureId: parseInt(signatureId, 10),
-            sequence: parseInt(accountData.sequence, 10),
+            sequence: parseInt(accountData.account.sequence, 10),
           },
         });
         toast.success("Signature is successfully updated");
@@ -242,7 +232,7 @@ export default function Transaction() {
               signature: bases64EncodedSignature,
               signerAddress,
               transactionId: parseInt(params.transactionId, 10),
-              sequence: parseInt(accountData.sequence, 10),
+              sequence: parseInt(accountData.account.sequence, 10),
             },
           },
         });
@@ -290,7 +280,7 @@ export default function Transaction() {
       const checkSignatureSequence = signatures.every(
         (signature) =>
           signature.sequence === signatures[0].sequence &&
-          signature.sequence === parseInt(accountData?.sequence, 10)
+          signature.sequence === parseInt(accountData.account.sequence, 10)
       );
 
       if (!checkSignatureSequence) {
@@ -307,7 +297,7 @@ export default function Transaction() {
 
       const signedTxBytes = makeMultisignedTxBytes(
         offChainPubkey,
-        parseInt(accountData.sequence, 10),
+        parseInt(accountData.account.sequence, 10),
         stdFee,
         bodyBytes,
         signatureMap
@@ -389,7 +379,7 @@ export default function Transaction() {
 
               const isExpiredSignature =
                 accountData !== undefined
-                  ? parseInt(accountData.sequence, 10) !== signature.sequence
+                  ? parseInt(accountData.account.sequence, 10) !== signature.sequence
                   : false;
               return (
                 <div

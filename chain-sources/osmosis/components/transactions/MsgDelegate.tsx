@@ -12,8 +12,11 @@ import { useFormContext, useWatch } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import { osmosisInfo } from "../../utils";
 import { MessageContainer } from "@common/components";
-import { osmosisValidatorQuery, osmosisValidatorsQuery } from "../../queries";
 import { MemoTextarea } from "@common/components/src/message/MemoTextarea";
+import { osmosisLCDClient } from "../../queries";
+import type { QueryValidatorsRequest } from "@chain-clients/osmosis/types/codegen/cosmos/staking/v1beta1/query";
+import Long from "long";
+import { getValidatorProfilePicture } from "@common/queries";
 
 type MsgDelegateProps = HTMLAttributes<HTMLDivElement> & {
   index: number;
@@ -72,11 +75,27 @@ export const MsgDelegate = ({
   const { data: validatorData } = useQuery({
     queryKey: [
       "osmosis/validator",
-      { valdatorAddress: selectedValidatorAddress },
+      { validatorAddress: selectedValidatorAddress },
+    ],
+    queryFn: async () => {
+      const { cosmos } = await osmosisLCDClient();
+      return await cosmos.staking.v1beta1.validator({
+        validatorAddr: selectedValidatorAddress!,
+      });
+    },
+    enabled: selectedValidatorAddress !== "",
+  });
+
+  const { data: validatorProfilePicture } = useQuery({
+    queryKey: [
+      "getValidatorProfilePicture",
+      { identity: validatorData?.validator?.description?.identity },
     ],
     queryFn: () =>
-      osmosisValidatorQuery({ validatorAddr: selectedValidatorAddress! }),
-    enabled: selectedValidatorAddress !== "",
+      getValidatorProfilePicture(
+        validatorData!.validator!.description!.identity
+      ),
+    enabled: validatorData?.validator?.description?.identity !== undefined,
   });
 
   useEffect(function loadSavedAmount() {
@@ -143,16 +162,16 @@ export const MsgDelegate = ({
             })}
           />
           <span>validator :</span>
-          {validatorData !== undefined ? (
+          {validatorData?.validator !== undefined ? (
             <ValidatorBox>
-              {validatorData.profilePicture !== undefined ? (
+              {validatorProfilePicture !== undefined ? (
                 <ValidatorProfilePicture
-                  src={validatorData.profilePicture}
-                  alt={validatorData.description?.moniker}
+                  src={validatorProfilePicture}
+                  alt={validatorData.validator.description?.moniker}
                 />
               ) : null}
               <span style={{ marginRight: 4 }}>
-                {validatorData.description?.moniker}
+                {validatorData.validator.description?.moniker}
               </span>
             </ValidatorBox>
           ) : null}
@@ -212,7 +231,16 @@ const ValidatorsModalContent = ({
 
   const { data: validatorsData } = useQuery({
     queryKey: ["osmosis/validators"],
-    queryFn: osmosisValidatorsQuery,
+    queryFn: async () => {
+      const { cosmos } = await osmosisLCDClient();
+      return await cosmos.staking.v1beta1.validators({
+        status: "BOND_STATUS_BONDED",
+        pagination: {
+          limit: new Long(1000),
+          offset: new Long(0),
+        },
+      } as QueryValidatorsRequest);
+    },
   });
 
   const handleValidatorClick = (
@@ -231,7 +259,7 @@ const ValidatorsModalContent = ({
       </ModalTitle>
 
       <ValidatorList>
-        {validatorsData?.bonded.map((validator) => (
+        {validatorsData?.validators.map((validator) => (
           <ValidatorListItem
             type="button"
             key={validator.operator_address}

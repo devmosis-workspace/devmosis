@@ -36,8 +36,24 @@ export type TxResult =
       data?: undefined;
     };
 export interface TxEvent {
-  event?: {
+  txEvent?: {
     onError?: (data: any) => void;
     onFulfill?: (data: any) => void;
   };
+}
+
+export interface Any {
+  typeUrl: string;
+  value: Uint8Array;
+}
+
+export interface Account {
+  "@type": string;
+  address: string;
+  pub_key: {
+    "@type": string;
+    key: string;
+  };
+  account_number: string;
+  sequence: string;
 }

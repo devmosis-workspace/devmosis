@@ -1,4 +1,4 @@
-import { osmosisMsgs } from "../../utils";
+import { osmosisTypeUrls } from "../../utils";
 import { MsgDelegate } from "./MsgDelegate";
 
 interface TransactionListProps {
@@ -16,22 +16,21 @@ export const OsmosisTransactions = ({
 }: TransactionListProps) => {
   const {
     beginRedelegate,
-    cancelUnbondingDelegation,
     delegate,
     multiSend,
     send,
     undelegate,
     setWithdrawAddress,
     withdrawDelegatorReward,
-  } = osmosisMsgs;
+  } = osmosisTypeUrls;
 
   switch (typeUrl) {
     case beginRedelegate(null as any).typeUrl:
       return null;
-    case cancelUnbondingDelegation(null as any).typeUrl:
-      return null;
     case delegate(null as any).typeUrl:
-      return <MsgDelegate key={id} index={index} delegatorAddress={myAddress} />;
+      return (
+        <MsgDelegate key={id} index={index} delegatorAddress={myAddress} />
+      );
     case multiSend(null as any).typeUrl:
       return null;
     case send(null as any).typeUrl:
