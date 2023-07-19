@@ -3,8 +3,9 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { osmosisAccountQuery } from "@chain-sources/osmosis";
+import { osmosisLCDClient} from "@chain-sources/osmosis";
 import { pubkeyToAddress } from "@cosmjs/amino";
+import type { Account } from "@common/types";
 
 export default function Multisig() {
  const [multisigAddress, setMultisigAddress] = useState("");
@@ -60,8 +61,16 @@ export default function Multisig() {
   };
 
   const addressToPubkey = async (address: string) => {
-    const osmosisAccount = await osmosisAccountQuery({ address });
-    return osmosisAccount.pub_key.key;
+    const { cosmos } = await osmosisLCDClient();
+    const osmosisAccount = await cosmos.auth.v1beta1.account({
+      address
+    })
+
+    if(osmosisAccount.account === undefined) {
+      throw new Error("account is undefined");
+    }
+    const account = osmosisAccount.account as unknown as Account;
+    return account.pub_key.key;
   };
 
   const handleCreateMultisig = async () => {

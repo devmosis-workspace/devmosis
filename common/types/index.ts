@@ -46,3 +46,14 @@ export interface Any {
   typeUrl: string;
   value: Uint8Array;
 }
+
+export interface Account {
+  "@type": string;
+  address: string;
+  pub_key: {
+    "@type": string;
+    key: string;
+  };
+  account_number: string;
+  sequence: string;
+}
